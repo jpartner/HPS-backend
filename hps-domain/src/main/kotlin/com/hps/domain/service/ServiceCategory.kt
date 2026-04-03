@@ -26,7 +26,7 @@ class ServiceCategory(
     @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL], orphanRemoval = true)
     val translations: MutableSet<ServiceCategoryTranslation> = mutableSetOf(),
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", cascade = [CascadeType.ALL], orphanRemoval = true)
     val children: MutableList<ServiceCategory> = mutableListOf()
 )
 

@@ -2,6 +2,8 @@ package com.hps.domain.user
 
 import com.hps.domain.geo.Area
 import com.hps.domain.geo.City
+import com.hps.domain.service.Service
+import com.hps.domain.service.ServiceCategory
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.Instant
@@ -60,5 +62,16 @@ class ProviderProfile(
     val createdAt: Instant = Instant.now(),
 
     @Column(name = "updated_at", nullable = false)
-    var updatedAt: Instant = Instant.now()
+    var updatedAt: Instant = Instant.now(),
+
+    @ManyToMany
+    @JoinTable(
+        name = "provider_categories",
+        joinColumns = [JoinColumn(name = "provider_id")],
+        inverseJoinColumns = [JoinColumn(name = "category_id")]
+    )
+    val categories: MutableSet<ServiceCategory> = mutableSetOf(),
+
+    @OneToMany(mappedBy = "provider", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val services: MutableList<Service> = mutableListOf()
 )

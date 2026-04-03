@@ -8,11 +8,9 @@ import java.util.UUID
 interface AreaRepository : JpaRepository<Area, UUID> {
 
     @Query("""
-        SELECT a FROM Area a
-        JOIN FETCH a.translations t
+        SELECT DISTINCT a FROM Area a
+        JOIN FETCH a.translations
         WHERE a.city.id = :cityId
-        AND (t.lang = :lang OR t.lang = 'en')
-        ORDER BY t.name
     """)
     fun findByCityIdWithTranslations(cityId: UUID, lang: String): List<Area>
 }

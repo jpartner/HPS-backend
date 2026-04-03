@@ -21,3 +21,10 @@ data class CitySeed(
     val population: Int,
     val translations: Map<String, String>
 )
+
+data class CategorySeed(
+    val icon: String?,
+    val sortOrder: Int,
+    val translations: Map<String, String>,
+    val children: List<CategorySeed> = emptyList()
+)

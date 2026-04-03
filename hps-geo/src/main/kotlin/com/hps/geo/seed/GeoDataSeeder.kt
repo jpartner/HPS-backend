@@ -3,7 +3,10 @@ package com.hps.geo.seed
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.hps.domain.geo.*
+import com.hps.domain.service.ServiceCategory
+import com.hps.domain.service.ServiceCategoryTranslation
 import com.hps.persistence.geo.CountryRepository
+import com.hps.persistence.service.ServiceCategoryRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
@@ -13,7 +16,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Component
 class GeoDataSeeder(
-    private val countryRepository: CountryRepository
+    private val countryRepository: CountryRepository,
+    private val categoryRepository: ServiceCategoryRepository
 ) : ApplicationRunner {
 
     private val log = LoggerFactory.getLogger(GeoDataSeeder::class.java)
@@ -21,6 +25,11 @@ class GeoDataSeeder(
 
     @Transactional
     override fun run(args: ApplicationArguments) {
+        seedCountries()
+        seedCategories()
+    }
+
+    private fun seedCountries() {
         if (countryRepository.count() > 0) {
             log.info("Geographic data already seeded, skipping")
             return
@@ -45,6 +54,28 @@ class GeoDataSeeder(
         }
 
         log.info("Seeded $countryCount countries, $regionCount regions, $cityCount cities")
+    }
+
+    private fun seedCategories() {
+        if (categoryRepository.count() > 0) {
+            log.info("Service categories already seeded, skipping")
+            return
+        }
+
+        log.info("Seeding service categories...")
+
+        val resolver = PathMatchingResourcePatternResolver()
+        val resource = resolver.getResource("classpath:seed-data/categories.json")
+        val seeds = mapper.readValue<List<CategorySeed>>(resource.inputStream)
+
+        var count = 0
+        for (seed in seeds) {
+            val category = createCategory(seed, null)
+            categoryRepository.save(category)
+            count += 1 + category.children.size
+        }
+
+        log.info("Seeded $count service categories")
     }
 
     private fun createCountry(seed: CountrySeed): Country {
@@ -88,5 +119,26 @@ class GeoDataSeeder(
         }
 
         return country
+    }
+
+    private fun createCategory(seed: CategorySeed, parent: ServiceCategory?): ServiceCategory {
+        val category = ServiceCategory(
+            parent = parent,
+            icon = seed.icon,
+            sortOrder = seed.sortOrder
+        )
+
+        seed.translations.forEach { (lang, name) ->
+            category.translations.add(
+                ServiceCategoryTranslation(category = category, lang = lang, name = name)
+            )
+        }
+
+        seed.children.forEach { childSeed ->
+            val child = createCategory(childSeed, category)
+            category.children.add(child)
+        }
+
+        return category
     }
 }

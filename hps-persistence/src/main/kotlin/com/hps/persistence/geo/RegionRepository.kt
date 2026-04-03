@@ -8,11 +8,9 @@ import java.util.UUID
 interface RegionRepository : JpaRepository<Region, UUID> {
 
     @Query("""
-        SELECT r FROM Region r
-        JOIN FETCH r.translations t
+        SELECT DISTINCT r FROM Region r
+        JOIN FETCH r.translations
         WHERE r.country.isoCode = :countryCode
-        AND (t.lang = :lang OR t.lang = 'en')
-        ORDER BY t.name
     """)
     fun findByCountryCodeWithTranslations(countryCode: String, lang: String): List<Region>
 }

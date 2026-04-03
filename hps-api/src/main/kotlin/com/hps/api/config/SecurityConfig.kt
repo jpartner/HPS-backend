@@ -26,8 +26,8 @@ class SecurityConfig(
                     .requestMatchers("/api/v1/auth/**").permitAll()
                     .requestMatchers("/api/v1/countries/**", "/api/v1/regions/**", "/api/v1/cities/**").permitAll()
                     .requestMatchers("/api/v1/categories/**").permitAll()
-                    .requestMatchers("/api/v1/providers/**").permitAll()
-                    .requestMatchers("/api/v1/services/**").permitAll()
+                    .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/providers/**").permitAll()
+                    .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/services/**").permitAll()
                     .anyRequest().authenticated()
             }
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)

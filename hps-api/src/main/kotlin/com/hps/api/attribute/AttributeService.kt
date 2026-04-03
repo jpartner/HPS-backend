@@ -130,6 +130,7 @@ class AttributeService(
             .orElseThrow { NotFoundException("Provider", providerId) }
 
         val values: Map<String, Any?> = mapper.readValue(provider.attributes)
+        if (values.isEmpty()) return emptyList()
 
         val domains = provider.categories.mapNotNull { cat ->
             cat.translations.firstOrNull { it.lang == "en" }?.name
@@ -137,11 +138,37 @@ class AttributeService(
 
         val defs = domains.flatMap { definitionRepository.findByDomainWithTranslations(it) }
             .distinctBy { it.key }
+        val defsByKey = defs.associateBy { it.key }
 
-        return defs.map { def ->
+        // Return all attributes — those with definitions get rich metadata,
+        // those without get a simple label derived from the key
+        return values.filter { it.value != null }.map { (key, value) ->
+            val def = defsByKey[key]
             ProviderAttributeWithDefinition(
-                definition = def.toDto(lang),
-                value = values[def.key]
+                definition = if (def != null) {
+                    def.toDto(lang)
+                } else {
+                    // Generate a simple definition for undefined keys
+                    AttributeDefinitionDto(
+                        id = java.util.UUID(0, 0),
+                        domain = "",
+                        key = key,
+                        dataType = when (value) {
+                            is Boolean -> "BOOLEAN"
+                            is Number -> "NUMBER"
+                            is List<*> -> "MULTI_SELECT"
+                            else -> "TEXT"
+                        },
+                        isRequired = false,
+                        options = null,
+                        validation = null,
+                        label = key.replace("_", " ").replaceFirstChar { it.uppercase() },
+                        hint = null,
+                        optionLabels = null,
+                        sortOrder = 999
+                    )
+                },
+                value = value
             )
         }
     }

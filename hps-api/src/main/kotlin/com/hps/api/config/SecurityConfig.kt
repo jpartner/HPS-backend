@@ -24,6 +24,8 @@ class SecurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
+                    // Error endpoint must be accessible
+                    .requestMatchers("/error").permitAll()
                     // Public: auth
                     .requestMatchers("/api/v1/auth/**").permitAll()
                     // Public: read-only geo, categories, providers, services, availability

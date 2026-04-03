@@ -79,6 +79,7 @@ class ServiceManagementService(
 
         if (request.translations != null) {
             service.translations.clear()
+            serviceRepository.saveAndFlush(service)
             request.translations.forEach { t ->
                 service.translations.add(
                     ServiceTranslation(service = service, lang = t.lang, title = t.title, description = t.description)

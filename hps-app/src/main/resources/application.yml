@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: hps-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hps
+    username: hps
+    password: hps_dev_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+
+hps:
+  jwt:
+    secret: change-me-in-production-use-a-256-bit-key-here!!
+    expiration-ms: 3600000
+    refresh-expiration-ms: 604800000
+  supported-languages:
+    - en
+    - pl
+    - uk
+  default-language: en

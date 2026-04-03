@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: hps-postgres
+    environment:
+      POSTGRES_DB: hps
+      POSTGRES_USER: hps
+      POSTGRES_PASSWORD: hps_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - hps-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hps"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: hps-typesense
+    environment:
+      TYPESENSE_API_KEY: hps_typesense_dev_key
+      TYPESENSE_DATA_DIR: /data
+    ports:
+      - "8108:8108"
+    volumes:
+      - hps-typesense-data:/data
+
+volumes:
+  hps-postgres-data:
+  hps-typesense-data:

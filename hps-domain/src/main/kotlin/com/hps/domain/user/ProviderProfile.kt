@@ -82,7 +82,11 @@ class ProviderProfile(
     val services: MutableList<Service> = mutableListOf(),
 
     @OneToMany(mappedBy = "provider", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val translations: MutableSet<ProviderProfileTranslation> = mutableSetOf()
+    val translations: MutableSet<ProviderProfileTranslation> = mutableSetOf(),
+
+    @OneToMany(mappedBy = "provider", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OrderBy("sortOrder ASC")
+    val galleryImages: MutableList<ProviderGalleryImage> = mutableListOf()
 )
 
 @Entity

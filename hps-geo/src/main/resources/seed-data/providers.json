@@ -17,49 +17,56 @@
       {
         "categoryPath": "Massage > Relaxation Massage",
         "pricingType": "FIXED",
-        "priceAmount": 150.00,
+        "priceAmount": 150.0,
         "priceCurrency": "PLN",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Relaxation Massage 60min", "description": "Full body relaxation massage using aromatic oils" },
-          "pl": { "title": "Masaż relaksacyjny 60min", "description": "Masaż relaksacyjny całego ciała z użyciem olejków aromatycznych" },
-          "uk": { "title": "Релаксаційний масаж 60хв", "description": "Масаж усього тіла для розслаблення з ароматичними оліями" }
+          "en": {"title": "Relaxation Massage 60min", "description": "Full body relaxation massage using aromatic oils"},
+          "pl": {"title": "Masaż relaksacyjny 60min", "description": "Masaż relaksacyjny całego ciała z użyciem olejków aromatycznych"},
+          "uk": {"title": "Релаксаційний масаж 60хв", "description": "Масаж усього тіла для розслаблення з ароматичними оліями"}
         }
       },
       {
         "categoryPath": "Massage > Therapeutic Massage",
         "pricingType": "FIXED",
-        "priceAmount": 200.00,
+        "priceAmount": 200.0,
         "priceCurrency": "PLN",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Therapeutic Massage 90min", "description": "Deep tissue therapeutic massage for pain relief" },
-          "pl": { "title": "Masaż leczniczy 90min", "description": "Masaż głębokich tkanek w celu łagodzenia bólu" },
-          "uk": { "title": "Лікувальний масаж 90хв", "description": "Глибокий масаж тканин для зняття болю" }
+          "en": {"title": "Therapeutic Massage 90min", "description": "Deep tissue therapeutic massage for pain relief"},
+          "pl": {"title": "Masaż leczniczy 90min", "description": "Masaż głębokich tkanek w celu łagodzenia bólu"},
+          "uk": {"title": "Лікувальний масаж 90хв", "description": "Глибокий масаж тканин для зняття болю"}
         }
       },
       {
         "categoryPath": "Massage > Hot Stone Massage",
         "pricingType": "FIXED",
-        "priceAmount": 220.00,
+        "priceAmount": 220.0,
         "priceCurrency": "PLN",
         "durationMinutes": 75,
         "imageUrl": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Hot Stone Massage", "description": "Relaxing massage with heated volcanic stones" },
-          "pl": { "title": "Masaż gorącymi kamieniami", "description": "Relaksujący masaż z użyciem podgrzanych kamieni wulkanicznych" },
-          "uk": { "title": "Масаж гарячим камінням", "description": "Розслаблюючий масаж з нагрітим вулканічним камінням" }
+          "en": {"title": "Hot Stone Massage", "description": "Relaxing massage with heated volcanic stones"},
+          "pl": {"title": "Masaż gorącymi kamieniami", "description": "Relaksujący masaż z użyciem podgrzanych kamieni wulkanicznych"},
+          "uk": {"title": "Масаж гарячим камінням", "description": "Розслаблюючий масаж з нагрітим вулканічним камінням"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Anna's Wellness Studio", "description": "Professional massage therapy in the heart of Warsaw. Over 10 years of experience in relaxation and therapeutic techniques." },
-      "pl": { "businessName": "Studio Wellness Anny", "description": "Profesjonalna masażoterapia w samym sercu Warszawy. Ponad 10 lat doświadczenia w technikach relaksacyjnych i leczniczych." },
-      "uk": { "businessName": "Велнес-студія Анни", "description": "Професійна масажна терапія в серці Варшави. Понад 10 років досвіду в релаксаційних та лікувальних техніках." },
-      "de": { "businessName": "Annas Wellness-Studio", "description": "Professionelle Massagetherapie im Herzen von Warschau. Über 10 Jahre Erfahrung in Entspannungs- und therapeutischen Techniken." }
-    }
+      "en": {"businessName": "Anna's Wellness Studio", "description": "Professional massage therapy in the heart of Warsaw. Over 10 years of experience in relaxation and therapeutic techniques."},
+      "pl": {"businessName": "Studio Wellness Anny", "description": "Profesjonalna masażoterapia w samym sercu Warszawy. Ponad 10 lat doświadczenia w technikach relaksacyjnych i leczniczych."},
+      "uk": {"businessName": "Велнес-студія Анни", "description": "Професійна масажна терапія в серці Варшави. Понад 10 років досвіду в релаксаційних та лікувальних техніках."},
+      "de": {"businessName": "Annas Wellness-Studio", "description": "Professionelle Massagetherapie im Herzen von Warschau. Über 10 Jahre Erfahrung in Entspannungs- und therapeutischen Techniken."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Relaxing spa treatment"},
+      {"url": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop", "caption": "Professional massage therapy"},
+      {"url": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop", "caption": "Tranquil spa interior"},
+      {"url": "https://images.unsplash.com/photo-1540555700478-4be289fbec6a?w=800&h=600&fit=crop", "caption": "Hot stone massage session"},
+      {"url": "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&h=600&fit=crop", "caption": "Cozy massage room"}
+    ]
   },
   {
     "email": "magda.nail@example.com",
@@ -71,7 +78,7 @@
     "countryCode": "PL",
     "cityName": "Kraków",
     "latitude": 50.0647,
-    "longitude": 19.9450,
+    "longitude": 19.945,
     "isMobile": false,
     "serviceRadiusKm": null,
     "categories": ["Nails"],
@@ -79,49 +86,55 @@
       {
         "categoryPath": "Nails > Manicure",
         "pricingType": "FIXED",
-        "priceAmount": 80.00,
+        "priceAmount": 80.0,
         "priceCurrency": "PLN",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Classic Manicure", "description": "Classic manicure with nail shaping and cuticle care" },
-          "pl": { "title": "Manicure klasyczny", "description": "Klasyczny manicure z kształtowaniem paznokci i pielęgnacją skórek" },
-          "uk": { "title": "Класичний манікюр", "description": "Класичний манікюр з формуванням нігтів та доглядом за кутикулою" }
+          "en": {"title": "Classic Manicure", "description": "Classic manicure with nail shaping and cuticle care"},
+          "pl": {"title": "Manicure klasyczny", "description": "Klasyczny manicure z kształtowaniem paznokci i pielęgnacją skórek"},
+          "uk": {"title": "Класичний манікюр", "description": "Класичний манікюр з формуванням нігтів та доглядом за кутикулою"}
         }
       },
       {
         "categoryPath": "Nails > Gel Nails",
         "pricingType": "FIXED",
-        "priceAmount": 140.00,
+        "priceAmount": 140.0,
         "priceCurrency": "PLN",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Gel Nail Extensions", "description": "Full set of gel nail extensions with your chosen colour" },
-          "pl": { "title": "Przedłużanie paznokci żelem", "description": "Pełen zestaw przedłużonych paznokci żelowych w wybranym kolorze" },
-          "uk": { "title": "Нарощування нігтів гелем", "description": "Повний набір гелевих нігтів у обраному кольорі" }
+          "en": {"title": "Gel Nail Extensions", "description": "Full set of gel nail extensions with your chosen colour"},
+          "pl": {"title": "Przedłużanie paznokci żelem", "description": "Pełen zestaw przedłużonych paznokci żelowych w wybranym kolorze"},
+          "uk": {"title": "Нарощування нігтів гелем", "description": "Повний набір гелевих нігтів у обраному кольорі"}
         }
       },
       {
         "categoryPath": "Nails > Nail Art",
         "pricingType": "FIXED",
-        "priceAmount": 60.00,
+        "priceAmount": 60.0,
         "priceCurrency": "PLN",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Creative Nail Art", "description": "Custom nail art designs — flowers, geometric patterns, and more" },
-          "pl": { "title": "Zdobienie paznokci", "description": "Autorskie wzory na paznokciach — kwiaty, wzory geometryczne i wiele więcej" },
-          "uk": { "title": "Nail Art", "description": "Індивідуальний дизайн нігтів — квіти, геометричні візерунки та інше" }
+          "en": {"title": "Creative Nail Art", "description": "Custom nail art designs — flowers, geometric patterns, and more"},
+          "pl": {"title": "Zdobienie paznokci", "description": "Autorskie wzory na paznokciach — kwiaty, wzory geometryczne i wiele więcej"},
+          "uk": {"title": "Nail Art", "description": "Індивідуальний дизайн нігтів — квіти, геометричні візерунки та інше"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Magda Nails & Beauty", "description": "Stylish nail salon in Krakow offering manicure, pedicure, and creative nail art. Using premium brands only." },
-      "pl": { "businessName": "Magda Nails & Beauty", "description": "Stylowy salon paznokci w Krakowie oferujący manicure, pedicure i artystyczne zdobienia. Wyłącznie marki premium." },
-      "uk": { "businessName": "Magda Nails & Beauty", "description": "Стильний салон нігтів у Кракові — манікюр, педикюр та креативний дизайн нігтів. Тільки преміальні бренди." },
-      "de": { "businessName": "Magda Nails & Beauty", "description": "Stilvoller Nagelstudio in Krakau mit Maniküre, Pediküre und kreativem Nageldesign. Ausschließlich Premium-Marken." }
-    }
+      "en": {"businessName": "Magda Nails & Beauty", "description": "Stylish nail salon in Krakow offering manicure, pedicure, and creative nail art. Using premium brands only."},
+      "pl": {"businessName": "Magda Nails & Beauty", "description": "Stylowy salon paznokci w Krakowie oferujący manicure, pedicure i artystyczne zdobienia. Wyłącznie marki premium."},
+      "uk": {"businessName": "Magda Nails & Beauty", "description": "Стильний салон нігтів у Кракові — манікюр, педикюр та креативний дизайн нігтів. Тільки преміальні бренди."},
+      "de": {"businessName": "Magda Nails & Beauty", "description": "Stilvoller Nagelstudio in Krakau mit Maniküre, Pediküre und kreativem Nageldesign. Ausschließlich Premium-Marken."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=600&fit=crop", "caption": "Creative nail art design"},
+      {"url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&h=600&fit=crop", "caption": "Professional manicure service"},
+      {"url": "https://images.unsplash.com/photo-1519014816548-bf5fe0590071?w=800&h=600&fit=crop", "caption": "Vibrant nail polish collection"},
+      {"url": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&h=600&fit=crop", "caption": "Modern nail salon workspace"}
+    ]
   },
   {
     "email": "katarzyna.wroclaw@example.com",
@@ -141,36 +154,42 @@
       {
         "categoryPath": "Hair > Haircut",
         "pricingType": "FIXED",
-        "priceAmount": 120.00,
+        "priceAmount": 120.0,
         "priceCurrency": "PLN",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Women's Haircut & Style", "description": "Precision haircut with wash and blow-dry styling" },
-          "pl": { "title": "Strzyżenie damskie ze stylizacją", "description": "Precyzyjne strzyżenie z myciem i modelowaniem" },
-          "uk": { "title": "Жіноча стрижка з укладкою", "description": "Точна стрижка з миттям та укладкою" }
+          "en": {"title": "Women's Haircut & Style", "description": "Precision haircut with wash and blow-dry styling"},
+          "pl": {"title": "Strzyżenie damskie ze stylizacją", "description": "Precyzyjne strzyżenie z myciem i modelowaniem"},
+          "uk": {"title": "Жіноча стрижка з укладкою", "description": "Точна стрижка з миттям та укладкою"}
         }
       },
       {
         "categoryPath": "Hair > Hair Colouring",
         "pricingType": "FIXED",
-        "priceAmount": 350.00,
+        "priceAmount": 350.0,
         "priceCurrency": "PLN",
         "durationMinutes": 180,
         "imageUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Balayage Colouring", "description": "Hand-painted balayage technique for natural sun-kissed highlights" },
-          "pl": { "title": "Koloryzacja balayage", "description": "Ręcznie malowana technika balayage — naturalne refleksy" },
-          "uk": { "title": "Фарбування балаяж", "description": "Ручна техніка балаяж для природних відблисків" }
+          "en": {"title": "Balayage Colouring", "description": "Hand-painted balayage technique for natural sun-kissed highlights"},
+          "pl": {"title": "Koloryzacja balayage", "description": "Ręcznie malowana technika balayage — naturalne refleksy"},
+          "uk": {"title": "Фарбування балаяж", "description": "Ручна техніка балаяж для природних відблисків"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Kasia Hair Studio", "description": "Award-winning hair salon in Wroclaw specializing in balayage, creative colouring, and precision cuts." },
-      "pl": { "businessName": "Kasia Hair Studio", "description": "Wielokrotnie nagradzany salon fryzjerski we Wrocławiu, specjalizujący się w balayage, kreatywnej koloryzacji i precyzyjnym strzyżeniu." },
-      "uk": { "businessName": "Kasia Hair Studio", "description": "Відзначений нагородами салон краси у Вроцлаві — балаяж, креативне фарбування та точні стрижки." },
-      "de": { "businessName": "Kasia Hair Studio", "description": "Preisgekrönter Friseursalon in Breslau, spezialisiert auf Balayage, kreative Färbung und Präzisionsschnitte." }
-    }
+      "en": {"businessName": "Kasia Hair Studio", "description": "Award-winning hair salon in Wroclaw specializing in balayage, creative colouring, and precision cuts."},
+      "pl": {"businessName": "Kasia Hair Studio", "description": "Wielokrotnie nagradzany salon fryzjerski we Wrocławiu, specjalizujący się w balayage, kreatywnej koloryzacji i precyzyjnym strzyżeniu."},
+      "uk": {"businessName": "Kasia Hair Studio", "description": "Відзначений нагородами салон краси у Вроцлаві — балаяж, креативне фарбування та точні стрижки."},
+      "de": {"businessName": "Kasia Hair Studio", "description": "Preisgekrönter Friseursalon in Breslau, spezialisiert auf Balayage, kreative Färbung und Präzisionsschnitte."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop", "caption": "Expert hair styling"},
+      {"url": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop", "caption": "Professional hair salon"},
+      {"url": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&h=600&fit=crop", "caption": "Hair colouring technique"},
+      {"url": "https://images.unsplash.com/photo-1562322140-8baeececf08b?w=800&h=600&fit=crop", "caption": "Precision haircut"}
+    ]
   },
   {
     "email": "lisa.mueller@example.com",
@@ -181,8 +200,8 @@
     "avatarUrl": "https://i.pravatar.cc/150?img=10",
     "countryCode": "DE",
     "cityName": "Berlin",
-    "latitude": 52.5200,
-    "longitude": 13.4050,
+    "latitude": 52.52,
+    "longitude": 13.405,
     "isMobile": false,
     "serviceRadiusKm": null,
     "categories": ["Face & Skin"],
@@ -190,49 +209,55 @@
       {
         "categoryPath": "Face & Skin > Facial",
         "pricingType": "FIXED",
-        "priceAmount": 75.00,
+        "priceAmount": 75.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Deep Cleansing Facial", "description": "Thorough deep-cleansing facial with extraction and hydration mask" },
-          "pl": { "title": "Głęboko oczyszczający zabieg na twarz", "description": "Dokładne oczyszczanie twarzy z ekstrakcją i maską nawilżającą" },
-          "uk": { "title": "Глибоке очищення обличчя", "description": "Ретельне глибоке очищення обличчя з екстракцією та зволожуючою маскою" }
+          "en": {"title": "Deep Cleansing Facial", "description": "Thorough deep-cleansing facial with extraction and hydration mask"},
+          "pl": {"title": "Głęboko oczyszczający zabieg na twarz", "description": "Dokładne oczyszczanie twarzy z ekstrakcją i maską nawilżającą"},
+          "uk": {"title": "Глибоке очищення обличчя", "description": "Ретельне глибоке очищення обличчя з екстракцією та зволожуючою маскою"}
         }
       },
       {
         "categoryPath": "Face & Skin > Chemical Peel",
         "pricingType": "FIXED",
-        "priceAmount": 95.00,
+        "priceAmount": 95.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Glycolic Acid Peel", "description": "Chemical peel using glycolic acid for brighter, smoother skin" },
-          "pl": { "title": "Peeling kwasem glikolowym", "description": "Peeling chemiczny z kwasem glikolowym dla jaśniejszej skóry" },
-          "uk": { "title": "Пілінг гліколевою кислотою", "description": "Хімічний пілінг гліколевою кислотою для яскравішої шкіри" }
+          "en": {"title": "Glycolic Acid Peel", "description": "Chemical peel using glycolic acid for brighter, smoother skin"},
+          "pl": {"title": "Peeling kwasem glikolowym", "description": "Peeling chemiczny z kwasem glikolowym dla jaśniejszej skóry"},
+          "uk": {"title": "Пілінг гліколевою кислотою", "description": "Хімічний пілінг гліколевою кислотою для яскравішої шкіри"}
         }
       },
       {
         "categoryPath": "Face & Skin > LED Light Therapy",
         "pricingType": "FIXED",
-        "priceAmount": 65.00,
+        "priceAmount": 65.0,
         "priceCurrency": "EUR",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1612908689566-1a1e87aa14a1?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "LED Light Therapy Session", "description": "Anti-aging LED light therapy to boost collagen production" },
-          "pl": { "title": "Terapia światłem LED", "description": "Terapia LED przeciwstarzeniowa stymulująca produkcję kolagenu" },
-          "uk": { "title": "LED-терапія", "description": "Антивікова LED-терапія для стимуляції виробництва колагену" }
+          "en": {"title": "LED Light Therapy Session", "description": "Anti-aging LED light therapy to boost collagen production"},
+          "pl": {"title": "Terapia światłem LED", "description": "Terapia LED przeciwstarzeniowa stymulująca produkcję kolagenu"},
+          "uk": {"title": "LED-терапія", "description": "Антивікова LED-терапія для стимуляції виробництва колагену"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Lisa's Beauty Studio", "description": "Professional beauty studio in Berlin-Mitte. Facials, peels, and anti-aging treatments with premium products." },
-      "pl": { "businessName": "Studio Kosmetyczne Lisy", "description": "Profesjonalne studio kosmetyczne w centrum Berlina. Zabiegi na twarz, peelingi i kuracje anti-aging." },
-      "uk": { "businessName": "Косметична студія Лізи", "description": "Професійна косметична студія в центрі Берліна. Доглядові процедури, пілінги та антивікові процедури." },
-      "de": { "businessName": "Lisa's Kosmetikstudio", "description": "Professionelles Kosmetikstudio in Berlin-Mitte. Facials, Peelings und Anti-Aging-Behandlungen mit hochwertigen Produkten." }
-    }
+      "en": {"businessName": "Lisa's Beauty Studio", "description": "Professional beauty studio in Berlin-Mitte. Facials, peels, and anti-aging treatments with premium products."},
+      "pl": {"businessName": "Studio Kosmetyczne Lisy", "description": "Profesjonalne studio kosmetyczne w centrum Berlina. Zabiegi na twarz, peelingi i kuracje anti-aging."},
+      "uk": {"businessName": "Косметична студія Лізи", "description": "Професійна косметична студія в центрі Берліна. Доглядові процедури, пілінги та антивікові процедури."},
+      "de": {"businessName": "Lisa's Kosmetikstudio", "description": "Professionelles Kosmetikstudio in Berlin-Mitte. Facials, Peelings und Anti-Aging-Behandlungen mit hochwertigen Produkten."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop", "caption": "Rejuvenating facial treatment"},
+      {"url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=600&fit=crop", "caption": "Premium skincare products"},
+      {"url": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=600&fit=crop", "caption": "Advanced beauty treatment"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Professional makeup application"}
+    ]
   },
   {
     "email": "sarah.schmidt@example.com",
@@ -244,7 +269,7 @@
     "countryCode": "DE",
     "cityName": "Munich",
     "latitude": 48.1351,
-    "longitude": 11.5820,
+    "longitude": 11.582,
     "isMobile": false,
     "serviceRadiusKm": null,
     "categories": ["Hair", "Makeup"],
@@ -252,49 +277,56 @@
       {
         "categoryPath": "Hair > Haircut",
         "pricingType": "FIXED",
-        "priceAmount": 65.00,
+        "priceAmount": 65.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Women's Cut & Blow-dry", "description": "Consultation, precision cut, wash and blow-dry" },
-          "pl": { "title": "Strzyżenie damskie z suszeniem", "description": "Konsultacja, strzyżenie, mycie i modelowanie" },
-          "uk": { "title": "Жіноча стрижка з укладкою", "description": "Консультація, стрижка, миття та укладка" }
+          "en": {"title": "Women's Cut & Blow-dry", "description": "Consultation, precision cut, wash and blow-dry"},
+          "pl": {"title": "Strzyżenie damskie z suszeniem", "description": "Konsultacja, strzyżenie, mycie i modelowanie"},
+          "uk": {"title": "Жіноча стрижка з укладкою", "description": "Консультація, стрижка, миття та укладка"}
         }
       },
       {
         "categoryPath": "Hair > Hair Colouring",
         "pricingType": "FIXED",
-        "priceAmount": 120.00,
+        "priceAmount": 120.0,
         "priceCurrency": "EUR",
         "durationMinutes": 120,
         "imageUrl": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Full Head Colour", "description": "Complete hair colouring with premium products and toner" },
-          "pl": { "title": "Koloryzacja całej głowy", "description": "Pełna koloryzacja włosów z użyciem produktów premium" },
-          "uk": { "title": "Повне фарбування", "description": "Повне фарбування волосся преміальними засобами" }
+          "en": {"title": "Full Head Colour", "description": "Complete hair colouring with premium products and toner"},
+          "pl": {"title": "Koloryzacja całej głowy", "description": "Pełna koloryzacja włosów z użyciem produktów premium"},
+          "uk": {"title": "Повне фарбування", "description": "Повне фарбування волосся преміальними засобами"}
         }
       },
       {
         "categoryPath": "Makeup > Bridal Makeup",
         "pricingType": "FIXED",
-        "priceAmount": 180.00,
+        "priceAmount": 180.0,
         "priceCurrency": "EUR",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Bridal Makeup & Styling", "description": "Complete bridal makeup with trial consultation included" },
-          "pl": { "title": "Makijaż ślubny i stylizacja", "description": "Pełny makijaż ślubny z próbną konsultacją" },
-          "uk": { "title": "Весільний макіяж та укладка", "description": "Повний весільний макіяж із пробною консультацією" }
+          "en": {"title": "Bridal Makeup & Styling", "description": "Complete bridal makeup with trial consultation included"},
+          "pl": {"title": "Makijaż ślubny i stylizacja", "description": "Pełny makijaż ślubny z próbną konsultacją"},
+          "uk": {"title": "Весільний макіяж та укладка", "description": "Повний весільний макіяж із пробною консультацією"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Salon Schmidt", "description": "Your hairdresser in Munich-Schwabing. Haircuts, colourings, and wedding hairstyles at the highest level." },
-      "pl": { "businessName": "Salon Schmidt", "description": "Profesjonalny salon fryzjerski w Monachium-Schwabing. Strzyżenia, koloryzacje i fryzury ślubne na najwyższym poziomie." },
-      "uk": { "businessName": "Salon Schmidt", "description": "Ваш перукар у Мюнхені-Швабінг. Стрижки, фарбування та весільні зачіски найвищого рівня." },
-      "de": { "businessName": "Salon Schmidt", "description": "Ihr Friseur in München-Schwabing. Haarschnitte, Colorationen und Hochzeitsfrisuren auf höchstem Niveau." }
-    }
+      "en": {"businessName": "Salon Schmidt", "description": "Your hairdresser in Munich-Schwabing. Haircuts, colourings, and wedding hairstyles at the highest level."},
+      "pl": {"businessName": "Salon Schmidt", "description": "Profesjonalny salon fryzjerski w Monachium-Schwabing. Strzyżenia, koloryzacje i fryzury ślubne na najwyższym poziomie."},
+      "uk": {"businessName": "Salon Schmidt", "description": "Ваш перукар у Мюнхені-Швабінг. Стрижки, фарбування та весільні зачіски найвищого рівня."},
+      "de": {"businessName": "Salon Schmidt", "description": "Ihr Friseur in München-Schwabing. Haarschnitte, Colorationen und Hochzeitsfrisuren auf höchstem Niveau."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop", "caption": "Expert hair styling"},
+      {"url": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop", "caption": "Professional hair salon"},
+      {"url": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&h=600&fit=crop", "caption": "Hair colouring technique"},
+      {"url": "https://images.unsplash.com/photo-1562322140-8baeececf08b?w=800&h=600&fit=crop", "caption": "Precision haircut"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Professional makeup application"}
+    ]
   },
   {
     "email": "julia.weber@example.com",
@@ -314,36 +346,42 @@
       {
         "categoryPath": "Hair Removal > Waxing",
         "pricingType": "FIXED",
-        "priceAmount": 45.00,
+        "priceAmount": 45.0,
         "priceCurrency": "EUR",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1598524374912-6b0b0bab75a0?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Full Leg Waxing", "description": "Complete leg waxing using hypoallergenic warm wax" },
-          "pl": { "title": "Depilacja nóg woskiem", "description": "Pełna depilacja nóg woskiem hipoalergicznym" },
-          "uk": { "title": "Воскова депіляція ніг", "description": "Повна воскова депіляція ніг гіпоалергенним воском" }
+          "en": {"title": "Full Leg Waxing", "description": "Complete leg waxing using hypoallergenic warm wax"},
+          "pl": {"title": "Depilacja nóg woskiem", "description": "Pełna depilacja nóg woskiem hipoalergicznym"},
+          "uk": {"title": "Воскова депіляція ніг", "description": "Повна воскова депіляція ніг гіпоалергенним воском"}
         }
       },
       {
         "categoryPath": "Hair Removal > Sugaring",
         "pricingType": "FIXED",
-        "priceAmount": 55.00,
+        "priceAmount": 55.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Full Body Sugaring", "description": "Gentle sugar paste hair removal for sensitive skin" },
-          "pl": { "title": "Depilacja pastą cukrową", "description": "Delikatna depilacja pastą cukrową dla wrażliwej skóry" },
-          "uk": { "title": "Шугарінг усього тіла", "description": "Ніжне видалення волосся цукровою пастою для чутливої шкіри" }
+          "en": {"title": "Full Body Sugaring", "description": "Gentle sugar paste hair removal for sensitive skin"},
+          "pl": {"title": "Depilacja pastą cukrową", "description": "Delikatna depilacja pastą cukrową dla wrażliwej skóry"},
+          "uk": {"title": "Шугарінг усього тіла", "description": "Ніжне видалення волосся цукровою пастою для чутливої шкіри"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Waxing Studio Julia", "description": "Specializing in gentle hair removal in Hamburg. Waxing, sugaring, and IPL treatments." },
-      "pl": { "businessName": "Studio Depilacji Julia", "description": "Specjalizacja w delikatnej depilacji w Hamburgu. Woskowanie, sugaring i zabiegi IPL." },
-      "uk": { "businessName": "Студія депіляції Юлії", "description": "Спеціалізація на делікатній депіляції в Гамбурзі. Воскова депіляція, шугарінг та IPL-процедури." },
-      "de": { "businessName": "Waxing Studio Julia", "description": "Spezialisiert auf schonende Haarentfernung in Hamburg. Waxing, Sugaring und IPL-Behandlungen." }
-    }
+      "en": {"businessName": "Waxing Studio Julia", "description": "Specializing in gentle hair removal in Hamburg. Waxing, sugaring, and IPL treatments."},
+      "pl": {"businessName": "Studio Depilacji Julia", "description": "Specjalizacja w delikatnej depilacji w Hamburgu. Woskowanie, sugaring i zabiegi IPL."},
+      "uk": {"businessName": "Студія депіляції Юлії", "description": "Спеціалізація на делікатній депіляції в Гамбурзі. Воскова депіляція, шугарінг та IPL-процедури."},
+      "de": {"businessName": "Waxing Studio Julia", "description": "Spezialisiert auf schonende Haarentfernung in Hamburg. Waxing, Sugaring und IPL-Behandlungen."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&h=600&fit=crop", "caption": "Professional wellness center"},
+      {"url": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&h=600&fit=crop", "caption": "Serene spa atmosphere"},
+      {"url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop", "caption": "Clean treatment environment"},
+      {"url": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=600&fit=crop", "caption": "Modern beauty clinic"}
+    ]
   },
   {
     "email": "oksana.kyiv@example.com",
@@ -363,49 +401,56 @@
       {
         "categoryPath": "Eyebrows & Lashes > Lash Extensions",
         "pricingType": "FIXED",
-        "priceAmount": 1200.00,
+        "priceAmount": 1200.0,
         "priceCurrency": "UAH",
         "durationMinutes": 120,
         "imageUrl": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Classic Lash Extensions", "description": "Full set of classic individual lash extensions" },
-          "pl": { "title": "Klasyczne przedłużanie rzęs", "description": "Pełen zestaw klasycznych rzęs indywidualnych" },
-          "uk": { "title": "Класичне нарощування вій", "description": "Повний набір класичних поштучних вій" }
+          "en": {"title": "Classic Lash Extensions", "description": "Full set of classic individual lash extensions"},
+          "pl": {"title": "Klasyczne przedłużanie rzęs", "description": "Pełen zestaw klasycznych rzęs indywidualnych"},
+          "uk": {"title": "Класичне нарощування вій", "description": "Повний набір класичних поштучних вій"}
         }
       },
       {
         "categoryPath": "Eyebrows & Lashes > Eyebrow Shaping",
         "pricingType": "FIXED",
-        "priceAmount": 400.00,
+        "priceAmount": 400.0,
         "priceCurrency": "UAH",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1594732832278-abd644401e30?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Eyebrow Architecture", "description": "Professional brow shaping with wax and tweezers" },
-          "pl": { "title": "Architektura brwi", "description": "Profesjonalna regulacja brwi woskiem i pęsetą" },
-          "uk": { "title": "Архітектура брів", "description": "Професійна корекція брів воском та пінцетом" }
+          "en": {"title": "Eyebrow Architecture", "description": "Professional brow shaping with wax and tweezers"},
+          "pl": {"title": "Architektura brwi", "description": "Profesjonalna regulacja brwi woskiem i pęsetą"},
+          "uk": {"title": "Архітектура брів", "description": "Професійна корекція брів воском та пінцетом"}
         }
       },
       {
         "categoryPath": "Makeup > Event Makeup",
         "pricingType": "FIXED",
-        "priceAmount": 1500.00,
+        "priceAmount": 1500.0,
         "priceCurrency": "UAH",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Evening Makeup", "description": "Glamorous evening makeup for special occasions" },
-          "pl": { "title": "Makijaż wieczorowy", "description": "Efektowny makijaż wieczorowy na specjalne okazje" },
-          "uk": { "title": "Вечірній макіяж", "description": "Ефектний вечірній макіяж для особливих подій" }
+          "en": {"title": "Evening Makeup", "description": "Glamorous evening makeup for special occasions"},
+          "pl": {"title": "Makijaż wieczorowy", "description": "Efektowny makijaż wieczorowy na specjalne okazje"},
+          "uk": {"title": "Вечірній макіяж", "description": "Ефектний вечірній макіяж для особливих подій"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Beauty Studio Oksana", "description": "Beauty studio in the centre of Kyiv. Professional makeup, lash extensions, and brow care." },
-      "pl": { "businessName": "Studio Urody Oksana", "description": "Studio urody w centrum Kijowa. Profesjonalny makijaż, przedłużanie rzęs i pielęgnacja brwi." },
-      "uk": { "businessName": "Студія краси Оксани", "description": "Студія краси в центрі Києва. Професійний макіяж, нарощування вій та догляд за бровами." },
-      "de": { "businessName": "Beauty Studio Oksana", "description": "Schönheitsstudio im Zentrum von Kiew. Professionelles Make-up, Wimpernverlängerung und Augenbrauenpflege." }
-    }
+      "en": {"businessName": "Beauty Studio Oksana", "description": "Beauty studio in the centre of Kyiv. Professional makeup, lash extensions, and brow care."},
+      "pl": {"businessName": "Studio Urody Oksana", "description": "Studio urody w centrum Kijowa. Profesjonalny makijaż, przedłużanie rzęs i pielęgnacja brwi."},
+      "uk": {"businessName": "Студія краси Оксани", "description": "Студія краси в центрі Києва. Професійний макіяж, нарощування вій та догляд за бровами."},
+      "de": {"businessName": "Beauty Studio Oksana", "description": "Schönheitsstudio im Zentrum von Kiew. Professionelles Make-up, Wimpernverlängerung und Augenbrauenpflege."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=800&h=600&fit=crop", "caption": "Lash extension application"},
+      {"url": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&h=600&fit=crop", "caption": "Eyebrow shaping and styling"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Beauty detail work"},
+      {"url": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&h=600&fit=crop", "caption": "Elegant beauty studio"},
+      {"url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=600&fit=crop", "caption": "Beauty and cosmetics"}
+    ]
   },
   {
     "email": "natalia.lviv@example.com",
@@ -425,36 +470,43 @@
       {
         "categoryPath": "Massage > Relaxation Massage",
         "pricingType": "FIXED",
-        "priceAmount": 800.00,
+        "priceAmount": 800.0,
         "priceCurrency": "UAH",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Classic Relaxation Massage", "description": "Soothing full-body massage with essential oils" },
-          "pl": { "title": "Klasyczny masaż relaksacyjny", "description": "Kojący masaż całego ciała z olejkami eterycznymi" },
-          "uk": { "title": "Класичний релаксаційний масаж", "description": "Заспокійливий масаж усього тіла з ефірними оліями" }
+          "en": {"title": "Classic Relaxation Massage", "description": "Soothing full-body massage with essential oils"},
+          "pl": {"title": "Klasyczny masaż relaksacyjny", "description": "Kojący masaż całego ciała z olejkami eterycznymi"},
+          "uk": {"title": "Класичний релаксаційний масаж", "description": "Заспокійливий масаж усього тіла з ефірними оліями"}
         }
       },
       {
         "categoryPath": "Massage > Thai Massage",
         "pricingType": "FIXED",
-        "priceAmount": 1000.00,
+        "priceAmount": 1000.0,
         "priceCurrency": "UAH",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Traditional Thai Massage", "description": "Authentic Thai massage combining stretching and acupressure" },
-          "pl": { "title": "Tradycyjny masaż tajski", "description": "Autentyczny masaż tajski łączący rozciąganie i akupresurę" },
-          "uk": { "title": "Традиційний тайський масаж", "description": "Автентичний тайський масаж з розтяжкою та акупресурою" }
+          "en": {"title": "Traditional Thai Massage", "description": "Authentic Thai massage combining stretching and acupressure"},
+          "pl": {"title": "Tradycyjny masaż tajski", "description": "Autentyczny masaż tajski łączący rozciąganie i akupresurę"},
+          "uk": {"title": "Традиційний тайський масаж", "description": "Автентичний тайський масаж з розтяжкою та акупресурою"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Natalia Massage & Spa", "description": "Massage salon in Lviv. Classic, sports, and Thai massage from a certified therapist." },
-      "pl": { "businessName": "Natalia Massage & Spa", "description": "Salon masażu we Lwowie. Masaż klasyczny, sportowy i tajski od certyfikowanego terapeuty." },
-      "uk": { "businessName": "Natalia Massage & Spa", "description": "Масажний салон у Львові. Класичний, спортивний та тайський масаж від сертифікованого майстра." },
-      "de": { "businessName": "Natalia Massage & Spa", "description": "Massagesalon in Lwiw. Klassische, Sport- und Thai-Massage von einer zertifizierten Therapeutin." }
-    }
+      "en": {"businessName": "Natalia Massage & Spa", "description": "Massage salon in Lviv. Classic, sports, and Thai massage from a certified therapist."},
+      "pl": {"businessName": "Natalia Massage & Spa", "description": "Salon masażu we Lwowie. Masaż klasyczny, sportowy i tajski od certyfikowanego terapeuty."},
+      "uk": {"businessName": "Natalia Massage & Spa", "description": "Масажний салон у Львові. Класичний, спортивний та тайський масаж від сертифікованого майстра."},
+      "de": {"businessName": "Natalia Massage & Spa", "description": "Massagesalon in Lwiw. Klassische, Sport- und Thai-Massage von einer zertifizierten Therapeutin."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Relaxing spa treatment"},
+      {"url": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop", "caption": "Professional massage therapy"},
+      {"url": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop", "caption": "Tranquil spa interior"},
+      {"url": "https://images.unsplash.com/photo-1540555700478-4be289fbec6a?w=800&h=600&fit=crop", "caption": "Hot stone massage session"},
+      {"url": "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&h=600&fit=crop", "caption": "Cozy massage room"}
+    ]
   },
   {
     "email": "iryna.odesa@example.com",
@@ -474,36 +526,42 @@
       {
         "categoryPath": "Nails > Gel Nails",
         "pricingType": "FIXED",
-        "priceAmount": 700.00,
+        "priceAmount": 700.0,
         "priceCurrency": "UAH",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Gel Polish Manicure", "description": "Long-lasting gel polish application with nail prep" },
-          "pl": { "title": "Manicure hybrydowy", "description": "Trwały manicure hybrydowy z przygotowaniem paznokci" },
-          "uk": { "title": "Манікюр гель-лаком", "description": "Стійке покриття гель-лаком з підготовкою нігтів" }
+          "en": {"title": "Gel Polish Manicure", "description": "Long-lasting gel polish application with nail prep"},
+          "pl": {"title": "Manicure hybrydowy", "description": "Trwały manicure hybrydowy z przygotowaniem paznokci"},
+          "uk": {"title": "Манікюр гель-лаком", "description": "Стійке покриття гель-лаком з підготовкою нігтів"}
         }
       },
       {
         "categoryPath": "Nails > Pedicure",
         "pricingType": "FIXED",
-        "priceAmount": 600.00,
+        "priceAmount": 600.0,
         "priceCurrency": "UAH",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Spa Pedicure", "description": "Luxurious spa pedicure with foot soak and massage" },
-          "pl": { "title": "Pedicure spa", "description": "Luksusowy pedicure spa z kąpielą stóp i masażem" },
-          "uk": { "title": "Спа-педикюр", "description": "Розкішний спа-педикюр із замочуванням стоп та масажем" }
+          "en": {"title": "Spa Pedicure", "description": "Luxurious spa pedicure with foot soak and massage"},
+          "pl": {"title": "Pedicure spa", "description": "Luksusowy pedicure spa z kąpielą stóp i masażem"},
+          "uk": {"title": "Спа-педикюр", "description": "Розкішний спа-педикюр із замочуванням стоп та масажем"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Iryna Nails Odesa", "description": "Nail salon in Odesa. Gel nails, artistic designs, and pedicure. Working with premium materials." },
-      "pl": { "businessName": "Iryna Nails Odesa", "description": "Salon paznokci w Odessie. Paznokcie żelowe, artystyczne zdobienia i pedicure. Praca z materiałami premium." },
-      "uk": { "businessName": "Iryna Nails Одеса", "description": "Манікюрний салон в Одесі. Гелеві нігті, художнє оздоблення та педикюр. Працюю з преміальними матеріалами." },
-      "de": { "businessName": "Iryna Nails Odesa", "description": "Nagelstudio in Odessa. Gelnägel, künstlerische Designs und Pediküre. Arbeit mit Premium-Materialien." }
-    }
+      "en": {"businessName": "Iryna Nails Odesa", "description": "Nail salon in Odesa. Gel nails, artistic designs, and pedicure. Working with premium materials."},
+      "pl": {"businessName": "Iryna Nails Odesa", "description": "Salon paznokci w Odessie. Paznokcie żelowe, artystyczne zdobienia i pedicure. Praca z materiałami premium."},
+      "uk": {"businessName": "Iryna Nails Одеса", "description": "Манікюрний салон в Одесі. Гелеві нігті, художнє оздоблення та педикюр. Працюю з преміальними матеріалами."},
+      "de": {"businessName": "Iryna Nails Odesa", "description": "Nagelstudio in Odessa. Gelnägel, künstlerische Designs und Pediküre. Arbeit mit Premium-Materialien."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=600&fit=crop", "caption": "Creative nail art design"},
+      {"url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&h=600&fit=crop", "caption": "Professional manicure service"},
+      {"url": "https://images.unsplash.com/photo-1519014816548-bf5fe0590071?w=800&h=600&fit=crop", "caption": "Vibrant nail polish collection"},
+      {"url": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&h=600&fit=crop", "caption": "Modern nail salon workspace"}
+    ]
   },
   {
     "email": "tereza.praha@example.com",
@@ -523,49 +581,56 @@
       {
         "categoryPath": "Eyebrows & Lashes > Microblading",
         "pricingType": "FIXED",
-        "priceAmount": 6500.00,
+        "priceAmount": 6500.0,
         "priceCurrency": "CZK",
         "durationMinutes": 120,
         "imageUrl": "https://images.unsplash.com/photo-1594732832278-abd644401e30?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Microblading Eyebrows", "description": "Semi-permanent eyebrow microblading for natural-looking brows" },
-          "pl": { "title": "Microblading brwi", "description": "Półtrwały microblading brwi dla naturalnego wyglądu" },
-          "uk": { "title": "Мікроблейдинг брів", "description": "Напівперманентний мікроблейдинг для природного вигляду брів" }
+          "en": {"title": "Microblading Eyebrows", "description": "Semi-permanent eyebrow microblading for natural-looking brows"},
+          "pl": {"title": "Microblading brwi", "description": "Półtrwały microblading brwi dla naturalnego wyglądu"},
+          "uk": {"title": "Мікроблейдинг брів", "description": "Напівперманентний мікроблейдинг для природного вигляду брів"}
         }
       },
       {
         "categoryPath": "Makeup > Permanent Makeup",
         "pricingType": "FIXED",
-        "priceAmount": 8000.00,
+        "priceAmount": 8000.0,
         "priceCurrency": "CZK",
         "durationMinutes": 150,
         "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Permanent Lip Liner", "description": "Long-lasting permanent lip liner for defined, fuller lips" },
-          "pl": { "title": "Permanentna konturówka ust", "description": "Trwała permanentna konturówka ust" },
-          "uk": { "title": "Перманентний контур губ", "description": "Стійкий перманентний контур губ для виразних, повних губ" }
+          "en": {"title": "Permanent Lip Liner", "description": "Long-lasting permanent lip liner for defined, fuller lips"},
+          "pl": {"title": "Permanentna konturówka ust", "description": "Trwała permanentna konturówka ust"},
+          "uk": {"title": "Перманентний контур губ", "description": "Стійкий перманентний контур губ для виразних, повних губ"}
         }
       },
       {
         "categoryPath": "Eyebrows & Lashes > Lash Lift",
         "pricingType": "FIXED",
-        "priceAmount": 1800.00,
+        "priceAmount": 1800.0,
         "priceCurrency": "CZK",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Lash Lift & Tint", "description": "Natural lash lift with keratin treatment and tinting" },
-          "pl": { "title": "Lash lifting z henna", "description": "Naturalny lifting rzęs z keratyną i henną" },
-          "uk": { "title": "Ламінування вій з фарбуванням", "description": "Природне ламінування вій з кератиновим доглядом" }
+          "en": {"title": "Lash Lift & Tint", "description": "Natural lash lift with keratin treatment and tinting"},
+          "pl": {"title": "Lash lifting z henna", "description": "Naturalny lifting rzęs z keratyną i henną"},
+          "uk": {"title": "Ламінування вій з фарбуванням", "description": "Природне ламінування вій з кератиновим доглядом"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Tereza Beauty Prague", "description": "Beauty salon in central Prague. Permanent makeup, eyebrow microblading, and lash extensions." },
-      "pl": { "businessName": "Tereza Beauty Praha", "description": "Salon kosmetyczny w centrum Pragi. Makijaż permanentny, microblading brwi i przedłużanie rzęs." },
-      "uk": { "businessName": "Tereza Beauty Прага", "description": "Салон краси в центрі Праги. Перманентний макіяж, мікроблейдинг брів та нарощування вій." },
-      "de": { "businessName": "Tereza Beauty Prag", "description": "Schönheitssalon im Zentrum von Prag. Permanent Make-up, Microblading der Augenbrauen und Wimpernverlängerung." }
-    }
+      "en": {"businessName": "Tereza Beauty Prague", "description": "Beauty salon in central Prague. Permanent makeup, eyebrow microblading, and lash extensions."},
+      "pl": {"businessName": "Tereza Beauty Praha", "description": "Salon kosmetyczny w centrum Pragi. Makijaż permanentny, microblading brwi i przedłużanie rzęs."},
+      "uk": {"businessName": "Tereza Beauty Прага", "description": "Салон краси в центрі Праги. Перманентний макіяж, мікроблейдинг брів та нарощування вій."},
+      "de": {"businessName": "Tereza Beauty Prag", "description": "Schönheitssalon im Zentrum von Prag. Permanent Make-up, Microblading der Augenbrauen und Wimpernverlängerung."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=800&h=600&fit=crop", "caption": "Lash extension application"},
+      {"url": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&h=600&fit=crop", "caption": "Eyebrow shaping and styling"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Beauty detail work"},
+      {"url": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&h=600&fit=crop", "caption": "Elegant beauty studio"},
+      {"url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=600&fit=crop", "caption": "Beauty and cosmetics"}
+    ]
   },
   {
     "email": "marketa.brno@example.com",
@@ -585,36 +650,43 @@
       {
         "categoryPath": "Massage > Sports Massage",
         "pricingType": "FIXED",
-        "priceAmount": 1200.00,
+        "priceAmount": 1200.0,
         "priceCurrency": "CZK",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Sports Massage 60min", "description": "Deep-tissue sports massage focused on problem areas" },
-          "pl": { "title": "Masaż sportowy 60min", "description": "Masaż sportowy głębokich tkanek skupiony na problematycznych obszarach" },
-          "uk": { "title": "Спортивний масаж 60хв", "description": "Глибокий спортивний масаж з фокусом на проблемні зони" }
+          "en": {"title": "Sports Massage 60min", "description": "Deep-tissue sports massage focused on problem areas"},
+          "pl": {"title": "Masaż sportowy 60min", "description": "Masaż sportowy głębokich tkanek skupiony na problematycznych obszarach"},
+          "uk": {"title": "Спортивний масаж 60хв", "description": "Глибокий спортивний масаж з фокусом на проблемні зони"}
         }
       },
       {
         "categoryPath": "Massage > Relaxation Massage",
         "pricingType": "FIXED",
-        "priceAmount": 1000.00,
+        "priceAmount": 1000.0,
         "priceCurrency": "CZK",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Relaxation Massage 60min", "description": "Calming full-body relaxation massage with aroma oils" },
-          "pl": { "title": "Masaż relaksacyjny 60min", "description": "Uspokajający masaż relaksacyjny całego ciała z olejkami" },
-          "uk": { "title": "Релаксаційний масаж 60хв", "description": "Заспокійливий масаж усього тіла з ароматичними оліями" }
+          "en": {"title": "Relaxation Massage 60min", "description": "Calming full-body relaxation massage with aroma oils"},
+          "pl": {"title": "Masaż relaksacyjny 60min", "description": "Uspokajający masaż relaksacyjny całego ciała z olejkami"},
+          "uk": {"title": "Релаксаційний масаж 60хв", "description": "Заспокійливий масаж усього тіла з ароматичними оліями"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Marketa Massage Brno", "description": "Massage studio in Brno. Relaxation, sports, and hot stone massage. Certified therapist with 8 years of experience." },
-      "pl": { "businessName": "Markéta Masáže Brno", "description": "Studio masażu w Brnie. Masaż relaksacyjny, sportowy i gorącymi kamieniami. Certyfikowana terapeutka z 8-letnim doświadczeniem." },
-      "uk": { "businessName": "Markéta Masáže Brno", "description": "Масажна студія у Брно. Релаксаційний, спортивний масаж та масаж гарячим камінням. Сертифікований терапевт з 8 роками досвіду." },
-      "de": { "businessName": "Markéta Massage Brünn", "description": "Massagestudio in Brünn. Entspannungs-, Sport- und Hot-Stone-Massage. Zertifizierte Therapeutin mit 8 Jahren Erfahrung." }
-    }
+      "en": {"businessName": "Marketa Massage Brno", "description": "Massage studio in Brno. Relaxation, sports, and hot stone massage. Certified therapist with 8 years of experience."},
+      "pl": {"businessName": "Markéta Masáže Brno", "description": "Studio masażu w Brnie. Masaż relaksacyjny, sportowy i gorącymi kamieniami. Certyfikowana terapeutka z 8-letnim doświadczeniem."},
+      "uk": {"businessName": "Markéta Masáže Brno", "description": "Масажна студія у Брно. Релаксаційний, спортивний масаж та масаж гарячим камінням. Сертифікований терапевт з 8 роками досвіду."},
+      "de": {"businessName": "Markéta Massage Brünn", "description": "Massagestudio in Brünn. Entspannungs-, Sport- und Hot-Stone-Massage. Zertifizierte Therapeutin mit 8 Jahren Erfahrung."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Relaxing spa treatment"},
+      {"url": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop", "caption": "Professional massage therapy"},
+      {"url": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop", "caption": "Tranquil spa interior"},
+      {"url": "https://images.unsplash.com/photo-1540555700478-4be289fbec6a?w=800&h=600&fit=crop", "caption": "Hot stone massage session"},
+      {"url": "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&h=600&fit=crop", "caption": "Cozy massage room"}
+    ]
   },
   {
     "email": "petra.ostrava@example.com",
@@ -634,36 +706,42 @@
       {
         "categoryPath": "Hair > Haircut",
         "pricingType": "FIXED",
-        "priceAmount": 600.00,
+        "priceAmount": 600.0,
         "priceCurrency": "CZK",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Women's Haircut", "description": "Professional women's haircut including wash and styling" },
-          "pl": { "title": "Strzyżenie damskie", "description": "Profesjonalne strzyżenie damskie z myciem i stylizacją" },
-          "uk": { "title": "Жіноча стрижка", "description": "Професійна жіноча стрижка з миттям та укладкою" }
+          "en": {"title": "Women's Haircut", "description": "Professional women's haircut including wash and styling"},
+          "pl": {"title": "Strzyżenie damskie", "description": "Profesjonalne strzyżenie damskie z myciem i stylizacją"},
+          "uk": {"title": "Жіноча стрижка", "description": "Професійна жіноча стрижка з миттям та укладкою"}
         }
       },
       {
         "categoryPath": "Hair > Styling & Blowout",
         "pricingType": "FIXED",
-        "priceAmount": 800.00,
+        "priceAmount": 800.0,
         "priceCurrency": "CZK",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Bridal Updo", "description": "Elegant bridal hairstyle with trial appointment" },
-          "pl": { "title": "Fryzura ślubna", "description": "Elegancka fryzura ślubna z próbnym terminem" },
-          "uk": { "title": "Весільна зачіска", "description": "Елегантна весільна зачіска з пробним візитом" }
+          "en": {"title": "Bridal Updo", "description": "Elegant bridal hairstyle with trial appointment"},
+          "pl": {"title": "Fryzura ślubna", "description": "Elegancka fryzura ślubna z próbnym terminem"},
+          "uk": {"title": "Весільна зачіска", "description": "Елегантна весільна зачіска з пробним візитом"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Petra Hair Ostrava", "description": "Hair salon in Ostrava. Cuts, colouring, and wedding hairstyles. Using exclusively professional products." },
-      "pl": { "businessName": "Petra Hair Ostrava", "description": "Salon fryzjerski w Ostrawie. Strzyżenia, koloryzacja i fryzury ślubne. Wyłącznie profesjonalne produkty." },
-      "uk": { "businessName": "Petra Hair Острава", "description": "Перукарня в Остраві. Стрижки, фарбування та весільні зачіски. Виключно професійні засоби." },
-      "de": { "businessName": "Petra Hair Ostrava", "description": "Friseursalon in Ostrau. Schnitte, Färbung und Hochzeitsfrisuren. Ausschließlich professionelle Produkte." }
-    }
+      "en": {"businessName": "Petra Hair Ostrava", "description": "Hair salon in Ostrava. Cuts, colouring, and wedding hairstyles. Using exclusively professional products."},
+      "pl": {"businessName": "Petra Hair Ostrava", "description": "Salon fryzjerski w Ostrawie. Strzyżenia, koloryzacja i fryzury ślubne. Wyłącznie profesjonalne produkty."},
+      "uk": {"businessName": "Petra Hair Острава", "description": "Перукарня в Остраві. Стрижки, фарбування та весільні зачіски. Виключно професійні засоби."},
+      "de": {"businessName": "Petra Hair Ostrava", "description": "Friseursalon in Ostrau. Schnitte, Färbung und Hochzeitsfrisuren. Ausschließlich professionelle Produkte."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop", "caption": "Expert hair styling"},
+      {"url": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop", "caption": "Professional hair salon"},
+      {"url": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&h=600&fit=crop", "caption": "Hair colouring technique"},
+      {"url": "https://images.unsplash.com/photo-1562322140-8baeececf08b?w=800&h=600&fit=crop", "caption": "Precision haircut"}
+    ]
   },
   {
     "email": "eszter.budapest@example.com",
@@ -683,49 +761,56 @@
       {
         "categoryPath": "Face & Skin > Facial",
         "pricingType": "FIXED",
-        "priceAmount": 15000.00,
+        "priceAmount": 15000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 75,
         "imageUrl": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Luxury Anti-Aging Facial", "description": "Premium anti-aging facial with collagen mask and serum" },
-          "pl": { "title": "Luksusowy zabieg anti-aging", "description": "Premiumowy zabieg przeciwstarzeniowy z maską kolagenową" },
-          "uk": { "title": "Люксовий антивіковий догляд", "description": "Преміальний антивіковий догляд із колагеновою маскою" }
+          "en": {"title": "Luxury Anti-Aging Facial", "description": "Premium anti-aging facial with collagen mask and serum"},
+          "pl": {"title": "Luksusowy zabieg anti-aging", "description": "Premiumowy zabieg przeciwstarzeniowy z maską kolagenową"},
+          "uk": {"title": "Люксовий антивіковий догляд", "description": "Преміальний антивіковий догляд із колагеновою маскою"}
         }
       },
       {
         "categoryPath": "Body Treatments > Body Wraps",
         "pricingType": "FIXED",
-        "priceAmount": 18000.00,
+        "priceAmount": 18000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Detox Body Wrap", "description": "Full body detox wrap with algae and mineral mud" },
-          "pl": { "title": "Detoksykujące owijanie ciała", "description": "Detoksykujące owijanie ciała algami i błotem mineralnym" },
-          "uk": { "title": "Детокс-обгортання", "description": "Обгортання всього тіла водоростями та мінеральною грязюкою" }
+          "en": {"title": "Detox Body Wrap", "description": "Full body detox wrap with algae and mineral mud"},
+          "pl": {"title": "Detoksykujące owijanie ciała", "description": "Detoksykujące owijanie ciała algami i błotem mineralnym"},
+          "uk": {"title": "Детокс-обгортання", "description": "Обгортання всього тіла водоростями та мінеральною грязюкою"}
         }
       },
       {
         "categoryPath": "Face & Skin > Microdermabrasion",
         "pricingType": "FIXED",
-        "priceAmount": 12000.00,
+        "priceAmount": 12000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Diamond Microdermabrasion", "description": "Crystal-free diamond microdermabrasion for skin resurfacing" },
-          "pl": { "title": "Mikrodermabrazja diamentowa", "description": "Mikrodermabrazja diamentowa do odnowy skóry" },
-          "uk": { "title": "Діамантова мікродермабразія", "description": "Діамантова мікродермабразія для оновлення шкіри" }
+          "en": {"title": "Diamond Microdermabrasion", "description": "Crystal-free diamond microdermabrasion for skin resurfacing"},
+          "pl": {"title": "Mikrodermabrazja diamentowa", "description": "Mikrodermabrazja diamentowa do odnowy skóry"},
+          "uk": {"title": "Діамантова мікродермабразія", "description": "Діамантова мікродермабразія для оновлення шкіри"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Eszter Beauty Salon", "description": "Beauty salon in downtown Budapest. Facial treatments, body treatments, and relaxation massage all in one place." },
-      "pl": { "businessName": "Salon Urody Eszter", "description": "Salon urody w centrum Budapesztu. Zabiegi na twarz, zabiegi na ciało i masaż relaksacyjny w jednym miejscu." },
-      "uk": { "businessName": "Салон краси Естер", "description": "Салон краси в центрі Будапешта. Догляд за обличчям, процедури для тіла та релаксаційний масаж в одному місці." },
-      "de": { "businessName": "Eszter Schönheitssalon", "description": "Schönheitssalon in der Budapester Innenstadt. Gesichtsbehandlungen, Körperbehandlungen und Entspannungsmassage an einem Ort." }
-    }
+      "en": {"businessName": "Eszter Beauty Salon", "description": "Beauty salon in downtown Budapest. Facial treatments, body treatments, and relaxation massage all in one place."},
+      "pl": {"businessName": "Salon Urody Eszter", "description": "Salon urody w centrum Budapesztu. Zabiegi na twarz, zabiegi na ciało i masaż relaksacyjny w jednym miejscu."},
+      "uk": {"businessName": "Салон краси Естер", "description": "Салон краси в центрі Будапешта. Догляд за обличчям, процедури для тіла та релаксаційний масаж в одному місці."},
+      "de": {"businessName": "Eszter Schönheitssalon", "description": "Schönheitssalon in der Budapester Innenstadt. Gesichtsbehandlungen, Körperbehandlungen und Entspannungsmassage an einem Ort."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop", "caption": "Rejuvenating facial treatment"},
+      {"url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=600&fit=crop", "caption": "Premium skincare products"},
+      {"url": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=600&fit=crop", "caption": "Advanced beauty treatment"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Professional makeup application"},
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Soothing body treatment"}
+    ]
   },
   {
     "email": "agnes.pecs@example.com",
@@ -745,36 +830,42 @@
       {
         "categoryPath": "Nails > Gel Nails",
         "pricingType": "FIXED",
-        "priceAmount": 8000.00,
+        "priceAmount": 8000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 90,
         "imageUrl": "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Gel Extension Full Set", "description": "Full set of gel nail extensions with shape of your choice" },
-          "pl": { "title": "Pełne przedłużenie żelowe", "description": "Pełen zestaw żelowych przedłużeń w wybranym kształcie" },
-          "uk": { "title": "Повне нарощування гелем", "description": "Повний набір гелевих нігтів у вибраній формі" }
+          "en": {"title": "Gel Extension Full Set", "description": "Full set of gel nail extensions with shape of your choice"},
+          "pl": {"title": "Pełne przedłużenie żelowe", "description": "Pełen zestaw żelowych przedłużeń w wybranym kształcie"},
+          "uk": {"title": "Повне нарощування гелем", "description": "Повний набір гелевих нігтів у вибраній формі"}
         }
       },
       {
         "categoryPath": "Nails > Acrylic Nails",
         "pricingType": "FIXED",
-        "priceAmount": 9000.00,
+        "priceAmount": 9000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 105,
         "imageUrl": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Acrylic Nail Extensions", "description": "Durable acrylic nail extensions with polish" },
-          "pl": { "title": "Przedłużanie paznokci akrylem", "description": "Trwałe akrylowe przedłużenie paznokci z lakierem" },
-          "uk": { "title": "Нарощування акрилом", "description": "Стійке нарощування нігтів акрилом із покриттям" }
+          "en": {"title": "Acrylic Nail Extensions", "description": "Durable acrylic nail extensions with polish"},
+          "pl": {"title": "Przedłużanie paznokci akrylem", "description": "Trwałe akrylowe przedłużenie paznokci z lakierem"},
+          "uk": {"title": "Нарощування акрилом", "description": "Стійке нарощування нігтів акрилом із покриттям"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Agnes Nail Studio", "description": "Professional nail studio in Pecs. Gel polish, acrylic extensions, and nail art. 6 years of experience." },
-      "pl": { "businessName": "Studio Paznokci Ágnes", "description": "Profesjonalne studio paznokci w Peczu. Lakier żelowy, przedłużanie akrylem i zdobienia. 6 lat doświadczenia." },
-      "uk": { "businessName": "Студія нігтів Агнеш", "description": "Професійна студія нігтів у Печі. Гель-лак, акрилове нарощування та nail art. 6 років досвіду." },
-      "de": { "businessName": "Ágnes Nagelstudio", "description": "Professionelles Nagelstudio in Pécs. Gellack, Acrylverlängerung und Nagelkunst. 6 Jahre Erfahrung." }
-    }
+      "en": {"businessName": "Agnes Nail Studio", "description": "Professional nail studio in Pecs. Gel polish, acrylic extensions, and nail art. 6 years of experience."},
+      "pl": {"businessName": "Studio Paznokci Ágnes", "description": "Profesjonalne studio paznokci w Peczu. Lakier żelowy, przedłużanie akrylem i zdobienia. 6 lat doświadczenia."},
+      "uk": {"businessName": "Студія нігтів Агнеш", "description": "Професійна студія нігтів у Печі. Гель-лак, акрилове нарощування та nail art. 6 років досвіду."},
+      "de": {"businessName": "Ágnes Nagelstudio", "description": "Professionelles Nagelstudio in Pécs. Gellack, Acrylverlängerung und Nagelkunst. 6 Jahre Erfahrung."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=600&fit=crop", "caption": "Creative nail art design"},
+      {"url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&h=600&fit=crop", "caption": "Professional manicure service"},
+      {"url": "https://images.unsplash.com/photo-1519014816548-bf5fe0590071?w=800&h=600&fit=crop", "caption": "Vibrant nail polish collection"},
+      {"url": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&h=600&fit=crop", "caption": "Modern nail salon workspace"}
+    ]
   },
   {
     "email": "zsofia.debrecen@example.com",
@@ -794,49 +885,56 @@
       {
         "categoryPath": "Hair > Haircut",
         "pricingType": "FIXED",
-        "priceAmount": 5500.00,
+        "priceAmount": 5500.0,
         "priceCurrency": "HUF",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Haircut & Blow-dry", "description": "Cut, wash, and blow-dry with styling consultation" },
-          "pl": { "title": "Strzyżenie z suszeniem", "description": "Strzyżenie, mycie i suszenie z konsultacją stylizacyjną" },
-          "uk": { "title": "Стрижка з укладкою", "description": "Стрижка, миття та укладка з консультацією" }
+          "en": {"title": "Haircut & Blow-dry", "description": "Cut, wash, and blow-dry with styling consultation"},
+          "pl": {"title": "Strzyżenie z suszeniem", "description": "Strzyżenie, mycie i suszenie z konsultacją stylizacyjną"},
+          "uk": {"title": "Стрижка з укладкою", "description": "Стрижка, миття та укладка з консультацією"}
         }
       },
       {
         "categoryPath": "Eyebrows & Lashes > Lash Extensions",
         "pricingType": "FIXED",
-        "priceAmount": 12000.00,
+        "priceAmount": 12000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 120,
         "imageUrl": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Volume Lash Extensions", "description": "Dramatic volume lash set with 2D-5D fans" },
-          "pl": { "title": "Przedłużanie rzęs objętościowe", "description": "Efektowne rzęsy objętościowe z kępkami 2D-5D" },
-          "uk": { "title": "Об'ємне нарощування вій", "description": "Ефектний об'ємний набір вій з пучками 2D-5D" }
+          "en": {"title": "Volume Lash Extensions", "description": "Dramatic volume lash set with 2D-5D fans"},
+          "pl": {"title": "Przedłużanie rzęs objętościowe", "description": "Efektowne rzęsy objętościowe z kępkami 2D-5D"},
+          "uk": {"title": "Об'ємне нарощування вій", "description": "Ефектний об'ємний набір вій з пучками 2D-5D"}
         }
       },
       {
         "categoryPath": "Eyebrows & Lashes > Lash & Brow Tinting",
         "pricingType": "FIXED",
-        "priceAmount": 4000.00,
+        "priceAmount": 4000.0,
         "priceCurrency": "HUF",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1594732832278-abd644401e30?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Lash & Brow Tint", "description": "Semi-permanent tinting for lashes and brows" },
-          "pl": { "title": "Henna brwi i rzęs", "description": "Półtrwałe barwienie rzęs i brwi" },
-          "uk": { "title": "Фарбування брів та вій", "description": "Напівперманентне фарбування вій та брів" }
+          "en": {"title": "Lash & Brow Tint", "description": "Semi-permanent tinting for lashes and brows"},
+          "pl": {"title": "Henna brwi i rzęs", "description": "Półtrwałe barwienie rzęs i brwi"},
+          "uk": {"title": "Фарбування брів та вій", "description": "Напівперманентне фарбування вій та брів"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Zsofi Hair & Lash", "description": "Beauty salon in Debrecen. Haircuts, hair colouring, lash extensions, and lash lifting." },
-      "pl": { "businessName": "Zsófi Hair & Lash", "description": "Salon urody w Debreczynie. Strzyżenia, koloryzacja, przedłużanie rzęs i lash lifting." },
-      "uk": { "businessName": "Zsófi Hair & Lash", "description": "Салон краси в Дебрецені. Стрижки, фарбування волосся, нарощування вій та ламінування вій." },
-      "de": { "businessName": "Zsófi Hair & Lash", "description": "Schönheitssalon in Debrecen. Haarschnitte, Haarfärbung, Wimpernverlängerung und Wimpernlifting." }
-    }
+      "en": {"businessName": "Zsofi Hair & Lash", "description": "Beauty salon in Debrecen. Haircuts, hair colouring, lash extensions, and lash lifting."},
+      "pl": {"businessName": "Zsófi Hair & Lash", "description": "Salon urody w Debreczynie. Strzyżenia, koloryzacja, przedłużanie rzęs i lash lifting."},
+      "uk": {"businessName": "Zsófi Hair & Lash", "description": "Салон краси в Дебрецені. Стрижки, фарбування волосся, нарощування вій та ламінування вій."},
+      "de": {"businessName": "Zsófi Hair & Lash", "description": "Schönheitssalon in Debrecen. Haarschnitte, Haarfärbung, Wimpernverlängerung und Wimpernlifting."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop", "caption": "Expert hair styling"},
+      {"url": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop", "caption": "Professional hair salon"},
+      {"url": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&h=600&fit=crop", "caption": "Hair colouring technique"},
+      {"url": "https://images.unsplash.com/photo-1562322140-8baeececf08b?w=800&h=600&fit=crop", "caption": "Precision haircut"},
+      {"url": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=800&h=600&fit=crop", "caption": "Lash extension application"}
+    ]
   },
   {
     "email": "ivana.zagreb@example.com",
@@ -847,7 +945,7 @@
     "avatarUrl": "https://i.pravatar.cc/150?img=47",
     "countryCode": "HR",
     "cityName": "Zagreb",
-    "latitude": 45.8150,
+    "latitude": 45.815,
     "longitude": 15.9819,
     "isMobile": false,
     "serviceRadiusKm": null,
@@ -856,36 +954,43 @@
       {
         "categoryPath": "Face & Skin > Facial",
         "pricingType": "FIXED",
-        "priceAmount": 50.00,
+        "priceAmount": 50.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Hydrating Facial", "description": "Deeply moisturizing facial with hyaluronic acid serum" },
-          "pl": { "title": "Nawilżający zabieg na twarz", "description": "Głęboko nawilżający zabieg z serum hialuronowym" },
-          "uk": { "title": "Зволожуючий догляд за обличчям", "description": "Глибоко зволожуючий догляд із сироваткою гіалуронової кислоти" }
+          "en": {"title": "Hydrating Facial", "description": "Deeply moisturizing facial with hyaluronic acid serum"},
+          "pl": {"title": "Nawilżający zabieg na twarz", "description": "Głęboko nawilżający zabieg z serum hialuronowym"},
+          "uk": {"title": "Зволожуючий догляд за обличчям", "description": "Глибоко зволожуючий догляд із сироваткою гіалуронової кислоти"}
         }
       },
       {
         "categoryPath": "Hair Removal > Waxing",
         "pricingType": "FIXED",
-        "priceAmount": 35.00,
+        "priceAmount": 35.0,
         "priceCurrency": "EUR",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1598524374912-6b0b0bab75a0?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Brazilian Wax", "description": "Professional Brazilian waxing with soothing after-care" },
-          "pl": { "title": "Depilacja brazylijska", "description": "Profesjonalna depilacja brazylijska z pielęgnacją" },
-          "uk": { "title": "Бразильська депіляція", "description": "Професійна бразильська депіляція з доглядом після процедури" }
+          "en": {"title": "Brazilian Wax", "description": "Professional Brazilian waxing with soothing after-care"},
+          "pl": {"title": "Depilacja brazylijska", "description": "Profesjonalna depilacja brazylijska z pielęgnacją"},
+          "uk": {"title": "Бразильська депіляція", "description": "Професійна бразильська депіляція з доглядом після процедури"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Ivana Beauty Zagreb", "description": "Beauty salon in the centre of Zagreb. Facial treatments, waxing, and body care." },
-      "pl": { "businessName": "Ivana Beauty Zagreb", "description": "Salon kosmetyczny w centrum Zagrzebia. Zabiegi na twarz, depilacja woskiem i pielęgnacja ciała." },
-      "uk": { "businessName": "Ivana Beauty Загреб", "description": "Салон краси в центрі Загреба. Догляд за обличчям, воскова депіляція та догляд за тілом." },
-      "de": { "businessName": "Ivana Beauty Zagreb", "description": "Schönheitssalon im Zentrum von Zagreb. Gesichtsbehandlungen, Wachsenthaarung und Körperpflege." }
-    }
+      "en": {"businessName": "Ivana Beauty Zagreb", "description": "Beauty salon in the centre of Zagreb. Facial treatments, waxing, and body care."},
+      "pl": {"businessName": "Ivana Beauty Zagreb", "description": "Salon kosmetyczny w centrum Zagrzebia. Zabiegi na twarz, depilacja woskiem i pielęgnacja ciała."},
+      "uk": {"businessName": "Ivana Beauty Загреб", "description": "Салон краси в центрі Загреба. Догляд за обличчям, воскова депіляція та догляд за тілом."},
+      "de": {"businessName": "Ivana Beauty Zagreb", "description": "Schönheitssalon im Zentrum von Zagreb. Gesichtsbehandlungen, Wachsenthaarung und Körperpflege."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop", "caption": "Rejuvenating facial treatment"},
+      {"url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=600&fit=crop", "caption": "Premium skincare products"},
+      {"url": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=600&fit=crop", "caption": "Advanced beauty treatment"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Professional makeup application"},
+      {"url": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&h=600&fit=crop", "caption": "Professional wellness center"}
+    ]
   },
   {
     "email": "ana.split@example.com",
@@ -905,36 +1010,42 @@
       {
         "categoryPath": "Eyebrows & Lashes > Lash Extensions",
         "pricingType": "FIXED",
-        "priceAmount": 60.00,
+        "priceAmount": 60.0,
         "priceCurrency": "EUR",
         "durationMinutes": 120,
         "imageUrl": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Full Set Lash Extensions", "description": "Complete set of individual synthetic lash extensions" },
-          "pl": { "title": "Pełny zestaw rzęs", "description": "Pełen zestaw indywidualnych syntetycznych rzęs" },
-          "uk": { "title": "Повний набір нарощених вій", "description": "Повний набір індивідуальних синтетичних вій" }
+          "en": {"title": "Full Set Lash Extensions", "description": "Complete set of individual synthetic lash extensions"},
+          "pl": {"title": "Pełny zestaw rzęs", "description": "Pełen zestaw indywidualnych syntetycznych rzęs"},
+          "uk": {"title": "Повний набір нарощених вій", "description": "Повний набір індивідуальних синтетичних вій"}
         }
       },
       {
         "categoryPath": "Eyebrows & Lashes > Eyebrow Shaping",
         "pricingType": "FIXED",
-        "priceAmount": 20.00,
+        "priceAmount": 20.0,
         "priceCurrency": "EUR",
         "durationMinutes": 20,
         "imageUrl": "https://images.unsplash.com/photo-1594732832278-abd644401e30?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Eyebrow Threading & Shape", "description": "Precise eyebrow shaping using threading technique" },
-          "pl": { "title": "Regulacja brwi nicią", "description": "Precyzyjna regulacja brwi techniką nici" },
-          "uk": { "title": "Корекція брів ниткою", "description": "Точна корекція брів за допомогою нитки" }
+          "en": {"title": "Eyebrow Threading & Shape", "description": "Precise eyebrow shaping using threading technique"},
+          "pl": {"title": "Regulacja brwi nicią", "description": "Precyzyjna regulacja brwi techniką nici"},
+          "uk": {"title": "Корекція брів ниткою", "description": "Точна корекція брів за допомогою нитки"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Ana Lashes Split", "description": "Specializing in lash and brow extensions in Split. Classic and volume lashes." },
-      "pl": { "businessName": "Ana Lashes Split", "description": "Specjalizacja w przedłużaniu rzęs i brwi w Splicie. Rzęsy klasyczne i objętościowe." },
-      "uk": { "businessName": "Ana Lashes Спліт", "description": "Спеціалізація на нарощуванні вій та брів у Спліті. Класичні та об'ємні вії." },
-      "de": { "businessName": "Ana Lashes Split", "description": "Spezialisiert auf Wimpern- und Brauenverlängerung in Split. Klassische und Volumen-Wimpern." }
-    }
+      "en": {"businessName": "Ana Lashes Split", "description": "Specializing in lash and brow extensions in Split. Classic and volume lashes."},
+      "pl": {"businessName": "Ana Lashes Split", "description": "Specjalizacja w przedłużaniu rzęs i brwi w Splicie. Rzęsy klasyczne i objętościowe."},
+      "uk": {"businessName": "Ana Lashes Спліт", "description": "Спеціалізація на нарощуванні вій та брів у Спліті. Класичні та об'ємні вії."},
+      "de": {"businessName": "Ana Lashes Split", "description": "Spezialisiert auf Wimpern- und Brauenverlängerung in Split. Klassische und Volumen-Wimpern."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=800&h=600&fit=crop", "caption": "Lash extension application"},
+      {"url": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&h=600&fit=crop", "caption": "Eyebrow shaping and styling"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Beauty detail work"},
+      {"url": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&h=600&fit=crop", "caption": "Elegant beauty studio"}
+    ]
   },
   {
     "email": "zuzana.bratislava@example.com",
@@ -954,36 +1065,43 @@
       {
         "categoryPath": "Massage > Relaxation Massage",
         "pricingType": "FIXED",
-        "priceAmount": 40.00,
+        "priceAmount": 40.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Classic Relaxation Massage", "description": "60-minute full body relaxation massage" },
-          "pl": { "title": "Klasyczny masaż relaksacyjny", "description": "60-minutowy masaż relaksacyjny całego ciała" },
-          "uk": { "title": "Класичний масаж розслаблення", "description": "60-хвилинний масаж усього тіла для розслаблення" }
+          "en": {"title": "Classic Relaxation Massage", "description": "60-minute full body relaxation massage"},
+          "pl": {"title": "Klasyczny masaż relaksacyjny", "description": "60-minutowy masaż relaksacyjny całego ciała"},
+          "uk": {"title": "Класичний масаж розслаблення", "description": "60-хвилинний масаж усього тіла для розслаблення"}
         }
       },
       {
         "categoryPath": "Massage > Sports Massage",
         "pricingType": "FIXED",
-        "priceAmount": 50.00,
+        "priceAmount": 50.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Deep Tissue Sports Massage", "description": "Intensive sports massage for athletes and active people" },
-          "pl": { "title": "Masaż sportowy głębokich tkanek", "description": "Intensywny masaż sportowy dla sportowców" },
-          "uk": { "title": "Глибокий спортивний масаж", "description": "Інтенсивний спортивний масаж для спортсменів" }
+          "en": {"title": "Deep Tissue Sports Massage", "description": "Intensive sports massage for athletes and active people"},
+          "pl": {"title": "Masaż sportowy głębokich tkanek", "description": "Intensywny masaż sportowy dla sportowców"},
+          "uk": {"title": "Глибокий спортивний масаж", "description": "Інтенсивний спортивний масаж для спортсменів"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Zuzana Massage", "description": "Massage studio in Bratislava. Relaxation, sports, and classic massage from a certified masseuse." },
-      "pl": { "businessName": "Zuzana Masáže", "description": "Studio masażu w Bratysławie. Masaż relaksacyjny, sportowy i klasyczny od certyfikowanej masażystki." },
-      "uk": { "businessName": "Zuzana Masáže", "description": "Масажна студія в Братиславі. Релаксаційний, спортивний та класичний масаж від сертифікованого масажиста." },
-      "de": { "businessName": "Zuzana Massage", "description": "Massagestudio in Bratislava. Entspannungs-, Sport- und klassische Massage von einer zertifizierten Masseurin." }
-    }
+      "en": {"businessName": "Zuzana Massage", "description": "Massage studio in Bratislava. Relaxation, sports, and classic massage from a certified masseuse."},
+      "pl": {"businessName": "Zuzana Masáže", "description": "Studio masażu w Bratysławie. Masaż relaksacyjny, sportowy i klasyczny od certyfikowanej masażystki."},
+      "uk": {"businessName": "Zuzana Masáže", "description": "Масажна студія в Братиславі. Релаксаційний, спортивний та класичний масаж від сертифікованого масажиста."},
+      "de": {"businessName": "Zuzana Massage", "description": "Massagestudio in Bratislava. Entspannungs-, Sport- und klassische Massage von einer zertifizierten Masseurin."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Relaxing spa treatment"},
+      {"url": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop", "caption": "Professional massage therapy"},
+      {"url": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop", "caption": "Tranquil spa interior"},
+      {"url": "https://images.unsplash.com/photo-1540555700478-4be289fbec6a?w=800&h=600&fit=crop", "caption": "Hot stone massage session"},
+      {"url": "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&h=600&fit=crop", "caption": "Cozy massage room"}
+    ]
   },
   {
     "email": "katarina.kosice@example.com",
@@ -1003,36 +1121,42 @@
       {
         "categoryPath": "Nails > Manicure",
         "pricingType": "FIXED",
-        "priceAmount": 25.00,
+        "priceAmount": 25.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Gel Polish Manicure", "description": "Manicure with long-lasting gel polish and cuticle care" },
-          "pl": { "title": "Manicure hybrydowy", "description": "Manicure z trwałym lakierem hybrydowym i pielęgnacją skórek" },
-          "uk": { "title": "Манікюр гель-лаком", "description": "Манікюр зі стійким гель-лаком та доглядом за кутикулою" }
+          "en": {"title": "Gel Polish Manicure", "description": "Manicure with long-lasting gel polish and cuticle care"},
+          "pl": {"title": "Manicure hybrydowy", "description": "Manicure z trwałym lakierem hybrydowym i pielęgnacją skórek"},
+          "uk": {"title": "Манікюр гель-лаком", "description": "Манікюр зі стійким гель-лаком та доглядом за кутикулою"}
         }
       },
       {
         "categoryPath": "Nails > Pedicure",
         "pricingType": "FIXED",
-        "priceAmount": 30.00,
+        "priceAmount": 30.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Medical Pedicure", "description": "Thorough medical pedicure with callus treatment" },
-          "pl": { "title": "Pedicure medyczny", "description": "Dokładny pedicure medyczny z usunięciem nagniotków" },
-          "uk": { "title": "Медичний педикюр", "description": "Ретельний медичний педикюр з видаленням мозолів" }
+          "en": {"title": "Medical Pedicure", "description": "Thorough medical pedicure with callus treatment"},
+          "pl": {"title": "Pedicure medyczny", "description": "Dokładny pedicure medyczny z usunięciem nagniotków"},
+          "uk": {"title": "Медичний педикюр", "description": "Ретельний медичний педикюр з видаленням мозолів"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Katka Nail Studio Kosice", "description": "Nail studio in Kosice. Gel nails, manicure, and pedicure with the latest trends." },
-      "pl": { "businessName": "Katka Nechty Košice", "description": "Studio paznokci w Koszycach. Paznokcie żelowe, manicure i pedicure w najnowszych trendach." },
-      "uk": { "businessName": "Katka Nechty Кошиці", "description": "Студія нігтів у Кошицях. Гелеві нігті, манікюр та педикюр у найновіших трендах." },
-      "de": { "businessName": "Katka Nagelstudio Košice", "description": "Nagelstudio in Košice. Gelnägel, Maniküre und Pediküre mit den neuesten Trends." }
-    }
+      "en": {"businessName": "Katka Nail Studio Kosice", "description": "Nail studio in Kosice. Gel nails, manicure, and pedicure with the latest trends."},
+      "pl": {"businessName": "Katka Nechty Košice", "description": "Studio paznokci w Koszycach. Paznokcie żelowe, manicure i pedicure w najnowszych trendach."},
+      "uk": {"businessName": "Katka Nechty Кошиці", "description": "Студія нігтів у Кошицях. Гелеві нігті, манікюр та педикюр у найновіших трендах."},
+      "de": {"businessName": "Katka Nagelstudio Košice", "description": "Nagelstudio in Košice. Gelnägel, Maniküre und Pediküre mit den neuesten Trends."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=600&fit=crop", "caption": "Creative nail art design"},
+      {"url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&h=600&fit=crop", "caption": "Professional manicure service"},
+      {"url": "https://images.unsplash.com/photo-1519014816548-bf5fe0590071?w=800&h=600&fit=crop", "caption": "Vibrant nail polish collection"},
+      {"url": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&h=600&fit=crop", "caption": "Modern nail salon workspace"}
+    ]
   },
   {
     "email": "liina.tallinn@example.com",
@@ -1043,7 +1167,7 @@
     "avatarUrl": "https://i.pravatar.cc/150?img=55",
     "countryCode": "EE",
     "cityName": "Tallinn",
-    "latitude": 59.4370,
+    "latitude": 59.437,
     "longitude": 24.7536,
     "isMobile": false,
     "serviceRadiusKm": null,
@@ -1052,36 +1176,42 @@
       {
         "categoryPath": "Face & Skin > Facial",
         "pricingType": "FIXED",
-        "priceAmount": 60.00,
+        "priceAmount": 60.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Signature Facial Treatment", "description": "Customized facial with deep cleansing, exfoliation, and mask" },
-          "pl": { "title": "Autorski zabieg na twarz", "description": "Spersonalizowany zabieg z oczyszczaniem, peelingiem i maską" },
-          "uk": { "title": "Авторський догляд за обличчям", "description": "Індивідуальний догляд із глибоким очищенням та маскою" }
+          "en": {"title": "Signature Facial Treatment", "description": "Customized facial with deep cleansing, exfoliation, and mask"},
+          "pl": {"title": "Autorski zabieg na twarz", "description": "Spersonalizowany zabieg z oczyszczaniem, peelingiem i maską"},
+          "uk": {"title": "Авторський догляд за обличчям", "description": "Індивідуальний догляд із глибоким очищенням та маскою"}
         }
       },
       {
         "categoryPath": "Face & Skin > Acne Treatment",
         "pricingType": "FIXED",
-        "priceAmount": 70.00,
+        "priceAmount": 70.0,
         "priceCurrency": "EUR",
         "durationMinutes": 75,
         "imageUrl": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Acne Treatment Facial", "description": "Targeted acne treatment with extraction and calming mask" },
-          "pl": { "title": "Zabieg na trądzik", "description": "Celowany zabieg na trądzik z ekstrakcją i maską kojącą" },
-          "uk": { "title": "Лікування акне", "description": "Цільове лікування акне з екстракцією та заспокійливою маскою" }
+          "en": {"title": "Acne Treatment Facial", "description": "Targeted acne treatment with extraction and calming mask"},
+          "pl": {"title": "Zabieg na trądzik", "description": "Celowany zabieg na trądzik z ekstrakcją i maską kojącą"},
+          "uk": {"title": "Лікування акне", "description": "Цільове лікування акне з екстракцією та заспокійливою маскою"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Liina Beauty Studio", "description": "Beauty studio in Tallinn Old Town. Specializing in facial treatments, chemical peels, and LED therapy." },
-      "pl": { "businessName": "Liina Ilu Stuudio", "description": "Studio urody na Starym Mieście w Tallinie. Specjalizacja w zabiegach na twarz, peelingach chemicznych i terapii LED." },
-      "uk": { "businessName": "Liina Ilu Stuudio", "description": "Студія краси у Старому місті Таллінна. Спеціалізація на доглядах за обличчям, хімічних пілінгах та LED-терапії." },
-      "de": { "businessName": "Liina Beauty Studio", "description": "Schönheitsstudio in der Tallinner Altstadt. Spezialisiert auf Gesichtsbehandlungen, chemische Peelings und LED-Therapie." }
-    }
+      "en": {"businessName": "Liina Beauty Studio", "description": "Beauty studio in Tallinn Old Town. Specializing in facial treatments, chemical peels, and LED therapy."},
+      "pl": {"businessName": "Liina Ilu Stuudio", "description": "Studio urody na Starym Mieście w Tallinie. Specjalizacja w zabiegach na twarz, peelingach chemicznych i terapii LED."},
+      "uk": {"businessName": "Liina Ilu Stuudio", "description": "Студія краси у Старому місті Таллінна. Спеціалізація на доглядах за обличчям, хімічних пілінгах та LED-терапії."},
+      "de": {"businessName": "Liina Beauty Studio", "description": "Schönheitsstudio in der Tallinner Altstadt. Spezialisiert auf Gesichtsbehandlungen, chemische Peelings und LED-Therapie."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop", "caption": "Rejuvenating facial treatment"},
+      {"url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=600&fit=crop", "caption": "Premium skincare products"},
+      {"url": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=600&fit=crop", "caption": "Advanced beauty treatment"},
+      {"url": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=600&fit=crop", "caption": "Professional makeup application"}
+    ]
   },
   {
     "email": "ieva.riga@example.com",
@@ -1101,36 +1231,42 @@
       {
         "categoryPath": "Hair > Haircut",
         "pricingType": "FIXED",
-        "priceAmount": 35.00,
+        "priceAmount": 35.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Women's Haircut", "description": "Professional haircut with consultation, wash, and styling" },
-          "pl": { "title": "Strzyżenie damskie", "description": "Profesjonalne strzyżenie z konsultacją, myciem i stylizacją" },
-          "uk": { "title": "Жіноча стрижка", "description": "Професійна стрижка з консультацією, миттям та укладкою" }
+          "en": {"title": "Women's Haircut", "description": "Professional haircut with consultation, wash, and styling"},
+          "pl": {"title": "Strzyżenie damskie", "description": "Profesjonalne strzyżenie z konsultacją, myciem i stylizacją"},
+          "uk": {"title": "Жіноча стрижка", "description": "Професійна стрижка з консультацією, миттям та укладкою"}
         }
       },
       {
         "categoryPath": "Hair > Hair Treatments",
         "pricingType": "FIXED",
-        "priceAmount": 55.00,
+        "priceAmount": 55.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Keratin Hair Treatment", "description": "Smoothing keratin treatment for frizz-free, shiny hair" },
-          "pl": { "title": "Keratynowe prostowanie", "description": "Wygładzający zabieg keratynowy dla gładkich, lśniących włosów" },
-          "uk": { "title": "Кератинове випрямлення", "description": "Розгладжуючий кератиновий догляд для блискучого волосся" }
+          "en": {"title": "Keratin Hair Treatment", "description": "Smoothing keratin treatment for frizz-free, shiny hair"},
+          "pl": {"title": "Keratynowe prostowanie", "description": "Wygładzający zabieg keratynowy dla gładkich, lśniących włosów"},
+          "uk": {"title": "Кератинове випрямлення", "description": "Розгладжуючий кератиновий догляд для блискучого волосся"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Ieva Hair Salon", "description": "Professional hair salon in the centre of Riga. Creative cuts, colouring, and hair care treatments." },
-      "pl": { "businessName": "Ieva Hair Salon", "description": "Profesjonalny salon fryzjerski w centrum Rygi. Kreatywne strzyżenia, koloryzacja i zabiegi pielęgnacyjne." },
-      "uk": { "businessName": "Ieva Hair Salon", "description": "Професійна перукарня в центрі Риги. Креативні стрижки, фарбування та доглядові процедури для волосся." },
-      "de": { "businessName": "Ieva Friseursalon", "description": "Professioneller Friseursalon im Zentrum von Riga. Kreative Schnitte, Färbung und Haarpflegebehandlungen." }
-    }
+      "en": {"businessName": "Ieva Hair Salon", "description": "Professional hair salon in the centre of Riga. Creative cuts, colouring, and hair care treatments."},
+      "pl": {"businessName": "Ieva Hair Salon", "description": "Profesjonalny salon fryzjerski w centrum Rygi. Kreatywne strzyżenia, koloryzacja i zabiegi pielęgnacyjne."},
+      "uk": {"businessName": "Ieva Hair Salon", "description": "Професійна перукарня в центрі Риги. Креативні стрижки, фарбування та доглядові процедури для волосся."},
+      "de": {"businessName": "Ieva Friseursalon", "description": "Professioneller Friseursalon im Zentrum von Riga. Kreative Schnitte, Färbung und Haarpflegebehandlungen."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop", "caption": "Expert hair styling"},
+      {"url": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop", "caption": "Professional hair salon"},
+      {"url": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&h=600&fit=crop", "caption": "Hair colouring technique"},
+      {"url": "https://images.unsplash.com/photo-1562322140-8baeececf08b?w=800&h=600&fit=crop", "caption": "Precision haircut"}
+    ]
   },
   {
     "email": "gabija.vilnius@example.com",
@@ -1150,49 +1286,56 @@
       {
         "categoryPath": "Hair Removal > Laser Hair Removal",
         "pricingType": "FIXED",
-        "priceAmount": 80.00,
+        "priceAmount": 80.0,
         "priceCurrency": "EUR",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1598524374912-6b0b0bab75a0?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Laser Hair Removal – Legs", "description": "Diode laser hair removal for full legs" },
-          "pl": { "title": "Depilacja laserowa – nogi", "description": "Laserowa depilacja diodowa pełnych nóg" },
-          "uk": { "title": "Лазерна депіляція – ноги", "description": "Діодна лазерна депіляція повних ніг" }
+          "en": {"title": "Laser Hair Removal – Legs", "description": "Diode laser hair removal for full legs"},
+          "pl": {"title": "Depilacja laserowa – nogi", "description": "Laserowa depilacja diodowa pełnych nóg"},
+          "uk": {"title": "Лазерна депіляція – ноги", "description": "Діодна лазерна депіляція повних ніг"}
         }
       },
       {
         "categoryPath": "Body Treatments > Spray Tan",
         "pricingType": "FIXED",
-        "priceAmount": 40.00,
+        "priceAmount": 40.0,
         "priceCurrency": "EUR",
         "durationMinutes": 30,
         "imageUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Full Body Spray Tan", "description": "Professional airbrush spray tan for a natural glow" },
-          "pl": { "title": "Opalanie natryskowe", "description": "Profesjonalne opalanie natryskowe dla naturalnej opalenizny" },
-          "uk": { "title": "Автозасмага", "description": "Професійна автозасмага для природного сяйва" }
+          "en": {"title": "Full Body Spray Tan", "description": "Professional airbrush spray tan for a natural glow"},
+          "pl": {"title": "Opalanie natryskowe", "description": "Profesjonalne opalanie natryskowe dla naturalnej opalenizny"},
+          "uk": {"title": "Автозасмага", "description": "Професійна автозасмага для природного сяйва"}
         }
       },
       {
         "categoryPath": "Body Treatments > Body Scrub",
         "pricingType": "FIXED",
-        "priceAmount": 45.00,
+        "priceAmount": 45.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Exfoliating Body Scrub", "description": "Full body sugar scrub with moisturizing finish" },
-          "pl": { "title": "Peeling ciała", "description": "Peeling cukrowy całego ciała z nawilżeniem" },
-          "uk": { "title": "Скраб для тіла", "description": "Цукровий скраб усього тіла зі зволоженням" }
+          "en": {"title": "Exfoliating Body Scrub", "description": "Full body sugar scrub with moisturizing finish"},
+          "pl": {"title": "Peeling ciała", "description": "Peeling cukrowy całego ciała z nawilżeniem"},
+          "uk": {"title": "Скраб для тіла", "description": "Цукровий скраб усього тіла зі зволоженням"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Gabija Beauty Studio", "description": "Beauty studio in Vilnius offering hair removal, body treatments, and spray tanning services." },
-      "pl": { "businessName": "Gabija Grožio Studija", "description": "Studio urody w Wilnie oferujące depilację, zabiegi na ciało i opalanie natryskowe." },
-      "uk": { "businessName": "Gabija Grožio Studija", "description": "Студія краси у Вільнюсі — депіляція, процедури для тіла та автозасмага." },
-      "de": { "businessName": "Gabija Beauty Studio", "description": "Schönheitsstudio in Vilnius mit Haarentfernung, Körperbehandlungen und Sprühbräunung." }
-    }
+      "en": {"businessName": "Gabija Beauty Studio", "description": "Beauty studio in Vilnius offering hair removal, body treatments, and spray tanning services."},
+      "pl": {"businessName": "Gabija Grožio Studija", "description": "Studio urody w Wilnie oferujące depilację, zabiegi na ciało i opalanie natryskowe."},
+      "uk": {"businessName": "Gabija Grožio Studija", "description": "Студія краси у Вільнюсі — депіляція, процедури для тіла та автозасмага."},
+      "de": {"businessName": "Gabija Beauty Studio", "description": "Schönheitsstudio in Vilnius mit Haarentfernung, Körperbehandlungen und Sprühbräunung."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&h=600&fit=crop", "caption": "Professional wellness center"},
+      {"url": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&h=600&fit=crop", "caption": "Serene spa atmosphere"},
+      {"url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop", "caption": "Clean treatment environment"},
+      {"url": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=600&fit=crop", "caption": "Modern beauty clinic"},
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Soothing body treatment"}
+    ]
   },
   {
     "email": "laura.kaunas@example.com",
@@ -1212,36 +1355,42 @@
       {
         "categoryPath": "Nails > Manicure",
         "pricingType": "FIXED",
-        "priceAmount": 25.00,
+        "priceAmount": 25.0,
         "priceCurrency": "EUR",
         "durationMinutes": 45,
         "imageUrl": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Japanese Manicure", "description": "Nourishing Japanese manicure with natural shine finish" },
-          "pl": { "title": "Manicure japoński", "description": "Odżywczy manicure japoński z naturalnym połyskiem" },
-          "uk": { "title": "Японський манікюр", "description": "Живильний японський манікюр із натуральним блиском" }
+          "en": {"title": "Japanese Manicure", "description": "Nourishing Japanese manicure with natural shine finish"},
+          "pl": {"title": "Manicure japoński", "description": "Odżywczy manicure japoński z naturalnym połyskiem"},
+          "uk": {"title": "Японський манікюр", "description": "Живильний японський манікюр із натуральним блиском"}
         }
       },
       {
         "categoryPath": "Nails > Nail Art",
         "pricingType": "FIXED",
-        "priceAmount": 15.00,
+        "priceAmount": 15.0,
         "priceCurrency": "EUR",
         "durationMinutes": 20,
         "imageUrl": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Nail Art Add-on", "description": "Custom nail art designs on top of any manicure service" },
-          "pl": { "title": "Zdobienie paznokci (dodatek)", "description": "Indywidualny wzór do dowolnego zabiegu manicure" },
-          "uk": { "title": "Nail Art (додаток)", "description": "Індивідуальний дизайн до будь-якої послуги манікюру" }
+          "en": {"title": "Nail Art Add-on", "description": "Custom nail art designs on top of any manicure service"},
+          "pl": {"title": "Zdobienie paznokci (dodatek)", "description": "Indywidualny wzór do dowolnego zabiegu manicure"},
+          "uk": {"title": "Nail Art (додаток)", "description": "Індивідуальний дизайн до будь-якої послуги манікюру"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Laura Nails Kaunas", "description": "Nail art studio in Kaunas. Classic and gel manicure, creative designs, and hand care treatments." },
-      "pl": { "businessName": "Laura Nails Kaunas", "description": "Studio nail art w Kownie. Manicure klasyczny i żelowy, kreatywne wzory i pielęgnacja dłoni." },
-      "uk": { "businessName": "Laura Nails Каунас", "description": "Студія nail art у Каунасі. Класичний та гелевий манікюр, креативний дизайн та догляд за руками." },
-      "de": { "businessName": "Laura Nails Kaunas", "description": "Nagelkunst-Studio in Kaunas. Klassische und Gel-Maniküre, kreative Designs und Handpflege." }
-    }
+      "en": {"businessName": "Laura Nails Kaunas", "description": "Nail art studio in Kaunas. Classic and gel manicure, creative designs, and hand care treatments."},
+      "pl": {"businessName": "Laura Nails Kaunas", "description": "Studio nail art w Kownie. Manicure klasyczny i żelowy, kreatywne wzory i pielęgnacja dłoni."},
+      "uk": {"businessName": "Laura Nails Каунас", "description": "Студія nail art у Каунасі. Класичний та гелевий манікюр, креативний дизайн та догляд за руками."},
+      "de": {"businessName": "Laura Nails Kaunas", "description": "Nagelkunst-Studio in Kaunas. Klassische und Gel-Maniküre, kreative Designs und Handpflege."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=600&fit=crop", "caption": "Creative nail art design"},
+      {"url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&h=600&fit=crop", "caption": "Professional manicure service"},
+      {"url": "https://images.unsplash.com/photo-1519014816548-bf5fe0590071?w=800&h=600&fit=crop", "caption": "Vibrant nail polish collection"},
+      {"url": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&h=600&fit=crop", "caption": "Modern nail salon workspace"}
+    ]
   },
   {
     "email": "monika.cologne@example.com",
@@ -1261,35 +1410,42 @@
       {
         "categoryPath": "Massage > Relaxation Massage",
         "pricingType": "FIXED",
-        "priceAmount": 70.00,
+        "priceAmount": 70.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Aromatic Relaxation Massage", "description": "Full body massage with premium essential oils" },
-          "pl": { "title": "Aromatyczny masaż relaksacyjny", "description": "Masaż całego ciała z premiumowymi olejkami eterycznymi" },
-          "uk": { "title": "Ароматичний масаж розслаблення", "description": "Масаж усього тіла преміальними ефірними оліями" }
+          "en": {"title": "Aromatic Relaxation Massage", "description": "Full body massage with premium essential oils"},
+          "pl": {"title": "Aromatyczny masaż relaksacyjny", "description": "Masaż całego ciała z premiumowymi olejkami eterycznymi"},
+          "uk": {"title": "Ароматичний масаж розслаблення", "description": "Масаж усього тіла преміальними ефірними оліями"}
         }
       },
       {
         "categoryPath": "Massage > Therapeutic Massage",
         "pricingType": "FIXED",
-        "priceAmount": 85.00,
+        "priceAmount": 85.0,
         "priceCurrency": "EUR",
         "durationMinutes": 60,
         "imageUrl": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=300&fit=crop",
         "translations": {
-          "en": { "title": "Therapeutic Deep Tissue Massage", "description": "Targeted deep tissue work for chronic tension and pain" },
-          "pl": { "title": "Masaż leczniczy głębokich tkanek", "description": "Celowany masaż głębokich tkanek przy chronicznym napięciu" },
-          "uk": { "title": "Лікувальний глибокий масаж", "description": "Цільовий масаж глибоких тканин при хронічному напруженні" }
+          "en": {"title": "Therapeutic Deep Tissue Massage", "description": "Targeted deep tissue work for chronic tension and pain"},
+          "pl": {"title": "Masaż leczniczy głębokich tkanek", "description": "Celowany masaż głębokich tkanek przy chronicznym napięciu"},
+          "uk": {"title": "Лікувальний глибокий масаж", "description": "Цільовий масаж глибоких тканин при хронічному напруженні"}
         }
       }
     ],
     "profileTranslations": {
-      "en": { "businessName": "Monika's Massage Practice", "description": "Massage practice in Cologne-Ehrenfeld. Classic massage, deep tissue massage, and aromatherapy." },
-      "pl": { "businessName": "Gabinet Masażu Moniki", "description": "Gabinet masażu w Kolonii-Ehrenfeld. Masaż klasyczny, masaż głębokich tkanek i aromaterapia." },
-      "uk": { "businessName": "Масажний кабінет Моніки", "description": "Масажний кабінет у Кельні-Еренфельд. Класичний масаж, масаж глибоких тканин та ароматерапія." },
-      "de": { "businessName": "Monika's Massage Praxis", "description": "Massage-Praxis in Köln-Ehrenfeld. Klassische Massage, Tiefengewebsmassage und Aromatherapie." }
-    }
+      "en": {"businessName": "Monika's Massage Practice", "description": "Massage practice in Cologne-Ehrenfeld. Classic massage, deep tissue massage, and aromatherapy."},
+      "pl": {"businessName": "Gabinet Masażu Moniki", "description": "Gabinet masażu w Kolonii-Ehrenfeld. Masaż klasyczny, masaż głębokich tkanek i aromaterapia."},
+      "uk": {"businessName": "Масажний кабінет Моніки", "description": "Масажний кабінет у Кельні-Еренфельд. Класичний масаж, масаж глибоких тканин та ароматерапія."},
+      "de": {"businessName": "Monika's Massage Praxis", "description": "Massage-Praxis in Köln-Ehrenfeld. Klassische Massage, Tiefengewebsmassage und Aromatherapie."}
+    },
+    "galleryImages": [
+      {"url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop", "caption": "Relaxing spa treatment"},
+      {"url": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop", "caption": "Professional massage therapy"},
+      {"url": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop", "caption": "Tranquil spa interior"},
+      {"url": "https://images.unsplash.com/photo-1540555700478-4be289fbec6a?w=800&h=600&fit=crop", "caption": "Hot stone massage session"},
+      {"url": "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&h=600&fit=crop", "caption": "Cozy massage room"}
+    ]
   }
 ]

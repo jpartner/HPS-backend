@@ -204,6 +204,21 @@ class ProviderSeeder(
                 serviceCount++
             }
 
+            // Create gallery images
+            seed.galleryImages.forEachIndexed { index, imageSeed ->
+                savedProvider.galleryImages.add(
+                    com.hps.domain.user.ProviderGalleryImage(
+                        provider = savedProvider,
+                        url = imageSeed.url,
+                        caption = imageSeed.caption,
+                        sortOrder = index
+                    )
+                )
+            }
+            if (seed.galleryImages.isNotEmpty()) {
+                providerRepository.save(savedProvider)
+            }
+
             // Create schedule settings
             val timezone = timezoneByCountry[seed.countryCode] ?: "Europe/Berlin"
             val scheduleSettings = ProviderScheduleSettings(

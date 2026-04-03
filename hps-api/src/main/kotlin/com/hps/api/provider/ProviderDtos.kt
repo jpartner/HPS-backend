@@ -43,7 +43,8 @@ data class ProviderDetailDto(
     val reviewCount: Int,
     val categories: List<ProviderCategoryDto>,
     val services: List<ProviderServiceDto>,
-    val avatarUrl: String? = null
+    val avatarUrl: String? = null,
+    val galleryImages: List<GalleryImageDto> = emptyList()
 )
 
 data class ProviderServiceDto(

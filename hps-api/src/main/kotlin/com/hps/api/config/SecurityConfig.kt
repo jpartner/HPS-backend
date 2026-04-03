@@ -37,6 +37,8 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/api/v1/providers/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/services/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/attributes/**").permitAll()
+                    // Static files
+                    .requestMatchers("/files/**").permitAll()
                     // Everything else requires authentication
                     .anyRequest().authenticated()
             }

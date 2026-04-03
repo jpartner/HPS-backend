@@ -44,7 +44,13 @@ data class ProviderSeed(
     val serviceRadiusKm: Double?,
     val categories: List<String>,
     val services: List<ProviderServiceSeed>,
-    val profileTranslations: Map<String, ProfileTranslationSeed> = emptyMap()
+    val profileTranslations: Map<String, ProfileTranslationSeed> = emptyMap(),
+    val galleryImages: List<GalleryImageSeed> = emptyList()
+)
+
+data class GalleryImageSeed(
+    val url: String,
+    val caption: String? = null
 )
 
 data class ProfileTranslationSeed(

@@ -20,6 +20,11 @@ spring:
     enabled: true
     locations: classpath:db/migration
 
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
 server:
   port: 8080
 
@@ -33,3 +38,7 @@ hps:
     - pl
     - uk
   default-language: en
+  storage:
+    local:
+      base-dir: ./uploads
+      base-url: http://localhost:8080/files

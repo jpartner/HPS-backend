@@ -81,7 +81,10 @@ class ProviderService(
                 ProviderCategoryDto(it.id, it.translations.bestTranslation(lang, { t -> t.lang }, { t -> t.name }))
             },
             services = services.map { it.toServiceDto(lang) },
-            avatarUrl = provider.user.avatarUrl
+            avatarUrl = provider.user.avatarUrl,
+            galleryImages = provider.galleryImages.map {
+                GalleryImageDto(it.id, it.url, it.caption, it.sortOrder)
+            }
         )
     }
 

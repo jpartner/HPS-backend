@@ -106,5 +106,21 @@
       { "icon": "water_drop", "sortOrder": 3, "slug": "cellulite-treatment", "translations": { "en": "Cellulite Treatment", "pl": "Zabieg antycellulitowy", "uk": "Антицелюлітний масаж" } },
       { "icon": "air", "sortOrder": 4, "slug": "spray-tan", "translations": { "en": "Spray Tan", "pl": "Opalanie natryskowe", "uk": "Автозасмага" } }
     ]
+  },
+  {
+    "icon": "heart",
+    "sortOrder": 9,
+    "slug": "companion-services",
+    "imageUrl": "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&h=400&fit=crop",
+    "translations": { "en": "Companion Services", "pl": "Usługi towarzyskie", "uk": "Ескорт-послуги", "de": "Begleitservices" },
+    "children": [
+      { "icon": "users", "sortOrder": 1, "slug": "classic-meeting", "translations": { "en": "Classic Meeting", "pl": "Spotkanie klasyczne", "uk": "Класична зустріч", "de": "Klassisches Treffen" } },
+      { "icon": "spa", "sortOrder": 2, "slug": "massage-escort", "translations": { "en": "Massage", "pl": "Masaż", "uk": "Масаж", "de": "Massage" } },
+      { "icon": "heart", "sortOrder": 3, "slug": "gfe-experience", "translations": { "en": "GFE Experience", "pl": "Klimat GFE", "uk": "GFE досвід", "de": "GFE Erlebnis" } },
+      { "icon": "users", "sortOrder": 4, "slug": "duo-services", "translations": { "en": "Duo / Couple", "pl": "Duet / Para", "uk": "Дует / Пара", "de": "Duo / Paar" } },
+      { "icon": "moon", "sortOrder": 5, "slug": "overnight-meeting", "translations": { "en": "Overnight", "pl": "Spotkanie całonocne", "uk": "Нічна зустріч", "de": "Übernachtung" } },
+      { "icon": "shield", "sortOrder": 6, "slug": "domination", "translations": { "en": "Domination", "pl": "Dominacja", "uk": "Домінація", "de": "Domination" } },
+      { "icon": "map-pin", "sortOrder": 7, "slug": "outcall-companion", "translations": { "en": "Outcall / Travel", "pl": "Wyjazdy", "uk": "Виїзд", "de": "Outcall / Reise" } }
+    ]
   }
 ]

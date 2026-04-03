@@ -74,6 +74,34 @@ class ProviderGalleryController(
         return image.toDto()
     }
 
+    @PostMapping("/providers/me/gallery/url")
+    @ResponseStatus(HttpStatus.CREATED)
+    @Transactional
+    fun addImageByUrl(
+        @RequestBody request: GalleryAddUrlRequest,
+        auth: Authentication
+    ): GalleryImageDto {
+        val providerId = auth.userId()
+        val provider = providerRepository.findById(providerId)
+            .orElseThrow { NotFoundException("Provider", providerId) }
+
+        val count = galleryRepository.countByProviderUserId(providerId)
+        if (count >= MAX_GALLERY_SIZE) {
+            throw BadRequestException("Gallery is full (max $MAX_GALLERY_SIZE images)")
+        }
+
+        val image = ProviderGalleryImage(
+            provider = provider,
+            url = request.url,
+            storageKey = null,
+            caption = request.caption,
+            sortOrder = count
+        )
+
+        galleryRepository.save(image)
+        return image.toDto()
+    }
+
     @PutMapping("/providers/me/gallery/{imageId}")
     @Transactional
     fun updateImage(

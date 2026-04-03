@@ -16,3 +16,8 @@ data class GalleryReorderRequest(
 data class GalleryUpdateRequest(
     val caption: String?
 )
+
+data class GalleryAddUrlRequest(
+    val url: String,
+    val caption: String? = null
+)

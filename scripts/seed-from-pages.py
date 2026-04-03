@@ -384,6 +384,24 @@ def seed_provider(provider, slug_map, template_map):
     # 5b. Store all provider attributes (physical + extras)
     provider_attrs = {}
 
+    # Polish value -> English option key mappings
+    EYES_MAP = {"Zielone": "Green", "Niebieskie": "Blue", "Brązowe": "Brown",
+                "Piwne": "Hazel", "Szare": "Grey", "Czarne": "Black"}
+    HAIR_MAP = {"Czarne": "Black", "Brązowe": "Brown", "Blond": "Blonde",
+                "Rude": "Red", "Kasztanowe": "Auburn", "Siwe": "Grey"}
+    ORIENT_MAP = {"Hetero": "Hetero", "Bi": "Bi", "Homo": "Homo"}
+    EXTRAS_MAP = {
+        "Seks klasyczny": "Classic", "Seks oralny": "Oral", "Minetka": "Oral",
+        "Klimat GFE": "GFE", "Pocałunki": "Kissing", "Namiętne Pocałunki": "Kissing",
+        "Masaż": "Massage", "Masaż klasyczny": "Massage", "Masaż relaksacyjny": "Massage",
+        "Masaż body to body": "Body Massage", "Masaż par": "Couples Massage",
+        "Dominacja": "Domination", "Femdom": "Femdom",
+        "Duet z koleżanką": "Duo", "Spotkanie całonocne": "Overnight",
+        "Wspólne wyjścia": "Outcall", "69": "69",
+        "Fetysz stóp": "Foot Fetish", "Fetysz butów": "Shoe Fetish",
+        "Striptiz": "Striptease",
+    }
+
     # Physical attributes from parsed data
     attr_key_map = {
         "Wzrost": "height",
@@ -401,16 +419,32 @@ def seed_provider(provider, slug_map, template_map):
     for pl_key, en_key in attr_key_map.items():
         val = attributes.get(pl_key)
         if val:
+            # Translate SELECT values to English keys
+            if en_key == "eyes":
+                val = EYES_MAP.get(val, val)
+            elif en_key == "hair":
+                val = HAIR_MAP.get(val, val)
+            elif en_key == "orientation":
+                val = ORIENT_MAP.get(val, val)
             provider_attrs[en_key] = val
 
-    # Extras / offered services as a list
+    # Extras / offered services - translate to English keys
     if tags:
-        provider_attrs["offered_services"] = tags
+        translated_extras = set()
+        for tag in tags:
+            en = EXTRAS_MAP.get(tag)
+            if en:
+                translated_extras.add(en)
+        if translated_extras:
+            provider_attrs["offered_services"] = sorted(translated_extras)
 
     if provider_attrs:
-        api_call("PUT", "/api/v1/providers/me/attributes", provider_attrs, token)
+        status, resp = api_call("PUT", "/api/v1/providers/me/attributes", provider_attrs, token)
+        extras = provider_attrs.get("offered_services", [])
         phys_count = len([k for k in provider_attrs if k != "offered_services"])
-        extras_count = len(tags)
+        extras_count = len(extras)
+        if status != 200:
+            print(f"    Attributes error: {resp.get('detail', resp)}")
         print(f"    Attributes: {phys_count} physical + {extras_count} extras")
 
     # 6. Add gallery images via URL

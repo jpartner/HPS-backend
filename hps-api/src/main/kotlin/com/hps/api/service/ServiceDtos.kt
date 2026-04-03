@@ -24,6 +24,8 @@ data class CreateServiceRequest(
     @field:NotNull
     val categoryId: UUID,
 
+    val templateId: UUID? = null,
+
     val pricingType: String = "FIXED",
 
     @field:NotNull

@@ -8,9 +8,12 @@ import com.hps.domain.attribute.AttributeDefinitionTranslation
 import com.hps.domain.geo.*
 import com.hps.domain.service.ServiceCategory
 import com.hps.domain.service.ServiceCategoryTranslation
+import com.hps.domain.service.ServiceTemplate
+import com.hps.domain.service.ServiceTemplateTranslation
 import com.hps.persistence.attribute.AttributeDefinitionRepository
 import com.hps.persistence.geo.CountryRepository
 import com.hps.persistence.service.ServiceCategoryRepository
+import com.hps.persistence.service.ServiceTemplateRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
@@ -24,7 +27,8 @@ import org.springframework.transaction.annotation.Transactional
 class GeoDataSeeder(
     private val countryRepository: CountryRepository,
     private val categoryRepository: ServiceCategoryRepository,
-    private val attributeRepository: AttributeDefinitionRepository
+    private val attributeRepository: AttributeDefinitionRepository,
+    private val templateRepository: ServiceTemplateRepository
 ) : ApplicationRunner {
 
     private val log = LoggerFactory.getLogger(GeoDataSeeder::class.java)
@@ -35,6 +39,7 @@ class GeoDataSeeder(
         seedCountries()
         seedCategories()
         seedAttributes()
+        seedServiceTemplates()
     }
 
     private fun seedCountries() {
@@ -191,5 +196,52 @@ class GeoDataSeeder(
         }
 
         log.info("Seeded ${seeds.size} attribute definitions")
+    }
+
+    private fun seedServiceTemplates() {
+        if (templateRepository.count() > 0) {
+            log.info("Service templates already seeded, skipping")
+            return
+        }
+
+        log.info("Seeding service templates...")
+
+        val resolver = PathMatchingResourcePatternResolver()
+        val resource = resolver.getResource("classpath:seed-data/service-templates.json")
+        val seeds = mapper.readValue<List<ServiceTemplateCategorySeed>>(resource.inputStream)
+
+        var count = 0
+        for (catSeed in seeds) {
+            val category = categoryRepository.findBySlug(catSeed.categorySlug)
+            if (category == null) {
+                log.warn("Category '${catSeed.categorySlug}' not found for templates")
+                continue
+            }
+
+            for (tmplSeed in catSeed.templates) {
+                val template = ServiceTemplate(
+                    category = category,
+                    slug = tmplSeed.slug,
+                    defaultDurationMinutes = tmplSeed.defaultDuration,
+                    sortOrder = tmplSeed.sortOrder
+                )
+
+                tmplSeed.translations.forEach { (lang, t) ->
+                    template.translations.add(
+                        ServiceTemplateTranslation(
+                            template = template,
+                            lang = lang,
+                            title = t.title,
+                            description = t.description
+                        )
+                    )
+                }
+
+                templateRepository.save(template)
+                count++
+            }
+        }
+
+        log.info("Seeded $count service templates")
     }
 }

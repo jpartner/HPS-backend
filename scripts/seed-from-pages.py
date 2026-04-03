@@ -216,7 +216,7 @@ def make_email(name):
     return f"{safe}@escort.example.com"
 
 
-def seed_provider(provider, slug_map):
+def seed_provider(provider, slug_map, template_map):
     name = provider["name"]
     location = provider.get("location", {})
     city = location.get("city", "")
@@ -318,65 +318,68 @@ def seed_provider(provider, slug_map):
     if status == 200:
         token = resp["accessToken"]
 
-    # 5. Create time-based services with incall/outcall variants
+    # 5. Create services from templates
     does_outcall = attributes.get("Wyjazdy", "").lower() == "tak"
-    base_cat_id = category_ids[0] if category_ids else None
     service_count = 0
 
-    # Subcategory for classic meetings
-    classic_cat = slug_map.get("classic-meeting", base_cat_id)
+    # Template slug -> pricing key mapping
+    template_pricing = {
+        "quick-visit-incall": "15 min",
+        "quick-visit-outcall": "15 min",
+        "half-hour-incall": "0,5 godz",
+        "half-hour-outcall": "0,5 godz",
+        "one-hour-incall": "1 godz",
+        "one-hour-outcall": "1 godz",
+        "two-hours-incall": "1 godz",  # double the 1h price
+        "two-hours-outcall": "1 godz",
+        "overnight-incall": "Noc",
+        "overnight-outcall": "Noc",
+    }
 
-    time_tiers = [
-        ("15 min", 15, "Quick Visit", "Szybka wizyta", "Kurzbesuch", "Швидкий візит"),
-        ("0,5 godz", 30, "Half Hour", "Pół godziny", "Halbe Stunde", "Півгодини"),
-        ("1 godz", 60, "One Hour", "Godzina", "Eine Stunde", "Година"),
-        ("Noc", 480, "Overnight", "Całonocne", "Übernachtung", "На ніч"),
-    ]
+    for tmpl in template_map.values():
+        slug = tmpl["slug"]
+        is_outcall = slug.endswith("-outcall")
 
-    for price_key, duration, en, pl, de, uk in time_tiers:
-        price = pricing.get(price_key)
-        if not price or not classic_cat:
+        # Skip outcall if provider doesn't do them
+        if is_outcall and not does_outcall:
             continue
 
-        # Incall service
+        # Get price for this tier
+        price_key = template_pricing.get(slug)
+        if not price_key:
+            continue
+        base_price = pricing.get(price_key)
+        if not base_price:
+            continue
+
+        # Outcall markup
+        price = base_price
+        if is_outcall:
+            if "overnight" in slug:
+                price = int(base_price * 1.1)
+            else:
+                price = int(base_price * 1.3)
+
+        # Two hours = double the 1h price
+        if "two-hours" in slug:
+            price = price * 2
+
         svc = {
-            "categoryId": classic_cat,
+            "categoryId": tmpl["categoryId"],
+            "templateId": tmpl["id"],
             "pricingType": "FIXED",
             "priceAmount": price,
             "priceCurrency": "PLN",
-            "durationMinutes": duration,
+            "durationMinutes": tmpl.get("defaultDurationMinutes") or 60,
             "translations": [
-                {"lang": "en", "title": f"{en} — Incall", "description": "At provider's location"},
-                {"lang": "pl", "title": f"{pl} — u mnie", "description": "W lokalu"},
-                {"lang": "de", "title": f"{de} — Incall", "description": "Beim Anbieter"},
-                {"lang": "uk", "title": f"{uk} — у мене", "description": "За адресою"},
+                {"lang": "en", "title": tmpl["title"]},
             ]
         }
         status, _ = api_call("POST", "/api/v1/providers/me/services", svc, token)
         if status == 201:
             service_count += 1
 
-        # Outcall variant (higher price)
-        if does_outcall:
-            outcall_price = int(price * 1.3) if duration < 480 else int(price * 1.1)
-            svc_out = {
-                "categoryId": classic_cat,
-                "pricingType": "FIXED",
-                "priceAmount": outcall_price,
-                "priceCurrency": "PLN",
-                "durationMinutes": duration,
-                "translations": [
-                    {"lang": "en", "title": f"{en} — Outcall", "description": "At your location"},
-                    {"lang": "pl", "title": f"{pl} — u Ciebie", "description": "Dojazd do klienta"},
-                    {"lang": "de", "title": f"{de} — Outcall", "description": "Bei Ihnen"},
-                    {"lang": "uk", "title": f"{uk} — виїзд", "description": "За вашою адресою"},
-                ]
-            }
-            status, _ = api_call("POST", "/api/v1/providers/me/services", svc_out, token)
-            if status == 201:
-                service_count += 1
-
-    print(f"    {service_count} services created (incall{' + outcall' if does_outcall else ''})")
+    print(f"    {service_count} services created (from templates)")
 
     # 5b. Store all provider attributes (physical + extras)
     provider_attrs = {}
@@ -473,10 +476,20 @@ def main():
     slug_map = ensure_categories()
     print(f"  {len(slug_map)} category slugs available")
 
+    print("Fetching service templates...")
+    status, templates = api_call("GET", "/api/v1/service-templates")
+    template_map = {}
+    if status == 200:
+        for t in templates:
+            template_map[t["slug"]] = t
+        print(f"  {len(template_map)} templates available")
+    else:
+        print("  WARNING: Could not fetch templates")
+
     print(f"\nSeeding {len(providers)} providers...")
     for provider in providers:
         try:
-            seed_provider(provider, slug_map)
+            seed_provider(provider, slug_map, template_map)
         except Exception as e:
             print(f"  ERROR: {e}")
             import traceback

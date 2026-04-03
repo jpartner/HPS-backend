@@ -137,5 +137,152 @@
       "uk": { "label": "Лазерна технологія", "hint": "Якщо застосовно" },
       "de": { "label": "Laser-/Lichttechnologie", "hint": "Falls zutreffend" }
     }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "height",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Height" },
+      "pl": { "label": "Wzrost" },
+      "uk": { "label": "Зріст" },
+      "de": { "label": "Größe" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "weight",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 2,
+    "translations": {
+      "en": { "label": "Weight" },
+      "pl": { "label": "Waga" },
+      "uk": { "label": "Вага" },
+      "de": { "label": "Gewicht" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "age",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 3,
+    "translations": {
+      "en": { "label": "Age" },
+      "pl": { "label": "Wiek" },
+      "uk": { "label": "Вік" },
+      "de": { "label": "Alter" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "bust",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 4,
+    "translations": {
+      "en": { "label": "Bust" },
+      "pl": { "label": "Biust" },
+      "uk": { "label": "Бюст" },
+      "de": { "label": "Brustumfang" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "eyes",
+    "dataType": "SELECT",
+    "isRequired": false,
+    "options": ["Brown", "Blue", "Green", "Hazel", "Grey", "Black"],
+    "sortOrder": 5,
+    "translations": {
+      "en": { "label": "Eyes", "optionLabels": {} },
+      "pl": { "label": "Oczy", "optionLabels": {"Brown": "Brązowe", "Blue": "Niebieskie", "Green": "Zielone", "Hazel": "Piwne", "Grey": "Szare", "Black": "Czarne"} },
+      "uk": { "label": "Очі", "optionLabels": {"Brown": "Карі", "Blue": "Блакитні", "Green": "Зелені", "Hazel": "Горіхові", "Grey": "Сірі", "Black": "Чорні"} },
+      "de": { "label": "Augen", "optionLabels": {"Brown": "Braun", "Blue": "Blau", "Green": "Grün", "Hazel": "Haselnuss", "Grey": "Grau", "Black": "Schwarz"} }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "hair",
+    "dataType": "SELECT",
+    "isRequired": false,
+    "options": ["Black", "Brown", "Blonde", "Red", "Auburn", "Grey"],
+    "sortOrder": 6,
+    "translations": {
+      "en": { "label": "Hair", "optionLabels": {} },
+      "pl": { "label": "Włosy", "optionLabels": {"Black": "Czarne", "Brown": "Brązowe", "Blonde": "Blond", "Red": "Rude", "Auburn": "Kasztanowe", "Grey": "Siwe"} },
+      "uk": { "label": "Волосся", "optionLabels": {"Black": "Чорне", "Brown": "Каштанове", "Blonde": "Русяве", "Red": "Руде", "Auburn": "Каштанове", "Grey": "Сиве"} },
+      "de": { "label": "Haare", "optionLabels": {"Black": "Schwarz", "Brown": "Braun", "Blonde": "Blond", "Red": "Rot", "Auburn": "Kastanienbraun", "Grey": "Grau"} }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "languages",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 7,
+    "translations": {
+      "en": { "label": "Languages" },
+      "pl": { "label": "Języki" },
+      "uk": { "label": "Мови" },
+      "de": { "label": "Sprachen" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "nationality",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 8,
+    "translations": {
+      "en": { "label": "Nationality" },
+      "pl": { "label": "Narodowość" },
+      "uk": { "label": "Національність" },
+      "de": { "label": "Nationalität" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "orientation",
+    "dataType": "SELECT",
+    "isRequired": false,
+    "options": ["Hetero", "Bi", "Homo"],
+    "sortOrder": 9,
+    "translations": {
+      "en": { "label": "Orientation", "optionLabels": {} },
+      "pl": { "label": "Orientacja", "optionLabels": {} },
+      "uk": { "label": "Орієнтація", "optionLabels": {} },
+      "de": { "label": "Orientierung", "optionLabels": {} }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "ethnicity",
+    "dataType": "TEXT",
+    "isRequired": false,
+    "sortOrder": 10,
+    "translations": {
+      "en": { "label": "Ethnicity" },
+      "pl": { "label": "Etniczność" },
+      "uk": { "label": "Етнічність" },
+      "de": { "label": "Ethnizität" }
+    }
+  },
+  {
+    "domain": "Companion Services",
+    "key": "offered_services",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["Classic", "Oral", "GFE", "Kissing", "Massage", "Body Massage", "Couples Massage", "Domination", "Femdom", "Duo", "Overnight", "Outcall", "69", "Striptease", "Foot Fetish", "Shoe Fetish"],
+    "sortOrder": 20,
+    "translations": {
+      "en": { "label": "Services Offered", "optionLabels": {} },
+      "pl": { "label": "Oferowane usługi", "optionLabels": {"Classic": "Seks klasyczny", "Oral": "Seks oralny", "GFE": "Klimat GFE", "Kissing": "Pocałunki", "Massage": "Masaż", "Body Massage": "Masaż body to body", "Couples Massage": "Masaż par", "Domination": "Dominacja", "Femdom": "Femdom", "Duo": "Duet z koleżanką", "Overnight": "Spotkanie całonocne", "Outcall": "Wyjazdy", "69": "69", "Striptease": "Striptiz", "Foot Fetish": "Fetysz stóp", "Shoe Fetish": "Fetysz butów"} },
+      "uk": { "label": "Послуги", "optionLabels": {"Classic": "Класичний секс", "Oral": "Оральний секс", "GFE": "GFE досвід", "Kissing": "Поцілунки", "Massage": "Масаж", "Body Massage": "Масаж тіло до тіла", "Domination": "Домінація", "Duo": "Дует", "Overnight": "На ніч", "Outcall": "Виїзд"} },
+      "de": { "label": "Angebotene Dienste", "optionLabels": {"Classic": "Klassischer Sex", "Oral": "Oralsex", "GFE": "GFE-Erlebnis", "Kissing": "Küssen", "Massage": "Massage", "Body Massage": "Body-to-Body-Massage", "Domination": "Domination", "Duo": "Duo", "Overnight": "Übernachtung", "Outcall": "Outcall"} }
+    }
   }
 ]

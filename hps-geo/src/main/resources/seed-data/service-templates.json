@@ -1,0 +1,122 @@
+[
+  {
+    "categorySlug": "classic-meeting",
+    "templates": [
+      {
+        "slug": "quick-visit-incall",
+        "defaultDuration": 15,
+        "sortOrder": 1,
+        "translations": {
+          "en": { "title": "Quick Visit — Incall", "description": "Short meeting at provider's location" },
+          "pl": { "title": "Szybka wizyta — u mnie", "description": "Krótkie spotkanie w lokalu" },
+          "uk": { "title": "Швидкий візит — у мене", "description": "Коротка зустріч за адресою" },
+          "de": { "title": "Kurzbesuch — Incall", "description": "Kurzes Treffen beim Anbieter" }
+        }
+      },
+      {
+        "slug": "quick-visit-outcall",
+        "defaultDuration": 15,
+        "sortOrder": 2,
+        "translations": {
+          "en": { "title": "Quick Visit — Outcall", "description": "Short meeting at your location" },
+          "pl": { "title": "Szybka wizyta — u Ciebie", "description": "Krótkie spotkanie z dojazdem" },
+          "uk": { "title": "Швидкий візит — виїзд", "description": "Коротка зустріч за вашою адресою" },
+          "de": { "title": "Kurzbesuch — Outcall", "description": "Kurzes Treffen bei Ihnen" }
+        }
+      },
+      {
+        "slug": "half-hour-incall",
+        "defaultDuration": 30,
+        "sortOrder": 3,
+        "translations": {
+          "en": { "title": "Half Hour — Incall", "description": "30 minute meeting at provider's location" },
+          "pl": { "title": "Pół godziny — u mnie", "description": "30-minutowe spotkanie w lokalu" },
+          "uk": { "title": "Півгодини — у мене", "description": "30-хвилинна зустріч за адресою" },
+          "de": { "title": "Halbe Stunde — Incall", "description": "30-minütiges Treffen beim Anbieter" }
+        }
+      },
+      {
+        "slug": "half-hour-outcall",
+        "defaultDuration": 30,
+        "sortOrder": 4,
+        "translations": {
+          "en": { "title": "Half Hour — Outcall", "description": "30 minute meeting at your location" },
+          "pl": { "title": "Pół godziny — u Ciebie", "description": "30-minutowe spotkanie z dojazdem" },
+          "uk": { "title": "Півгодини — виїзд", "description": "30-хвилинна зустріч за вашою адресою" },
+          "de": { "title": "Halbe Stunde — Outcall", "description": "30-minütiges Treffen bei Ihnen" }
+        }
+      },
+      {
+        "slug": "one-hour-incall",
+        "defaultDuration": 60,
+        "sortOrder": 5,
+        "translations": {
+          "en": { "title": "One Hour — Incall", "description": "One hour meeting at provider's location" },
+          "pl": { "title": "Godzina — u mnie", "description": "Godzinne spotkanie w lokalu" },
+          "uk": { "title": "Година — у мене", "description": "Годинна зустріч за адресою" },
+          "de": { "title": "Eine Stunde — Incall", "description": "Einstündiges Treffen beim Anbieter" }
+        }
+      },
+      {
+        "slug": "one-hour-outcall",
+        "defaultDuration": 60,
+        "sortOrder": 6,
+        "translations": {
+          "en": { "title": "One Hour — Outcall", "description": "One hour meeting at your location" },
+          "pl": { "title": "Godzina — u Ciebie", "description": "Godzinne spotkanie z dojazdem" },
+          "uk": { "title": "Година — виїзд", "description": "Годинна зустріч за вашою адресою" },
+          "de": { "title": "Eine Stunde — Outcall", "description": "Einstündiges Treffen bei Ihnen" }
+        }
+      },
+      {
+        "slug": "two-hours-incall",
+        "defaultDuration": 120,
+        "sortOrder": 7,
+        "translations": {
+          "en": { "title": "Two Hours — Incall", "description": "Extended meeting at provider's location" },
+          "pl": { "title": "Dwie godziny — u mnie", "description": "Dłuższe spotkanie w lokalu" },
+          "uk": { "title": "Дві години — у мене", "description": "Подовжена зустріч за адресою" },
+          "de": { "title": "Zwei Stunden — Incall", "description": "Längeres Treffen beim Anbieter" }
+        }
+      },
+      {
+        "slug": "two-hours-outcall",
+        "defaultDuration": 120,
+        "sortOrder": 8,
+        "translations": {
+          "en": { "title": "Two Hours — Outcall", "description": "Extended meeting at your location" },
+          "pl": { "title": "Dwie godziny — u Ciebie", "description": "Dłuższe spotkanie z dojazdem" },
+          "uk": { "title": "Дві години — виїзд", "description": "Подовжена зустріч за вашою адресою" },
+          "de": { "title": "Zwei Stunden — Outcall", "description": "Längeres Treffen bei Ihnen" }
+        }
+      }
+    ]
+  },
+  {
+    "categorySlug": "overnight-meeting",
+    "templates": [
+      {
+        "slug": "overnight-incall",
+        "defaultDuration": 480,
+        "sortOrder": 1,
+        "translations": {
+          "en": { "title": "Overnight — Incall", "description": "Full night at provider's location" },
+          "pl": { "title": "Całonocne — u mnie", "description": "Cała noc w lokalu" },
+          "uk": { "title": "На ніч — у мене", "description": "Ціла ніч за адресою" },
+          "de": { "title": "Übernachtung — Incall", "description": "Ganze Nacht beim Anbieter" }
+        }
+      },
+      {
+        "slug": "overnight-outcall",
+        "defaultDuration": 480,
+        "sortOrder": 2,
+        "translations": {
+          "en": { "title": "Overnight — Outcall", "description": "Full night at your location" },
+          "pl": { "title": "Całonocne — u Ciebie", "description": "Cała noc z dojazdem" },
+          "uk": { "title": "На ніч — виїзд", "description": "Ціла ніч за вашою адресою" },
+          "de": { "title": "Übernachtung — Outcall", "description": "Ganze Nacht bei Ihnen" }
+        }
+      }
+    ]
+  }
+]

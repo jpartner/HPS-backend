@@ -91,3 +91,15 @@ data class AttributeTranslationSeed(
     val hint: String? = null,
     val optionLabels: Map<String, String>? = null
 )
+
+data class ServiceTemplateCategorySeed(
+    val categorySlug: String,
+    val templates: List<ServiceTemplateSeed>
+)
+
+data class ServiceTemplateSeed(
+    val slug: String,
+    val defaultDuration: Int? = null,
+    val sortOrder: Int = 0,
+    val translations: Map<String, ServiceTranslationSeed>
+)

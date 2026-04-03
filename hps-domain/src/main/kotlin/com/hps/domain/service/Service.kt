@@ -33,6 +33,10 @@ class Service(
     @Column(name = "duration_minutes")
     var durationMinutes: Int? = null,
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "template_id")
+    var template: ServiceTemplate? = null,
+
     @Column(name = "is_active", nullable = false)
     var isActive: Boolean = true,
 

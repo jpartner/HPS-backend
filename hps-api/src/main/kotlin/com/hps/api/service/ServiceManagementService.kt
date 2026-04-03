@@ -8,6 +8,7 @@ import com.hps.domain.service.Service
 import com.hps.domain.service.ServiceTranslation
 import com.hps.persistence.service.ServiceCategoryRepository
 import com.hps.persistence.service.ServiceRepository
+import com.hps.persistence.service.ServiceTemplateRepository
 import com.hps.persistence.user.ProviderProfileRepository
 import org.springframework.transaction.annotation.Transactional
 import java.time.Instant
@@ -18,6 +19,7 @@ import java.util.UUID
 class ServiceManagementService(
     private val serviceRepository: ServiceRepository,
     private val providerRepository: ProviderProfileRepository,
+    private val templateRepository: ServiceTemplateRepository,
     private val categoryRepository: ServiceCategoryRepository
 ) {
     fun listByProvider(providerId: UUID, lang: String): List<ServiceDto> {
@@ -39,13 +41,18 @@ class ServiceManagementService(
         val category = categoryRepository.findById(request.categoryId)
             .orElseThrow { NotFoundException("Category", request.categoryId) }
 
+        val template = request.templateId?.let {
+            templateRepository.findById(it).orElse(null)
+        }
+
         val service = Service(
             provider = provider,
             category = category,
+            template = template,
             pricingType = PricingType.valueOf(request.pricingType),
             priceAmount = request.priceAmount,
             priceCurrency = request.priceCurrency,
-            durationMinutes = request.durationMinutes
+            durationMinutes = request.durationMinutes ?: template?.defaultDurationMinutes
         )
 
         request.translations.forEach { t ->

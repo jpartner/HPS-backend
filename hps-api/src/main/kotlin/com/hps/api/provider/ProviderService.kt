@@ -205,16 +205,28 @@ class ProviderService(
         avatarUrl = user.avatarUrl
     )
 
-    private fun com.hps.domain.service.Service.toServiceDto(lang: String) = ProviderServiceDto(
-        id = id,
-        title = translations.bestTranslation(lang, { it.lang }, { it.title }),
-        description = translations.firstOrNull { it.lang == lang }?.description
-            ?: translations.firstOrNull { it.lang == "en" }?.description,
-        categoryId = category.id,
-        categoryName = category.translations.bestTranslation(lang, { it.lang }, { it.name }),
-        pricingType = pricingType.name,
-        priceAmount = priceAmount,
-        priceCurrency = priceCurrency,
-        durationMinutes = durationMinutes
-    )
+    private fun com.hps.domain.service.Service.toServiceDto(lang: String): ProviderServiceDto {
+        // Prefer template translations, fall back to service translations
+        val tmplTitle = template?.translations?.let { t ->
+            t.firstOrNull { it.lang == lang }?.title
+                ?: t.firstOrNull { it.lang == "en" }?.title
+        }
+        val tmplDesc = template?.translations?.let { t ->
+            t.firstOrNull { it.lang == lang }?.description
+                ?: t.firstOrNull { it.lang == "en" }?.description
+        }
+
+        return ProviderServiceDto(
+            id = id,
+            title = tmplTitle ?: translations.bestTranslation(lang, { it.lang }, { it.title }),
+            description = tmplDesc ?: translations.firstOrNull { it.lang == lang }?.description
+                ?: translations.firstOrNull { it.lang == "en" }?.description,
+            categoryId = category.id,
+            categoryName = category.translations.bestTranslation(lang, { it.lang }, { it.name }),
+            pricingType = pricingType.name,
+            priceAmount = priceAmount,
+            priceCurrency = priceCurrency,
+            durationMinutes = durationMinutes
+        )
+    }
 }

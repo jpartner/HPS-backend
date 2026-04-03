@@ -36,6 +36,7 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/api/v1/categories/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/providers/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/services/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/service-templates/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/attributes/**").permitAll()
                     // Static files
                     .requestMatchers("/files/**").permitAll()

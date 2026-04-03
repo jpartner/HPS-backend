@@ -123,6 +123,90 @@ def ensure_categories():
     return slug_map
 
 
+def find_city_id(city_name, country_code="PL"):
+    """Look up a city by name, searching through all regions of a country."""
+    if not city_name:
+        return None
+
+    # Polish city name mappings to English seed names
+    CITY_MAP = {
+        "Kraków": "Cracow",
+        "Warszawa": "Warsaw",
+        "Gdańsk": "Gdansk",
+        "Łódź": "Lodz",
+        "Wrocław": "Wroclaw",
+        "Poznań": "Poznan",
+        "Szczecin": "Szczecin",
+        "Bydgoszcz": "Bydgoszcz",
+        "Lublin": "Lublin",
+        "Katowice": "Katowice",
+    }
+
+    # Get country code mapping
+    country_map = {"Polska": "PL", "Poland": "PL"}
+    iso = country_map.get(country_code, country_code)
+
+    # Search names to try
+    search_names = [city_name]
+    if city_name in CITY_MAP:
+        search_names.append(CITY_MAP[city_name])
+
+    # Fetch regions for this country
+    status, regions = api_call("GET", f"/api/v1/countries/{iso}/regions", lang="pl")
+    if status != 200:
+        status, regions = api_call("GET", f"/api/v1/countries/{iso}/regions", lang="en")
+    if status != 200:
+        return None
+
+    for region in regions:
+        status, cities = api_call("GET", f"/api/v1/regions/{region['id']}/cities", lang="pl")
+        if status != 200:
+            continue
+        for city in cities:
+            for name in search_names:
+                if city["name"].lower() == name.lower():
+                    return city["id"]
+
+        # Also check English names
+        status, cities_en = api_call("GET", f"/api/v1/regions/{region['id']}/cities", lang="en")
+        if status != 200:
+            continue
+        for city in cities_en:
+            for name in search_names:
+                if city["name"].lower() == name.lower():
+                    return city["id"]
+
+    return None
+
+
+# Cache city lookups
+_city_cache = {}
+
+def get_city_id(city_name, country="PL"):
+    key = f"{city_name}:{country}"
+    if key not in _city_cache:
+        _city_cache[key] = find_city_id(city_name, country)
+    return _city_cache[key]
+
+
+# Known coordinates for Polish cities
+CITY_COORDS = {
+    "Kraków": (50.0647, 19.9450),
+    "Warszawa": (52.2297, 21.0122),
+    "Wrocław": (51.1079, 17.0385),
+    "Gdańsk": (54.3520, 18.6466),
+    "Poznań": (52.4064, 16.9252),
+    "Łódź": (51.7592, 19.4560),
+    "Katowice": (50.2649, 19.0238),
+    "Lublin": (51.2465, 22.5684),
+    "Bydgoszcz": (53.1235, 18.0084),
+    "Szczecin": (53.4285, 14.5528),
+    "Koszalin": (54.1943, 16.1714),
+    "Olkusz": (50.2814, 19.5660),
+    "Brzesko": (49.9689, 20.6092),
+}
+
+
 def make_email(name):
     safe = name.lower().replace(" ", ".").replace("ó", "o").replace("ą", "a")
     safe = safe.replace("ł", "l").replace("ś", "s").replace("ź", "z").replace("ż", "z")
@@ -199,17 +283,28 @@ def seed_provider(provider, slug_map):
                 "description": desc.strip()
             })
 
-    # 4. Create provider profile
-    status, resp = api_call("POST", "/api/v1/providers/me", {
+    # 4. Create provider profile with location
+    city_id = get_city_id(city, location.get("country", "PL")) if city else None
+    coords = CITY_COORDS.get(city, (None, None))
+
+    profile_data = {
         "businessName": name,
         "description": descriptions.get("EN") or descriptions.get("PL", f"Professional services in {city}"),
         "isMobile": attributes.get("Wyjazdy", "").lower() == "tak",
         "categoryIds": category_ids,
         "translations": translations,
-    }, token)
+    }
+    if city_id:
+        profile_data["cityId"] = city_id
+    if coords[0]:
+        profile_data["latitude"] = coords[0]
+        profile_data["longitude"] = coords[1]
+
+    status, resp = api_call("POST", "/api/v1/providers/me", profile_data, token)
 
     if status == 201:
-        print(f"    Profile created")
+        city_info = f"in {city}" if city else "no city"
+        print(f"    Profile created ({city_info}{', linked to DB' if city_id else ''})")
     elif "already exists" in str(resp.get("detail", "")):
         print(f"    Profile exists")
     else:
@@ -283,11 +378,37 @@ def seed_provider(provider, slug_map):
 
     print(f"    {service_count} services created (incall{' + outcall' if does_outcall else ''})")
 
-    # 5b. Store offered extras as provider attributes
+    # 5b. Store all provider attributes (physical + extras)
+    provider_attrs = {}
+
+    # Physical attributes from parsed data
+    attr_key_map = {
+        "Wzrost": "height",
+        "Waga": "weight",
+        "Wiek": "age",
+        "Biust": "bust",
+        "Oczy": "eyes",
+        "Włosy": "hair",
+        "Języki": "languages",
+        "Orientacja": "orientation",
+        "Etniczność": "ethnicity",
+        "Narodowość": "nationality",
+        "Znak zodiaku": "zodiac",
+    }
+    for pl_key, en_key in attr_key_map.items():
+        val = attributes.get(pl_key)
+        if val:
+            provider_attrs[en_key] = val
+
+    # Extras / offered services as a list
     if tags:
-        attrs = {"offered_services": tags}
-        api_call("PUT", "/api/v1/providers/me/attributes", attrs, token)
-        print(f"    {len(tags)} extras stored as attributes")
+        provider_attrs["offered_services"] = tags
+
+    if provider_attrs:
+        api_call("PUT", "/api/v1/providers/me/attributes", provider_attrs, token)
+        phys_count = len([k for k in provider_attrs if k != "offered_services"])
+        extras_count = len(tags)
+        print(f"    Attributes: {phys_count} physical + {extras_count} extras")
 
     # 6. Add gallery images via URL
     remote_photos = [p["remote_url"] for p in photos if p.get("remote_url")]

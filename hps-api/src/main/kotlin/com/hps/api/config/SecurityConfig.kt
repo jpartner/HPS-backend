@@ -3,6 +3,7 @@ package com.hps.api.config
 import com.hps.api.auth.JwtAuthFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -23,11 +24,16 @@ class SecurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
+                    // Public: auth
                     .requestMatchers("/api/v1/auth/**").permitAll()
-                    .requestMatchers("/api/v1/countries/**", "/api/v1/regions/**", "/api/v1/cities/**").permitAll()
-                    .requestMatchers("/api/v1/categories/**").permitAll()
-                    .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/providers/**").permitAll()
-                    .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/services/**").permitAll()
+                    // Public: read-only geo, categories, providers, services, availability
+                    .requestMatchers(HttpMethod.GET, "/api/v1/countries/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/regions/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/cities/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/categories/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/providers/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/services/**").permitAll()
+                    // Everything else requires authentication
                     .anyRequest().authenticated()
             }
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)

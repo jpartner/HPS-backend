@@ -1,0 +1,273 @@
+{
+  "isoCode": "LV",
+  "phonePrefix": "+371",
+  "translations": {
+    "en": "Latvia",
+    "pl": "Łotwa",
+    "uk": "Латвія"
+  },
+  "regions": [
+    {
+      "code": "LV-RIX",
+      "latitude": 56.9496,
+      "longitude": 24.1052,
+      "translations": {
+        "en": "Riga Planning Region",
+        "pl": "Region planowania Rygi",
+        "uk": "Ризький плановий регіон"
+      },
+      "cities": [
+        {
+          "latitude": 56.9496,
+          "longitude": 24.1052,
+          "population": 614618,
+          "translations": {
+            "en": "Riga",
+            "pl": "Ryga",
+            "uk": "Рига"
+          }
+        },
+        {
+          "latitude": 56.9677,
+          "longitude": 24.1644,
+          "population": 68891,
+          "translations": {
+            "en": "Jūrmala",
+            "pl": "Jūrmala",
+            "uk": "Юрмала"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LV-PIE",
+      "latitude": 57.15,
+      "longitude": 24.35,
+      "translations": {
+        "en": "Pierīga Planning Region",
+        "pl": "Region planowania Pierīga",
+        "uk": "Плановий регіон Пієріга"
+      },
+      "cities": [
+        {
+          "latitude": 56.8747,
+          "longitude": 24.3247,
+          "population": 55333,
+          "translations": {
+            "en": "Ogre",
+            "pl": "Ogre",
+            "uk": "Огре"
+          }
+        },
+        {
+          "latitude": 57.3186,
+          "longitude": 25.2747,
+          "population": 38805,
+          "translations": {
+            "en": "Sigulda",
+            "pl": "Sigulda",
+            "uk": "Сігулда"
+          }
+        },
+        {
+          "latitude": 56.8455,
+          "longitude": 24.3183,
+          "population": 53688,
+          "translations": {
+            "en": "Salaspils",
+            "pl": "Salaspils",
+            "uk": "Саласпілс"
+          }
+        },
+        {
+          "latitude": 56.8839,
+          "longitude": 23.8353,
+          "population": 31526,
+          "translations": {
+            "en": "Olaine",
+            "pl": "Olaine",
+            "uk": "Олайне"
+          }
+        },
+        {
+          "latitude": 56.9514,
+          "longitude": 24.2369,
+          "population": 68523,
+          "translations": {
+            "en": "Mārupe",
+            "pl": "Mārupe",
+            "uk": "Марупе"
+          }
+        },
+        {
+          "latitude": 56.8697,
+          "longitude": 24.2275,
+          "population": 36145,
+          "translations": {
+            "en": "Ķekava",
+            "pl": "Ķekava",
+            "uk": "Кекава"
+          }
+        },
+        {
+          "latitude": 57.0553,
+          "longitude": 24.4311,
+          "population": 38997,
+          "translations": {
+            "en": "Ādaži",
+            "pl": "Ādaži",
+            "uk": "Адажі"
+          }
+        },
+        {
+          "latitude": 56.9558,
+          "longitude": 23.6125,
+          "population": 52561,
+          "translations": {
+            "en": "Tukums",
+            "pl": "Tukums",
+            "uk": "Тукумс"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LV-VID",
+      "latitude": 57.53,
+      "longitude": 25.42,
+      "translations": {
+        "en": "Vidzeme Planning Region",
+        "pl": "Region planowania Vidzeme",
+        "uk": "Плановий регіон Відземе"
+      },
+      "cities": [
+        {
+          "latitude": 57.3117,
+          "longitude": 25.2744,
+          "population": 36205,
+          "translations": {
+            "en": "Cēsis",
+            "pl": "Cēsis",
+            "uk": "Цесіс"
+          }
+        },
+        {
+          "latitude": 57.5383,
+          "longitude": 25.4228,
+          "population": 54803,
+          "translations": {
+            "en": "Valmiera",
+            "pl": "Valmiera",
+            "uk": "Валмієра"
+          }
+        },
+        {
+          "latitude": 56.6511,
+          "longitude": 25.9064,
+          "population": 29247,
+          "translations": {
+            "en": "Madona",
+            "pl": "Madona",
+            "uk": "Мадона"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LV-KUR",
+      "latitude": 56.95,
+      "longitude": 21.56,
+      "translations": {
+        "en": "Kurzeme Planning Region",
+        "pl": "Region planowania Kurzeme",
+        "uk": "Плановий регіон Курземе"
+      },
+      "cities": [
+        {
+          "latitude": 56.5047,
+          "longitude": 21.0108,
+          "population": 67187,
+          "translations": {
+            "en": "Liepāja",
+            "pl": "Lipawa",
+            "uk": "Лієпая"
+          }
+        },
+        {
+          "latitude": 57.3942,
+          "longitude": 21.5608,
+          "population": 34546,
+          "translations": {
+            "en": "Ventspils",
+            "pl": "Windawa",
+            "uk": "Вентспілс"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LV-ZEM",
+      "latitude": 56.59,
+      "longitude": 23.72,
+      "translations": {
+        "en": "Zemgale Planning Region",
+        "pl": "Region planowania Zemgale",
+        "uk": "Плановий регіон Земгале"
+      },
+      "cities": [
+        {
+          "latitude": 56.6511,
+          "longitude": 23.7233,
+          "population": 55168,
+          "translations": {
+            "en": "Jelgava",
+            "pl": "Jelgava",
+            "uk": "Єлгава"
+          }
+        },
+        {
+          "latitude": 56.5850,
+          "longitude": 24.3228,
+          "population": 30253,
+          "translations": {
+            "en": "Jēkabpils",
+            "pl": "Jēkabpils",
+            "uk": "Єкабпілс"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LV-LAT",
+      "latitude": 56.16,
+      "longitude": 27.18,
+      "translations": {
+        "en": "Latgale Planning Region",
+        "pl": "Region planowania Łatgalia",
+        "uk": "Плановий регіон Латгале"
+      },
+      "cities": [
+        {
+          "latitude": 55.8750,
+          "longitude": 26.5356,
+          "population": 78153,
+          "translations": {
+            "en": "Daugavpils",
+            "pl": "Dyneburg",
+            "uk": "Даугавпілс"
+          }
+        },
+        {
+          "latitude": 56.5108,
+          "longitude": 27.3431,
+          "population": 32520,
+          "translations": {
+            "en": "Rēzekne",
+            "pl": "Rzeżyca",
+            "uk": "Резекне"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,563 @@
+{
+  "isoCode": "HR",
+  "phonePrefix": "+385",
+  "translations": {
+    "en": "Croatia",
+    "pl": "Chorwacja",
+    "uk": "Хорватія"
+  },
+  "regions": [
+    {
+      "code": "HR-21",
+      "latitude": 45.8150,
+      "longitude": 15.9819,
+      "translations": {
+        "en": "City of Zagreb",
+        "pl": "Zagrzeb",
+        "uk": "Місто Загреб"
+      },
+      "cities": [
+        {
+          "latitude": 45.8150,
+          "longitude": 15.9819,
+          "population": 769944,
+          "translations": {
+            "en": "Zagreb",
+            "pl": "Zagrzeb",
+            "uk": "Загреб"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-01",
+      "latitude": 45.7328,
+      "longitude": 15.8740,
+      "translations": {
+        "en": "Zagreb County",
+        "pl": "Żupania zagrzebska",
+        "uk": "Загребська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.6042,
+          "longitude": 15.9422,
+          "population": 60314,
+          "translations": {
+            "en": "Velika Gorica",
+            "pl": "Velika Gorica",
+            "uk": "Велика Гориця"
+          }
+        },
+        {
+          "latitude": 45.7478,
+          "longitude": 16.0764,
+          "population": 55866,
+          "translations": {
+            "en": "Dugo Selo",
+            "pl": "Dugo Selo",
+            "uk": "Дуго Село"
+          }
+        },
+        {
+          "latitude": 45.8000,
+          "longitude": 15.7167,
+          "population": 56163,
+          "translations": {
+            "en": "Samobor",
+            "pl": "Samobor",
+            "uk": "Самобор"
+          }
+        },
+        {
+          "latitude": 45.8588,
+          "longitude": 16.1064,
+          "population": 54851,
+          "translations": {
+            "en": "Sesvete",
+            "pl": "Sesvete",
+            "uk": "Сесвете"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-02",
+      "latitude": 46.1622,
+      "longitude": 15.8770,
+      "translations": {
+        "en": "Krapina-Zagorje County",
+        "pl": "Żupania krapińsko-zagorska",
+        "uk": "Крапинсько-Загорська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 46.1622,
+          "longitude": 15.8770,
+          "population": 52835,
+          "translations": {
+            "en": "Krapina",
+            "pl": "Krapina",
+            "uk": "Крапіна"
+          }
+        },
+        {
+          "latitude": 46.0742,
+          "longitude": 15.9508,
+          "population": 55449,
+          "translations": {
+            "en": "Zabok",
+            "pl": "Zabok",
+            "uk": "Забок"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-03",
+      "latitude": 45.4929,
+      "longitude": 16.5482,
+      "translations": {
+        "en": "Sisak-Moslavina County",
+        "pl": "Żupania sisacko-moslawińska",
+        "uk": "Сісацько-Мославинська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.4666,
+          "longitude": 16.3716,
+          "population": 52236,
+          "translations": {
+            "en": "Sisak",
+            "pl": "Sisak",
+            "uk": "Сісак"
+          }
+        },
+        {
+          "latitude": 45.5333,
+          "longitude": 16.7833,
+          "population": 50773,
+          "translations": {
+            "en": "Kutina",
+            "pl": "Kutina",
+            "uk": "Кутіна"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-04",
+      "latitude": 45.3372,
+      "longitude": 15.2287,
+      "translations": {
+        "en": "Karlovac County",
+        "pl": "Żupania karlowicka",
+        "uk": "Карловацька жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.4872,
+          "longitude": 15.5477,
+          "population": 55705,
+          "translations": {
+            "en": "Karlovac",
+            "pl": "Karlovac",
+            "uk": "Карловац"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-05",
+      "latitude": 46.3044,
+      "longitude": 16.3378,
+      "translations": {
+        "en": "Varaždin County",
+        "pl": "Żupania warażdińska",
+        "uk": "Вараждинська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 46.3044,
+          "longitude": 16.3378,
+          "population": 46946,
+          "translations": {
+            "en": "Varaždin",
+            "pl": "Waraždin",
+            "uk": "Вараждін"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-06",
+      "latitude": 46.1681,
+      "longitude": 16.8281,
+      "translations": {
+        "en": "Koprivnica-Križevci County",
+        "pl": "Żupania koprivnicko-kriżewiecka",
+        "uk": "Копрівницько-Крижевецька жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 46.1625,
+          "longitude": 16.8270,
+          "population": 50000,
+          "translations": {
+            "en": "Koprivnica",
+            "pl": "Koprivnica",
+            "uk": "Копрівниця"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-07",
+      "latitude": 45.8989,
+      "longitude": 17.3800,
+      "translations": {
+        "en": "Bjelovar-Bilogora County",
+        "pl": "Żupania bjelowarsko-bilogorska",
+        "uk": "Бʼєловарсько-Білогорська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.8989,
+          "longitude": 16.8422,
+          "population": 52670,
+          "translations": {
+            "en": "Bjelovar",
+            "pl": "Bjelovar",
+            "uk": "Бʼєловар"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-08",
+      "latitude": 45.2467,
+      "longitude": 14.6922,
+      "translations": {
+        "en": "Primorje-Gorski Kotar County",
+        "pl": "Żupania primorsko-gorańska",
+        "uk": "Приморсько-Ґоранська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.3271,
+          "longitude": 14.4422,
+          "population": 128624,
+          "translations": {
+            "en": "Rijeka",
+            "pl": "Rijeka",
+            "uk": "Рієка"
+          }
+        },
+        {
+          "latitude": 45.3282,
+          "longitude": 14.4416,
+          "population": 54696,
+          "translations": {
+            "en": "Opatija",
+            "pl": "Opatija",
+            "uk": "Опатія"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-09",
+      "latitude": 44.8683,
+      "longitude": 15.3775,
+      "translations": {
+        "en": "Lika-Senj County",
+        "pl": "Żupania licko-seńska",
+        "uk": "Ліцько-Сенська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 44.5333,
+          "longitude": 15.3667,
+          "population": 50860,
+          "translations": {
+            "en": "Gospić",
+            "pl": "Gospić",
+            "uk": "Ґоспіч"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-10",
+      "latitude": 45.5469,
+      "longitude": 18.0944,
+      "translations": {
+        "en": "Virovitica-Podravina County",
+        "pl": "Żupania wirowticko-podrawska",
+        "uk": "Вировитицько-Подравська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.8317,
+          "longitude": 17.3861,
+          "population": 51050,
+          "translations": {
+            "en": "Virovitica",
+            "pl": "Virovitica",
+            "uk": "Вировітіца"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-11",
+      "latitude": 45.3378,
+      "longitude": 17.6741,
+      "translations": {
+        "en": "Požega-Slavonia County",
+        "pl": "Żupania požesko-slawońska",
+        "uk": "Пожезько-Славонська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.3378,
+          "longitude": 17.6741,
+          "population": 52419,
+          "translations": {
+            "en": "Požega",
+            "pl": "Požega",
+            "uk": "Пожеґа"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-12",
+      "latitude": 45.2833,
+      "longitude": 18.0119,
+      "translations": {
+        "en": "Brod-Posavina County",
+        "pl": "Żupania brodsko-posawska",
+        "uk": "Бродсько-Посавська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.1603,
+          "longitude": 18.0156,
+          "population": 59141,
+          "translations": {
+            "en": "Slavonski Brod",
+            "pl": "Slavonski Brod",
+            "uk": "Славонський Брод"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-13",
+      "latitude": 43.5081,
+      "longitude": 16.4402,
+      "translations": {
+        "en": "Zadar County",
+        "pl": "Żupania zadarска",
+        "uk": "Задарська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 44.1194,
+          "longitude": 15.2314,
+          "population": 75082,
+          "translations": {
+            "en": "Zadar",
+            "pl": "Zadar",
+            "uk": "Задар"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-14",
+      "latitude": 45.5549,
+      "longitude": 18.6955,
+      "translations": {
+        "en": "Osijek-Baranja County",
+        "pl": "Żupania osiecko-barańska",
+        "uk": "Осієцько-Баранська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.5549,
+          "longitude": 18.6955,
+          "population": 108048,
+          "translations": {
+            "en": "Osijek",
+            "pl": "Osijek",
+            "uk": "Осієк"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-15",
+      "latitude": 43.7300,
+      "longitude": 15.8944,
+      "translations": {
+        "en": "Šibenik-Knin County",
+        "pl": "Żupania szybenicko-knińska",
+        "uk": "Шибеницько-Кнінська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 43.7350,
+          "longitude": 15.8952,
+          "population": 51553,
+          "translations": {
+            "en": "Šibenik",
+            "pl": "Szybenik",
+            "uk": "Шибенік"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-16",
+      "latitude": 45.2000,
+      "longitude": 18.7333,
+      "translations": {
+        "en": "Vukovar-Srijem County",
+        "pl": "Żupania wukowarsko-srijemska",
+        "uk": "Вуковарсько-Сриємська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 45.3451,
+          "longitude": 18.8056,
+          "population": 55097,
+          "translations": {
+            "en": "Vinkovci",
+            "pl": "Vinkovci",
+            "uk": "Вінковці"
+          }
+        },
+        {
+          "latitude": 45.3518,
+          "longitude": 18.9961,
+          "population": 50978,
+          "translations": {
+            "en": "Vukovar",
+            "pl": "Vukovar",
+            "uk": "Вуковар"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-17",
+      "latitude": 43.5081,
+      "longitude": 16.4402,
+      "translations": {
+        "en": "Split-Dalmatia County",
+        "pl": "Żupania splitsko-dalmatyńska",
+        "uk": "Спліцько-Далматинська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 43.5081,
+          "longitude": 16.4402,
+          "population": 178102,
+          "translations": {
+            "en": "Split",
+            "pl": "Split",
+            "uk": "Спліт"
+          }
+        },
+        {
+          "latitude": 43.5147,
+          "longitude": 16.4684,
+          "population": 58642,
+          "translations": {
+            "en": "Solin",
+            "pl": "Solin",
+            "uk": "Солін"
+          }
+        },
+        {
+          "latitude": 43.4336,
+          "longitude": 16.6745,
+          "population": 55000,
+          "translations": {
+            "en": "Omiš",
+            "pl": "Omiš",
+            "uk": "Оміш"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-18",
+      "latitude": 45.4842,
+      "longitude": 15.0961,
+      "translations": {
+        "en": "Istria County",
+        "pl": "Żupania istryjska",
+        "uk": "Істрійська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 44.8666,
+          "longitude": 13.8496,
+          "population": 57460,
+          "translations": {
+            "en": "Pula",
+            "pl": "Pula",
+            "uk": "Пула"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-19",
+      "latitude": 42.6507,
+      "longitude": 18.0944,
+      "translations": {
+        "en": "Dubrovnik-Neretva County",
+        "pl": "Żupania dubrownicko-neretwańska",
+        "uk": "Дубровницько-Неретванська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 42.6507,
+          "longitude": 18.0944,
+          "population": 42615,
+          "translations": {
+            "en": "Dubrovnik",
+            "pl": "Dubrownik",
+            "uk": "Дубровник"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HR-20",
+      "latitude": 46.2183,
+      "longitude": 16.5920,
+      "translations": {
+        "en": "Međimurje County",
+        "pl": "Żupania medzimorska",
+        "uk": "Меджимурська жупанія"
+      },
+      "cities": [
+        {
+          "latitude": 46.3842,
+          "longitude": 16.4322,
+          "population": 51962,
+          "translations": {
+            "en": "Čakovec",
+            "pl": "Čakovec",
+            "uk": "Чаковець"
+          }
+        }
+      ]
+    }
+  ]
+}

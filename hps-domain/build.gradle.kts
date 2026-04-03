@@ -1,5 +1,5 @@
 plugins {
-    id("hps.kotlin-conventions")
+    id("hps.kotlin-jpa-conventions")
 }
 
 dependencies {

@@ -29,7 +29,7 @@ class City(
     @OneToMany(mappedBy = "city", cascade = [CascadeType.ALL], orphanRemoval = true)
     val translations: MutableSet<CityTranslation> = mutableSetOf(),
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", cascade = [CascadeType.ALL], orphanRemoval = true)
     val areas: MutableList<Area> = mutableListOf()
 )
 

@@ -1,0 +1,467 @@
+{
+  "isoCode": "PL",
+  "phonePrefix": "+48",
+  "translations": {
+    "en": "Poland",
+    "pl": "Polska",
+    "uk": "Польща"
+  },
+  "regions": [
+    {
+      "code": "PL-DS",
+      "latitude": 51.1,
+      "longitude": 16.98,
+      "translations": {
+        "en": "Lower Silesian Voivodeship",
+        "pl": "Województwo dolnośląskie",
+        "uk": "Нижньосілезьке воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 51.1079,
+          "longitude": 17.0385,
+          "population": 674079,
+          "translations": { "en": "Wrocław", "pl": "Wrocław", "uk": "Вроцлав" }
+        },
+        {
+          "latitude": 51.4023,
+          "longitude": 15.7413,
+          "population": 118166,
+          "translations": { "en": "Wałbrzych", "pl": "Wałbrzych", "uk": "Валбжих" }
+        },
+        {
+          "latitude": 51.7592,
+          "longitude": 15.6462,
+          "population": 119025,
+          "translations": { "en": "Legnica", "pl": "Legnica", "uk": "Легниця" }
+        }
+      ]
+    },
+    {
+      "code": "PL-KP",
+      "latitude": 53.13,
+      "longitude": 18.0,
+      "translations": {
+        "en": "Kuyavian-Pomeranian Voivodeship",
+        "pl": "Województwo kujawsko-pomorskie",
+        "uk": "Куявсько-Поморське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 53.1235,
+          "longitude": 18.0084,
+          "population": 340733,
+          "translations": { "en": "Bydgoszcz", "pl": "Bydgoszcz", "uk": "Бидгощ" }
+        },
+        {
+          "latitude": 53.0138,
+          "longitude": 18.5984,
+          "population": 196935,
+          "translations": { "en": "Toruń", "pl": "Toruń", "uk": "Торунь" }
+        },
+        {
+          "latitude": 52.4064,
+          "longitude": 16.9252,
+          "population": 109044,
+          "translations": { "en": "Włocławek", "pl": "Włocławek", "uk": "Влоцлавек" }
+        }
+      ]
+    },
+    {
+      "code": "PL-LU",
+      "latitude": 51.25,
+      "longitude": 22.57,
+      "translations": {
+        "en": "Lublin Voivodeship",
+        "pl": "Województwo lubelskie",
+        "uk": "Люблінське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 51.2465,
+          "longitude": 22.5684,
+          "population": 339784,
+          "translations": { "en": "Lublin", "pl": "Lublin", "uk": "Люблін" }
+        }
+      ]
+    },
+    {
+      "code": "PL-LB",
+      "latitude": 51.94,
+      "longitude": 15.5,
+      "translations": {
+        "en": "Lubusz Voivodeship",
+        "pl": "Województwo lubuskie",
+        "uk": "Любуське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 51.9356,
+          "longitude": 15.5062,
+          "population": 139330,
+          "translations": { "en": "Zielona Góra", "pl": "Zielona Góra", "uk": "Зелена Гура" }
+        },
+        {
+          "latitude": 52.7325,
+          "longitude": 15.2369,
+          "population": 119305,
+          "translations": { "en": "Gorzów Wielkopolski", "pl": "Gorzów Wielkopolski", "uk": "Гожув-Великопольський" }
+        }
+      ]
+    },
+    {
+      "code": "PL-LD",
+      "latitude": 51.77,
+      "longitude": 19.45,
+      "translations": {
+        "en": "Łódź Voivodeship",
+        "pl": "Województwo łódzkie",
+        "uk": "Лодзинське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 51.7592,
+          "longitude": 19.4560,
+          "population": 672185,
+          "translations": { "en": "Łódź", "pl": "Łódź", "uk": "Лодзь" }
+        }
+      ]
+    },
+    {
+      "code": "PL-MA",
+      "latitude": 49.97,
+      "longitude": 20.0,
+      "translations": {
+        "en": "Lesser Poland Voivodeship",
+        "pl": "Województwo małopolskie",
+        "uk": "Малопольське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 50.0647,
+          "longitude": 19.9450,
+          "population": 802583,
+          "translations": { "en": "Kraków", "pl": "Kraków", "uk": "Краків" }
+        },
+        {
+          "latitude": 49.9688,
+          "longitude": 20.4254,
+          "population": 109062,
+          "translations": { "en": "Tarnów", "pl": "Tarnów", "uk": "Тарнув" }
+        }
+      ]
+    },
+    {
+      "code": "PL-MZ",
+      "latitude": 52.23,
+      "longitude": 21.0,
+      "translations": {
+        "en": "Masovian Voivodeship",
+        "pl": "Województwo mazowieckie",
+        "uk": "Мазовецьке воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 52.2297,
+          "longitude": 21.0122,
+          "population": 1861975,
+          "translations": { "en": "Warsaw", "pl": "Warszawa", "uk": "Варшава" }
+        },
+        {
+          "latitude": 52.4064,
+          "longitude": 20.6983,
+          "population": 225511,
+          "translations": { "en": "Radom", "pl": "Radom", "uk": "Радом" }
+        },
+        {
+          "latitude": 51.4023,
+          "longitude": 21.1472,
+          "population": 195383,
+          "translations": { "en": "Płock", "pl": "Płock", "uk": "Плоцьк" }
+        }
+      ]
+    },
+    {
+      "code": "PL-OP",
+      "latitude": 50.67,
+      "longitude": 17.93,
+      "translations": {
+        "en": "Opole Voivodeship",
+        "pl": "Województwo opolskie",
+        "uk": "Опольське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 50.6751,
+          "longitude": 17.9213,
+          "population": 127792,
+          "translations": { "en": "Opole", "pl": "Opole", "uk": "Ополе" }
+        }
+      ]
+    },
+    {
+      "code": "PL-PK",
+      "latitude": 50.04,
+      "longitude": 22.0,
+      "translations": {
+        "en": "Subcarpathian Voivodeship",
+        "pl": "Województwo podkarpackie",
+        "uk": "Підкарпатське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 50.0413,
+          "longitude": 21.9990,
+          "population": 198609,
+          "translations": { "en": "Rzeszów", "pl": "Rzeszów", "uk": "Жешув" }
+        }
+      ]
+    },
+    {
+      "code": "PL-PD",
+      "latitude": 53.13,
+      "longitude": 23.16,
+      "translations": {
+        "en": "Podlaskie Voivodeship",
+        "pl": "Województwo podlaskie",
+        "uk": "Підляське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 53.1325,
+          "longitude": 23.1688,
+          "population": 297585,
+          "translations": { "en": "Białystok", "pl": "Białystok", "uk": "Білосток" }
+        }
+      ]
+    },
+    {
+      "code": "PL-PM",
+      "latitude": 54.35,
+      "longitude": 18.65,
+      "translations": {
+        "en": "Pomeranian Voivodeship",
+        "pl": "Województwo pomorskie",
+        "uk": "Поморське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 54.3520,
+          "longitude": 18.6466,
+          "population": 486022,
+          "translations": { "en": "Gdańsk", "pl": "Gdańsk", "uk": "Гданськ" }
+        },
+        {
+          "latitude": 54.5189,
+          "longitude": 18.5305,
+          "population": 246306,
+          "translations": { "en": "Gdynia", "pl": "Gdynia", "uk": "Гдиня" }
+        }
+      ]
+    },
+    {
+      "code": "PL-SL",
+      "latitude": 50.26,
+      "longitude": 19.02,
+      "translations": {
+        "en": "Silesian Voivodeship",
+        "pl": "Województwo śląskie",
+        "uk": "Сілезьке воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 50.2649,
+          "longitude": 19.0238,
+          "population": 291774,
+          "translations": { "en": "Katowice", "pl": "Katowice", "uk": "Катовіце" }
+        },
+        {
+          "latitude": 50.3118,
+          "longitude": 18.9394,
+          "population": 179806,
+          "translations": { "en": "Gliwice", "pl": "Gliwice", "uk": "Глівіце" }
+        },
+        {
+          "latitude": 50.2863,
+          "longitude": 18.6775,
+          "population": 172360,
+          "translations": { "en": "Zabrze", "pl": "Zabrze", "uk": "Забже" }
+        },
+        {
+          "latitude": 50.3241,
+          "longitude": 18.7883,
+          "population": 161055,
+          "translations": { "en": "Bytom", "pl": "Bytom", "uk": "Битом" }
+        },
+        {
+          "latitude": 50.2945,
+          "longitude": 18.6714,
+          "population": 170000,
+          "translations": { "en": "Ruda Śląska", "pl": "Ruda Śląska", "uk": "Руда-Сльонська" }
+        },
+        {
+          "latitude": 50.1109,
+          "longitude": 19.0026,
+          "population": 160968,
+          "translations": { "en": "Tychy", "pl": "Tychy", "uk": "Тихи" }
+        },
+        {
+          "latitude": 50.2815,
+          "longitude": 19.1040,
+          "population": 196227,
+          "translations": { "en": "Sosnowiec", "pl": "Sosnowiec", "uk": "Сосновець" }
+        },
+        {
+          "latitude": 50.3176,
+          "longitude": 19.1378,
+          "population": 143722,
+          "translations": { "en": "Dąbrowa Górnicza", "pl": "Dąbrowa Górnicza", "uk": "Домброва-Гурнича" }
+        },
+        {
+          "latitude": 50.2955,
+          "longitude": 18.8550,
+          "population": 175027,
+          "translations": { "en": "Chorzów", "pl": "Chorzów", "uk": "Хожув" }
+        },
+        {
+          "latitude": 50.3308,
+          "longitude": 19.2041,
+          "population": 115159,
+          "translations": { "en": "Jaworzno", "pl": "Jaworzno", "uk": "Явожно" }
+        },
+        {
+          "latitude": 50.0477,
+          "longitude": 18.9600,
+          "population": 118413,
+          "translations": { "en": "Bielsko-Biała", "pl": "Bielsko-Biała", "uk": "Бєльсько-Бяла" }
+        },
+        {
+          "latitude": 50.3232,
+          "longitude": 18.7654,
+          "population": 125000,
+          "translations": { "en": "Siemianowice Śląskie", "pl": "Siemianowice Śląskie", "uk": "Семяновіце-Сльонські" }
+        },
+        {
+          "latitude": 50.2598,
+          "longitude": 19.2243,
+          "population": 106413,
+          "translations": { "en": "Mysłowice", "pl": "Mysłowice", "uk": "Мисловіце" }
+        },
+        {
+          "latitude": 50.3020,
+          "longitude": 19.0680,
+          "population": 105000,
+          "translations": { "en": "Czeladź", "pl": "Czeladź", "uk": "Челядзь" }
+        },
+        {
+          "latitude": 50.1734,
+          "longitude": 19.1003,
+          "population": 108000,
+          "translations": { "en": "Jastrzębie-Zdrój", "pl": "Jastrzębie-Zdrój", "uk": "Ястшембе-Здруй" }
+        },
+        {
+          "latitude": 50.2119,
+          "longitude": 18.8648,
+          "population": 125000,
+          "translations": { "en": "Żory", "pl": "Żory", "uk": "Жори" }
+        },
+        {
+          "latitude": 50.0572,
+          "longitude": 19.9283,
+          "population": 327882,
+          "translations": { "en": "Częstochowa", "pl": "Częstochowa", "uk": "Ченстохова" }
+        }
+      ]
+    },
+    {
+      "code": "PL-SK",
+      "latitude": 50.87,
+      "longitude": 20.63,
+      "translations": {
+        "en": "Świętokrzyskie Voivodeship",
+        "pl": "Województwo świętokrzyskie",
+        "uk": "Свентокшиське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 50.8661,
+          "longitude": 20.6286,
+          "population": 194852,
+          "translations": { "en": "Kielce", "pl": "Kielce", "uk": "Кельце" }
+        }
+      ]
+    },
+    {
+      "code": "PL-WN",
+      "latitude": 53.78,
+      "longitude": 20.48,
+      "translations": {
+        "en": "Warmian-Masurian Voivodeship",
+        "pl": "Województwo warmińsko-mazurskie",
+        "uk": "Вармінсько-Мазурське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 53.7784,
+          "longitude": 20.4801,
+          "population": 171249,
+          "translations": { "en": "Olsztyn", "pl": "Olsztyn", "uk": "Ольштин" }
+        },
+        {
+          "latitude": 54.0359,
+          "longitude": 19.0348,
+          "population": 126926,
+          "translations": { "en": "Elbląg", "pl": "Elbląg", "uk": "Ельблонг" }
+        }
+      ]
+    },
+    {
+      "code": "PL-WP",
+      "latitude": 52.41,
+      "longitude": 16.93,
+      "translations": {
+        "en": "Greater Poland Voivodeship",
+        "pl": "Województwo wielkopolskie",
+        "uk": "Великопольське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 52.4064,
+          "longitude": 16.9252,
+          "population": 546859,
+          "translations": { "en": "Poznań", "pl": "Poznań", "uk": "Познань" }
+        },
+        {
+          "latitude": 51.7500,
+          "longitude": 17.8333,
+          "population": 107807,
+          "translations": { "en": "Kalisz", "pl": "Kalisz", "uk": "Каліш" }
+        }
+      ]
+    },
+    {
+      "code": "PL-ZP",
+      "latitude": 53.43,
+      "longitude": 14.53,
+      "translations": {
+        "en": "West Pomeranian Voivodeship",
+        "pl": "Województwo zachodniopomorskie",
+        "uk": "Західнопоморське воєводство"
+      },
+      "cities": [
+        {
+          "latitude": 53.4289,
+          "longitude": 14.5530,
+          "population": 401907,
+          "translations": { "en": "Szczecin", "pl": "Szczecin", "uk": "Щецін" }
+        },
+        {
+          "latitude": 54.1776,
+          "longitude": 15.5694,
+          "population": 106925,
+          "translations": { "en": "Koszalin", "pl": "Koszalin", "uk": "Кошалін" }
+        }
+      ]
+    }
+  ]
+}

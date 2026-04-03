@@ -1,0 +1,401 @@
+{
+  "isoCode": "EE",
+  "phonePrefix": "+372",
+  "translations": {
+    "en": "Estonia",
+    "pl": "Estonia",
+    "uk": "Естонія"
+  },
+  "regions": [
+    {
+      "code": "EE-37",
+      "latitude": 59.43,
+      "longitude": 24.75,
+      "translations": {
+        "en": "Harju County",
+        "pl": "Harjumaa",
+        "uk": "Гар'юмаа"
+      },
+      "cities": [
+        {
+          "latitude": 59.4370,
+          "longitude": 24.7536,
+          "population": 455845,
+          "translations": {
+            "en": "Tallinn",
+            "pl": "Tallinn",
+            "uk": "Таллінн"
+          }
+        },
+        {
+          "latitude": 59.3567,
+          "longitude": 24.5036,
+          "population": 33834,
+          "translations": {
+            "en": "Saue",
+            "pl": "Saue",
+            "uk": "Сауе"
+          }
+        },
+        {
+          "latitude": 59.3519,
+          "longitude": 24.3836,
+          "population": 31073,
+          "translations": {
+            "en": "Keila",
+            "pl": "Keila",
+            "uk": "Кейла"
+          }
+        },
+        {
+          "latitude": 59.3897,
+          "longitude": 24.9767,
+          "population": 35562,
+          "translations": {
+            "en": "Maardu",
+            "pl": "Maardu",
+            "uk": "Маарду"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-39",
+      "latitude": 58.38,
+      "longitude": 22.51,
+      "translations": {
+        "en": "Hiiu County",
+        "pl": "Hiiumaa",
+        "uk": "Гіюмаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.8692,
+          "longitude": 22.7383,
+          "population": 9471,
+          "translations": {
+            "en": "Kärdla",
+            "pl": "Kärdla",
+            "uk": "Кярдла"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-44",
+      "latitude": 59.19,
+      "longitude": 26.36,
+      "translations": {
+        "en": "Ida-Viru County",
+        "pl": "Ida-Virumaa",
+        "uk": "Іда-Вірумаа"
+      },
+      "cities": [
+        {
+          "latitude": 59.3772,
+          "longitude": 28.1903,
+          "population": 53424,
+          "translations": {
+            "en": "Narva",
+            "pl": "Narwa",
+            "uk": "Нарва"
+          }
+        },
+        {
+          "latitude": 59.3978,
+          "longitude": 27.2731,
+          "population": 34394,
+          "translations": {
+            "en": "Kohtla-Järve",
+            "pl": "Kohtla-Järve",
+            "uk": "Кохтла-Ярве"
+          }
+        },
+        {
+          "latitude": 59.3586,
+          "longitude": 27.4136,
+          "population": 35482,
+          "translations": {
+            "en": "Jõhvi",
+            "pl": "Jõhvi",
+            "uk": "Йихві"
+          }
+        },
+        {
+          "latitude": 59.2269,
+          "longitude": 27.6703,
+          "population": 30558,
+          "translations": {
+            "en": "Sillamäe",
+            "pl": "Sillamäe",
+            "uk": "Сілламяе"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-49",
+      "latitude": 58.88,
+      "longitude": 26.05,
+      "translations": {
+        "en": "Jõgeva County",
+        "pl": "Jõgevamaa",
+        "uk": "Йиґевамаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.7464,
+          "longitude": 26.3933,
+          "population": 5235,
+          "translations": {
+            "en": "Jõgeva",
+            "pl": "Jõgeva",
+            "uk": "Йиґева"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-51",
+      "latitude": 58.70,
+      "longitude": 25.55,
+      "translations": {
+        "en": "Järva County",
+        "pl": "Järvamaa",
+        "uk": "Ярвамаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.9936,
+          "longitude": 25.5611,
+          "population": 10824,
+          "translations": {
+            "en": "Paide",
+            "pl": "Paide",
+            "uk": "Пайде"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-57",
+      "latitude": 59.05,
+      "longitude": 24.22,
+      "translations": {
+        "en": "Lääne County",
+        "pl": "Läänemaa",
+        "uk": "Ляенемаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.9431,
+          "longitude": 23.5414,
+          "population": 10141,
+          "translations": {
+            "en": "Haapsalu",
+            "pl": "Haapsalu",
+            "uk": "Гаапсалу"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-59",
+      "latitude": 59.05,
+      "longitude": 25.57,
+      "translations": {
+        "en": "Lääne-Viru County",
+        "pl": "Lääne-Virumaa",
+        "uk": "Ляене-Вірумаа"
+      },
+      "cities": [
+        {
+          "latitude": 59.3569,
+          "longitude": 26.3558,
+          "population": 41803,
+          "translations": {
+            "en": "Rakvere",
+            "pl": "Rakvere",
+            "uk": "Раквере"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-65",
+      "latitude": 58.05,
+      "longitude": 27.05,
+      "translations": {
+        "en": "Põlva County",
+        "pl": "Põlvamaa",
+        "uk": "Пилвамаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.0536,
+          "longitude": 27.0569,
+          "population": 5629,
+          "translations": {
+            "en": "Põlva",
+            "pl": "Põlva",
+            "uk": "Пилва"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-67",
+      "latitude": 58.39,
+      "longitude": 24.50,
+      "translations": {
+        "en": "Pärnu County",
+        "pl": "Pärnumaa",
+        "uk": "Пярнумаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.3861,
+          "longitude": 24.4967,
+          "population": 51883,
+          "translations": {
+            "en": "Pärnu",
+            "pl": "Parnawa",
+            "uk": "Пярну"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-70",
+      "latitude": 59.17,
+      "longitude": 25.59,
+      "translations": {
+        "en": "Rapla County",
+        "pl": "Raplamaa",
+        "uk": "Рапламаа"
+      },
+      "cities": [
+        {
+          "latitude": 59.0047,
+          "longitude": 24.7928,
+          "population": 5820,
+          "translations": {
+            "en": "Rapla",
+            "pl": "Rapla",
+            "uk": "Рапла"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-74",
+      "latitude": 58.25,
+      "longitude": 22.50,
+      "translations": {
+        "en": "Saare County",
+        "pl": "Saaremaa",
+        "uk": "Сааремаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.2481,
+          "longitude": 22.5089,
+          "population": 13276,
+          "translations": {
+            "en": "Kuressaare",
+            "pl": "Kuressaare",
+            "uk": "Курессааре"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-78",
+      "latitude": 58.38,
+      "longitude": 26.73,
+      "translations": {
+        "en": "Tartu County",
+        "pl": "Tartumaa",
+        "uk": "Тартумаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.3781,
+          "longitude": 26.7292,
+          "population": 97332,
+          "translations": {
+            "en": "Tartu",
+            "pl": "Tartu",
+            "uk": "Тарту"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-82",
+      "latitude": 58.36,
+      "longitude": 25.59,
+      "translations": {
+        "en": "Valga County",
+        "pl": "Valgamaa",
+        "uk": "Валґамаа"
+      },
+      "cities": [
+        {
+          "latitude": 57.7767,
+          "longitude": 26.0472,
+          "population": 12263,
+          "translations": {
+            "en": "Valga",
+            "pl": "Valga",
+            "uk": "Валга"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-84",
+      "latitude": 57.83,
+      "longitude": 26.98,
+      "translations": {
+        "en": "Viljandi County",
+        "pl": "Viljandimaa",
+        "uk": "Вільяндімаа"
+      },
+      "cities": [
+        {
+          "latitude": 58.3639,
+          "longitude": 25.5900,
+          "population": 17568,
+          "translations": {
+            "en": "Viljandi",
+            "pl": "Viljandi",
+            "uk": "Вільянді"
+          }
+        }
+      ]
+    },
+    {
+      "code": "EE-86",
+      "latitude": 57.72,
+      "longitude": 27.20,
+      "translations": {
+        "en": "Võru County",
+        "pl": "Võrumaa",
+        "uk": "Вирумаа"
+      },
+      "cities": [
+        {
+          "latitude": 57.8339,
+          "longitude": 27.0175,
+          "population": 12572,
+          "translations": {
+            "en": "Võru",
+            "pl": "Võru",
+            "uk": "Виру"
+          }
+        }
+      ]
+    }
+  ]
+}

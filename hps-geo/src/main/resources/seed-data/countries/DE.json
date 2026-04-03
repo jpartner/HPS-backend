@@ -1,0 +1,773 @@
+{
+  "isoCode": "DE",
+  "phonePrefix": "+49",
+  "translations": {
+    "en": "Germany",
+    "pl": "Niemcy",
+    "uk": "Німеччина"
+  },
+  "regions": [
+    {
+      "code": "DE-BW",
+      "latitude": 48.66,
+      "longitude": 9.35,
+      "translations": {
+        "en": "Baden-Württemberg",
+        "pl": "Badenia-Wirtembergia",
+        "uk": "Баден-Вюртемберг"
+      },
+      "cities": [
+        {
+          "latitude": 48.7758,
+          "longitude": 9.1829,
+          "population": 635911,
+          "translations": { "en": "Stuttgart", "pl": "Stuttgart", "uk": "Штутгарт" }
+        },
+        {
+          "latitude": 49.4875,
+          "longitude": 8.4660,
+          "population": 309370,
+          "translations": { "en": "Mannheim", "pl": "Mannheim", "uk": "Мангайм" }
+        },
+        {
+          "latitude": 48.9930,
+          "longitude": 8.4030,
+          "population": 313092,
+          "translations": { "en": "Karlsruhe", "pl": "Karlsruhe", "uk": "Карлсруе" }
+        },
+        {
+          "latitude": 47.9990,
+          "longitude": 7.8421,
+          "population": 236140,
+          "translations": { "en": "Freiburg im Breisgau", "pl": "Fryburg Bryzgowijski", "uk": "Фрайбург-ім-Брайсгау" }
+        },
+        {
+          "latitude": 49.4140,
+          "longitude": 8.6946,
+          "population": 159245,
+          "translations": { "en": "Heidelberg", "pl": "Heidelberg", "uk": "Гайдельберг" }
+        },
+        {
+          "latitude": 48.5216,
+          "longitude": 9.0576,
+          "population": 120292,
+          "translations": { "en": "Reutlingen", "pl": "Reutlingen", "uk": "Ройтлінген" }
+        },
+        {
+          "latitude": 49.1391,
+          "longitude": 9.2203,
+          "population": 126592,
+          "translations": { "en": "Heilbronn", "pl": "Heilbronn", "uk": "Гайльбронн" }
+        },
+        {
+          "latitude": 48.4010,
+          "longitude": 9.9876,
+          "population": 126790,
+          "translations": { "en": "Ulm", "pl": "Ulm", "uk": "Ульм" }
+        },
+        {
+          "latitude": 48.8922,
+          "longitude": 9.1951,
+          "population": 146354,
+          "translations": { "en": "Ludwigsburg", "pl": "Ludwigsburg", "uk": "Людвігсбург" }
+        },
+        {
+          "latitude": 48.7433,
+          "longitude": 9.3201,
+          "population": 134543,
+          "translations": { "en": "Esslingen am Neckar", "pl": "Esslingen am Neckar", "uk": "Есслінген-ам-Неккар" }
+        },
+        {
+          "latitude": 48.6921,
+          "longitude": 9.0118,
+          "population": 112236,
+          "translations": { "en": "Sindelfingen", "pl": "Sindelfingen", "uk": "Зіндельфінген" }
+        },
+        {
+          "latitude": 47.6595,
+          "longitude": 9.4783,
+          "population": 108000,
+          "translations": { "en": "Friedrichshafen", "pl": "Friedrichshafen", "uk": "Фрідріхсгафен" }
+        },
+        {
+          "latitude": 49.4783,
+          "longitude": 8.4311,
+          "population": 175000,
+          "translations": { "en": "Ludwigshafen am Rhein", "pl": "Ludwigshafen am Rhein", "uk": "Людвігсгафен-ам-Райн" }
+        }
+      ]
+    },
+    {
+      "code": "DE-BY",
+      "latitude": 48.79,
+      "longitude": 11.50,
+      "translations": {
+        "en": "Bavaria",
+        "pl": "Bawaria",
+        "uk": "Баварія"
+      },
+      "cities": [
+        {
+          "latitude": 48.1351,
+          "longitude": 11.5820,
+          "population": 1488202,
+          "translations": { "en": "Munich", "pl": "Monachium", "uk": "Мюнхен" }
+        },
+        {
+          "latitude": 49.4521,
+          "longitude": 11.0767,
+          "population": 518370,
+          "translations": { "en": "Nuremberg", "pl": "Norymberga", "uk": "Нюрнберг" }
+        },
+        {
+          "latitude": 48.3668,
+          "longitude": 10.8986,
+          "population": 301033,
+          "translations": { "en": "Augsburg", "pl": "Augsburg", "uk": "Аугсбург" }
+        },
+        {
+          "latitude": 49.7944,
+          "longitude": 9.9294,
+          "population": 127934,
+          "translations": { "en": "Würzburg", "pl": "Würzburg", "uk": "Вюрцбург" }
+        },
+        {
+          "latitude": 49.0134,
+          "longitude": 12.1016,
+          "population": 152610,
+          "translations": { "en": "Regensburg", "pl": "Ratyzbona", "uk": "Регенсбург" }
+        },
+        {
+          "latitude": 48.7665,
+          "longitude": 11.4258,
+          "population": 138296,
+          "translations": { "en": "Ingolstadt", "pl": "Ingolstadt", "uk": "Інгольштадт" }
+        },
+        {
+          "latitude": 49.4774,
+          "longitude": 10.9886,
+          "population": 130140,
+          "translations": { "en": "Fürth", "pl": "Fürth", "uk": "Фюрт" }
+        },
+        {
+          "latitude": 49.5896,
+          "longitude": 11.0078,
+          "population": 113728,
+          "translations": { "en": "Erlangen", "pl": "Erlangen", "uk": "Ерланген" }
+        }
+      ]
+    },
+    {
+      "code": "DE-BE",
+      "latitude": 52.52,
+      "longitude": 13.405,
+      "translations": {
+        "en": "Berlin",
+        "pl": "Berlin",
+        "uk": "Берлін"
+      },
+      "cities": [
+        {
+          "latitude": 52.5200,
+          "longitude": 13.4050,
+          "population": 3677472,
+          "translations": { "en": "Berlin", "pl": "Berlin", "uk": "Берлін" }
+        }
+      ]
+    },
+    {
+      "code": "DE-BB",
+      "latitude": 52.13,
+      "longitude": 13.20,
+      "translations": {
+        "en": "Brandenburg",
+        "pl": "Brandenburgia",
+        "uk": "Бранденбург"
+      },
+      "cities": [
+        {
+          "latitude": 52.3906,
+          "longitude": 13.0645,
+          "population": 183154,
+          "translations": { "en": "Potsdam", "pl": "Poczdam", "uk": "Потсдам" }
+        },
+        {
+          "latitude": 52.3419,
+          "longitude": 14.5506,
+          "population": 139590,
+          "translations": { "en": "Cottbus", "pl": "Chociebuż", "uk": "Котбус" }
+        }
+      ]
+    },
+    {
+      "code": "DE-HB",
+      "latitude": 53.08,
+      "longitude": 8.80,
+      "translations": {
+        "en": "Bremen",
+        "pl": "Brema",
+        "uk": "Бремен"
+      },
+      "cities": [
+        {
+          "latitude": 53.0793,
+          "longitude": 8.8017,
+          "population": 569352,
+          "translations": { "en": "Bremen", "pl": "Brema", "uk": "Бремен" }
+        },
+        {
+          "latitude": 53.5396,
+          "longitude": 8.5809,
+          "population": 113634,
+          "translations": { "en": "Bremerhaven", "pl": "Bremerhaven", "uk": "Бремергафен" }
+        }
+      ]
+    },
+    {
+      "code": "DE-HH",
+      "latitude": 53.55,
+      "longitude": 9.99,
+      "translations": {
+        "en": "Hamburg",
+        "pl": "Hamburg",
+        "uk": "Гамбург"
+      },
+      "cities": [
+        {
+          "latitude": 53.5511,
+          "longitude": 9.9937,
+          "population": 1906411,
+          "translations": { "en": "Hamburg", "pl": "Hamburg", "uk": "Гамбург" }
+        }
+      ]
+    },
+    {
+      "code": "DE-HE",
+      "latitude": 50.65,
+      "longitude": 9.16,
+      "translations": {
+        "en": "Hesse",
+        "pl": "Hesja",
+        "uk": "Гессен"
+      },
+      "cities": [
+        {
+          "latitude": 50.1109,
+          "longitude": 8.6821,
+          "population": 764104,
+          "translations": { "en": "Frankfurt am Main", "pl": "Frankfurt nad Menem", "uk": "Франкфурт-на-Майні" }
+        },
+        {
+          "latitude": 50.0782,
+          "longitude": 8.2398,
+          "population": 283079,
+          "translations": { "en": "Wiesbaden", "pl": "Wiesbaden", "uk": "Вісбаден" }
+        },
+        {
+          "latitude": 51.3127,
+          "longitude": 9.4797,
+          "population": 201585,
+          "translations": { "en": "Kassel", "pl": "Kassel", "uk": "Кассель" }
+        },
+        {
+          "latitude": 49.8728,
+          "longitude": 8.6512,
+          "population": 159207,
+          "translations": { "en": "Darmstadt", "pl": "Darmstadt", "uk": "Дармштадт" }
+        },
+        {
+          "latitude": 50.0562,
+          "longitude": 8.6437,
+          "population": 125218,
+          "translations": { "en": "Offenbach am Main", "pl": "Offenbach am Main", "uk": "Оффенбах-ам-Майн" }
+        },
+        {
+          "latitude": 50.5840,
+          "longitude": 8.6784,
+          "population": 115000,
+          "translations": { "en": "Gießen", "pl": "Gießen", "uk": "Гіссен" }
+        }
+      ]
+    },
+    {
+      "code": "DE-MV",
+      "latitude": 53.61,
+      "longitude": 12.43,
+      "translations": {
+        "en": "Mecklenburg-Vorpommern",
+        "pl": "Meklemburgia-Pomorze Przednie",
+        "uk": "Мекленбург-Передня Померанія"
+      },
+      "cities": [
+        {
+          "latitude": 53.6355,
+          "longitude": 11.4015,
+          "population": 99609,
+          "translations": { "en": "Schwerin", "pl": "Schwerin", "uk": "Шверін" }
+        },
+        {
+          "latitude": 54.0887,
+          "longitude": 12.1407,
+          "population": 209191,
+          "translations": { "en": "Rostock", "pl": "Rostock", "uk": "Росток" }
+        }
+      ]
+    },
+    {
+      "code": "DE-NI",
+      "latitude": 52.64,
+      "longitude": 9.84,
+      "translations": {
+        "en": "Lower Saxony",
+        "pl": "Dolna Saksonia",
+        "uk": "Нижня Саксонія"
+      },
+      "cities": [
+        {
+          "latitude": 52.3759,
+          "longitude": 9.7320,
+          "population": 545082,
+          "translations": { "en": "Hanover", "pl": "Hanower", "uk": "Ганновер" }
+        },
+        {
+          "latitude": 52.2689,
+          "longitude": 10.5268,
+          "population": 249406,
+          "translations": { "en": "Braunschweig", "pl": "Brunszwik", "uk": "Брауншвайг" }
+        },
+        {
+          "latitude": 52.1579,
+          "longitude": 8.7998,
+          "population": 107178,
+          "translations": { "en": "Osnabrück", "pl": "Osnabrück", "uk": "Оснабрюк" }
+        },
+        {
+          "latitude": 52.2228,
+          "longitude": 10.0891,
+          "population": 124151,
+          "translations": { "en": "Wolfsburg", "pl": "Wolfsburg", "uk": "Вольфсбург" }
+        },
+        {
+          "latitude": 51.8009,
+          "longitude": 9.9525,
+          "population": 117274,
+          "translations": { "en": "Göttingen", "pl": "Getynga", "uk": "Геттінген" }
+        },
+        {
+          "latitude": 52.2576,
+          "longitude": 10.5131,
+          "population": 102394,
+          "translations": { "en": "Salzgitter", "pl": "Salzgitter", "uk": "Зальцгіттер" }
+        },
+        {
+          "latitude": 53.1440,
+          "longitude": 8.2146,
+          "population": 167000,
+          "translations": { "en": "Oldenburg", "pl": "Oldenburg", "uk": "Ольденбург" }
+        },
+        {
+          "latitude": 52.2246,
+          "longitude": 10.5403,
+          "population": 125733,
+          "translations": { "en": "Hildesheim", "pl": "Hildesheim", "uk": "Гільдесгайм" }
+        }
+      ]
+    },
+    {
+      "code": "DE-NW",
+      "latitude": 51.43,
+      "longitude": 7.66,
+      "translations": {
+        "en": "North Rhine-Westphalia",
+        "pl": "Nadrenia Północna-Westfalia",
+        "uk": "Північний Рейн-Вестфалія"
+      },
+      "cities": [
+        {
+          "latitude": 50.9375,
+          "longitude": 6.9603,
+          "population": 1083498,
+          "translations": { "en": "Cologne", "pl": "Kolonia", "uk": "Кельн" }
+        },
+        {
+          "latitude": 51.2277,
+          "longitude": 6.7735,
+          "population": 645923,
+          "translations": { "en": "Düsseldorf", "pl": "Düsseldorf", "uk": "Дюссельдорф" }
+        },
+        {
+          "latitude": 51.4556,
+          "longitude": 7.0116,
+          "population": 588250,
+          "translations": { "en": "Essen", "pl": "Essen", "uk": "Ессен" }
+        },
+        {
+          "latitude": 51.5136,
+          "longitude": 7.4653,
+          "population": 586181,
+          "translations": { "en": "Dortmund", "pl": "Dortmund", "uk": "Дортмунд" }
+        },
+        {
+          "latitude": 51.4818,
+          "longitude": 7.2162,
+          "population": 365742,
+          "translations": { "en": "Bochum", "pl": "Bochum", "uk": "Бохум" }
+        },
+        {
+          "latitude": 51.3669,
+          "longitude": 7.4730,
+          "population": 362213,
+          "translations": { "en": "Hagen", "pl": "Hagen", "uk": "Гаген" }
+        },
+        {
+          "latitude": 51.4332,
+          "longitude": 6.7624,
+          "population": 348708,
+          "translations": { "en": "Duisburg", "pl": "Duisburg", "uk": "Дуйсбург" }
+        },
+        {
+          "latitude": 51.2562,
+          "longitude": 7.1508,
+          "population": 362041,
+          "translations": { "en": "Wuppertal", "pl": "Wuppertal", "uk": "Вупперталь" }
+        },
+        {
+          "latitude": 50.7753,
+          "longitude": 6.0839,
+          "population": 249070,
+          "translations": { "en": "Aachen", "pl": "Akwizgran", "uk": "Аахен" }
+        },
+        {
+          "latitude": 52.0215,
+          "longitude": 8.5320,
+          "population": 338332,
+          "translations": { "en": "Bielefeld", "pl": "Bielefeld", "uk": "Білефельд" }
+        },
+        {
+          "latitude": 50.7367,
+          "longitude": 7.0986,
+          "population": 331079,
+          "translations": { "en": "Bonn", "pl": "Bonn", "uk": "Бонн" }
+        },
+        {
+          "latitude": 51.9607,
+          "longitude": 7.6261,
+          "population": 317713,
+          "translations": { "en": "Münster", "pl": "Münster", "uk": "Мюнстер" }
+        },
+        {
+          "latitude": 51.0332,
+          "longitude": 7.0000,
+          "population": 163838,
+          "translations": { "en": "Leverkusen", "pl": "Leverkusen", "uk": "Леверкузен" }
+        },
+        {
+          "latitude": 51.1805,
+          "longitude": 6.4428,
+          "population": 161853,
+          "translations": { "en": "Mönchengladbach", "pl": "Mönchengladbach", "uk": "Менхенгладбах" }
+        },
+        {
+          "latitude": 51.5313,
+          "longitude": 7.0953,
+          "population": 210388,
+          "translations": { "en": "Gelsenkirchen", "pl": "Gelsenkirchen", "uk": "Гельзенкірхен" }
+        },
+        {
+          "latitude": 51.1079,
+          "longitude": 7.0000,
+          "population": 159360,
+          "translations": { "en": "Solingen", "pl": "Solingen", "uk": "Золінген" }
+        },
+        {
+          "latitude": 51.1838,
+          "longitude": 7.1883,
+          "population": 163929,
+          "translations": { "en": "Remscheid", "pl": "Remscheid", "uk": "Ремшайд" }
+        },
+        {
+          "latitude": 51.1768,
+          "longitude": 6.8882,
+          "population": 164000,
+          "translations": { "en": "Krefeld", "pl": "Krefeld", "uk": "Крефельд" }
+        },
+        {
+          "latitude": 51.5497,
+          "longitude": 6.8481,
+          "population": 117145,
+          "translations": { "en": "Oberhausen", "pl": "Oberhausen", "uk": "Оберхаузен" }
+        },
+        {
+          "latitude": 51.9500,
+          "longitude": 6.9500,
+          "population": 120000,
+          "translations": { "en": "Hamm", "pl": "Hamm", "uk": "Гамм" }
+        },
+        {
+          "latitude": 51.7169,
+          "longitude": 6.9619,
+          "population": 119000,
+          "translations": { "en": "Herne", "pl": "Herne", "uk": "Герне" }
+        },
+        {
+          "latitude": 51.5369,
+          "longitude": 6.9297,
+          "population": 170000,
+          "translations": { "en": "Mülheim an der Ruhr", "pl": "Mülheim an der Ruhr", "uk": "Мюльгайм-на-Рурі" }
+        },
+        {
+          "latitude": 51.7189,
+          "longitude": 8.7546,
+          "population": 152966,
+          "translations": { "en": "Paderborn", "pl": "Paderborn", "uk": "Падерборн" }
+        },
+        {
+          "latitude": 51.0300,
+          "longitude": 6.9900,
+          "population": 120000,
+          "translations": { "en": "Bergisch Gladbach", "pl": "Bergisch Gladbach", "uk": "Бергіш-Гладбах" }
+        },
+        {
+          "latitude": 51.2600,
+          "longitude": 6.6800,
+          "population": 106000,
+          "translations": { "en": "Neuss", "pl": "Neuss", "uk": "Нойс" }
+        },
+        {
+          "latitude": 51.5400,
+          "longitude": 6.6000,
+          "population": 106000,
+          "translations": { "en": "Moers", "pl": "Moers", "uk": "Мерс" }
+        },
+        {
+          "latitude": 52.4300,
+          "longitude": 7.4900,
+          "population": 110000,
+          "translations": { "en": "Osnabrück", "pl": "Osnabrück", "uk": "Оснабрюк" }
+        },
+        {
+          "latitude": 51.3400,
+          "longitude": 7.5000,
+          "population": 112000,
+          "translations": { "en": "Iserlohn", "pl": "Iserlohn", "uk": "Ізерлон" }
+        },
+        {
+          "latitude": 51.2700,
+          "longitude": 7.2000,
+          "population": 112000,
+          "translations": { "en": "Wuppertal-Barmen", "pl": "Wuppertal-Barmen", "uk": "Вупперталь-Бармен" }
+        },
+        {
+          "latitude": 50.8700,
+          "longitude": 7.3000,
+          "population": 114000,
+          "translations": { "en": "Troisdorf", "pl": "Troisdorf", "uk": "Тройсдорф" }
+        },
+        {
+          "latitude": 51.7500,
+          "longitude": 7.6200,
+          "population": 114800,
+          "translations": { "en": "Gütersloh", "pl": "Gütersloh", "uk": "Гютерсло" }
+        },
+        {
+          "latitude": 51.2500,
+          "longitude": 6.9700,
+          "population": 100000,
+          "translations": { "en": "Hilden", "pl": "Hilden", "uk": "Гільден" }
+        },
+        {
+          "latitude": 51.9600,
+          "longitude": 7.0100,
+          "population": 105000,
+          "translations": { "en": "Recklinghausen", "pl": "Recklinghausen", "uk": "Реклінгхаузен" }
+        },
+        {
+          "latitude": 51.7200,
+          "longitude": 6.9600,
+          "population": 156000,
+          "translations": { "en": "Bottrop", "pl": "Bottrop", "uk": "Боттроп" }
+        },
+        {
+          "latitude": 51.7500,
+          "longitude": 8.0000,
+          "population": 104000,
+          "translations": { "en": "Lippstadt", "pl": "Lippstadt", "uk": "Ліппштадт" }
+        },
+        {
+          "latitude": 51.3100,
+          "longitude": 6.5600,
+          "population": 103000,
+          "translations": { "en": "Viersen", "pl": "Viersen", "uk": "Фірзен" }
+        }
+      ]
+    },
+    {
+      "code": "DE-RP",
+      "latitude": 49.91,
+      "longitude": 7.45,
+      "translations": {
+        "en": "Rhineland-Palatinate",
+        "pl": "Nadrenia-Palatynat",
+        "uk": "Рейнланд-Пфальц"
+      },
+      "cities": [
+        {
+          "latitude": 50.0012,
+          "longitude": 8.2590,
+          "population": 217118,
+          "translations": { "en": "Mainz", "pl": "Moguncja", "uk": "Майнц" }
+        },
+        {
+          "latitude": 49.4427,
+          "longitude": 7.7689,
+          "population": 100030,
+          "translations": { "en": "Kaiserslautern", "pl": "Kaiserslautern", "uk": "Кайзерслаутерн" }
+        },
+        {
+          "latitude": 50.3569,
+          "longitude": 7.5890,
+          "population": 114052,
+          "translations": { "en": "Koblenz", "pl": "Koblencja", "uk": "Кобленц" }
+        },
+        {
+          "latitude": 49.2400,
+          "longitude": 6.9969,
+          "population": 105260,
+          "translations": { "en": "Trier", "pl": "Trewir", "uk": "Трір" }
+        },
+        {
+          "latitude": 49.4783,
+          "longitude": 8.4311,
+          "population": 172253,
+          "translations": { "en": "Ludwigshafen am Rhein", "pl": "Ludwigshafen nad Renem", "uk": "Людвігсгафен-на-Рейні" }
+        }
+      ]
+    },
+    {
+      "code": "DE-SL",
+      "latitude": 49.38,
+      "longitude": 7.00,
+      "translations": {
+        "en": "Saarland",
+        "pl": "Saara",
+        "uk": "Саарланд"
+      },
+      "cities": [
+        {
+          "latitude": 49.2354,
+          "longitude": 6.9813,
+          "population": 180515,
+          "translations": { "en": "Saarbrücken", "pl": "Saarbrücken", "uk": "Саарбрюккен" }
+        }
+      ]
+    },
+    {
+      "code": "DE-SN",
+      "latitude": 51.10,
+      "longitude": 13.20,
+      "translations": {
+        "en": "Saxony",
+        "pl": "Saksonia",
+        "uk": "Саксонія"
+      },
+      "cities": [
+        {
+          "latitude": 51.0504,
+          "longitude": 13.7373,
+          "population": 556780,
+          "translations": { "en": "Dresden", "pl": "Drezno", "uk": "Дрезден" }
+        },
+        {
+          "latitude": 51.3397,
+          "longitude": 12.3731,
+          "population": 601866,
+          "translations": { "en": "Leipzig", "pl": "Lipsk", "uk": "Лейпциг" }
+        },
+        {
+          "latitude": 50.8278,
+          "longitude": 12.9214,
+          "population": 247237,
+          "translations": { "en": "Chemnitz", "pl": "Chemnitz", "uk": "Хемніц" }
+        }
+      ]
+    },
+    {
+      "code": "DE-ST",
+      "latitude": 51.95,
+      "longitude": 11.69,
+      "translations": {
+        "en": "Saxony-Anhalt",
+        "pl": "Saksonia-Anhalt",
+        "uk": "Саксонія-Ангальт"
+      },
+      "cities": [
+        {
+          "latitude": 52.1205,
+          "longitude": 11.6276,
+          "population": 239364,
+          "translations": { "en": "Magdeburg", "pl": "Magdeburg", "uk": "Магдебург" }
+        },
+        {
+          "latitude": 51.4819,
+          "longitude": 11.9700,
+          "population": 239257,
+          "translations": { "en": "Halle (Saale)", "pl": "Halle nad Soławą", "uk": "Галле (Заале)" }
+        }
+      ]
+    },
+    {
+      "code": "DE-SH",
+      "latitude": 54.22,
+      "longitude": 9.70,
+      "translations": {
+        "en": "Schleswig-Holstein",
+        "pl": "Szlezwik-Holsztyn",
+        "uk": "Шлезвіг-Гольштейн"
+      },
+      "cities": [
+        {
+          "latitude": 54.3213,
+          "longitude": 10.1349,
+          "population": 246243,
+          "translations": { "en": "Kiel", "pl": "Kilonia", "uk": "Кіль" }
+        },
+        {
+          "latitude": 53.8655,
+          "longitude": 10.6866,
+          "population": 216530,
+          "translations": { "en": "Lübeck", "pl": "Lubeka", "uk": "Любек" }
+        },
+        {
+          "latitude": 54.7937,
+          "longitude": 9.4469,
+          "population": 100524,
+          "translations": { "en": "Flensburg", "pl": "Flensburg", "uk": "Фленсбург" }
+        }
+      ]
+    },
+    {
+      "code": "DE-TH",
+      "latitude": 50.86,
+      "longitude": 11.05,
+      "translations": {
+        "en": "Thuringia",
+        "pl": "Turyngia",
+        "uk": "Тюрінгія"
+      },
+      "cities": [
+        {
+          "latitude": 50.9787,
+          "longitude": 11.0328,
+          "population": 213699,
+          "translations": { "en": "Erfurt", "pl": "Erfurt", "uk": "Ерфурт" }
+        },
+        {
+          "latitude": 50.9272,
+          "longitude": 11.5892,
+          "population": 111407,
+          "translations": { "en": "Jena", "pl": "Jena", "uk": "Єна" }
+        }
+      ]
+    }
+  ]
+}

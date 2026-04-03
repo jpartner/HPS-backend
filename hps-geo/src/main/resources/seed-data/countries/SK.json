@@ -1,0 +1,447 @@
+{
+  "isoCode": "SK",
+  "phonePrefix": "+421",
+  "translations": {
+    "en": "Slovakia",
+    "pl": "Słowacja",
+    "uk": "Словаччина"
+  },
+  "regions": [
+    {
+      "code": "SK-BL",
+      "latitude": 48.1486,
+      "longitude": 17.1077,
+      "translations": {
+        "en": "Bratislava Region",
+        "pl": "Kraj bratysławski",
+        "uk": "Братиславський край"
+      },
+      "cities": [
+        {
+          "latitude": 48.1486,
+          "longitude": 17.1077,
+          "population": 475503,
+          "translations": {
+            "en": "Bratislava",
+            "pl": "Bratysława",
+            "uk": "Братислава"
+          }
+        },
+        {
+          "latitude": 48.2521,
+          "longitude": 17.0124,
+          "population": 76382,
+          "translations": {
+            "en": "Malacky",
+            "pl": "Malacky",
+            "uk": "Малацки"
+          }
+        },
+        {
+          "latitude": 48.1000,
+          "longitude": 17.2069,
+          "population": 62436,
+          "translations": {
+            "en": "Senec",
+            "pl": "Senec",
+            "uk": "Сенець"
+          }
+        },
+        {
+          "latitude": 48.0952,
+          "longitude": 17.3007,
+          "population": 53553,
+          "translations": {
+            "en": "Pezinok",
+            "pl": "Pezinok",
+            "uk": "Пезінок"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-TA",
+      "latitude": 48.3774,
+      "longitude": 17.5876,
+      "translations": {
+        "en": "Trnava Region",
+        "pl": "Kraj trnawski",
+        "uk": "Трнавський край"
+      },
+      "cities": [
+        {
+          "latitude": 48.3774,
+          "longitude": 17.5876,
+          "population": 65207,
+          "translations": {
+            "en": "Trnava",
+            "pl": "Trnawa",
+            "uk": "Трнава"
+          }
+        },
+        {
+          "latitude": 48.6206,
+          "longitude": 17.8261,
+          "population": 52138,
+          "translations": {
+            "en": "Piešťany",
+            "pl": "Piesztiany",
+            "uk": "Пʼєштяни"
+          }
+        },
+        {
+          "latitude": 48.3898,
+          "longitude": 17.0260,
+          "population": 51101,
+          "translations": {
+            "en": "Senica",
+            "pl": "Senica",
+            "uk": "Сениця"
+          }
+        },
+        {
+          "latitude": 48.2167,
+          "longitude": 17.7167,
+          "population": 52378,
+          "translations": {
+            "en": "Galanta",
+            "pl": "Galanta",
+            "uk": "Галанта"
+          }
+        },
+        {
+          "latitude": 48.0500,
+          "longitude": 17.6950,
+          "population": 53050,
+          "translations": {
+            "en": "Dunajská Streda",
+            "pl": "Dunajská Streda",
+            "uk": "Дунайська Стреда"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-NI",
+      "latitude": 48.3069,
+      "longitude": 18.0864,
+      "translations": {
+        "en": "Nitra Region",
+        "pl": "Kraj nitrzański",
+        "uk": "Нітранський край"
+      },
+      "cities": [
+        {
+          "latitude": 48.3069,
+          "longitude": 18.0864,
+          "population": 77048,
+          "translations": {
+            "en": "Nitra",
+            "pl": "Nitra",
+            "uk": "Нітра"
+          }
+        },
+        {
+          "latitude": 47.7584,
+          "longitude": 18.1285,
+          "population": 75241,
+          "translations": {
+            "en": "Komárno",
+            "pl": "Komárno",
+            "uk": "Комарно"
+          }
+        },
+        {
+          "latitude": 47.9942,
+          "longitude": 18.1710,
+          "population": 67489,
+          "translations": {
+            "en": "Nové Zámky",
+            "pl": "Nové Zámky",
+            "uk": "Нове Замки"
+          }
+        },
+        {
+          "latitude": 48.5720,
+          "longitude": 18.1741,
+          "population": 50064,
+          "translations": {
+            "en": "Topoľčany",
+            "pl": "Topoľčany",
+            "uk": "Топольчани"
+          }
+        },
+        {
+          "latitude": 48.3224,
+          "longitude": 18.7912,
+          "population": 55270,
+          "translations": {
+            "en": "Levice",
+            "pl": "Levice",
+            "uk": "Левіце"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-TC",
+      "latitude": 48.7393,
+      "longitude": 18.0456,
+      "translations": {
+        "en": "Trenčín Region",
+        "pl": "Kraj trenczyński",
+        "uk": "Тренчинський край"
+      },
+      "cities": [
+        {
+          "latitude": 48.8945,
+          "longitude": 18.0441,
+          "population": 55593,
+          "translations": {
+            "en": "Trenčín",
+            "pl": "Trenczyn",
+            "uk": "Тренчин"
+          }
+        },
+        {
+          "latitude": 48.5866,
+          "longitude": 17.9986,
+          "population": 53427,
+          "translations": {
+            "en": "Partizánske",
+            "pl": "Partizánske",
+            "uk": "Партизанське"
+          }
+        },
+        {
+          "latitude": 49.0621,
+          "longitude": 18.4315,
+          "population": 56811,
+          "translations": {
+            "en": "Považská Bystrica",
+            "pl": "Považská Bystrica",
+            "uk": "Поважська Бистриця"
+          }
+        },
+        {
+          "latitude": 49.1210,
+          "longitude": 18.1665,
+          "population": 52147,
+          "translations": {
+            "en": "Dubnica nad Váhom",
+            "pl": "Dubnica nad Váhom",
+            "uk": "Дубниця-над-Вагом"
+          }
+        },
+        {
+          "latitude": 48.7751,
+          "longitude": 18.6190,
+          "population": 50655,
+          "translations": {
+            "en": "Prievidza",
+            "pl": "Prievidza",
+            "uk": "Прієвідза"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-ZI",
+      "latitude": 49.2231,
+      "longitude": 18.7394,
+      "translations": {
+        "en": "Žilina Region",
+        "pl": "Kraj żyliński",
+        "uk": "Жилінський край"
+      },
+      "cities": [
+        {
+          "latitude": 49.2231,
+          "longitude": 18.7394,
+          "population": 81115,
+          "translations": {
+            "en": "Žilina",
+            "pl": "Żylina",
+            "uk": "Жиліна"
+          }
+        },
+        {
+          "latitude": 49.0667,
+          "longitude": 19.6100,
+          "population": 53763,
+          "translations": {
+            "en": "Liptovský Mikuláš",
+            "pl": "Liptovský Mikuláš",
+            "uk": "Ліптовський Мікулаш"
+          }
+        },
+        {
+          "latitude": 49.0756,
+          "longitude": 19.1504,
+          "population": 57922,
+          "translations": {
+            "en": "Martin",
+            "pl": "Martin",
+            "uk": "Мартін"
+          }
+        },
+        {
+          "latitude": 49.2713,
+          "longitude": 18.7572,
+          "population": 50281,
+          "translations": {
+            "en": "Čadca",
+            "pl": "Czadca",
+            "uk": "Чадця"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-BC",
+      "latitude": 48.7360,
+      "longitude": 19.1461,
+      "translations": {
+        "en": "Banská Bystrica Region",
+        "pl": "Kraj bańskobystrzycki",
+        "uk": "Банськобистрицький край"
+      },
+      "cities": [
+        {
+          "latitude": 48.7360,
+          "longitude": 19.1461,
+          "population": 76855,
+          "translations": {
+            "en": "Banská Bystrica",
+            "pl": "Bańska Bystrzyca",
+            "uk": "Банська Бистриця"
+          }
+        },
+        {
+          "latitude": 48.6316,
+          "longitude": 18.9113,
+          "population": 55518,
+          "translations": {
+            "en": "Zvolen",
+            "pl": "Zwoleń",
+            "uk": "Зволен"
+          }
+        },
+        {
+          "latitude": 48.3800,
+          "longitude": 19.6700,
+          "population": 52450,
+          "translations": {
+            "en": "Lučenec",
+            "pl": "Lučenec",
+            "uk": "Лученець"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-PV",
+      "latitude": 49.0018,
+      "longitude": 21.2393,
+      "translations": {
+        "en": "Prešov Region",
+        "pl": "Kraj preszowski",
+        "uk": "Пряшівський край"
+      },
+      "cities": [
+        {
+          "latitude": 49.0018,
+          "longitude": 21.2393,
+          "population": 88680,
+          "translations": {
+            "en": "Prešov",
+            "pl": "Preszów",
+            "uk": "Пряшів"
+          }
+        },
+        {
+          "latitude": 49.0500,
+          "longitude": 20.2972,
+          "population": 52750,
+          "translations": {
+            "en": "Poprad",
+            "pl": "Poprad",
+            "uk": "Попрад"
+          }
+        },
+        {
+          "latitude": 49.2944,
+          "longitude": 21.2926,
+          "population": 51704,
+          "translations": {
+            "en": "Bardejov",
+            "pl": "Bardiów",
+            "uk": "Бардіїв"
+          }
+        },
+        {
+          "latitude": 48.9886,
+          "longitude": 21.7081,
+          "population": 52870,
+          "translations": {
+            "en": "Humenné",
+            "pl": "Humenné",
+            "uk": "Гуменне"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SK-KI",
+      "latitude": 48.7164,
+      "longitude": 21.2611,
+      "translations": {
+        "en": "Košice Region",
+        "pl": "Kraj koszycki",
+        "uk": "Кошицький край"
+      },
+      "cities": [
+        {
+          "latitude": 48.7164,
+          "longitude": 21.2611,
+          "population": 238593,
+          "translations": {
+            "en": "Košice",
+            "pl": "Koszyce",
+            "uk": "Кошиці"
+          }
+        },
+        {
+          "latitude": 48.6636,
+          "longitude": 21.0837,
+          "population": 53091,
+          "translations": {
+            "en": "Moldava nad Bodvou",
+            "pl": "Moldava nad Bodvou",
+            "uk": "Молдава-над-Бодвою"
+          }
+        },
+        {
+          "latitude": 48.5653,
+          "longitude": 21.2534,
+          "population": 52279,
+          "translations": {
+            "en": "Michalovce",
+            "pl": "Michalovce",
+            "uk": "Міхаловце"
+          }
+        },
+        {
+          "latitude": 48.8286,
+          "longitude": 20.7009,
+          "population": 53337,
+          "translations": {
+            "en": "Spišská Nová Ves",
+            "pl": "Spišská Nová Ves",
+            "uk": "Спішська Нова Вес"
+          }
+        }
+      ]
+    }
+  ]
+}

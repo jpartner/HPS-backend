@@ -1,0 +1,869 @@
+{
+  "isoCode": "CZ",
+  "phonePrefix": "+420",
+  "translations": {
+    "en": "Czech Republic",
+    "pl": "Czechy",
+    "uk": "Чехія"
+  },
+  "regions": [
+    {
+      "code": "CZ-10",
+      "latitude": 50.0755,
+      "longitude": 14.4378,
+      "translations": {
+        "en": "Prague",
+        "pl": "Praga",
+        "uk": "Прага"
+      },
+      "cities": [
+        {
+          "latitude": 50.0755,
+          "longitude": 14.4378,
+          "population": 1357326,
+          "translations": {
+            "en": "Prague",
+            "pl": "Praga",
+            "uk": "Прага"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-20",
+      "latitude": 49.90,
+      "longitude": 14.50,
+      "translations": {
+        "en": "Central Bohemian Region",
+        "pl": "Kraj środkowoczeski",
+        "uk": "Середньочеський край"
+      },
+      "cities": [
+        {
+          "latitude": 50.2092,
+          "longitude": 15.8328,
+          "population": 49642,
+          "translations": {
+            "en": "Mladá Boleslav",
+            "pl": "Mladá Boleslav",
+            "uk": "Млада-Болеслав"
+          }
+        },
+        {
+          "latitude": 49.9617,
+          "longitude": 14.0747,
+          "population": 36806,
+          "translations": {
+            "en": "Příbram",
+            "pl": "Příbram",
+            "uk": "Пршібрам"
+          }
+        },
+        {
+          "latitude": 50.0275,
+          "longitude": 14.2561,
+          "population": 34402,
+          "translations": {
+            "en": "Beroun",
+            "pl": "Beroun",
+            "uk": "Бероун"
+          }
+        },
+        {
+          "latitude": 50.0667,
+          "longitude": 14.1000,
+          "population": 55911,
+          "translations": {
+            "en": "Kladno",
+            "pl": "Kladno",
+            "uk": "Кладно"
+          }
+        },
+        {
+          "latitude": 50.1281,
+          "longitude": 14.9114,
+          "population": 35682,
+          "translations": {
+            "en": "Nymburk",
+            "pl": "Nymburk",
+            "uk": "Нимбурк"
+          }
+        },
+        {
+          "latitude": 50.0339,
+          "longitude": 14.5403,
+          "population": 36547,
+          "translations": {
+            "en": "Kolín",
+            "pl": "Kolín",
+            "uk": "Колін"
+          }
+        },
+        {
+          "latitude": 49.7483,
+          "longitude": 14.4747,
+          "population": 30025,
+          "translations": {
+            "en": "Benešov",
+            "pl": "Benešov",
+            "uk": "Бенешов"
+          }
+        },
+        {
+          "latitude": 50.0600,
+          "longitude": 14.7717,
+          "population": 31378,
+          "translations": {
+            "en": "Kutná Hora",
+            "pl": "Kutná Hora",
+            "uk": "Кутна Гора"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-31",
+      "latitude": 49.40,
+      "longitude": 15.59,
+      "translations": {
+        "en": "South Bohemian Region",
+        "pl": "Kraj południowoczeski",
+        "uk": "Південночеський край"
+      },
+      "cities": [
+        {
+          "latitude": 48.9745,
+          "longitude": 14.4744,
+          "population": 95518,
+          "translations": {
+            "en": "České Budějovice",
+            "pl": "Czeskie Budziejowice",
+            "uk": "Ческе-Будейовіце"
+          }
+        },
+        {
+          "latitude": 49.0211,
+          "longitude": 14.6678,
+          "population": 34965,
+          "translations": {
+            "en": "Tábor",
+            "pl": "Tabor",
+            "uk": "Табор"
+          }
+        },
+        {
+          "latitude": 49.1392,
+          "longitude": 13.7231,
+          "population": 33520,
+          "translations": {
+            "en": "Strakonice",
+            "pl": "Strakonice",
+            "uk": "Страконіце"
+          }
+        },
+        {
+          "latitude": 49.1894,
+          "longitude": 14.6969,
+          "population": 30102,
+          "translations": {
+            "en": "Pelhřimov",
+            "pl": "Pelhřimov",
+            "uk": "Пелгржімов"
+          }
+        },
+        {
+          "latitude": 49.0881,
+          "longitude": 13.5208,
+          "population": 33682,
+          "translations": {
+            "en": "Písek",
+            "pl": "Písek",
+            "uk": "Пісек"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-32",
+      "latitude": 49.74,
+      "longitude": 13.38,
+      "translations": {
+        "en": "Plzeň Region",
+        "pl": "Kraj pilzneński",
+        "uk": "Пльзенський край"
+      },
+      "cities": [
+        {
+          "latitude": 49.7384,
+          "longitude": 13.3736,
+          "population": 178022,
+          "translations": {
+            "en": "Plzeň",
+            "pl": "Pilzno",
+            "uk": "Пльзень"
+          }
+        },
+        {
+          "latitude": 49.4767,
+          "longitude": 13.5250,
+          "population": 34042,
+          "translations": {
+            "en": "Klatovy",
+            "pl": "Klatovy",
+            "uk": "Клатови"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-41",
+      "latitude": 50.23,
+      "longitude": 12.87,
+      "translations": {
+        "en": "Karlovy Vary Region",
+        "pl": "Kraj karlowarsko",
+        "uk": "Карловарський край"
+      },
+      "cities": [
+        {
+          "latitude": 50.2297,
+          "longitude": 12.8714,
+          "population": 48319,
+          "translations": {
+            "en": "Karlovy Vary",
+            "pl": "Karlowe Wary",
+            "uk": "Карлові Вари"
+          }
+        },
+        {
+          "latitude": 50.2014,
+          "longitude": 12.6339,
+          "population": 32817,
+          "translations": {
+            "en": "Cheb",
+            "pl": "Cheb",
+            "uk": "Хеб"
+          }
+        },
+        {
+          "latitude": 50.3797,
+          "longitude": 12.7031,
+          "population": 33868,
+          "translations": {
+            "en": "Sokolov",
+            "pl": "Sokolov",
+            "uk": "Соколов"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-42",
+      "latitude": 50.66,
+      "longitude": 13.77,
+      "translations": {
+        "en": "Ústí nad Labem Region",
+        "pl": "Kraj ustecki",
+        "uk": "Устецький край"
+      },
+      "cities": [
+        {
+          "latitude": 50.6611,
+          "longitude": 14.0531,
+          "population": 91982,
+          "translations": {
+            "en": "Ústí nad Labem",
+            "pl": "Uście nad Łabą",
+            "uk": "Усті-над-Лабем"
+          }
+        },
+        {
+          "latitude": 50.6607,
+          "longitude": 13.8308,
+          "population": 51216,
+          "translations": {
+            "en": "Teplice",
+            "pl": "Teplice",
+            "uk": "Тепліце"
+          }
+        },
+        {
+          "latitude": 50.6603,
+          "longitude": 13.6831,
+          "population": 48072,
+          "translations": {
+            "en": "Most",
+            "pl": "Most",
+            "uk": "Мост"
+          }
+        },
+        {
+          "latitude": 50.7311,
+          "longitude": 14.2114,
+          "population": 52374,
+          "translations": {
+            "en": "Děčín",
+            "pl": "Děčín",
+            "uk": "Дечін"
+          }
+        },
+        {
+          "latitude": 50.5139,
+          "longitude": 13.6447,
+          "population": 43985,
+          "translations": {
+            "en": "Chomutov",
+            "pl": "Chomutov",
+            "uk": "Хомутов"
+          }
+        },
+        {
+          "latitude": 50.4161,
+          "longitude": 13.5478,
+          "population": 35814,
+          "translations": {
+            "en": "Litvínov",
+            "pl": "Litvínov",
+            "uk": "Літвінов"
+          }
+        },
+        {
+          "latitude": 50.5231,
+          "longitude": 13.4019,
+          "population": 33472,
+          "translations": {
+            "en": "Jirkov",
+            "pl": "Jirkov",
+            "uk": "Їрков"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-51",
+      "latitude": 50.77,
+      "longitude": 15.06,
+      "translations": {
+        "en": "Liberec Region",
+        "pl": "Kraj liberecki",
+        "uk": "Ліберецький край"
+      },
+      "cities": [
+        {
+          "latitude": 50.7671,
+          "longitude": 15.0562,
+          "population": 104445,
+          "translations": {
+            "en": "Liberec",
+            "pl": "Liberec",
+            "uk": "Ліберець"
+          }
+        },
+        {
+          "latitude": 50.7272,
+          "longitude": 15.1703,
+          "population": 46036,
+          "translations": {
+            "en": "Jablonec nad Nisou",
+            "pl": "Jablonec nad Nisou",
+            "uk": "Яблонець-над-Нісою"
+          }
+        },
+        {
+          "latitude": 50.5872,
+          "longitude": 15.0564,
+          "population": 32841,
+          "translations": {
+            "en": "Turnov",
+            "pl": "Turnov",
+            "uk": "Турнов"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-52",
+      "latitude": 50.21,
+      "longitude": 15.83,
+      "translations": {
+        "en": "Hradec Králové Region",
+        "pl": "Kraj hradecki",
+        "uk": "Краловоградецький край"
+      },
+      "cities": [
+        {
+          "latitude": 50.2104,
+          "longitude": 15.8328,
+          "population": 92904,
+          "translations": {
+            "en": "Hradec Králové",
+            "pl": "Hradec Králové",
+            "uk": "Градець-Кралове"
+          }
+        },
+        {
+          "latitude": 50.4308,
+          "longitude": 15.8953,
+          "population": 72751,
+          "translations": {
+            "en": "Trutnov",
+            "pl": "Trutnov",
+            "uk": "Трутнов"
+          }
+        },
+        {
+          "latitude": 50.2025,
+          "longitude": 16.2039,
+          "population": 30419,
+          "translations": {
+            "en": "Náchod",
+            "pl": "Náchod",
+            "uk": "Наход"
+          }
+        },
+        {
+          "latitude": 50.3447,
+          "longitude": 15.7961,
+          "population": 35055,
+          "translations": {
+            "en": "Jičín",
+            "pl": "Jičín",
+            "uk": "Їчін"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-53",
+      "latitude": 49.95,
+      "longitude": 16.28,
+      "translations": {
+        "en": "Pardubice Region",
+        "pl": "Kraj pardubicki",
+        "uk": "Пардубіцький край"
+      },
+      "cities": [
+        {
+          "latitude": 50.0343,
+          "longitude": 15.7812,
+          "population": 91755,
+          "translations": {
+            "en": "Pardubice",
+            "pl": "Pardubice",
+            "uk": "Пардубіце"
+          }
+        },
+        {
+          "latitude": 49.9519,
+          "longitude": 16.4419,
+          "population": 30038,
+          "translations": {
+            "en": "Ústí nad Orlicí",
+            "pl": "Ústí nad Orlicí",
+            "uk": "Усті-над-Орліці"
+          }
+        },
+        {
+          "latitude": 49.9500,
+          "longitude": 16.2667,
+          "population": 44229,
+          "translations": {
+            "en": "Svitavy",
+            "pl": "Svitavy",
+            "uk": "Світави"
+          }
+        },
+        {
+          "latitude": 49.9500,
+          "longitude": 15.9833,
+          "population": 32872,
+          "translations": {
+            "en": "Chrudim",
+            "pl": "Chrudim",
+            "uk": "Хрудім"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-63",
+      "latitude": 49.39,
+      "longitude": 15.59,
+      "translations": {
+        "en": "Vysočina Region",
+        "pl": "Kraj Wysoczyzna",
+        "uk": "Край Височина"
+      },
+      "cities": [
+        {
+          "latitude": 49.3961,
+          "longitude": 15.5908,
+          "population": 50025,
+          "translations": {
+            "en": "Jihlava",
+            "pl": "Igława",
+            "uk": "Їглава"
+          }
+        },
+        {
+          "latitude": 49.5956,
+          "longitude": 15.5800,
+          "population": 33862,
+          "translations": {
+            "en": "Havlíčkův Brod",
+            "pl": "Havlíčkův Brod",
+            "uk": "Гавлічків Брод"
+          }
+        },
+        {
+          "latitude": 49.2150,
+          "longitude": 15.8822,
+          "population": 35828,
+          "translations": {
+            "en": "Třebíč",
+            "pl": "Třebíč",
+            "uk": "Тршебіч"
+          }
+        },
+        {
+          "latitude": 49.4878,
+          "longitude": 15.9753,
+          "population": 31497,
+          "translations": {
+            "en": "Žďár nad Sázavou",
+            "pl": "Žďár nad Sázavou",
+            "uk": "Ждяр-над-Сазавою"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-64",
+      "latitude": 49.19,
+      "longitude": 16.61,
+      "translations": {
+        "en": "South Moravian Region",
+        "pl": "Kraj południowomorawski",
+        "uk": "Південноморавський край"
+      },
+      "cities": [
+        {
+          "latitude": 49.1951,
+          "longitude": 16.6068,
+          "population": 382405,
+          "translations": {
+            "en": "Brno",
+            "pl": "Brno",
+            "uk": "Брно"
+          }
+        },
+        {
+          "latitude": 48.8127,
+          "longitude": 16.7787,
+          "population": 34006,
+          "translations": {
+            "en": "Břeclav",
+            "pl": "Břeclav",
+            "uk": "Бржецлав"
+          }
+        },
+        {
+          "latitude": 49.1122,
+          "longitude": 17.3958,
+          "population": 36247,
+          "translations": {
+            "en": "Hodonín",
+            "pl": "Hodonín",
+            "uk": "Годонін"
+          }
+        },
+        {
+          "latitude": 49.0747,
+          "longitude": 16.6122,
+          "population": 55419,
+          "translations": {
+            "en": "Znojmo",
+            "pl": "Znojmo",
+            "uk": "Зноймо"
+          }
+        },
+        {
+          "latitude": 49.2194,
+          "longitude": 16.8761,
+          "population": 30204,
+          "translations": {
+            "en": "Vyškov",
+            "pl": "Vyškov",
+            "uk": "Вишков"
+          }
+        },
+        {
+          "latitude": 49.4803,
+          "longitude": 16.6639,
+          "population": 32753,
+          "translations": {
+            "en": "Blansko",
+            "pl": "Blansko",
+            "uk": "Бланско"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-71",
+      "latitude": 49.59,
+      "longitude": 17.25,
+      "translations": {
+        "en": "Olomouc Region",
+        "pl": "Kraj ołomuniecki",
+        "uk": "Оломоуцький край"
+      },
+      "cities": [
+        {
+          "latitude": 49.5938,
+          "longitude": 17.2509,
+          "population": 100663,
+          "translations": {
+            "en": "Olomouc",
+            "pl": "Ołomuniec",
+            "uk": "Оломоуць"
+          }
+        },
+        {
+          "latitude": 49.4522,
+          "longitude": 17.4511,
+          "population": 44025,
+          "translations": {
+            "en": "Prostějov",
+            "pl": "Prostějov",
+            "uk": "Простейов"
+          }
+        },
+        {
+          "latitude": 49.4719,
+          "longitude": 17.1208,
+          "population": 46082,
+          "translations": {
+            "en": "Přerov",
+            "pl": "Přerov",
+            "uk": "Пршеров"
+          }
+        },
+        {
+          "latitude": 49.9667,
+          "longitude": 16.9333,
+          "population": 30271,
+          "translations": {
+            "en": "Šumperk",
+            "pl": "Šumperk",
+            "uk": "Шумперк"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-72",
+      "latitude": 49.22,
+      "longitude": 17.66,
+      "translations": {
+        "en": "Zlín Region",
+        "pl": "Kraj zliński",
+        "uk": "Злінський край"
+      },
+      "cities": [
+        {
+          "latitude": 49.2244,
+          "longitude": 17.6678,
+          "population": 74997,
+          "translations": {
+            "en": "Zlín",
+            "pl": "Zlín",
+            "uk": "Злін"
+          }
+        },
+        {
+          "latitude": 49.2208,
+          "longitude": 17.7961,
+          "population": 36000,
+          "translations": {
+            "en": "Otrokovice",
+            "pl": "Otrokovice",
+            "uk": "Отроковіце"
+          }
+        },
+        {
+          "latitude": 49.0747,
+          "longitude": 17.4525,
+          "population": 36232,
+          "translations": {
+            "en": "Uherské Hradiště",
+            "pl": "Uherské Hradiště",
+            "uk": "Угерське Градіште"
+          }
+        },
+        {
+          "latitude": 49.3453,
+          "longitude": 18.1417,
+          "population": 36102,
+          "translations": {
+            "en": "Vsetín",
+            "pl": "Vsetín",
+            "uk": "Всетін"
+          }
+        },
+        {
+          "latitude": 49.4617,
+          "longitude": 17.9686,
+          "population": 56335,
+          "translations": {
+            "en": "Valašské Meziříčí",
+            "pl": "Valašské Meziříčí",
+            "uk": "Валаське Мезіржічі"
+          }
+        },
+        {
+          "latitude": 49.2000,
+          "longitude": 17.9500,
+          "population": 31538,
+          "translations": {
+            "en": "Kroměříž",
+            "pl": "Kroměříž",
+            "uk": "Кромержіж"
+          }
+        }
+      ]
+    },
+    {
+      "code": "CZ-80",
+      "latitude": 49.82,
+      "longitude": 18.26,
+      "translations": {
+        "en": "Moravian-Silesian Region",
+        "pl": "Kraj morawsko-śląski",
+        "uk": "Моравсько-Сілезький край"
+      },
+      "cities": [
+        {
+          "latitude": 49.8209,
+          "longitude": 18.2625,
+          "population": 285544,
+          "translations": {
+            "en": "Ostrava",
+            "pl": "Ostrawa",
+            "uk": "Острава"
+          }
+        },
+        {
+          "latitude": 49.8481,
+          "longitude": 18.3411,
+          "population": 56064,
+          "translations": {
+            "en": "Havířov",
+            "pl": "Hawierzów",
+            "uk": "Гавіржов"
+          }
+        },
+        {
+          "latitude": 49.7483,
+          "longitude": 18.6336,
+          "population": 55276,
+          "translations": {
+            "en": "Frýdek-Místek",
+            "pl": "Frydek-Mistek",
+            "uk": "Фридек-Містек"
+          }
+        },
+        {
+          "latitude": 49.9472,
+          "longitude": 18.1694,
+          "population": 54558,
+          "translations": {
+            "en": "Opava",
+            "pl": "Opawa",
+            "uk": "Опава"
+          }
+        },
+        {
+          "latitude": 49.8019,
+          "longitude": 18.1681,
+          "population": 56839,
+          "translations": {
+            "en": "Karviná",
+            "pl": "Karwina",
+            "uk": "Карвіна"
+          }
+        },
+        {
+          "latitude": 49.6881,
+          "longitude": 17.9028,
+          "population": 57082,
+          "translations": {
+            "en": "Nový Jičín",
+            "pl": "Nový Jičín",
+            "uk": "Новий Їчін"
+          }
+        },
+        {
+          "latitude": 49.8506,
+          "longitude": 18.5417,
+          "population": 35489,
+          "translations": {
+            "en": "Český Těšín",
+            "pl": "Czeski Cieszyn",
+            "uk": "Чеський Тешин"
+          }
+        },
+        {
+          "latitude": 49.8894,
+          "longitude": 18.3228,
+          "population": 36498,
+          "translations": {
+            "en": "Orlová",
+            "pl": "Orłowa",
+            "uk": "Орлова"
+          }
+        },
+        {
+          "latitude": 49.7867,
+          "longitude": 18.0150,
+          "population": 32127,
+          "translations": {
+            "en": "Třinec",
+            "pl": "Trzyniec",
+            "uk": "Тршинець"
+          }
+        },
+        {
+          "latitude": 49.9439,
+          "longitude": 17.9031,
+          "population": 43473,
+          "translations": {
+            "en": "Krnov",
+            "pl": "Krnov",
+            "uk": "Крнов"
+          }
+        },
+        {
+          "latitude": 49.7003,
+          "longitude": 17.9714,
+          "population": 30218,
+          "translations": {
+            "en": "Kopřivnice",
+            "pl": "Kopřivnice",
+            "uk": "Копршівніце"
+          }
+        },
+        {
+          "latitude": 49.8356,
+          "longitude": 18.4192,
+          "population": 36785,
+          "translations": {
+            "en": "Bohumín",
+            "pl": "Bogumin",
+            "uk": "Богумін"
+          }
+        }
+      ]
+    }
+  ]
+}

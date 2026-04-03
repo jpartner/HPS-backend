@@ -1,0 +1,331 @@
+{
+  "isoCode": "LT",
+  "phonePrefix": "+370",
+  "translations": {
+    "en": "Lithuania",
+    "pl": "Litwa",
+    "uk": "Литва"
+  },
+  "regions": [
+    {
+      "code": "LT-AL",
+      "latitude": 54.40,
+      "longitude": 24.04,
+      "translations": {
+        "en": "Alytus County",
+        "pl": "Okręg olicki",
+        "uk": "Алітуський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 54.3963,
+          "longitude": 24.0458,
+          "population": 52362,
+          "translations": {
+            "en": "Alytus",
+            "pl": "Olita",
+            "uk": "Алітус"
+          }
+        },
+        {
+          "latitude": 54.0906,
+          "longitude": 23.9636,
+          "population": 32014,
+          "translations": {
+            "en": "Druskininkai",
+            "pl": "Druskienniki",
+            "uk": "Друскінінкай"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-KU",
+      "latitude": 55.71,
+      "longitude": 21.14,
+      "translations": {
+        "en": "Klaipėda County",
+        "pl": "Okręg kłajpedzki",
+        "uk": "Клайпедський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 55.7033,
+          "longitude": 21.1443,
+          "population": 149032,
+          "translations": {
+            "en": "Klaipėda",
+            "pl": "Kłajpeda",
+            "uk": "Клайпеда"
+          }
+        },
+        {
+          "latitude": 55.9175,
+          "longitude": 21.0686,
+          "population": 43953,
+          "translations": {
+            "en": "Palanga",
+            "pl": "Połąga",
+            "uk": "Паланга"
+          }
+        },
+        {
+          "latitude": 55.3525,
+          "longitude": 21.4814,
+          "population": 30473,
+          "translations": {
+            "en": "Šilutė",
+            "pl": "Szyłokarcze",
+            "uk": "Шилуте"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-KL",
+      "latitude": 55.23,
+      "longitude": 23.89,
+      "translations": {
+        "en": "Kaunas County",
+        "pl": "Okręg kowieński",
+        "uk": "Каунаський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 54.8985,
+          "longitude": 23.9036,
+          "population": 289380,
+          "translations": {
+            "en": "Kaunas",
+            "pl": "Kowno",
+            "uk": "Каунас"
+          }
+        },
+        {
+          "latitude": 54.6358,
+          "longitude": 24.0514,
+          "population": 30945,
+          "translations": {
+            "en": "Prienai",
+            "pl": "Preny",
+            "uk": "Прієнай"
+          }
+        },
+        {
+          "latitude": 55.0747,
+          "longitude": 23.5997,
+          "population": 31897,
+          "translations": {
+            "en": "Kėdainiai",
+            "pl": "Kiejdany",
+            "uk": "Кедайняй"
+          }
+        },
+        {
+          "latitude": 55.2500,
+          "longitude": 23.9667,
+          "population": 31184,
+          "translations": {
+            "en": "Jonava",
+            "pl": "Janów",
+            "uk": "Йонава"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-MR",
+      "latitude": 55.18,
+      "longitude": 23.55,
+      "translations": {
+        "en": "Marijampolė County",
+        "pl": "Okręg mariampolski",
+        "uk": "Маріямпольський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 54.5594,
+          "longitude": 23.3503,
+          "population": 38014,
+          "translations": {
+            "en": "Marijampolė",
+            "pl": "Mariampol",
+            "uk": "Маріямполе"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-PN",
+      "latitude": 55.73,
+      "longitude": 24.36,
+      "translations": {
+        "en": "Panevėžys County",
+        "pl": "Okręg poniewieski",
+        "uk": "Паневезький повіт"
+      },
+      "cities": [
+        {
+          "latitude": 55.7333,
+          "longitude": 24.3500,
+          "population": 87664,
+          "translations": {
+            "en": "Panevėžys",
+            "pl": "Poniewież",
+            "uk": "Паневежис"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-SA",
+      "latitude": 55.93,
+      "longitude": 23.31,
+      "translations": {
+        "en": "Šiauliai County",
+        "pl": "Okręg szawelski",
+        "uk": "Шяуляйський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 55.9333,
+          "longitude": 23.3167,
+          "population": 100053,
+          "translations": {
+            "en": "Šiauliai",
+            "pl": "Szawle",
+            "uk": "Шяуляй"
+          }
+        },
+        {
+          "latitude": 56.3167,
+          "longitude": 22.3333,
+          "population": 31662,
+          "translations": {
+            "en": "Mažeikiai",
+            "pl": "Możejki",
+            "uk": "Мажейкяй"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-TA",
+      "latitude": 55.25,
+      "longitude": 22.29,
+      "translations": {
+        "en": "Tauragė County",
+        "pl": "Okręg tauroski",
+        "uk": "Таурагський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 55.2522,
+          "longitude": 22.2894,
+          "population": 30247,
+          "translations": {
+            "en": "Tauragė",
+            "pl": "Taurogi",
+            "uk": "Таураге"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-TE",
+      "latitude": 55.50,
+      "longitude": 22.09,
+      "translations": {
+        "en": "Telšiai County",
+        "pl": "Okręg telszewski",
+        "uk": "Тельшяйський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 55.9833,
+          "longitude": 22.2500,
+          "population": 36213,
+          "translations": {
+            "en": "Plungė",
+            "pl": "Plungiany",
+            "uk": "Плунге"
+          }
+        },
+        {
+          "latitude": 55.5000,
+          "longitude": 22.0833,
+          "population": 30014,
+          "translations": {
+            "en": "Telšiai",
+            "pl": "Telsze",
+            "uk": "Тельшяй"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-UT",
+      "latitude": 55.50,
+      "longitude": 25.60,
+      "translations": {
+        "en": "Utena County",
+        "pl": "Okręg uciański",
+        "uk": "Утенський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 55.4969,
+          "longitude": 25.6028,
+          "population": 30978,
+          "translations": {
+            "en": "Utena",
+            "pl": "Uciana",
+            "uk": "Утена"
+          }
+        },
+        {
+          "latitude": 55.7333,
+          "longitude": 26.0167,
+          "population": 33424,
+          "translations": {
+            "en": "Visaginas",
+            "pl": "Wisaginia",
+            "uk": "Вісагінас"
+          }
+        }
+      ]
+    },
+    {
+      "code": "LT-VL",
+      "latitude": 54.69,
+      "longitude": 25.28,
+      "translations": {
+        "en": "Vilnius County",
+        "pl": "Okręg wileński",
+        "uk": "Вільнюський повіт"
+      },
+      "cities": [
+        {
+          "latitude": 54.6872,
+          "longitude": 25.2797,
+          "population": 576195,
+          "translations": {
+            "en": "Vilnius",
+            "pl": "Wilno",
+            "uk": "Вільнюс"
+          }
+        },
+        {
+          "latitude": 54.6389,
+          "longitude": 25.0964,
+          "population": 32931,
+          "translations": {
+            "en": "Trakai",
+            "pl": "Troki",
+            "uk": "Тракай"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,701 @@
+{
+  "isoCode": "HU",
+  "phonePrefix": "+36",
+  "translations": {
+    "en": "Hungary",
+    "pl": "Węgry",
+    "uk": "Угорщина"
+  },
+  "regions": [
+    {
+      "code": "HU-BU",
+      "latitude": 47.4979,
+      "longitude": 19.0402,
+      "translations": {
+        "en": "Budapest",
+        "pl": "Budapeszt",
+        "uk": "Будапешт"
+      },
+      "cities": [
+        {
+          "latitude": 47.4979,
+          "longitude": 19.0402,
+          "population": 1756000,
+          "translations": {
+            "en": "Budapest",
+            "pl": "Budapeszt",
+            "uk": "Будапешт"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-BK",
+      "latitude": 46.9060,
+      "longitude": 19.6910,
+      "translations": {
+        "en": "Bács-Kiskun",
+        "pl": "Bács-Kiskun",
+        "uk": "Бач-Кішкун"
+      },
+      "cities": [
+        {
+          "latitude": 46.9060,
+          "longitude": 19.6910,
+          "population": 111411,
+          "translations": {
+            "en": "Kecskemét",
+            "pl": "Kecskemét",
+            "uk": "Кечкемет"
+          }
+        },
+        {
+          "latitude": 46.3475,
+          "longitude": 19.8096,
+          "population": 58809,
+          "translations": {
+            "en": "Kiskunfélegyháza",
+            "pl": "Kiskunfélegyháza",
+            "uk": "Кішкунфеледьгаза"
+          }
+        },
+        {
+          "latitude": 46.6613,
+          "longitude": 19.1243,
+          "population": 67753,
+          "translations": {
+            "en": "Baja",
+            "pl": "Baja",
+            "uk": "Бая"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-BA",
+      "latitude": 46.3567,
+      "longitude": 18.7205,
+      "translations": {
+        "en": "Baranya",
+        "pl": "Baranya",
+        "uk": "Бараня"
+      },
+      "cities": [
+        {
+          "latitude": 46.0727,
+          "longitude": 18.2323,
+          "population": 144675,
+          "translations": {
+            "en": "Pécs",
+            "pl": "Pecz",
+            "uk": "Печ"
+          }
+        },
+        {
+          "latitude": 45.9877,
+          "longitude": 18.6968,
+          "population": 52691,
+          "translations": {
+            "en": "Mohács",
+            "pl": "Mohacz",
+            "uk": "Мохач"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-BE",
+      "latitude": 46.6901,
+      "longitude": 20.8268,
+      "translations": {
+        "en": "Békés",
+        "pl": "Békés",
+        "uk": "Бекеш"
+      },
+      "cities": [
+        {
+          "latitude": 46.6736,
+          "longitude": 21.0936,
+          "population": 60178,
+          "translations": {
+            "en": "Békéscsaba",
+            "pl": "Békéscsaba",
+            "uk": "Бекешчаба"
+          }
+        },
+        {
+          "latitude": 46.6801,
+          "longitude": 20.4932,
+          "population": 50898,
+          "translations": {
+            "en": "Szarvas",
+            "pl": "Szarvas",
+            "uk": "Сарваш"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-BZ",
+      "latitude": 48.0500,
+      "longitude": 20.7700,
+      "translations": {
+        "en": "Borsod-Abaúj-Zemplén",
+        "pl": "Borsod-Abaúj-Zemplén",
+        "uk": "Боршод-Абауй-Земплен"
+      },
+      "cities": [
+        {
+          "latitude": 48.1035,
+          "longitude": 20.7784,
+          "population": 157177,
+          "translations": {
+            "en": "Miskolc",
+            "pl": "Miszkolc",
+            "uk": "Мішкольц"
+          }
+        },
+        {
+          "latitude": 48.2000,
+          "longitude": 20.3833,
+          "population": 59302,
+          "translations": {
+            "en": "Ózd",
+            "pl": "Ózd",
+            "uk": "Озд"
+          }
+        },
+        {
+          "latitude": 48.0558,
+          "longitude": 21.4046,
+          "population": 52145,
+          "translations": {
+            "en": "Tiszaújváros",
+            "pl": "Tiszaújváros",
+            "uk": "Тисауйварош"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-CS",
+      "latitude": 46.2535,
+      "longitude": 20.1467,
+      "translations": {
+        "en": "Csongrád-Csanád",
+        "pl": "Csongrád-Csanád",
+        "uk": "Чонґрад-Чанад"
+      },
+      "cities": [
+        {
+          "latitude": 46.2530,
+          "longitude": 20.1414,
+          "population": 161879,
+          "translations": {
+            "en": "Szeged",
+            "pl": "Segedyn",
+            "uk": "Сегед"
+          }
+        },
+        {
+          "latitude": 46.4344,
+          "longitude": 20.2629,
+          "population": 55542,
+          "translations": {
+            "en": "Hódmezővásárhely",
+            "pl": "Hódmezővásárhely",
+            "uk": "Годмезевашаргей"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-FE",
+      "latitude": 47.1933,
+      "longitude": 18.4103,
+      "translations": {
+        "en": "Fejér",
+        "pl": "Fejér",
+        "uk": "Фейєр"
+      },
+      "cities": [
+        {
+          "latitude": 47.1896,
+          "longitude": 18.4210,
+          "population": 97399,
+          "translations": {
+            "en": "Székesfehérvár",
+            "pl": "Székesfehérvár",
+            "uk": "Секешфегервар"
+          }
+        },
+        {
+          "latitude": 47.1583,
+          "longitude": 18.9350,
+          "population": 64163,
+          "translations": {
+            "en": "Dunaújváros",
+            "pl": "Dunaújváros",
+            "uk": "Дунауйварош"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-GS",
+      "latitude": 47.6875,
+      "longitude": 17.6356,
+      "translations": {
+        "en": "Győr-Moson-Sopron",
+        "pl": "Győr-Moson-Sopron",
+        "uk": "Дьєр-Мошон-Шопрон"
+      },
+      "cities": [
+        {
+          "latitude": 47.6875,
+          "longitude": 17.6356,
+          "population": 131564,
+          "translations": {
+            "en": "Győr",
+            "pl": "Győr",
+            "uk": "Дьєр"
+          }
+        },
+        {
+          "latitude": 47.6816,
+          "longitude": 16.5845,
+          "population": 62246,
+          "translations": {
+            "en": "Sopron",
+            "pl": "Sopron",
+            "uk": "Шопрон"
+          }
+        },
+        {
+          "latitude": 47.7525,
+          "longitude": 17.2676,
+          "population": 58569,
+          "translations": {
+            "en": "Mosonmagyaróvár",
+            "pl": "Mosonmagyaróvár",
+            "uk": "Мошонмадяровар"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-HB",
+      "latitude": 47.5316,
+      "longitude": 21.6273,
+      "translations": {
+        "en": "Hajdú-Bihar",
+        "pl": "Hajdú-Bihar",
+        "uk": "Гайду-Бігар"
+      },
+      "cities": [
+        {
+          "latitude": 47.5316,
+          "longitude": 21.6273,
+          "population": 201981,
+          "translations": {
+            "en": "Debrecen",
+            "pl": "Debreczyn",
+            "uk": "Дебрецен"
+          }
+        },
+        {
+          "latitude": 47.1777,
+          "longitude": 21.7194,
+          "population": 50699,
+          "translations": {
+            "en": "Hajdúböszörmény",
+            "pl": "Hajdúböszörmény",
+            "uk": "Гайдубесермень"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-HE",
+      "latitude": 47.9025,
+      "longitude": 20.3772,
+      "translations": {
+        "en": "Heves",
+        "pl": "Heves",
+        "uk": "Гевеш"
+      },
+      "cities": [
+        {
+          "latitude": 47.9025,
+          "longitude": 20.3772,
+          "population": 52898,
+          "translations": {
+            "en": "Eger",
+            "pl": "Eger",
+            "uk": "Еґер"
+          }
+        },
+        {
+          "latitude": 47.6947,
+          "longitude": 20.2567,
+          "population": 50476,
+          "translations": {
+            "en": "Gyöngyös",
+            "pl": "Gyöngyös",
+            "uk": "Дьєндьєш"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-JN",
+      "latitude": 47.1811,
+      "longitude": 20.1866,
+      "translations": {
+        "en": "Jász-Nagykun-Szolnok",
+        "pl": "Jász-Nagykun-Szolnok",
+        "uk": "Яс-Надькун-Сольнок"
+      },
+      "cities": [
+        {
+          "latitude": 47.1811,
+          "longitude": 20.1866,
+          "population": 71285,
+          "translations": {
+            "en": "Szolnok",
+            "pl": "Szolnok",
+            "uk": "Сольнок"
+          }
+        },
+        {
+          "latitude": 47.5145,
+          "longitude": 19.9095,
+          "population": 55397,
+          "translations": {
+            "en": "Jászberény",
+            "pl": "Jászberény",
+            "uk": "Ясберень"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-KE",
+      "latitude": 47.6833,
+      "longitude": 18.9500,
+      "translations": {
+        "en": "Komárom-Esztergom",
+        "pl": "Komárom-Esztergom",
+        "uk": "Комаром-Естерґом"
+      },
+      "cities": [
+        {
+          "latitude": 47.7402,
+          "longitude": 18.1209,
+          "population": 59345,
+          "translations": {
+            "en": "Tatabánya",
+            "pl": "Tatabánya",
+            "uk": "Татабанья"
+          }
+        },
+        {
+          "latitude": 47.7559,
+          "longitude": 18.7519,
+          "population": 51857,
+          "translations": {
+            "en": "Esztergom",
+            "pl": "Esztergom",
+            "uk": "Естерґом"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-NO",
+      "latitude": 47.9554,
+      "longitude": 19.0808,
+      "translations": {
+        "en": "Nógrád",
+        "pl": "Nógrád",
+        "uk": "Ноґрад"
+      },
+      "cities": [
+        {
+          "latitude": 47.9085,
+          "longitude": 19.1291,
+          "population": 56780,
+          "translations": {
+            "en": "Salgótarján",
+            "pl": "Salgótarján",
+            "uk": "Шальготар'ян"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-PE",
+      "latitude": 47.3333,
+      "longitude": 19.4167,
+      "translations": {
+        "en": "Pest",
+        "pl": "Pest",
+        "uk": "Пешт"
+      },
+      "cities": [
+        {
+          "latitude": 47.4680,
+          "longitude": 19.3607,
+          "population": 68037,
+          "translations": {
+            "en": "Érd",
+            "pl": "Érd",
+            "uk": "Ерд"
+          }
+        },
+        {
+          "latitude": 47.6254,
+          "longitude": 19.0816,
+          "population": 65000,
+          "translations": {
+            "en": "Budaörs",
+            "pl": "Budaörs",
+            "uk": "Будаерш"
+          }
+        },
+        {
+          "latitude": 47.3570,
+          "longitude": 19.0780,
+          "population": 64854,
+          "translations": {
+            "en": "Százhalombatta",
+            "pl": "Százhalombatta",
+            "uk": "Сазгаломбатта"
+          }
+        },
+        {
+          "latitude": 47.4576,
+          "longitude": 19.2268,
+          "population": 62862,
+          "translations": {
+            "en": "Szigetszentmiklós",
+            "pl": "Szigetszentmiklós",
+            "uk": "Сіґетсентміклош"
+          }
+        },
+        {
+          "latitude": 47.6564,
+          "longitude": 19.1920,
+          "population": 61558,
+          "translations": {
+            "en": "Dunakeszi",
+            "pl": "Dunakeszi",
+            "uk": "Дунакесі"
+          }
+        },
+        {
+          "latitude": 47.5448,
+          "longitude": 19.2366,
+          "population": 59120,
+          "translations": {
+            "en": "Vecsés",
+            "pl": "Vecsés",
+            "uk": "Вечеш"
+          }
+        },
+        {
+          "latitude": 47.6507,
+          "longitude": 19.3645,
+          "population": 56960,
+          "translations": {
+            "en": "Gödöllő",
+            "pl": "Gödöllő",
+            "uk": "Ґедельо"
+          }
+        },
+        {
+          "latitude": 47.3786,
+          "longitude": 19.4023,
+          "population": 54210,
+          "translations": {
+            "en": "Ócsa",
+            "pl": "Ócsa",
+            "uk": "Очо"
+          }
+        },
+        {
+          "latitude": 47.7396,
+          "longitude": 19.0808,
+          "population": 57085,
+          "translations": {
+            "en": "Szentendre",
+            "pl": "Szentendre",
+            "uk": "Сентендре"
+          }
+        },
+        {
+          "latitude": 47.1489,
+          "longitude": 19.7958,
+          "population": 64386,
+          "translations": {
+            "en": "Cegléd",
+            "pl": "Cegléd",
+            "uk": "Цеґлед"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-SO",
+      "latitude": 46.5968,
+      "longitude": 17.7893,
+      "translations": {
+        "en": "Somogy",
+        "pl": "Somogy",
+        "uk": "Шомодь"
+      },
+      "cities": [
+        {
+          "latitude": 46.3595,
+          "longitude": 17.7968,
+          "population": 63246,
+          "translations": {
+            "en": "Kaposvár",
+            "pl": "Kaposvár",
+            "uk": "Капошвар"
+          }
+        },
+        {
+          "latitude": 46.9048,
+          "longitude": 17.8920,
+          "population": 50570,
+          "translations": {
+            "en": "Siófok",
+            "pl": "Siófok",
+            "uk": "Шіофок"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-SZ",
+      "latitude": 48.1040,
+      "longitude": 21.7181,
+      "translations": {
+        "en": "Szabolcs-Szatmár-Bereg",
+        "pl": "Szabolcs-Szatmár-Bereg",
+        "uk": "Саболч-Сатмар-Береґ"
+      },
+      "cities": [
+        {
+          "latitude": 47.9554,
+          "longitude": 21.7178,
+          "population": 117597,
+          "translations": {
+            "en": "Nyíregyháza",
+            "pl": "Nyíregyháza",
+            "uk": "Ніредьгаза"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-TO",
+      "latitude": 46.4179,
+      "longitude": 18.4140,
+      "translations": {
+        "en": "Tolna",
+        "pl": "Tolna",
+        "uk": "Тольна"
+      },
+      "cities": [
+        {
+          "latitude": 46.3508,
+          "longitude": 18.7057,
+          "population": 61816,
+          "translations": {
+            "en": "Szekszárd",
+            "pl": "Szekszárd",
+            "uk": "Сексард"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-VA",
+      "latitude": 47.2308,
+      "longitude": 16.6218,
+      "translations": {
+        "en": "Vas",
+        "pl": "Vas",
+        "uk": "Ваш"
+      },
+      "cities": [
+        {
+          "latitude": 47.2308,
+          "longitude": 16.6218,
+          "population": 79534,
+          "translations": {
+            "en": "Szombathely",
+            "pl": "Szombathely",
+            "uk": "Сомбатгей"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-VE",
+      "latitude": 47.0930,
+      "longitude": 17.9093,
+      "translations": {
+        "en": "Veszprém",
+        "pl": "Veszprém",
+        "uk": "Веспрем"
+      },
+      "cities": [
+        {
+          "latitude": 47.0930,
+          "longitude": 17.9093,
+          "population": 56361,
+          "translations": {
+            "en": "Veszprém",
+            "pl": "Veszprém",
+            "uk": "Веспрем"
+          }
+        }
+      ]
+    },
+    {
+      "code": "HU-ZA",
+      "latitude": 46.8417,
+      "longitude": 16.8416,
+      "translations": {
+        "en": "Zala",
+        "pl": "Zala",
+        "uk": "Зала"
+      },
+      "cities": [
+        {
+          "latitude": 46.3594,
+          "longitude": 16.9916,
+          "population": 56986,
+          "translations": {
+            "en": "Nagykanizsa",
+            "pl": "Nagykanizsa",
+            "uk": "Надьканіжа"
+          }
+        },
+        {
+          "latitude": 46.8417,
+          "longitude": 16.8416,
+          "population": 59088,
+          "translations": {
+            "en": "Zalaegerszeg",
+            "pl": "Zalaegerszeg",
+            "uk": "Залаеґерсеґ"
+          }
+        }
+      ]
+    }
+  ]
+}

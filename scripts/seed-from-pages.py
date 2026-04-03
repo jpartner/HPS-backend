@@ -223,104 +223,71 @@ def seed_provider(provider, slug_map):
     if status == 200:
         token = resp["accessToken"]
 
-    # 5. Create individual services from pricing tiers
-    # Get subcategory IDs for services
+    # 5. Create time-based services with incall/outcall variants
+    does_outcall = attributes.get("Wyjazdy", "").lower() == "tak"
+    base_cat_id = category_ids[0] if category_ids else None
     service_count = 0
-    pricing_services = []
 
-    # Map pricing tiers to services
-    if pricing.get("15 min"):
-        pricing_services.append({
-            "duration": 15,
-            "price": pricing["15 min"],
-            "title_en": "Quick Meeting (15 min)",
-            "title_pl": "Szybkie spotkanie (15 min)",
-        })
-    if pricing.get("0,5 godz"):
-        pricing_services.append({
-            "duration": 30,
-            "price": pricing["0,5 godz"],
-            "title_en": "Half Hour Meeting",
-            "title_pl": "Spotkanie półgodzinne",
-        })
-    if pricing.get("1 godz"):
-        pricing_services.append({
-            "duration": 60,
-            "price": pricing["1 godz"],
-            "title_en": "One Hour Meeting",
-            "title_pl": "Spotkanie godzinne",
-        })
-    if pricing.get("Noc"):
-        pricing_services.append({
-            "duration": 480,
-            "price": pricing["Noc"],
-            "title_en": "Overnight Meeting",
-            "title_pl": "Spotkanie całonocne",
-        })
+    # Subcategory for classic meetings
+    classic_cat = slug_map.get("classic-meeting", base_cat_id)
 
-    # Also create services for specific offerings
-    specific_services = []
-    for subcat_slug in matched_subcats:
-        if subcat_slug in slug_map:
-            cat_id = slug_map[subcat_slug]
-        elif parent_slug in slug_map:
-            cat_id = slug_map[parent_slug]
-        else:
-            cat_id = category_ids[0] if category_ids else None
+    time_tiers = [
+        ("15 min", 15, "Quick Visit", "Szybka wizyta", "Kurzbesuch", "Швидкий візит"),
+        ("0,5 godz", 30, "Half Hour", "Pół godziny", "Halbe Stunde", "Півгодини"),
+        ("1 godz", 60, "One Hour", "Godzina", "Eine Stunde", "Година"),
+        ("Noc", 480, "Overnight", "Całonocne", "Übernachtung", "На ніч"),
+    ]
 
-        if not cat_id:
+    for price_key, duration, en, pl, de, uk in time_tiers:
+        price = pricing.get(price_key)
+        if not price or not classic_cat:
             continue
 
-        # Get display name from the subcategory
-        subcat_name = subcat_slug.replace("-", " ").title()
-        hourly_price = pricing.get("1 godz") or pricing.get("0,5 godz") or 200
-
-        specific_services.append({
-            "categoryId": cat_id,
-            "pricingType": "FIXED",
-            "priceAmount": hourly_price,
-            "priceCurrency": "PLN",
-            "durationMinutes": 60,
-            "translations": [
-                {"lang": "en", "title": subcat_name, "description": f"Professional {subcat_name.lower()} service"},
-                {"lang": "pl", "title": subcat_name, "description": f"Profesjonalna usługa"},
-            ]
-        })
-
-    # Create pricing-based services
-    base_cat_id = category_ids[0] if category_ids else None
-    for ps in pricing_services:
-        if not base_cat_id:
-            break
+        # Incall service
         svc = {
-            "categoryId": base_cat_id,
+            "categoryId": classic_cat,
             "pricingType": "FIXED",
-            "priceAmount": ps["price"],
+            "priceAmount": price,
             "priceCurrency": "PLN",
-            "durationMinutes": ps["duration"],
+            "durationMinutes": duration,
             "translations": [
-                {"lang": "en", "title": ps["title_en"]},
-                {"lang": "pl", "title": ps["title_pl"]},
+                {"lang": "en", "title": f"{en} — Incall", "description": "At provider's location"},
+                {"lang": "pl", "title": f"{pl} — u mnie", "description": "W lokalu"},
+                {"lang": "de", "title": f"{de} — Incall", "description": "Beim Anbieter"},
+                {"lang": "uk", "title": f"{uk} — у мене", "description": "За адресою"},
             ]
         }
-        status, resp = api_call("POST", "/api/v1/providers/me/services", svc, token)
-        if status == 201:
-            service_count += 1
-        else:
-            pass  # May already exist
-
-    # Create specific category services (deduplicated)
-    seen_cats = set()
-    for svc in specific_services:
-        key = svc["translations"][0]["title"]
-        if key in seen_cats:
-            continue
-        seen_cats.add(key)
-        status, resp = api_call("POST", "/api/v1/providers/me/services", svc, token)
+        status, _ = api_call("POST", "/api/v1/providers/me/services", svc, token)
         if status == 201:
             service_count += 1
 
-    print(f"    {service_count} services created")
+        # Outcall variant (higher price)
+        if does_outcall:
+            outcall_price = int(price * 1.3) if duration < 480 else int(price * 1.1)
+            svc_out = {
+                "categoryId": classic_cat,
+                "pricingType": "FIXED",
+                "priceAmount": outcall_price,
+                "priceCurrency": "PLN",
+                "durationMinutes": duration,
+                "translations": [
+                    {"lang": "en", "title": f"{en} — Outcall", "description": "At your location"},
+                    {"lang": "pl", "title": f"{pl} — u Ciebie", "description": "Dojazd do klienta"},
+                    {"lang": "de", "title": f"{de} — Outcall", "description": "Bei Ihnen"},
+                    {"lang": "uk", "title": f"{uk} — виїзд", "description": "За вашою адресою"},
+                ]
+            }
+            status, _ = api_call("POST", "/api/v1/providers/me/services", svc_out, token)
+            if status == 201:
+                service_count += 1
+
+    print(f"    {service_count} services created (incall{' + outcall' if does_outcall else ''})")
+
+    # 5b. Store offered extras as provider attributes
+    if tags:
+        attrs = {"offered_services": tags}
+        api_call("PUT", "/api/v1/providers/me/attributes", attrs, token)
+        print(f"    {len(tags)} extras stored as attributes")
 
     # 6. Add gallery images via URL
     remote_photos = [p["remote_url"] for p in photos if p.get("remote_url")]

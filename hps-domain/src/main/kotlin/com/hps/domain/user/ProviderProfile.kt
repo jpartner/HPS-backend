@@ -11,7 +11,7 @@ import java.util.UUID
 @Table(name = "provider_profiles")
 class ProviderProfile(
     @Id
-    val userId: UUID,
+    var userId: UUID? = null,
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId

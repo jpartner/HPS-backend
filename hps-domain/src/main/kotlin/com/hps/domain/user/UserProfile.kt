@@ -9,7 +9,7 @@ import java.util.UUID
 @Table(name = "user_profiles")
 class UserProfile(
     @Id
-    val userId: UUID,
+    var userId: UUID? = null,
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId

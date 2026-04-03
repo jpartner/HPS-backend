@@ -28,3 +28,35 @@ data class CategorySeed(
     val translations: Map<String, String>,
     val children: List<CategorySeed> = emptyList()
 )
+
+data class ProviderSeed(
+    val email: String,
+    val firstName: String,
+    val lastName: String,
+    val businessName: String,
+    val description: String,
+    val avatarUrl: String?,
+    val countryCode: String,
+    val cityName: String,
+    val latitude: Double,
+    val longitude: Double,
+    val isMobile: Boolean,
+    val serviceRadiusKm: Double?,
+    val categories: List<String>,
+    val services: List<ProviderServiceSeed>
+)
+
+data class ProviderServiceSeed(
+    val categoryPath: String,
+    val pricingType: String,
+    val priceAmount: Double,
+    val priceCurrency: String,
+    val durationMinutes: Int,
+    val imageUrl: String?,
+    val translations: Map<String, ServiceTranslationSeed>
+)
+
+data class ServiceTranslationSeed(
+    val title: String,
+    val description: String?
+)

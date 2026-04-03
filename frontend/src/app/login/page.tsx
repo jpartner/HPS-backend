@@ -28,7 +28,15 @@ export default function LoginPage() {
     try {
       const res = await authApi.login({ email, password });
       auth.login(res.accessToken, res.refreshToken);
-      router.push('/');
+      // Parse the token to get the user role and redirect accordingly
+      const payload = res.accessToken.split('.')[1];
+      const padded = payload + '='.repeat((4 - payload.length % 4) % 4);
+      const decoded = JSON.parse(atob(padded));
+      if (decoded.role === 'PROVIDER') {
+        router.push('/dashboard');
+      } else {
+        router.push('/');
+      }
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);

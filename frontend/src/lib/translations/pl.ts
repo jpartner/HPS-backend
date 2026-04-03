@@ -25,6 +25,8 @@ const pl: Translations = {
     register: "Zarejestruj się",
     logout: "Wyloguj się",
     profile: "Profil",
+    provider: "Specjalista",
+    client: "Klient",
   },
   hero: {
     title: "Znajdź idealnego specjalistę od urody",
@@ -147,6 +149,9 @@ const pl: Translations = {
     hasAccount: "Masz już konto?",
     signUpLink: "Zarejestruj się",
     loginLink: "Zaloguj się",
+    asClient: "Jako klient",
+    asProvider: "Jako specjalista",
+    providerSetupNote: "Po rejestracji będziesz mógł skonfigurować swój profil specjalisty",
   },
   footer: {
     tagline: "Łączymy Cię z najlepszymi specjalistami od urody",
@@ -165,6 +170,7 @@ const pl: Translations = {
     en: "English",
     pl: "Polski",
     uk: "Українська",
+    de: "Deutsch",
   },
 };
 export default pl;

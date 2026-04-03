@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { Star, ChevronLeft, ChevronRight, MapPin, Loader2 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
+import { useCountry } from '@/lib/country-context';
 import {
   categoriesApi,
   providersApi,
@@ -26,6 +27,7 @@ export default function CategoryPage({
   const { id: categoryId } = use(params);
   const { token } = useAuth();
   const { lang, t } = useLanguage();
+  const { selectedCountry: contextCountry, setCountry: setContextCountry } = useCountry();
 
   const [category, setCategory] = useState<Category | null>(null);
   const [providers, setProviders] = useState<ProviderSummary[]>([]);
@@ -38,9 +40,15 @@ export default function CategoryPage({
   const [countries, setCountries] = useState<Country[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
   const [cities, setCities] = useState<City[]>([]);
-  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState(contextCountry?.isoCode ?? '');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
+
+  // Sync from country context -> local filter
+  useEffect(() => {
+    const iso = contextCountry?.isoCode ?? '';
+    setSelectedCountry(iso);
+  }, [contextCountry]);
 
   // Load countries on mount
   useEffect(() => {
@@ -140,7 +148,10 @@ export default function CategoryPage({
             </label>
             <select
               value={selectedCountry}
-              onChange={(e) => setSelectedCountry(e.target.value)}
+              onChange={(e) => {
+                setSelectedCountry(e.target.value);
+                setContextCountry(e.target.value);
+              }}
               className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700 focus:border-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-300"
             >
               <option value="">{t.providers.allCountries}</option>

@@ -3,18 +3,21 @@
 import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { UserPlus } from 'lucide-react';
+import { UserPlus, Info } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
 import { authApi, ApiError } from '@/lib/api';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 
+type SelectedRole = 'CLIENT' | 'PROVIDER';
+
 export default function RegisterPage() {
   const router = useRouter();
   const auth = useAuth();
   const { t } = useLanguage();
 
+  const [selectedRole, setSelectedRole] = useState<SelectedRole>('CLIENT');
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -55,7 +58,11 @@ export default function RegisterPage() {
         lastName: form.lastName,
       });
       auth.login(res.accessToken, res.refreshToken);
-      router.push('/');
+      if (selectedRole === 'PROVIDER') {
+        router.push('/dashboard');
+      } else {
+        router.push('/');
+      }
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);
@@ -79,6 +86,39 @@ export default function RegisterPage() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
+          {/* Role selector tabs */}
+          <div className="flex rounded-lg border border-gray-200 mb-6 overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setSelectedRole('CLIENT')}
+              className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
+                selectedRole === 'CLIENT'
+                  ? 'bg-rose-600 text-white'
+                  : 'bg-white text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              {t.auth.asClient}
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedRole('PROVIDER')}
+              className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
+                selectedRole === 'PROVIDER'
+                  ? 'bg-rose-600 text-white'
+                  : 'bg-white text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              {t.auth.asProvider}
+            </button>
+          </div>
+
+          {selectedRole === 'PROVIDER' && (
+            <div className="mb-4 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-700 flex items-start gap-2">
+              <Info className="h-4 w-4 mt-0.5 flex-shrink-0" />
+              <span>{t.auth.providerSetupNote}</span>
+            </div>
+          )}
+
           {error && (
             <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
               {error}

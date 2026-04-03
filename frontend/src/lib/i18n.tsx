@@ -4,13 +4,14 @@ import React, { createContext, useContext, useState, useEffect, type ReactNode }
 import en from './translations/en';
 import pl from './translations/pl';
 import uk from './translations/uk';
+import de from './translations/de';
 import type { Translations } from './translations/en';
 
 const STORAGE_KEY = 'hps_lang';
 
-type Lang = 'en' | 'pl' | 'uk';
+type Lang = 'en' | 'pl' | 'uk' | 'de';
 
-const translations: Record<Lang, Translations> = { en, pl, uk };
+const translations: Record<Lang, Translations> = { en, pl, uk, de };
 
 interface LanguageContextValue {
   lang: Lang;

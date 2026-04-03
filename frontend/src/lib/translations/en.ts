@@ -23,6 +23,8 @@ const en = {
     register: "Sign up",
     logout: "Log out",
     profile: "Profile",
+    provider: "Provider",
+    client: "Client",
   },
   hero: {
     title: "Find Your Perfect Beauty Professional",
@@ -145,6 +147,9 @@ const en = {
     hasAccount: "Already have an account?",
     signUpLink: "Sign up",
     loginLink: "Log in",
+    asClient: "As Client",
+    asProvider: "As Service Provider",
+    providerSetupNote: "After registration, you'll be able to set up your provider profile",
   },
   footer: {
     tagline: "Connecting you with the best beauty professionals",
@@ -163,6 +168,7 @@ const en = {
     en: "English",
     pl: "Polski",
     uk: "Українська",
+    de: "Deutsch",
   },
 };
 export default en;

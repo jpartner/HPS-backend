@@ -25,6 +25,8 @@ const uk: Translations = {
     register: "Зареєструватися",
     logout: "Вийти",
     profile: "Профіль",
+    provider: "Фахівець",
+    client: "Клієнт",
   },
   hero: {
     title: "Знайдіть ідеального б'юті-фахівця",
@@ -147,6 +149,9 @@ const uk: Translations = {
     hasAccount: "Вже є обліковий запис?",
     signUpLink: "Зареєструватися",
     loginLink: "Увійти",
+    asClient: "Як клієнт",
+    asProvider: "Як фахівець",
+    providerSetupNote: "Після реєстрації ви зможете налаштувати свій профіль фахівця",
   },
   footer: {
     tagline: "З'єднуємо вас із найкращими б'юті-фахівцями",
@@ -165,6 +170,7 @@ const uk: Translations = {
     en: "English",
     pl: "Polski",
     uk: "Українська",
+    de: "Deutsch",
   },
 };
 export default uk;

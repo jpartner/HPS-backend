@@ -6,6 +6,7 @@ import { Menu, X, User, LogOut, ChevronDown, LayoutDashboard } from 'lucide-reac
 import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
 import LanguageSelector from '@/components/LanguageSelector';
+import CountrySelector from '@/components/CountrySelector';
 import clsx from 'clsx';
 
 export default function Header() {
@@ -53,6 +54,7 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
+            <CountrySelector />
             <LanguageSelector />
 
             {isLoading ? (
@@ -66,6 +68,11 @@ export default function Header() {
                   <div className="flex items-center justify-center h-7 w-7 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
                     {user.email.charAt(0).toUpperCase()}
                   </div>
+                  {user.role === 'PROVIDER' && (
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                      {t.nav.provider}
+                    </span>
+                  )}
                   <span className="max-w-[120px] truncate">{user.email}</span>
                   <ChevronDown className={clsx('h-4 w-4 transition-transform', userMenuOpen && 'rotate-180')} />
                 </button>
@@ -120,6 +127,7 @@ export default function Header() {
 
           {/* Mobile: language + hamburger */}
           <div className="flex md:hidden items-center gap-2">
+            <CountrySelector />
             <LanguageSelector />
             <button
               className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors cursor-pointer"
@@ -152,6 +160,11 @@ export default function Header() {
                   <div className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground">
                     <User className="h-4 w-4" />
                     <span className="truncate">{user.email}</span>
+                    {user.role === 'PROVIDER' && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                        {t.nav.provider}
+                      </span>
+                    )}
                   </div>
                   <button
                     onClick={() => { logout(); setMobileOpen(false); }}

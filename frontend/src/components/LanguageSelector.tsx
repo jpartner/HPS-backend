@@ -7,6 +7,7 @@ const languages: { code: Lang; flag: string; label: string }[] = [
   { code: 'en', flag: '🇬🇧', label: 'English' },
   { code: 'pl', flag: '🇵🇱', label: 'Polski' },
   { code: 'uk', flag: '🇺🇦', label: 'Українська' },
+  { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
 ];
 
 export default function LanguageSelector() {

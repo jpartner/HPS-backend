@@ -2,9 +2,13 @@ package com.hps.geo.seed
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.hps.domain.attribute.AttributeDataType
+import com.hps.domain.attribute.AttributeDefinition
+import com.hps.domain.attribute.AttributeDefinitionTranslation
 import com.hps.domain.geo.*
 import com.hps.domain.service.ServiceCategory
 import com.hps.domain.service.ServiceCategoryTranslation
+import com.hps.persistence.attribute.AttributeDefinitionRepository
 import com.hps.persistence.geo.CountryRepository
 import com.hps.persistence.service.ServiceCategoryRepository
 import org.slf4j.LoggerFactory
@@ -19,7 +23,8 @@ import org.springframework.transaction.annotation.Transactional
 @Order(1)
 class GeoDataSeeder(
     private val countryRepository: CountryRepository,
-    private val categoryRepository: ServiceCategoryRepository
+    private val categoryRepository: ServiceCategoryRepository,
+    private val attributeRepository: AttributeDefinitionRepository
 ) : ApplicationRunner {
 
     private val log = LoggerFactory.getLogger(GeoDataSeeder::class.java)
@@ -29,6 +34,7 @@ class GeoDataSeeder(
     override fun run(args: ApplicationArguments) {
         seedCountries()
         seedCategories()
+        seedAttributes()
     }
 
     private fun seedCountries() {
@@ -142,5 +148,46 @@ class GeoDataSeeder(
         }
 
         return category
+    }
+
+    private fun seedAttributes() {
+        if (attributeRepository.count() > 0) {
+            log.info("Attribute definitions already seeded, skipping")
+            return
+        }
+
+        log.info("Seeding attribute definitions...")
+
+        val resolver = PathMatchingResourcePatternResolver()
+        val resource = resolver.getResource("classpath:seed-data/attributes.json")
+        val seeds = mapper.readValue<List<AttributeDefinitionSeed>>(resource.inputStream)
+
+        for (seed in seeds) {
+            val def = AttributeDefinition(
+                domain = seed.domain,
+                key = seed.key,
+                dataType = AttributeDataType.valueOf(seed.dataType),
+                isRequired = seed.isRequired,
+                options = seed.options?.let { mapper.writeValueAsString(it) },
+                validation = seed.validation?.let { mapper.writeValueAsString(it) },
+                sortOrder = seed.sortOrder
+            )
+
+            seed.translations.forEach { (lang, t) ->
+                def.translations.add(
+                    AttributeDefinitionTranslation(
+                        attribute = def,
+                        lang = lang,
+                        label = t.label,
+                        hint = t.hint,
+                        optionLabels = t.optionLabels?.let { mapper.writeValueAsString(it) }
+                    )
+                )
+            }
+
+            attributeRepository.save(def)
+        }
+
+        log.info("Seeded ${seeds.size} attribute definitions")
     }
 }

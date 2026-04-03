@@ -66,3 +66,20 @@ data class ServiceTranslationSeed(
     val title: String,
     val description: String?
 )
+
+data class AttributeDefinitionSeed(
+    val domain: String,
+    val key: String,
+    val dataType: String = "TEXT",
+    val isRequired: Boolean = false,
+    val options: List<String>? = null,
+    val validation: Map<String, Any>? = null,
+    val sortOrder: Int = 0,
+    val translations: Map<String, AttributeTranslationSeed>
+)
+
+data class AttributeTranslationSeed(
+    val label: String,
+    val hint: String? = null,
+    val optionLabels: Map<String, String>? = null
+)

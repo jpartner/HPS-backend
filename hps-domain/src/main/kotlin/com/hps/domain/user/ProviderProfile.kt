@@ -5,6 +5,8 @@ import com.hps.domain.geo.City
 import com.hps.domain.service.Service
 import com.hps.domain.service.ServiceCategory
 import jakarta.persistence.*
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
 import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
@@ -63,6 +65,10 @@ class ProviderProfile(
 
     @Column(name = "updated_at", nullable = false)
     var updatedAt: Instant = Instant.now(),
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "JSONB", nullable = false)
+    var attributes: String = "{}",
 
     @ManyToMany
     @JoinTable(

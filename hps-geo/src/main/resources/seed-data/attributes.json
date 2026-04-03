@@ -1,0 +1,141 @@
+[
+  {
+    "domain": "Massage",
+    "key": "certification_type",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["Swedish", "Thai", "Deep Tissue", "Sports", "Shiatsu", "Reflexology", "Lymphatic"],
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Certification Types", "hint": "Types of massage you are certified in", "optionLabels": {} },
+      "pl": { "label": "Typy certyfikacji", "hint": "Rodzaje masażu, w których posiadasz certyfikat", "optionLabels": {"Swedish": "Szwedzki", "Thai": "Tajski", "Deep Tissue": "Głęboki tkankowy", "Sports": "Sportowy", "Shiatsu": "Shiatsu", "Reflexology": "Refleksologia", "Lymphatic": "Limfatyczny"} },
+      "uk": { "label": "Типи сертифікації", "hint": "Типи масажу, за якими ви сертифіковані", "optionLabels": {"Swedish": "Шведський", "Thai": "Тайський", "Deep Tissue": "Глибокотканинний", "Sports": "Спортивний"} },
+      "de": { "label": "Zertifizierungsarten", "hint": "Massagearten, für die Sie zertifiziert sind", "optionLabels": {"Swedish": "Schwedisch", "Thai": "Thai", "Deep Tissue": "Tiefengewebe", "Sports": "Sport"} }
+    }
+  },
+  {
+    "domain": "Massage",
+    "key": "years_experience",
+    "dataType": "NUMBER",
+    "isRequired": false,
+    "validation": { "min": 0, "max": 50 },
+    "sortOrder": 2,
+    "translations": {
+      "en": { "label": "Years of Experience" },
+      "pl": { "label": "Lata doświadczenia" },
+      "uk": { "label": "Роки досвіду" },
+      "de": { "label": "Jahre Erfahrung" }
+    }
+  },
+  {
+    "domain": "Massage",
+    "key": "provides_table",
+    "dataType": "BOOLEAN",
+    "isRequired": false,
+    "sortOrder": 3,
+    "translations": {
+      "en": { "label": "Brings Own Massage Table", "hint": "For mobile/outcall services" },
+      "pl": { "label": "Posiada własny stół do masażu", "hint": "Do usług mobilnych" },
+      "uk": { "label": "Має власний масажний стіл", "hint": "Для виїзних послуг" },
+      "de": { "label": "Eigene Massageliege", "hint": "Für mobile Einsätze" }
+    }
+  },
+  {
+    "domain": "Nails",
+    "key": "gel_brands",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["OPI", "CND Shellac", "Gelish", "Semilac", "Indigo", "NeoNail", "Luxio"],
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Gel Brands Available" },
+      "pl": { "label": "Dostępne marki żelu" },
+      "uk": { "label": "Доступні бренди гелю" },
+      "de": { "label": "Verfügbare Gel-Marken" }
+    }
+  },
+  {
+    "domain": "Nails",
+    "key": "hygiene_standard",
+    "dataType": "SELECT",
+    "isRequired": true,
+    "options": ["Disposable", "Autoclave", "UV Sterilizer"],
+    "sortOrder": 2,
+    "translations": {
+      "en": { "label": "Hygiene Standard", "hint": "Tool sterilization method", "optionLabels": {} },
+      "pl": { "label": "Standard higieny", "hint": "Metoda sterylizacji narzędzi", "optionLabels": {"Disposable": "Jednorazowe", "Autoclave": "Autoklaw", "UV Sterilizer": "Sterylizator UV"} },
+      "uk": { "label": "Стандарт гігієни", "hint": "Метод стерилізації інструментів", "optionLabels": {"Disposable": "Одноразові", "Autoclave": "Автоклав", "UV Sterilizer": "УФ-стерилізатор"} },
+      "de": { "label": "Hygienestandard", "hint": "Sterilisationsmethode", "optionLabels": {"Disposable": "Einweg", "Autoclave": "Autoklav", "UV Sterilizer": "UV-Sterilisator"} }
+    }
+  },
+  {
+    "domain": "Hair",
+    "key": "hair_specialties",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["Balayage", "Ombre", "Keratin Treatment", "Extensions", "Curly Hair", "Color Correction", "Bridal"],
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Specialties" },
+      "pl": { "label": "Specjalizacje" },
+      "uk": { "label": "Спеціалізації" },
+      "de": { "label": "Spezialisierungen" }
+    }
+  },
+  {
+    "domain": "Hair",
+    "key": "product_brands",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["L'Oréal", "Schwarzkopf", "Wella", "Davines", "Olaplex", "Kerastase", "Redken"],
+    "sortOrder": 2,
+    "translations": {
+      "en": { "label": "Product Brands Used" },
+      "pl": { "label": "Używane marki produktów" },
+      "uk": { "label": "Бренди продуктів" },
+      "de": { "label": "Verwendete Produktmarken" }
+    }
+  },
+  {
+    "domain": "Face & Skin",
+    "key": "skin_concerns",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["Acne", "Aging", "Hyperpigmentation", "Rosacea", "Sensitive Skin", "Dry Skin", "Oily Skin"],
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Skin Concerns Treated" },
+      "pl": { "label": "Leczone problemy skórne" },
+      "uk": { "label": "Проблеми шкіри, які лікуються" },
+      "de": { "label": "Behandelte Hautprobleme" }
+    }
+  },
+  {
+    "domain": "Eyebrows & Lashes",
+    "key": "lash_types",
+    "dataType": "MULTI_SELECT",
+    "isRequired": false,
+    "options": ["Classic", "Volume", "Mega Volume", "Hybrid", "Wispy"],
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Lash Extension Types" },
+      "pl": { "label": "Typy przedłużania rzęs" },
+      "uk": { "label": "Типи нарощування вій" },
+      "de": { "label": "Wimpernverlängerungsarten" }
+    }
+  },
+  {
+    "domain": "Hair Removal",
+    "key": "laser_type",
+    "dataType": "SELECT",
+    "isRequired": false,
+    "options": ["Diode", "Alexandrite", "Nd:YAG", "IPL", "N/A"],
+    "sortOrder": 1,
+    "translations": {
+      "en": { "label": "Laser/Light Technology", "hint": "If applicable" },
+      "pl": { "label": "Technologia laserowa", "hint": "Jeśli dotyczy" },
+      "uk": { "label": "Лазерна технологія", "hint": "Якщо застосовно" },
+      "de": { "label": "Laser-/Lichttechnologie", "hint": "Falls zutreffend" }
+    }
+  }
+]

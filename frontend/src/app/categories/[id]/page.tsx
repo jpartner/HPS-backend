@@ -93,8 +93,8 @@ export default function CategoryPage({
     try {
       const queryParams: Record<string, string> = {
         categoryId,
-        page: String(page),
-        pageSize: '12',
+        page: String(page - 1),
+        size: '12',
       };
       if (selectedCountry) queryParams.countryCode = selectedCountry;
       if (selectedRegion) queryParams.regionId = selectedRegion;

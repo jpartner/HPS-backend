@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: hps-dev-postgres
+    environment:
+      POSTGRES_DB: hps
+      POSTGRES_USER: hps
+      POSTGRES_PASSWORD: hps_dev_password
+    ports:
+      - "5432:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hps"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: hps-dev-typesense
+    environment:
+      TYPESENSE_API_KEY: hps_typesense_dev_key
+      TYPESENSE_DATA_DIR: /data
+    ports:
+      - "8108:8108"
+    tmpfs:
+      - /data
+
+  app:
+    image: hps-system:latest
+    container_name: hps-dev-app
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hps
+      SPRING_DATASOURCE_USERNAME: hps
+      SPRING_DATASOURCE_PASSWORD: hps_dev_password
+      SPRING_FLYWAY_CLEAN_ON_VALIDATION_ERROR: "true"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      typesense:
+        condition: service_started

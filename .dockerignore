@@ -1,0 +1,11 @@
+.git
+.gradle
+.idea
+build-logic/.gradle
+build-logic/build
+**/build
+!hps-app/build/libs
+seed-data
+scripts
+docker
+*.md

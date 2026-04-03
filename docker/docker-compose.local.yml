@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: hps-local-postgres
+    environment:
+      POSTGRES_DB: hps
+      POSTGRES_USER: hps
+      POSTGRES_PASSWORD: hps_local_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - hps-local-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hps"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: hps-local-typesense
+    environment:
+      TYPESENSE_API_KEY: hps_typesense_local_key
+      TYPESENSE_DATA_DIR: /data
+    ports:
+      - "8109:8108"
+    volumes:
+      - hps-local-typesense-data:/data
+
+  app:
+    image: hps-system:latest
+    container_name: hps-local-app
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hps
+      SPRING_DATASOURCE_USERNAME: hps
+      SPRING_DATASOURCE_PASSWORD: hps_local_password
+    ports:
+      - "8081:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      typesense:
+        condition: service_started
+
+volumes:
+  hps-local-postgres-data:
+  hps-local-typesense-data:

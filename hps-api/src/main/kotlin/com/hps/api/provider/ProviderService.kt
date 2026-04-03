@@ -3,10 +3,10 @@ package com.hps.api.provider
 import com.hps.common.dto.PageMeta
 import com.hps.common.dto.PageResponse
 import com.hps.common.exception.BadRequestException
-import com.hps.common.exception.ForbiddenException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.i18n.bestTranslation
 import com.hps.domain.user.ProviderProfile
+import com.hps.domain.user.ProviderProfileTranslation
 import com.hps.domain.user.UserRole
 import com.hps.persistence.geo.AreaRepository
 import com.hps.persistence.geo.CityRepository
@@ -63,8 +63,8 @@ class ProviderService(
 
         return ProviderDetailDto(
             id = provider.userId!!,
-            businessName = provider.businessName,
-            description = provider.description,
+            businessName = provider.translatedBusinessName(lang),
+            description = provider.translatedDescription(lang),
             email = provider.user.email,
             phone = provider.user.phone,
             cityName = provider.city?.translations?.bestTranslation(lang, { it.lang }, { it.name }),
@@ -80,7 +80,8 @@ class ProviderService(
             categories = provider.categories.map {
                 ProviderCategoryDto(it.id, it.translations.bestTranslation(lang, { t -> t.lang }, { t -> t.name }))
             },
-            services = services.map { it.toServiceDto(lang) }
+            services = services.map { it.toServiceDto(lang) },
+            avatarUrl = provider.user.avatarUrl
         )
     }
 
@@ -114,9 +115,17 @@ class ProviderService(
             provider.categories.addAll(categories)
         }
 
+        request.translations.forEach { t ->
+            provider.translations.add(
+                ProviderProfileTranslation(
+                    provider = provider, lang = t.lang,
+                    businessName = t.businessName, description = t.description
+                )
+            )
+        }
+
         user.role = UserRole.PROVIDER
         user.providerProfile = provider
-
         userRepository.save(user)
 
         return getDetail(userId, "en")
@@ -146,16 +155,39 @@ class ProviderService(
             }
         }
 
+        if (request.translations != null) {
+            provider.translations.clear()
+            providerRepository.saveAndFlush(provider)
+            request.translations.forEach { t ->
+                provider.translations.add(
+                    ProviderProfileTranslation(
+                        provider = provider, lang = t.lang,
+                        businessName = t.businessName, description = t.description
+                    )
+                )
+            }
+        }
+
         provider.updatedAt = Instant.now()
         providerRepository.save(provider)
 
         return getDetail(userId, "en")
     }
 
+    private fun ProviderProfile.translatedBusinessName(lang: String): String? {
+        val t = translations.firstOrNull { it.lang == lang }
+        return t?.businessName ?: translations.firstOrNull { it.lang == "en" }?.businessName ?: businessName
+    }
+
+    private fun ProviderProfile.translatedDescription(lang: String): String? {
+        val t = translations.firstOrNull { it.lang == lang }
+        return t?.description ?: translations.firstOrNull { it.lang == "en" }?.description ?: description
+    }
+
     private fun ProviderProfile.toSummaryDto(lang: String) = ProviderSummaryDto(
         id = userId!!,
-        businessName = businessName,
-        description = description,
+        businessName = translatedBusinessName(lang),
+        description = translatedDescription(lang),
         cityName = city?.translations?.bestTranslation(lang, { it.lang }, { it.name }),
         areaName = area?.translations?.bestTranslation(lang, { it.lang }, { it.name }),
         latitude = latitude,
@@ -166,7 +198,8 @@ class ProviderService(
         reviewCount = reviewCount,
         categories = categories.map {
             ProviderCategoryDto(it.id, it.translations.bestTranslation(lang, { t -> t.lang }, { t -> t.name }))
-        }
+        },
+        avatarUrl = user.avatarUrl
     )
 
     private fun com.hps.domain.service.Service.toServiceDto(lang: String) = ProviderServiceDto(

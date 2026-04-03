@@ -38,7 +38,8 @@ class ProviderSeeder(
     private val categoryRepository: ServiceCategoryRepository,
     private val serviceRepository: ServiceRepository,
     private val scheduleSettingsRepository: ScheduleSettingsRepository,
-    private val weeklySlotRepository: WeeklySlotRepository
+    private val weeklySlotRepository: WeeklySlotRepository,
+    private val providerRepository: com.hps.persistence.user.ProviderProfileRepository
 ) : ApplicationRunner {
 
     private val log = LoggerFactory.getLogger(ProviderSeeder::class.java)
@@ -144,6 +145,21 @@ class ProviderSeeder(
             // Save user (cascades to profile and providerProfile)
             val savedUser = userRepository.saveAndFlush(user)
             val savedProvider = savedUser.providerProfile!!
+
+            // Add profile translations
+            for ((lang, translationSeed) in seed.profileTranslations) {
+                savedProvider.translations.add(
+                    com.hps.domain.user.ProviderProfileTranslation(
+                        provider = savedProvider,
+                        lang = lang,
+                        businessName = translationSeed.businessName,
+                        description = translationSeed.description
+                    )
+                )
+            }
+            if (seed.profileTranslations.isNotEmpty()) {
+                providerRepository.save(savedProvider)
+            }
 
             // Create services
             for (serviceSeed in seed.services) {

@@ -73,5 +73,31 @@ class ProviderProfile(
     val categories: MutableSet<ServiceCategory> = mutableSetOf(),
 
     @OneToMany(mappedBy = "provider", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val services: MutableList<Service> = mutableListOf()
+    val services: MutableList<Service> = mutableListOf(),
+
+    @OneToMany(mappedBy = "provider", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val translations: MutableSet<ProviderProfileTranslation> = mutableSetOf()
+)
+
+@Entity
+@Table(
+    name = "provider_profile_translations",
+    uniqueConstraints = [UniqueConstraint(columnNames = ["provider_id", "lang"])]
+)
+class ProviderProfileTranslation(
+    @Id
+    val id: UUID = UUID.randomUUID(),
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "provider_id", nullable = false)
+    val provider: ProviderProfile,
+
+    @Column(name = "lang", nullable = false, length = 5)
+    val lang: String,
+
+    @Column(name = "business_name")
+    val businessName: String? = null,
+
+    @Column(columnDefinition = "TEXT")
+    val description: String? = null
 )

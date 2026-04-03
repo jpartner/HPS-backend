@@ -53,7 +53,13 @@
           "uk": { "title": "Масаж гарячим камінням", "description": "Розслаблюючий масаж з нагрітим вулканічним камінням" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Anna's Wellness Studio", "description": "Professional massage therapy in the heart of Warsaw. Over 10 years of experience in relaxation and therapeutic techniques." },
+      "pl": { "businessName": "Studio Wellness Anny", "description": "Profesjonalna masażoterapia w samym sercu Warszawy. Ponad 10 lat doświadczenia w technikach relaksacyjnych i leczniczych." },
+      "uk": { "businessName": "Велнес-студія Анни", "description": "Професійна масажна терапія в серці Варшави. Понад 10 років досвіду в релаксаційних та лікувальних техніках." },
+      "de": { "businessName": "Annas Wellness-Studio", "description": "Professionelle Massagetherapie im Herzen von Warschau. Über 10 Jahre Erfahrung in Entspannungs- und therapeutischen Techniken." }
+    }
   },
   {
     "email": "magda.nail@example.com",
@@ -109,7 +115,13 @@
           "uk": { "title": "Nail Art", "description": "Індивідуальний дизайн нігтів — квіти, геометричні візерунки та інше" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Magda Nails & Beauty", "description": "Stylish nail salon in Krakow offering manicure, pedicure, and creative nail art. Using premium brands only." },
+      "pl": { "businessName": "Magda Nails & Beauty", "description": "Stylowy salon paznokci w Krakowie oferujący manicure, pedicure i artystyczne zdobienia. Wyłącznie marki premium." },
+      "uk": { "businessName": "Magda Nails & Beauty", "description": "Стильний салон нігтів у Кракові — манікюр, педикюр та креативний дизайн нігтів. Тільки преміальні бренди." },
+      "de": { "businessName": "Magda Nails & Beauty", "description": "Stilvoller Nagelstudio in Krakau mit Maniküre, Pediküre und kreativem Nageldesign. Ausschließlich Premium-Marken." }
+    }
   },
   {
     "email": "katarzyna.wroclaw@example.com",
@@ -152,7 +164,13 @@
           "uk": { "title": "Фарбування балаяж", "description": "Ручна техніка балаяж для природних відблисків" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Kasia Hair Studio", "description": "Award-winning hair salon in Wroclaw specializing in balayage, creative colouring, and precision cuts." },
+      "pl": { "businessName": "Kasia Hair Studio", "description": "Wielokrotnie nagradzany salon fryzjerski we Wrocławiu, specjalizujący się w balayage, kreatywnej koloryzacji i precyzyjnym strzyżeniu." },
+      "uk": { "businessName": "Kasia Hair Studio", "description": "Відзначений нагородами салон краси у Вроцлаві — балаяж, креативне фарбування та точні стрижки." },
+      "de": { "businessName": "Kasia Hair Studio", "description": "Preisgekrönter Friseursalon in Breslau, spezialisiert auf Balayage, kreative Färbung und Präzisionsschnitte." }
+    }
   },
   {
     "email": "lisa.mueller@example.com",
@@ -208,7 +226,13 @@
           "uk": { "title": "LED-терапія", "description": "Антивікова LED-терапія для стимуляції виробництва колагену" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Lisa's Beauty Studio", "description": "Professional beauty studio in Berlin-Mitte. Facials, peels, and anti-aging treatments with premium products." },
+      "pl": { "businessName": "Studio Kosmetyczne Lisy", "description": "Profesjonalne studio kosmetyczne w centrum Berlina. Zabiegi na twarz, peelingi i kuracje anti-aging." },
+      "uk": { "businessName": "Косметична студія Лізи", "description": "Професійна косметична студія в центрі Берліна. Доглядові процедури, пілінги та антивікові процедури." },
+      "de": { "businessName": "Lisa's Kosmetikstudio", "description": "Professionelles Kosmetikstudio in Berlin-Mitte. Facials, Peelings und Anti-Aging-Behandlungen mit hochwertigen Produkten." }
+    }
   },
   {
     "email": "sarah.schmidt@example.com",
@@ -264,7 +288,13 @@
           "uk": { "title": "Весільний макіяж та укладка", "description": "Повний весільний макіяж із пробною консультацією" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Salon Schmidt", "description": "Your hairdresser in Munich-Schwabing. Haircuts, colourings, and wedding hairstyles at the highest level." },
+      "pl": { "businessName": "Salon Schmidt", "description": "Profesjonalny salon fryzjerski w Monachium-Schwabing. Strzyżenia, koloryzacje i fryzury ślubne na najwyższym poziomie." },
+      "uk": { "businessName": "Salon Schmidt", "description": "Ваш перукар у Мюнхені-Швабінг. Стрижки, фарбування та весільні зачіски найвищого рівня." },
+      "de": { "businessName": "Salon Schmidt", "description": "Ihr Friseur in München-Schwabing. Haarschnitte, Colorationen und Hochzeitsfrisuren auf höchstem Niveau." }
+    }
   },
   {
     "email": "julia.weber@example.com",
@@ -307,7 +337,13 @@
           "uk": { "title": "Шугарінг усього тіла", "description": "Ніжне видалення волосся цукровою пастою для чутливої шкіри" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Waxing Studio Julia", "description": "Specializing in gentle hair removal in Hamburg. Waxing, sugaring, and IPL treatments." },
+      "pl": { "businessName": "Studio Depilacji Julia", "description": "Specjalizacja w delikatnej depilacji w Hamburgu. Woskowanie, sugaring i zabiegi IPL." },
+      "uk": { "businessName": "Студія депіляції Юлії", "description": "Спеціалізація на делікатній депіляції в Гамбурзі. Воскова депіляція, шугарінг та IPL-процедури." },
+      "de": { "businessName": "Waxing Studio Julia", "description": "Spezialisiert auf schonende Haarentfernung in Hamburg. Waxing, Sugaring und IPL-Behandlungen." }
+    }
   },
   {
     "email": "oksana.kyiv@example.com",
@@ -363,7 +399,13 @@
           "uk": { "title": "Вечірній макіяж", "description": "Ефектний вечірній макіяж для особливих подій" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Beauty Studio Oksana", "description": "Beauty studio in the centre of Kyiv. Professional makeup, lash extensions, and brow care." },
+      "pl": { "businessName": "Studio Urody Oksana", "description": "Studio urody w centrum Kijowa. Profesjonalny makijaż, przedłużanie rzęs i pielęgnacja brwi." },
+      "uk": { "businessName": "Студія краси Оксани", "description": "Студія краси в центрі Києва. Професійний макіяж, нарощування вій та догляд за бровами." },
+      "de": { "businessName": "Beauty Studio Oksana", "description": "Schönheitsstudio im Zentrum von Kiew. Professionelles Make-up, Wimpernverlängerung und Augenbrauenpflege." }
+    }
   },
   {
     "email": "natalia.lviv@example.com",
@@ -406,7 +448,13 @@
           "uk": { "title": "Традиційний тайський масаж", "description": "Автентичний тайський масаж з розтяжкою та акупресурою" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Natalia Massage & Spa", "description": "Massage salon in Lviv. Classic, sports, and Thai massage from a certified therapist." },
+      "pl": { "businessName": "Natalia Massage & Spa", "description": "Salon masażu we Lwowie. Masaż klasyczny, sportowy i tajski od certyfikowanego terapeuty." },
+      "uk": { "businessName": "Natalia Massage & Spa", "description": "Масажний салон у Львові. Класичний, спортивний та тайський масаж від сертифікованого майстра." },
+      "de": { "businessName": "Natalia Massage & Spa", "description": "Massagesalon in Lwiw. Klassische, Sport- und Thai-Massage von einer zertifizierten Therapeutin." }
+    }
   },
   {
     "email": "iryna.odesa@example.com",
@@ -449,7 +497,13 @@
           "uk": { "title": "Спа-педикюр", "description": "Розкішний спа-педикюр із замочуванням стоп та масажем" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Iryna Nails Odesa", "description": "Nail salon in Odesa. Gel nails, artistic designs, and pedicure. Working with premium materials." },
+      "pl": { "businessName": "Iryna Nails Odesa", "description": "Salon paznokci w Odessie. Paznokcie żelowe, artystyczne zdobienia i pedicure. Praca z materiałami premium." },
+      "uk": { "businessName": "Iryna Nails Одеса", "description": "Манікюрний салон в Одесі. Гелеві нігті, художнє оздоблення та педикюр. Працюю з преміальними матеріалами." },
+      "de": { "businessName": "Iryna Nails Odesa", "description": "Nagelstudio in Odessa. Gelnägel, künstlerische Designs und Pediküre. Arbeit mit Premium-Materialien." }
+    }
   },
   {
     "email": "tereza.praha@example.com",
@@ -505,7 +559,13 @@
           "uk": { "title": "Ламінування вій з фарбуванням", "description": "Природне ламінування вій з кератиновим доглядом" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Tereza Beauty Prague", "description": "Beauty salon in central Prague. Permanent makeup, eyebrow microblading, and lash extensions." },
+      "pl": { "businessName": "Tereza Beauty Praha", "description": "Salon kosmetyczny w centrum Pragi. Makijaż permanentny, microblading brwi i przedłużanie rzęs." },
+      "uk": { "businessName": "Tereza Beauty Прага", "description": "Салон краси в центрі Праги. Перманентний макіяж, мікроблейдинг брів та нарощування вій." },
+      "de": { "businessName": "Tereza Beauty Prag", "description": "Schönheitssalon im Zentrum von Prag. Permanent Make-up, Microblading der Augenbrauen und Wimpernverlängerung." }
+    }
   },
   {
     "email": "marketa.brno@example.com",
@@ -548,7 +608,13 @@
           "uk": { "title": "Релаксаційний масаж 60хв", "description": "Заспокійливий масаж усього тіла з ароматичними оліями" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Marketa Massage Brno", "description": "Massage studio in Brno. Relaxation, sports, and hot stone massage. Certified therapist with 8 years of experience." },
+      "pl": { "businessName": "Markéta Masáže Brno", "description": "Studio masażu w Brnie. Masaż relaksacyjny, sportowy i gorącymi kamieniami. Certyfikowana terapeutka z 8-letnim doświadczeniem." },
+      "uk": { "businessName": "Markéta Masáže Brno", "description": "Масажна студія у Брно. Релаксаційний, спортивний масаж та масаж гарячим камінням. Сертифікований терапевт з 8 роками досвіду." },
+      "de": { "businessName": "Markéta Massage Brünn", "description": "Massagestudio in Brünn. Entspannungs-, Sport- und Hot-Stone-Massage. Zertifizierte Therapeutin mit 8 Jahren Erfahrung." }
+    }
   },
   {
     "email": "petra.ostrava@example.com",
@@ -591,7 +657,13 @@
           "uk": { "title": "Весільна зачіска", "description": "Елегантна весільна зачіска з пробним візитом" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Petra Hair Ostrava", "description": "Hair salon in Ostrava. Cuts, colouring, and wedding hairstyles. Using exclusively professional products." },
+      "pl": { "businessName": "Petra Hair Ostrava", "description": "Salon fryzjerski w Ostrawie. Strzyżenia, koloryzacja i fryzury ślubne. Wyłącznie profesjonalne produkty." },
+      "uk": { "businessName": "Petra Hair Острава", "description": "Перукарня в Остраві. Стрижки, фарбування та весільні зачіски. Виключно професійні засоби." },
+      "de": { "businessName": "Petra Hair Ostrava", "description": "Friseursalon in Ostrau. Schnitte, Färbung und Hochzeitsfrisuren. Ausschließlich professionelle Produkte." }
+    }
   },
   {
     "email": "eszter.budapest@example.com",
@@ -647,7 +719,13 @@
           "uk": { "title": "Діамантова мікродермабразія", "description": "Діамантова мікродермабразія для оновлення шкіри" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Eszter Beauty Salon", "description": "Beauty salon in downtown Budapest. Facial treatments, body treatments, and relaxation massage all in one place." },
+      "pl": { "businessName": "Salon Urody Eszter", "description": "Salon urody w centrum Budapesztu. Zabiegi na twarz, zabiegi na ciało i masaż relaksacyjny w jednym miejscu." },
+      "uk": { "businessName": "Салон краси Естер", "description": "Салон краси в центрі Будапешта. Догляд за обличчям, процедури для тіла та релаксаційний масаж в одному місці." },
+      "de": { "businessName": "Eszter Schönheitssalon", "description": "Schönheitssalon in der Budapester Innenstadt. Gesichtsbehandlungen, Körperbehandlungen und Entspannungsmassage an einem Ort." }
+    }
   },
   {
     "email": "agnes.pecs@example.com",
@@ -690,7 +768,13 @@
           "uk": { "title": "Нарощування акрилом", "description": "Стійке нарощування нігтів акрилом із покриттям" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Agnes Nail Studio", "description": "Professional nail studio in Pecs. Gel polish, acrylic extensions, and nail art. 6 years of experience." },
+      "pl": { "businessName": "Studio Paznokci Ágnes", "description": "Profesjonalne studio paznokci w Peczu. Lakier żelowy, przedłużanie akrylem i zdobienia. 6 lat doświadczenia." },
+      "uk": { "businessName": "Студія нігтів Агнеш", "description": "Професійна студія нігтів у Печі. Гель-лак, акрилове нарощування та nail art. 6 років досвіду." },
+      "de": { "businessName": "Ágnes Nagelstudio", "description": "Professionelles Nagelstudio in Pécs. Gellack, Acrylverlängerung und Nagelkunst. 6 Jahre Erfahrung." }
+    }
   },
   {
     "email": "zsofia.debrecen@example.com",
@@ -746,7 +830,13 @@
           "uk": { "title": "Фарбування брів та вій", "description": "Напівперманентне фарбування вій та брів" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Zsofi Hair & Lash", "description": "Beauty salon in Debrecen. Haircuts, hair colouring, lash extensions, and lash lifting." },
+      "pl": { "businessName": "Zsófi Hair & Lash", "description": "Salon urody w Debreczynie. Strzyżenia, koloryzacja, przedłużanie rzęs i lash lifting." },
+      "uk": { "businessName": "Zsófi Hair & Lash", "description": "Салон краси в Дебрецені. Стрижки, фарбування волосся, нарощування вій та ламінування вій." },
+      "de": { "businessName": "Zsófi Hair & Lash", "description": "Schönheitssalon in Debrecen. Haarschnitte, Haarfärbung, Wimpernverlängerung und Wimpernlifting." }
+    }
   },
   {
     "email": "ivana.zagreb@example.com",
@@ -789,7 +879,13 @@
           "uk": { "title": "Бразильська депіляція", "description": "Професійна бразильська депіляція з доглядом після процедури" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Ivana Beauty Zagreb", "description": "Beauty salon in the centre of Zagreb. Facial treatments, waxing, and body care." },
+      "pl": { "businessName": "Ivana Beauty Zagreb", "description": "Salon kosmetyczny w centrum Zagrzebia. Zabiegi na twarz, depilacja woskiem i pielęgnacja ciała." },
+      "uk": { "businessName": "Ivana Beauty Загреб", "description": "Салон краси в центрі Загреба. Догляд за обличчям, воскова депіляція та догляд за тілом." },
+      "de": { "businessName": "Ivana Beauty Zagreb", "description": "Schönheitssalon im Zentrum von Zagreb. Gesichtsbehandlungen, Wachsenthaarung und Körperpflege." }
+    }
   },
   {
     "email": "ana.split@example.com",
@@ -832,7 +928,13 @@
           "uk": { "title": "Корекція брів ниткою", "description": "Точна корекція брів за допомогою нитки" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Ana Lashes Split", "description": "Specializing in lash and brow extensions in Split. Classic and volume lashes." },
+      "pl": { "businessName": "Ana Lashes Split", "description": "Specjalizacja w przedłużaniu rzęs i brwi w Splicie. Rzęsy klasyczne i objętościowe." },
+      "uk": { "businessName": "Ana Lashes Спліт", "description": "Спеціалізація на нарощуванні вій та брів у Спліті. Класичні та об'ємні вії." },
+      "de": { "businessName": "Ana Lashes Split", "description": "Spezialisiert auf Wimpern- und Brauenverlängerung in Split. Klassische und Volumen-Wimpern." }
+    }
   },
   {
     "email": "zuzana.bratislava@example.com",
@@ -875,7 +977,13 @@
           "uk": { "title": "Глибокий спортивний масаж", "description": "Інтенсивний спортивний масаж для спортсменів" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Zuzana Massage", "description": "Massage studio in Bratislava. Relaxation, sports, and classic massage from a certified masseuse." },
+      "pl": { "businessName": "Zuzana Masáže", "description": "Studio masażu w Bratysławie. Masaż relaksacyjny, sportowy i klasyczny od certyfikowanej masażystki." },
+      "uk": { "businessName": "Zuzana Masáže", "description": "Масажна студія в Братиславі. Релаксаційний, спортивний та класичний масаж від сертифікованого масажиста." },
+      "de": { "businessName": "Zuzana Massage", "description": "Massagestudio in Bratislava. Entspannungs-, Sport- und klassische Massage von einer zertifizierten Masseurin." }
+    }
   },
   {
     "email": "katarina.kosice@example.com",
@@ -918,7 +1026,13 @@
           "uk": { "title": "Медичний педикюр", "description": "Ретельний медичний педикюр з видаленням мозолів" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Katka Nail Studio Kosice", "description": "Nail studio in Kosice. Gel nails, manicure, and pedicure with the latest trends." },
+      "pl": { "businessName": "Katka Nechty Košice", "description": "Studio paznokci w Koszycach. Paznokcie żelowe, manicure i pedicure w najnowszych trendach." },
+      "uk": { "businessName": "Katka Nechty Кошиці", "description": "Студія нігтів у Кошицях. Гелеві нігті, манікюр та педикюр у найновіших трендах." },
+      "de": { "businessName": "Katka Nagelstudio Košice", "description": "Nagelstudio in Košice. Gelnägel, Maniküre und Pediküre mit den neuesten Trends." }
+    }
   },
   {
     "email": "liina.tallinn@example.com",
@@ -961,7 +1075,13 @@
           "uk": { "title": "Лікування акне", "description": "Цільове лікування акне з екстракцією та заспокійливою маскою" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Liina Beauty Studio", "description": "Beauty studio in Tallinn Old Town. Specializing in facial treatments, chemical peels, and LED therapy." },
+      "pl": { "businessName": "Liina Ilu Stuudio", "description": "Studio urody na Starym Mieście w Tallinie. Specjalizacja w zabiegach na twarz, peelingach chemicznych i terapii LED." },
+      "uk": { "businessName": "Liina Ilu Stuudio", "description": "Студія краси у Старому місті Таллінна. Спеціалізація на доглядах за обличчям, хімічних пілінгах та LED-терапії." },
+      "de": { "businessName": "Liina Beauty Studio", "description": "Schönheitsstudio in der Tallinner Altstadt. Spezialisiert auf Gesichtsbehandlungen, chemische Peelings und LED-Therapie." }
+    }
   },
   {
     "email": "ieva.riga@example.com",
@@ -1004,7 +1124,13 @@
           "uk": { "title": "Кератинове випрямлення", "description": "Розгладжуючий кератиновий догляд для блискучого волосся" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Ieva Hair Salon", "description": "Professional hair salon in the centre of Riga. Creative cuts, colouring, and hair care treatments." },
+      "pl": { "businessName": "Ieva Hair Salon", "description": "Profesjonalny salon fryzjerski w centrum Rygi. Kreatywne strzyżenia, koloryzacja i zabiegi pielęgnacyjne." },
+      "uk": { "businessName": "Ieva Hair Salon", "description": "Професійна перукарня в центрі Риги. Креативні стрижки, фарбування та доглядові процедури для волосся." },
+      "de": { "businessName": "Ieva Friseursalon", "description": "Professioneller Friseursalon im Zentrum von Riga. Kreative Schnitte, Färbung und Haarpflegebehandlungen." }
+    }
   },
   {
     "email": "gabija.vilnius@example.com",
@@ -1060,7 +1186,13 @@
           "uk": { "title": "Скраб для тіла", "description": "Цукровий скраб усього тіла зі зволоженням" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Gabija Beauty Studio", "description": "Beauty studio in Vilnius offering hair removal, body treatments, and spray tanning services." },
+      "pl": { "businessName": "Gabija Grožio Studija", "description": "Studio urody w Wilnie oferujące depilację, zabiegi na ciało i opalanie natryskowe." },
+      "uk": { "businessName": "Gabija Grožio Studija", "description": "Студія краси у Вільнюсі — депіляція, процедури для тіла та автозасмага." },
+      "de": { "businessName": "Gabija Beauty Studio", "description": "Schönheitsstudio in Vilnius mit Haarentfernung, Körperbehandlungen und Sprühbräunung." }
+    }
   },
   {
     "email": "laura.kaunas@example.com",
@@ -1103,7 +1235,13 @@
           "uk": { "title": "Nail Art (додаток)", "description": "Індивідуальний дизайн до будь-якої послуги манікюру" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Laura Nails Kaunas", "description": "Nail art studio in Kaunas. Classic and gel manicure, creative designs, and hand care treatments." },
+      "pl": { "businessName": "Laura Nails Kaunas", "description": "Studio nail art w Kownie. Manicure klasyczny i żelowy, kreatywne wzory i pielęgnacja dłoni." },
+      "uk": { "businessName": "Laura Nails Каунас", "description": "Студія nail art у Каунасі. Класичний та гелевий манікюр, креативний дизайн та догляд за руками." },
+      "de": { "businessName": "Laura Nails Kaunas", "description": "Nagelkunst-Studio in Kaunas. Klassische und Gel-Maniküre, kreative Designs und Handpflege." }
+    }
   },
   {
     "email": "monika.cologne@example.com",
@@ -1146,6 +1284,12 @@
           "uk": { "title": "Лікувальний глибокий масаж", "description": "Цільовий масаж глибоких тканин при хронічному напруженні" }
         }
       }
-    ]
+    ],
+    "profileTranslations": {
+      "en": { "businessName": "Monika's Massage Practice", "description": "Massage practice in Cologne-Ehrenfeld. Classic massage, deep tissue massage, and aromatherapy." },
+      "pl": { "businessName": "Gabinet Masażu Moniki", "description": "Gabinet masażu w Kolonii-Ehrenfeld. Masaż klasyczny, masaż głębokich tkanek i aromaterapia." },
+      "uk": { "businessName": "Масажний кабінет Моніки", "description": "Масажний кабінет у Кельні-Еренфельд. Класичний масаж, масаж глибоких тканин та ароматерапія." },
+      "de": { "businessName": "Monika's Massage Praxis", "description": "Massage-Praxis in Köln-Ehrenfeld. Klassische Massage, Tiefengewebsmassage und Aromatherapie." }
+    }
   }
 ]

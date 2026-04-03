@@ -43,7 +43,13 @@ data class ProviderSeed(
     val isMobile: Boolean,
     val serviceRadiusKm: Double?,
     val categories: List<String>,
-    val services: List<ProviderServiceSeed>
+    val services: List<ProviderServiceSeed>,
+    val profileTranslations: Map<String, ProfileTranslationSeed> = emptyMap()
+)
+
+data class ProfileTranslationSeed(
+    val businessName: String? = null,
+    val description: String? = null
 )
 
 data class ProviderServiceSeed(

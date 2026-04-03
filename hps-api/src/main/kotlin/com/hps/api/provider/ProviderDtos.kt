@@ -16,7 +16,8 @@ data class ProviderSummaryDto(
     val isVerified: Boolean,
     val avgRating: BigDecimal,
     val reviewCount: Int,
-    val categories: List<ProviderCategoryDto>
+    val categories: List<ProviderCategoryDto>,
+    val avatarUrl: String? = null
 )
 
 data class ProviderCategoryDto(
@@ -41,7 +42,8 @@ data class ProviderDetailDto(
     val avgRating: BigDecimal,
     val reviewCount: Int,
     val categories: List<ProviderCategoryDto>,
-    val services: List<ProviderServiceDto>
+    val services: List<ProviderServiceDto>,
+    val avatarUrl: String? = null
 )
 
 data class ProviderServiceDto(
@@ -56,6 +58,12 @@ data class ProviderServiceDto(
     val durationMinutes: Int?
 )
 
+data class ProviderTranslationDto(
+    val lang: String,
+    val businessName: String? = null,
+    val description: String? = null
+)
+
 data class CreateProviderRequest(
     @field:NotBlank
     val businessName: String,
@@ -67,7 +75,8 @@ data class CreateProviderRequest(
     val longitude: Double? = null,
     val serviceRadiusKm: BigDecimal? = null,
     val isMobile: Boolean = false,
-    val categoryIds: List<UUID> = emptyList()
+    val categoryIds: List<UUID> = emptyList(),
+    val translations: List<ProviderTranslationDto> = emptyList()
 )
 
 data class UpdateProviderRequest(
@@ -80,5 +89,6 @@ data class UpdateProviderRequest(
     val longitude: Double? = null,
     val serviceRadiusKm: BigDecimal? = null,
     val isMobile: Boolean? = null,
-    val categoryIds: List<UUID>? = null
+    val categoryIds: List<UUID>? = null,
+    val translations: List<ProviderTranslationDto>? = null
 )

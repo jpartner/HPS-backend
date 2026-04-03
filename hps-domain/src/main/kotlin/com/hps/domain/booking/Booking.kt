@@ -30,6 +30,10 @@ class Booking(
     @Column(nullable = false)
     var status: BookingStatus = BookingStatus.REQUESTED,
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "booking_type", nullable = false)
+    var bookingType: BookingType = BookingType.INCALL,
+
     @Column(name = "scheduled_at", nullable = false)
     var scheduledAt: Instant,
 
@@ -63,6 +67,10 @@ class Booking(
     @Column(name = "updated_at", nullable = false)
     var updatedAt: Instant = Instant.now()
 )
+
+enum class BookingType {
+    INCALL, OUTCALL
+}
 
 enum class BookingStatus {
     REQUESTED, CONFIRMED, IN_PROGRESS,

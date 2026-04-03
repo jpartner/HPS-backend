@@ -104,18 +104,44 @@ export default function HomePage() {
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => {
               const Icon = getCategoryIcon(category.icon);
+              const href = category.slug
+                ? `/categories/${category.slug}`
+                : `/categories/${category.id}`;
               return (
                 <Link
                   key={category.id}
-                  href={`/categories/${category.id}`}
-                  className="group flex flex-col items-center gap-3 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+                  href={href}
+                  className="group relative overflow-hidden rounded-2xl border border-gray-100 shadow-sm transition hover:border-rose-200 hover:shadow-md"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-rose-50 text-rose-500 transition group-hover:bg-rose-100">
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <span className="text-sm font-medium text-gray-700 text-center group-hover:text-rose-600">
-                    {category.name}
-                  </span>
+                  {category.imageUrl ? (
+                    <div className="relative h-40">
+                      <img
+                        src={category.imageUrl}
+                        alt={category.name}
+                        className="h-full w-full object-cover transition group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <div className="flex items-center gap-2">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white">
+                            <Icon className="h-4 w-4" />
+                          </div>
+                          <span className="text-sm font-semibold text-white drop-shadow">
+                            {category.name}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center gap-3 bg-white p-6">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-rose-50 text-rose-500 transition group-hover:bg-rose-100">
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <span className="text-sm font-medium text-gray-700 text-center group-hover:text-rose-600">
+                        {category.name}
+                      </span>
+                    </div>
+                  )}
                 </Link>
               );
             })}

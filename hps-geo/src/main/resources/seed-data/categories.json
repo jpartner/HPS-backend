@@ -2,93 +2,109 @@
   {
     "icon": "spa",
     "sortOrder": 1,
+    "slug": "massage",
+    "imageUrl": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop",
     "translations": { "en": "Massage", "pl": "Masaż", "uk": "Масаж" },
     "children": [
-      { "icon": "self_improvement", "sortOrder": 1, "translations": { "en": "Relaxation Massage", "pl": "Masaż relaksacyjny", "uk": "Релаксаційний масаж" } },
-      { "icon": "sports_martial_arts", "sortOrder": 2, "translations": { "en": "Sports Massage", "pl": "Masaż sportowy", "uk": "Спортивний масаж" } },
-      { "icon": "healing", "sortOrder": 3, "translations": { "en": "Therapeutic Massage", "pl": "Masaż leczniczy", "uk": "Лікувальний масаж" } },
-      { "icon": "spa", "sortOrder": 4, "translations": { "en": "Thai Massage", "pl": "Masaż tajski", "uk": "Тайський масаж" } },
-      { "icon": "hot_tub", "sortOrder": 5, "translations": { "en": "Hot Stone Massage", "pl": "Masaż gorącymi kamieniami", "uk": "Масаж гарячим камінням" } }
+      { "icon": "self_improvement", "sortOrder": 1, "slug": "relaxation-massage", "translations": { "en": "Relaxation Massage", "pl": "Masaż relaksacyjny", "uk": "Релаксаційний масаж" } },
+      { "icon": "sports_martial_arts", "sortOrder": 2, "slug": "sports-massage", "translations": { "en": "Sports Massage", "pl": "Masaż sportowy", "uk": "Спортивний масаж" } },
+      { "icon": "healing", "sortOrder": 3, "slug": "therapeutic-massage", "translations": { "en": "Therapeutic Massage", "pl": "Masaż leczniczy", "uk": "Лікувальний масаж" } },
+      { "icon": "spa", "sortOrder": 4, "slug": "thai-massage", "translations": { "en": "Thai Massage", "pl": "Masaż tajski", "uk": "Тайський масаж" } },
+      { "icon": "hot_tub", "sortOrder": 5, "slug": "hot-stone-massage", "translations": { "en": "Hot Stone Massage", "pl": "Masaż gorącymi kamieniami", "uk": "Масаж гарячим камінням" } }
     ]
   },
   {
     "icon": "brush",
     "sortOrder": 2,
+    "slug": "nails",
+    "imageUrl": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=400&fit=crop",
     "translations": { "en": "Nails", "pl": "Paznokcie", "uk": "Нігті" },
     "children": [
-      { "icon": "brush", "sortOrder": 1, "translations": { "en": "Manicure", "pl": "Manicure", "uk": "Манікюр" } },
-      { "icon": "brush", "sortOrder": 2, "translations": { "en": "Pedicure", "pl": "Pedicure", "uk": "Педикюр" } },
-      { "icon": "palette", "sortOrder": 3, "translations": { "en": "Gel Nails", "pl": "Paznokcie żelowe", "uk": "Гелеві нігті" } },
-      { "icon": "palette", "sortOrder": 4, "translations": { "en": "Acrylic Nails", "pl": "Paznokcie akrylowe", "uk": "Акрилові нігті" } },
-      { "icon": "draw", "sortOrder": 5, "translations": { "en": "Nail Art", "pl": "Zdobienie paznokci", "uk": "Nail Art" } }
+      { "icon": "brush", "sortOrder": 1, "slug": "manicure", "translations": { "en": "Manicure", "pl": "Manicure", "uk": "Манікюр" } },
+      { "icon": "brush", "sortOrder": 2, "slug": "pedicure", "translations": { "en": "Pedicure", "pl": "Pedicure", "uk": "Педикюр" } },
+      { "icon": "palette", "sortOrder": 3, "slug": "gel-nails", "translations": { "en": "Gel Nails", "pl": "Paznokcie żelowe", "uk": "Гелеві нігті" } },
+      { "icon": "palette", "sortOrder": 4, "slug": "acrylic-nails", "translations": { "en": "Acrylic Nails", "pl": "Paznokcie akrylowe", "uk": "Акрилові нігті" } },
+      { "icon": "draw", "sortOrder": 5, "slug": "nail-art", "translations": { "en": "Nail Art", "pl": "Zdobienie paznokci", "uk": "Nail Art" } }
     ]
   },
   {
     "icon": "content_cut",
     "sortOrder": 3,
+    "slug": "hair",
+    "imageUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop",
     "translations": { "en": "Hair", "pl": "Włosy", "uk": "Волосся" },
     "children": [
-      { "icon": "content_cut", "sortOrder": 1, "translations": { "en": "Haircut", "pl": "Strzyżenie", "uk": "Стрижка" } },
-      { "icon": "colorize", "sortOrder": 2, "translations": { "en": "Hair Colouring", "pl": "Koloryzacja", "uk": "Фарбування" } },
-      { "icon": "waves", "sortOrder": 3, "translations": { "en": "Styling & Blowout", "pl": "Stylizacja i modelowanie", "uk": "Укладка" } },
-      { "icon": "extension", "sortOrder": 4, "translations": { "en": "Hair Extensions", "pl": "Przedłużanie włosów", "uk": "Нарощування волосся" } },
-      { "icon": "medical_services", "sortOrder": 5, "translations": { "en": "Hair Treatments", "pl": "Zabiegi na włosy", "uk": "Лікування волосся" } }
+      { "icon": "content_cut", "sortOrder": 1, "slug": "haircut", "translations": { "en": "Haircut", "pl": "Strzyżenie", "uk": "Стрижка" } },
+      { "icon": "colorize", "sortOrder": 2, "slug": "hair-colouring", "translations": { "en": "Hair Colouring", "pl": "Koloryzacja", "uk": "Фарбування" } },
+      { "icon": "waves", "sortOrder": 3, "slug": "styling-blowout", "translations": { "en": "Styling & Blowout", "pl": "Stylizacja i modelowanie", "uk": "Укладка" } },
+      { "icon": "extension", "sortOrder": 4, "slug": "hair-extensions", "translations": { "en": "Hair Extensions", "pl": "Przedłużanie włosów", "uk": "Нарощування волосся" } },
+      { "icon": "medical_services", "sortOrder": 5, "slug": "hair-treatments", "translations": { "en": "Hair Treatments", "pl": "Zabiegi na włosy", "uk": "Лікування волосся" } }
     ]
   },
   {
     "icon": "face",
     "sortOrder": 4,
+    "slug": "face-skin",
+    "imageUrl": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=400&fit=crop",
     "translations": { "en": "Face & Skin", "pl": "Twarz i skóra", "uk": "Обличчя та шкіра" },
     "children": [
-      { "icon": "face_retouching_natural", "sortOrder": 1, "translations": { "en": "Facial", "pl": "Zabieg na twarz", "uk": "Догляд за обличчям" } },
-      { "icon": "cleaning_services", "sortOrder": 2, "translations": { "en": "Chemical Peel", "pl": "Peeling chemiczny", "uk": "Хімічний пілінг" } },
-      { "icon": "bolt", "sortOrder": 3, "translations": { "en": "Microdermabrasion", "pl": "Mikrodermabrazja", "uk": "Мікродермабразія" } },
-      { "icon": "light_mode", "sortOrder": 4, "translations": { "en": "LED Light Therapy", "pl": "Terapia światłem LED", "uk": "LED-терапія" } },
-      { "icon": "dermatology", "sortOrder": 5, "translations": { "en": "Acne Treatment", "pl": "Leczenie trądziku", "uk": "Лікування акне" } }
+      { "icon": "face_retouching_natural", "sortOrder": 1, "slug": "facial", "translations": { "en": "Facial", "pl": "Zabieg na twarz", "uk": "Догляд за обличчям" } },
+      { "icon": "cleaning_services", "sortOrder": 2, "slug": "chemical-peel", "translations": { "en": "Chemical Peel", "pl": "Peeling chemiczny", "uk": "Хімічний пілінг" } },
+      { "icon": "bolt", "sortOrder": 3, "slug": "microdermabrasion", "translations": { "en": "Microdermabrasion", "pl": "Mikrodermabrazja", "uk": "Мікродермабразія" } },
+      { "icon": "light_mode", "sortOrder": 4, "slug": "led-light-therapy", "translations": { "en": "LED Light Therapy", "pl": "Terapia światłem LED", "uk": "LED-терапія" } },
+      { "icon": "dermatology", "sortOrder": 5, "slug": "acne-treatment", "translations": { "en": "Acne Treatment", "pl": "Leczenie trądziku", "uk": "Лікування акне" } }
     ]
   },
   {
     "icon": "visibility",
     "sortOrder": 5,
+    "slug": "eyebrows-lashes",
+    "imageUrl": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=400&fit=crop",
     "translations": { "en": "Eyebrows & Lashes", "pl": "Brwi i rzęsy", "uk": "Брови та вії" },
     "children": [
-      { "icon": "edit", "sortOrder": 1, "translations": { "en": "Eyebrow Shaping", "pl": "Regulacja brwi", "uk": "Корекція брів" } },
-      { "icon": "visibility", "sortOrder": 2, "translations": { "en": "Lash Extensions", "pl": "Przedłużanie rzęs", "uk": "Нарощування вій" } },
-      { "icon": "colorize", "sortOrder": 3, "translations": { "en": "Lash & Brow Tinting", "pl": "Henna brwi i rzęs", "uk": "Фарбування брів та вій" } },
-      { "icon": "edit", "sortOrder": 4, "translations": { "en": "Microblading", "pl": "Microblading", "uk": "Мікроблейдинг" } },
-      { "icon": "visibility", "sortOrder": 5, "translations": { "en": "Lash Lift", "pl": "Lash lifting", "uk": "Ламінування вій" } }
+      { "icon": "edit", "sortOrder": 1, "slug": "eyebrow-shaping", "translations": { "en": "Eyebrow Shaping", "pl": "Regulacja brwi", "uk": "Корекція брів" } },
+      { "icon": "visibility", "sortOrder": 2, "slug": "lash-extensions", "translations": { "en": "Lash Extensions", "pl": "Przedłużanie rzęs", "uk": "Нарощування вій" } },
+      { "icon": "colorize", "sortOrder": 3, "slug": "lash-brow-tinting", "translations": { "en": "Lash & Brow Tinting", "pl": "Henna brwi i rzęs", "uk": "Фарбування брів та вій" } },
+      { "icon": "edit", "sortOrder": 4, "slug": "microblading", "translations": { "en": "Microblading", "pl": "Microblading", "uk": "Мікроблейдинг" } },
+      { "icon": "visibility", "sortOrder": 5, "slug": "lash-lift", "translations": { "en": "Lash Lift", "pl": "Lash lifting", "uk": "Ламінування вій" } }
     ]
   },
   {
     "icon": "wax",
     "sortOrder": 6,
+    "slug": "hair-removal",
+    "imageUrl": "https://images.unsplash.com/photo-1598524053672-c3e3ba044b7d?w=600&h=400&fit=crop",
     "translations": { "en": "Hair Removal", "pl": "Depilacja", "uk": "Депіляція" },
     "children": [
-      { "icon": "wax", "sortOrder": 1, "translations": { "en": "Waxing", "pl": "Depilacja woskiem", "uk": "Воскова депіляція" } },
-      { "icon": "bolt", "sortOrder": 2, "translations": { "en": "Laser Hair Removal", "pl": "Depilacja laserowa", "uk": "Лазерна депіляція" } },
-      { "icon": "grain", "sortOrder": 3, "translations": { "en": "Sugaring", "pl": "Depilacja pastą cukrową", "uk": "Шугарінг" } },
-      { "icon": "electric_bolt", "sortOrder": 4, "translations": { "en": "Electrolysis", "pl": "Elektroliza", "uk": "Електроліз" } }
+      { "icon": "wax", "sortOrder": 1, "slug": "waxing", "translations": { "en": "Waxing", "pl": "Depilacja woskiem", "uk": "Воскова депіляція" } },
+      { "icon": "bolt", "sortOrder": 2, "slug": "laser-hair-removal", "translations": { "en": "Laser Hair Removal", "pl": "Depilacja laserowa", "uk": "Лазерна депіляція" } },
+      { "icon": "grain", "sortOrder": 3, "slug": "sugaring", "translations": { "en": "Sugaring", "pl": "Depilacja pastą cukrową", "uk": "Шугарінг" } },
+      { "icon": "electric_bolt", "sortOrder": 4, "slug": "electrolysis", "translations": { "en": "Electrolysis", "pl": "Elektroliza", "uk": "Електроліз" } }
     ]
   },
   {
     "icon": "palette",
     "sortOrder": 7,
+    "slug": "makeup",
+    "imageUrl": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&h=400&fit=crop",
     "translations": { "en": "Makeup", "pl": "Makijaż", "uk": "Макіяж" },
     "children": [
-      { "icon": "celebration", "sortOrder": 1, "translations": { "en": "Event Makeup", "pl": "Makijaż okazjonalny", "uk": "Святковий макіяж" } },
-      { "icon": "favorite", "sortOrder": 2, "translations": { "en": "Bridal Makeup", "pl": "Makijaż ślubny", "uk": "Весільний макіяж" } },
-      { "icon": "edit", "sortOrder": 3, "translations": { "en": "Permanent Makeup", "pl": "Makijaż permanentny", "uk": "Перманентний макіяж" } }
+      { "icon": "celebration", "sortOrder": 1, "slug": "event-makeup", "translations": { "en": "Event Makeup", "pl": "Makijaż okazjonalny", "uk": "Святковий макіяж" } },
+      { "icon": "favorite", "sortOrder": 2, "slug": "bridal-makeup", "translations": { "en": "Bridal Makeup", "pl": "Makijaż ślubny", "uk": "Весільний макіяж" } },
+      { "icon": "edit", "sortOrder": 3, "slug": "permanent-makeup", "translations": { "en": "Permanent Makeup", "pl": "Makijaż permanentny", "uk": "Перманентний макіяж" } }
     ]
   },
   {
     "icon": "fitness_center",
     "sortOrder": 8,
+    "slug": "body-treatments",
+    "imageUrl": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=400&fit=crop",
     "translations": { "en": "Body Treatments", "pl": "Zabiegi na ciało", "uk": "Процедури для тіла" },
     "children": [
-      { "icon": "wrap_text", "sortOrder": 1, "translations": { "en": "Body Wraps", "pl": "Zawijanie ciała", "uk": "Обгортання" } },
-      { "icon": "grain", "sortOrder": 2, "translations": { "en": "Body Scrub", "pl": "Peeling ciała", "uk": "Скраб для тіла" } },
-      { "icon": "water_drop", "sortOrder": 3, "translations": { "en": "Cellulite Treatment", "pl": "Zabieg antycellulitowy", "uk": "Антицелюлітний масаж" } },
-      { "icon": "air", "sortOrder": 4, "translations": { "en": "Spray Tan", "pl": "Opalanie natryskowe", "uk": "Автозасмага" } }
+      { "icon": "wrap_text", "sortOrder": 1, "slug": "body-wraps", "translations": { "en": "Body Wraps", "pl": "Zawijanie ciała", "uk": "Обгортання" } },
+      { "icon": "grain", "sortOrder": 2, "slug": "body-scrub", "translations": { "en": "Body Scrub", "pl": "Peeling ciała", "uk": "Скраб для тіла" } },
+      { "icon": "water_drop", "sortOrder": 3, "slug": "cellulite-treatment", "translations": { "en": "Cellulite Treatment", "pl": "Zabieg antycellulitowy", "uk": "Антицелюлітний масаж" } },
+      { "icon": "air", "sortOrder": 4, "slug": "spray-tan", "translations": { "en": "Spray Tan", "pl": "Opalanie natryskowe", "uk": "Автозасмага" } }
     ]
   }
 ]

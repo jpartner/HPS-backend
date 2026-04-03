@@ -44,8 +44,9 @@ export default function ProviderPage({
     new Set()
   );
 
-  // Gallery lightbox
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  // Gallery
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -263,77 +264,140 @@ export default function ProviderPage({
             <div className="flex items-center gap-2 mb-4">
               <ImageIcon className="h-5 w-5 text-rose-500" />
               <h2 className="text-lg font-semibold text-gray-900">Gallery</h2>
-              <span className="text-sm text-gray-400">({provider.galleryImages.length})</span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-              {provider.galleryImages.map((img, index) => (
+
+            {/* Main image */}
+            <div className="relative">
+              <button
+                onClick={() => setLightboxOpen(true)}
+                className="w-full cursor-pointer"
+              >
+                <img
+                  src={provider.galleryImages[activeImageIndex].url}
+                  alt={provider.galleryImages[activeImageIndex].caption || ''}
+                  className="w-full aspect-[16/9] object-cover rounded-lg"
+                />
+              </button>
+
+              {/* Prev/Next on main image */}
+              {activeImageIndex > 0 && (
                 <button
-                  key={img.id}
-                  onClick={() => setLightboxIndex(index)}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer"
+                  onClick={() => setActiveImageIndex(activeImageIndex - 1)}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-1.5 text-white hover:bg-black/60 transition cursor-pointer"
                 >
-                  <img
-                    src={img.url}
-                    alt={img.caption || `Gallery image ${index + 1}`}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  {img.caption && (
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <p className="text-xs text-white truncate">{img.caption}</p>
-                    </div>
-                  )}
+                  <ChevronLeft className="h-5 w-5" />
                 </button>
-              ))}
+              )}
+              {activeImageIndex < provider.galleryImages.length - 1 && (
+                <button
+                  onClick={() => setActiveImageIndex(activeImageIndex + 1)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-1.5 text-white hover:bg-black/60 transition cursor-pointer"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              )}
+
+              {/* Caption overlay */}
+              {provider.galleryImages[activeImageIndex].caption && (
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg px-4 py-3">
+                  <p className="text-sm text-white">{provider.galleryImages[activeImageIndex].caption}</p>
+                </div>
+              )}
             </div>
+
+            {/* Thumbnail strip */}
+            {provider.galleryImages.length > 1 && (
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+                {provider.galleryImages.map((img, index) => (
+                  <button
+                    key={img.id}
+                    onClick={() => setActiveImageIndex(index)}
+                    className={clsx(
+                      'flex-shrink-0 rounded-md overflow-hidden transition-all cursor-pointer',
+                      index === activeImageIndex
+                        ? 'ring-2 ring-rose-500 opacity-100'
+                        : 'opacity-60 hover:opacity-90'
+                    )}
+                  >
+                    <img
+                      src={img.url}
+                      alt={img.caption || `Thumbnail ${index + 1}`}
+                      className="h-16 w-24 sm:h-20 sm:w-28 object-cover"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </section>
         )}
 
         {/* Lightbox */}
-        {lightboxIndex !== null && provider.galleryImages && (
+        {lightboxOpen && provider.galleryImages && (
           <div
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90"
-            onClick={() => setLightboxIndex(null)}
+            className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-black/95"
+            onClick={() => setLightboxOpen(false)}
           >
             <button
-              onClick={() => setLightboxIndex(null)}
-              className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
+              onClick={() => setLightboxOpen(false)}
+              className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer z-10"
             >
               <X className="h-6 w-6" />
             </button>
 
-            {lightboxIndex > 0 && (
-              <button
-                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex - 1); }}
-                className="absolute left-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-            )}
-
-            {lightboxIndex < provider.galleryImages.length - 1 && (
-              <button
-                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex + 1); }}
-                className="absolute right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-            )}
-
-            <div className="max-w-4xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
-              <img
-                src={provider.galleryImages[lightboxIndex].url}
-                alt={provider.galleryImages[lightboxIndex].caption || ''}
-                className="max-h-[80vh] w-auto mx-auto rounded-lg object-contain"
-              />
-              {provider.galleryImages[lightboxIndex].caption && (
-                <p className="mt-2 text-center text-sm text-white/80">
-                  {provider.galleryImages[lightboxIndex].caption}
-                </p>
+            <div className="relative flex items-center justify-center flex-1 w-full max-w-5xl px-12" onClick={(e) => e.stopPropagation()}>
+              {activeImageIndex > 0 && (
+                <button
+                  onClick={() => setActiveImageIndex(activeImageIndex - 1)}
+                  className="absolute left-2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
               )}
-              <p className="mt-1 text-center text-xs text-white/50">
-                {lightboxIndex + 1} / {provider.galleryImages.length}
+
+              <img
+                src={provider.galleryImages[activeImageIndex].url}
+                alt={provider.galleryImages[activeImageIndex].caption || ''}
+                className="max-h-[70vh] w-auto mx-auto rounded-lg object-contain"
+              />
+
+              {activeImageIndex < provider.galleryImages.length - 1 && (
+                <button
+                  onClick={() => setActiveImageIndex(activeImageIndex + 1)}
+                  className="absolute right-2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              )}
+            </div>
+
+            {/* Caption */}
+            {provider.galleryImages[activeImageIndex].caption && (
+              <p className="mt-2 text-center text-sm text-white/80">
+                {provider.galleryImages[activeImageIndex].caption}
               </p>
+            )}
+
+            {/* Thumbnail strip in lightbox */}
+            <div className="mt-4 mb-4 flex gap-2 overflow-x-auto px-4 max-w-full" onClick={(e) => e.stopPropagation()}>
+              {provider.galleryImages.map((img, index) => (
+                <button
+                  key={img.id}
+                  onClick={() => setActiveImageIndex(index)}
+                  className={clsx(
+                    'flex-shrink-0 rounded overflow-hidden transition-all cursor-pointer',
+                    index === activeImageIndex
+                      ? 'ring-2 ring-rose-500 opacity-100'
+                      : 'opacity-40 hover:opacity-80'
+                  )}
+                >
+                  <img
+                    src={img.url}
+                    alt=""
+                    className="h-14 w-20 object-cover"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         )}

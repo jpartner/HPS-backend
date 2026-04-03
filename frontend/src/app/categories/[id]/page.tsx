@@ -19,17 +19,25 @@ import {
   type City,
 } from '@/lib/api';
 
+// Check if a string looks like a UUID
+function isUUID(value: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+}
+
 export default function CategoryPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id: categoryId } = use(params);
+  const { id: paramValue } = use(params);
   const { token } = useAuth();
   const { lang, t } = useLanguage();
   const { selectedCountry: contextCountry, setCountry: setContextCountry } = useCountry();
 
   const [category, setCategory] = useState<Category | null>(null);
+  const [resolvedCategoryId, setResolvedCategoryId] = useState<string | null>(
+    isUUID(paramValue) ? paramValue : null
+  );
   const [providers, setProviders] = useState<ProviderSummary[]>([]);
   const [meta, setMeta] = useState<PageMeta | null>(null);
   const [page, setPage] = useState(1);
@@ -75,24 +83,43 @@ export default function CategoryPage({
     }
   }, [selectedRegion, lang]);
 
-  // Load category name
+  // Load category - resolve slug to ID if needed
   useEffect(() => {
     categoriesApi
       .list(lang)
       .then((cats) => {
-        const found = cats.find((c) => c.id === categoryId);
-        if (found) setCategory(found);
+        let found: Category | undefined;
+        if (isUUID(paramValue)) {
+          found = cats.find((c) => c.id === paramValue);
+        } else {
+          // Param is a slug - search top-level and children
+          found = cats.find((c) => c.slug === paramValue);
+          if (!found) {
+            for (const cat of cats) {
+              const child = cat.children.find((ch) => ch.slug === paramValue);
+              if (child) {
+                found = child;
+                break;
+              }
+            }
+          }
+        }
+        if (found) {
+          setCategory(found);
+          setResolvedCategoryId(found.id);
+        }
       })
       .catch(() => {});
-  }, [categoryId, lang]);
+  }, [paramValue, lang]);
 
   // Load providers
   const fetchProviders = useCallback(async () => {
+    if (!resolvedCategoryId) return;
     setLoading(true);
     setError(null);
     try {
       const queryParams: Record<string, string> = {
-        categoryId,
+        categoryId: resolvedCategoryId,
         page: String(page - 1),
         size: '12',
       };
@@ -108,7 +135,7 @@ export default function CategoryPage({
     } finally {
       setLoading(false);
     }
-  }, [categoryId, page, selectedCountry, selectedRegion, selectedCity, lang]);
+  }, [resolvedCategoryId, page, selectedCountry, selectedRegion, selectedCity, lang]);
 
   useEffect(() => {
     fetchProviders();
@@ -123,21 +150,46 @@ export default function CategoryPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="mx-auto max-w-5xl px-4 py-6">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-500 transition"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            {t.categories.title}
-          </Link>
-          <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
-            {category?.name ?? t.providers.title}
-          </h1>
+      {/* Header with optional category image banner */}
+      {category?.imageUrl ? (
+        <div className="relative h-48 sm:h-64 bg-gray-900">
+          <img
+            src={category.imageUrl}
+            alt={category.name}
+            className="h-full w-full object-cover opacity-70"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-end">
+            <div className="mx-auto w-full max-w-5xl px-4 pb-6">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white transition"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                {t.categories.title}
+              </Link>
+              <h1 className="mt-2 text-2xl font-bold text-white sm:text-3xl drop-shadow">
+                {category.name}
+              </h1>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="bg-white border-b border-gray-100">
+          <div className="mx-auto max-w-5xl px-4 py-6">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-500 transition"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              {t.categories.title}
+            </Link>
+            <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+              {category?.name ?? t.providers.title}
+            </h1>
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto max-w-5xl px-4 py-6">
         {/* Filter Bar */}

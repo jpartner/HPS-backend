@@ -13,4 +13,11 @@ interface ServiceCategoryRepository : JpaRepository<ServiceCategory, UUID> {
         ORDER BY c.sortOrder
     """)
     fun findAllWithTranslations(): List<ServiceCategory>
+
+    @Query("""
+        SELECT c FROM ServiceCategory c
+        JOIN FETCH c.translations
+        WHERE c.slug = :slug
+    """)
+    fun findBySlug(slug: String): ServiceCategory?
 }

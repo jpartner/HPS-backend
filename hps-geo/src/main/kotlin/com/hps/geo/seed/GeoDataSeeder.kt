@@ -133,6 +133,8 @@ class GeoDataSeeder(
         val category = ServiceCategory(
             parent = parent,
             icon = seed.icon,
+            slug = seed.slug,
+            imageUrl = seed.imageUrl,
             sortOrder = seed.sortOrder
         )
 

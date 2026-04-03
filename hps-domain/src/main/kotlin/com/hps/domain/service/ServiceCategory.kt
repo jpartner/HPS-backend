@@ -17,6 +17,12 @@ class ServiceCategory(
     @Column(length = 100)
     var icon: String? = null,
 
+    @Column(length = 100)
+    var slug: String? = null,
+
+    @Column(name = "image_url", length = 500)
+    var imageUrl: String? = null,
+
     @Column(name = "sort_order", nullable = false)
     var sortOrder: Int = 0,
 

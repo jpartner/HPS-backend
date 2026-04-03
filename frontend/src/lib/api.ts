@@ -136,7 +136,7 @@ export const messagingApi = {
 };
 
 // Types
-export interface Category { id: string; name: string; icon: string; children: Category[]; }
+export interface Category { id: string; name: string; icon: string; slug: string | null; imageUrl: string | null; children: Category[]; }
 export interface Country { id: string; isoCode: string; phonePrefix: string; name: string; }
 export interface Region { id: string; code: string; name: string; latitude: number; longitude: number; }
 export interface City { id: string; name: string; latitude: number; longitude: number; population: number; }

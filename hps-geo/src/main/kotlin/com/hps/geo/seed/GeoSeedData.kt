@@ -25,6 +25,8 @@ data class CitySeed(
 data class CategorySeed(
     val icon: String?,
     val sortOrder: Int,
+    val slug: String? = null,
+    val imageUrl: String? = null,
     val translations: Map<String, String>,
     val children: List<CategorySeed> = emptyList()
 )

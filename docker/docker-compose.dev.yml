@@ -43,3 +43,13 @@ services:
         condition: service_healthy
       typesense:
         condition: service_started
+
+  frontend:
+    image: hps-frontend:latest
+    container_name: hps-dev-frontend
+    environment:
+      API_INTERNAL_URL: http://app:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      - app

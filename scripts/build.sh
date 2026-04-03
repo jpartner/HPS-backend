@@ -9,7 +9,11 @@ cd "$PROJECT_DIR"
 echo "==> Building application..."
 ./gradlew clean bootJar -x test
 
-echo "==> Building Docker image..."
+echo "==> Building backend Docker image..."
 docker build -t hps-system:latest .
 
-echo "==> Done. Image: hps-system:latest"
+echo "==> Building frontend..."
+cd "$PROJECT_DIR/frontend"
+docker build -t hps-frontend:latest .
+
+echo "==> Done. Images: hps-system:latest, hps-frontend:latest"

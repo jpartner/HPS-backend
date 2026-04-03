@@ -1,6 +1,5 @@
 package com.hps.domain.booking
 
-import com.hps.domain.service.Service
 import com.hps.domain.user.ProviderProfile
 import com.hps.domain.user.User
 import jakarta.persistence.*
@@ -13,10 +12,6 @@ import java.util.UUID
 class Booking(
     @Id
     val id: UUID = UUID.randomUUID(),
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "service_id", nullable = false)
-    val service: Service,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
@@ -40,8 +35,14 @@ class Booking(
     @Column(name = "duration_minutes")
     var durationMinutes: Int? = null,
 
+    @Column(name = "total_duration_minutes")
+    var totalDurationMinutes: Int? = null,
+
     @Column(name = "price_amount", nullable = false, precision = 10, scale = 2)
-    val priceAmount: BigDecimal,
+    var priceAmount: BigDecimal,
+
+    @Column(name = "original_amount", precision = 10, scale = 2)
+    var originalAmount: BigDecimal? = null,
 
     @Column(name = "price_currency", nullable = false, length = 3)
     val priceCurrency: String,
@@ -65,7 +66,13 @@ class Booking(
     val createdAt: Instant = Instant.now(),
 
     @Column(name = "updated_at", nullable = false)
-    var updatedAt: Instant = Instant.now()
+    var updatedAt: Instant = Instant.now(),
+
+    @OneToMany(mappedBy = "booking", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val bookingServices: MutableList<BookingService> = mutableListOf(),
+
+    @OneToMany(mappedBy = "booking", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val statusHistory: MutableList<BookingStatusHistory> = mutableListOf()
 )
 
 enum class BookingType {
@@ -73,10 +80,45 @@ enum class BookingType {
 }
 
 enum class BookingStatus {
-    REQUESTED, CONFIRMED, IN_PROGRESS,
-    COMPLETED, CANCELLED_BY_CLIENT, CANCELLED_BY_PROVIDER,
+    REQUESTED,
+    QUOTED,
+    CONFIRMED,
+    IN_PROGRESS,
+    COMPLETED,
+    CANCELLED_BY_CLIENT,
+    CANCELLED_BY_PROVIDER,
     NO_SHOW
 }
+
+@Entity
+@Table(name = "booking_services")
+class BookingService(
+    @Id
+    val id: UUID = UUID.randomUUID(),
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "booking_id", nullable = false)
+    val booking: Booking,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id", nullable = false)
+    val service: com.hps.domain.service.Service,
+
+    @Column(name = "service_title", nullable = false)
+    val serviceTitle: String,
+
+    @Column(nullable = false)
+    val quantity: Int = 1,
+
+    @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
+    val unitPrice: BigDecimal,
+
+    @Column(name = "line_total", nullable = false, precision = 10, scale = 2)
+    val lineTotal: BigDecimal,
+
+    @Column(name = "duration_minutes")
+    val durationMinutes: Int? = null
+)
 
 @Entity
 @Table(name = "booking_status_history")

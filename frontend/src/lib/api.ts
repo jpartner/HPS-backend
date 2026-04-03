@@ -79,6 +79,7 @@ export const providersApi = {
     return api<{ data: ProviderSummary[]; meta: PageMeta }>(`/api/v1/providers?${qs}`, { lang });
   },
   get: (id: string, lang: string) => api<ProviderDetail>(`/api/v1/providers/${id}`, { lang }),
+  attributes: (id: string, lang: string) => api<ProviderAttribute[]>(`/api/v1/providers/${id}/attributes`, { lang }),
   availability: (id: string, params: Record<string, string>) => {
     const qs = new URLSearchParams(params).toString();
     return api<Availability>(`/api/v1/providers/${id}/availability?${qs}`);
@@ -148,6 +149,10 @@ export interface ProviderSummary {
   avatarUrl: string | null;
 }
 export interface GalleryImage { id: string; url: string; caption: string | null; sortOrder: number; }
+export interface ProviderAttribute {
+  definition: { key: string; label: string; dataType: string; hint: string | null; options: string[] | null; optionLabels: Record<string, string> | null };
+  value: unknown;
+}
 export interface ProviderDetail extends ProviderSummary {
   email: string; phone: string; areaName: string; addressLine: string;
   serviceRadiusKm: number; services: ServiceDto[];

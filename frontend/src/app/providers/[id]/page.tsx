@@ -22,6 +22,7 @@ import {
   providersApi,
   servicesApi,
   type ProviderDetail,
+  type ProviderAttribute,
   type ServiceDto,
 } from '@/lib/api';
 
@@ -36,6 +37,7 @@ export default function ProviderPage({
 
   const [provider, setProvider] = useState<ProviderDetail | null>(null);
   const [services, setServices] = useState<ServiceDto[]>([]);
+  const [attributes, setAttributes] = useState<ProviderAttribute[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -55,13 +57,15 @@ export default function ProviderPage({
       setLoading(true);
       setError(null);
       try {
-        const [providerData, serviceData] = await Promise.all([
+        const [providerData, serviceData, attrData] = await Promise.all([
           providersApi.get(providerId, lang),
           servicesApi.listByProvider(providerId, lang),
+          providersApi.attributes(providerId, lang).catch(() => [] as ProviderAttribute[]),
         ]);
         if (!cancelled) {
           setProvider(providerData);
           setServices(serviceData.filter((s) => s.isActive));
+          setAttributes(attrData);
         }
       } catch {
         if (!cancelled) {
@@ -257,6 +261,54 @@ export default function ProviderPage({
             </p>
           </section>
         )}
+
+        {/* Provider Attributes */}
+        {(() => {
+          // Split attributes into physical details and offered services
+          const physicalAttrs = attributes.filter(a => a.definition.key !== 'offered_services' && a.value != null);
+          const offeredServices = attributes.find(a => a.definition.key === 'offered_services');
+          const extras = Array.isArray(offeredServices?.value) ? offeredServices.value as string[] : [];
+
+          if (physicalAttrs.length === 0 && extras.length === 0) return null;
+
+          return (
+            <section className="mt-6 rounded-xl bg-white p-6 shadow-sm">
+              {/* Physical attributes */}
+              {physicalAttrs.length > 0 && (
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900 mb-3">Details</h2>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {physicalAttrs.map(attr => (
+                      <div key={attr.definition.key} className="rounded-lg bg-gray-50 px-3 py-2">
+                        <p className="text-xs text-gray-500">{attr.definition.label}</p>
+                        <p className="text-sm font-medium text-gray-900 mt-0.5">
+                          {String(attr.value)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Offered services / extras */}
+              {extras.length > 0 && (
+                <div className={physicalAttrs.length > 0 ? 'mt-5 pt-5 border-t border-gray-100' : ''}>
+                  <h2 className="text-lg font-semibold text-gray-900 mb-3">Services Offered</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {extras.map((extra, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center rounded-full bg-rose-50 px-3 py-1 text-xs font-medium text-rose-700"
+                      >
+                        {extra}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </section>
+          );
+        })()}
 
         {/* Gallery */}
         {provider.galleryImages && provider.galleryImages.length > 0 && (

@@ -6,12 +6,15 @@ import clsx from 'clsx';
 import {
   Star,
   ChevronLeft,
+  ChevronRight,
   MapPin,
   BadgeCheck,
   Clock,
   MessageCircle,
   Loader2,
   Check,
+  X,
+  Image as ImageIcon,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
@@ -40,6 +43,9 @@ export default function ProviderPage({
   const [selectedServiceIds, setSelectedServiceIds] = useState<Set<string>>(
     new Set()
   );
+
+  // Gallery lightbox
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -162,7 +168,15 @@ export default function ProviderPage({
           </Link>
 
           <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div>
+            <div className="flex gap-4">
+              {provider.avatarUrl && (
+                <img
+                  src={provider.avatarUrl}
+                  alt={provider.businessName || ''}
+                  className="h-16 w-16 rounded-full object-cover border-2 border-rose-100 sm:h-20 sm:w-20"
+                />
+              )}
+              <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                   {provider.businessName}
@@ -209,6 +223,7 @@ export default function ProviderPage({
                   </span>
                 ))}
               </div>
+              </div>
             </div>
 
             {/* Action buttons */}
@@ -240,6 +255,87 @@ export default function ProviderPage({
               {provider.description}
             </p>
           </section>
+        )}
+
+        {/* Gallery */}
+        {provider.galleryImages && provider.galleryImages.length > 0 && (
+          <section className="mt-6 rounded-xl bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-2 mb-4">
+              <ImageIcon className="h-5 w-5 text-rose-500" />
+              <h2 className="text-lg font-semibold text-gray-900">Gallery</h2>
+              <span className="text-sm text-gray-400">({provider.galleryImages.length})</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+              {provider.galleryImages.map((img, index) => (
+                <button
+                  key={img.id}
+                  onClick={() => setLightboxIndex(index)}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer"
+                >
+                  <img
+                    src={img.url}
+                    alt={img.caption || `Gallery image ${index + 1}`}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {img.caption && (
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <p className="text-xs text-white truncate">{img.caption}</p>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Lightbox */}
+        {lightboxIndex !== null && provider.galleryImages && (
+          <div
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {lightboxIndex > 0 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex - 1); }}
+                className="absolute left-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+            )}
+
+            {lightboxIndex < provider.galleryImages.length - 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex + 1); }}
+                className="absolute right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition cursor-pointer"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            )}
+
+            <div className="max-w-4xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={provider.galleryImages[lightboxIndex].url}
+                alt={provider.galleryImages[lightboxIndex].caption || ''}
+                className="max-h-[80vh] w-auto mx-auto rounded-lg object-contain"
+              />
+              {provider.galleryImages[lightboxIndex].caption && (
+                <p className="mt-2 text-center text-sm text-white/80">
+                  {provider.galleryImages[lightboxIndex].caption}
+                </p>
+              )}
+              <p className="mt-1 text-center text-xs text-white/50">
+                {lightboxIndex + 1} / {provider.galleryImages.length}
+              </p>
+            </div>
+          </div>
         )}
 
         {/* Services */}

@@ -145,10 +145,13 @@ export interface ProviderSummary {
   id: string; businessName: string; description: string; cityName: string;
   latitude: number; longitude: number; isMobile: boolean; isVerified: boolean;
   avgRating: number; reviewCount: number; categories: { id: string; name: string }[];
+  avatarUrl: string | null;
 }
+export interface GalleryImage { id: string; url: string; caption: string | null; sortOrder: number; }
 export interface ProviderDetail extends ProviderSummary {
   email: string; phone: string; areaName: string; addressLine: string;
   serviceRadiusKm: number; services: ServiceDto[];
+  galleryImages: GalleryImage[];
 }
 export interface ServiceDto {
   id: string; title: string; description: string; categoryId: string; categoryName: string;

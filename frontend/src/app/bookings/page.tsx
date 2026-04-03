@@ -16,31 +16,27 @@ import {
   DollarSign,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import { bookingsApi, ApiError, type BookingDto } from '@/lib/api';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 
-const STATUS_STYLES: Record<string, { className: string; label: string }> = {
-  REQUESTED: { className: 'bg-yellow-50 text-yellow-700 border-yellow-200', label: 'Requested' },
-  CONFIRMED: { className: 'bg-blue-50 text-blue-700 border-blue-200', label: 'Confirmed' },
-  QUOTED: { className: 'bg-orange-50 text-orange-700 border-orange-200', label: 'Quoted' },
-  COMPLETED: { className: 'bg-green-50 text-green-700 border-green-200', label: 'Completed' },
-  CANCELLED: { className: 'bg-red-50 text-red-700 border-red-200', label: 'Cancelled' },
-  IN_PROGRESS: { className: 'bg-indigo-50 text-indigo-700 border-indigo-200', label: 'In Progress' },
+const STATUS_CLASSES: Record<string, string> = {
+  REQUESTED: 'bg-yellow-50 text-yellow-700 border-yellow-200',
+  CONFIRMED: 'bg-blue-50 text-blue-700 border-blue-200',
+  QUOTED: 'bg-orange-50 text-orange-700 border-orange-200',
+  COMPLETED: 'bg-green-50 text-green-700 border-green-200',
+  CANCELLED: 'bg-red-50 text-red-700 border-red-200',
+  CANCELLED_BY_CLIENT: 'bg-red-50 text-red-700 border-red-200',
+  CANCELLED_BY_PROVIDER: 'bg-red-50 text-red-700 border-red-200',
+  IN_PROGRESS: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+  NO_SHOW: 'bg-gray-50 text-gray-700 border-gray-200',
 };
-
-function StatusBadge({ status }: { status: string }) {
-  const style = STATUS_STYLES[status] || STATUS_STYLES.REQUESTED;
-  return (
-    <Badge className={style.className}>
-      {style.label}
-    </Badge>
-  );
-}
 
 export default function BookingsPage() {
   const router = useRouter();
   const { user, token, isLoading: authLoading } = useAuth();
+  const { t } = useLanguage();
 
   const [bookings, setBookings] = useState<BookingDto[]>([]);
   const [loading, setLoading] = useState(true);
@@ -92,21 +88,21 @@ export default function BookingsPage() {
 
     if (isProvider) {
       if (booking.status === 'REQUESTED') {
-        actions.push({ label: 'Confirm', status: 'CONFIRMED', variant: 'primary' });
-        actions.push({ label: 'Cancel', status: 'CANCELLED', variant: 'danger' });
+        actions.push({ label: t.booking.confirm, status: 'CONFIRMED', variant: 'primary' });
+        actions.push({ label: t.booking.cancel, status: 'CANCELLED', variant: 'danger' });
       }
       if (booking.status === 'CONFIRMED') {
-        actions.push({ label: 'Mark Completed', status: 'COMPLETED', variant: 'primary' });
-        actions.push({ label: 'Cancel', status: 'CANCELLED', variant: 'danger' });
+        actions.push({ label: t.booking.complete, status: 'COMPLETED', variant: 'primary' });
+        actions.push({ label: t.booking.cancel, status: 'CANCELLED', variant: 'danger' });
       }
     }
 
     if (isClient) {
       if (booking.status === 'REQUESTED' || booking.status === 'CONFIRMED' || booking.status === 'QUOTED') {
-        actions.push({ label: 'Cancel', status: 'CANCELLED', variant: 'danger' });
+        actions.push({ label: t.booking.cancel, status: 'CANCELLED', variant: 'danger' });
       }
       if (booking.status === 'QUOTED') {
-        actions.push({ label: 'Confirm', status: 'CONFIRMED', variant: 'primary' });
+        actions.push({ label: t.booking.confirm, status: 'CONFIRMED', variant: 'primary' });
       }
     }
 
@@ -126,7 +122,7 @@ export default function BookingsPage() {
       <div className="max-w-3xl mx-auto px-4 py-8 sm:py-12">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Bookings</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t.booking.title}</h1>
             <p className="mt-1 text-sm text-gray-500">
               {bookings.length} booking{bookings.length !== 1 ? 's' : ''}
             </p>
@@ -143,13 +139,13 @@ export default function BookingsPage() {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-400">
             <Loader2 className="h-8 w-8 animate-spin mb-3" />
-            <p className="text-sm">Loading bookings...</p>
+            <p className="text-sm">{t.common.loading}</p>
           </div>
         ) : bookings.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-400">
             <Calendar className="h-12 w-12 mb-3" />
-            <p className="text-base font-medium text-gray-500">No bookings yet</p>
-            <p className="text-sm mt-1">Your bookings will appear here</p>
+            <p className="text-base font-medium text-gray-500">{t.booking.noBookings}</p>
+            <p className="text-sm mt-1">{t.booking.browseProviders}</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -175,7 +171,9 @@ export default function BookingsPage() {
                               ? booking.providerName
                               : booking.clientName}
                           </p>
-                          <StatusBadge status={booking.status} />
+                          <Badge className={STATUS_CLASSES[booking.status] || STATUS_CLASSES.REQUESTED}>
+                            {(t.booking.status as Record<string, string>)[booking.status] || booking.status}
+                          </Badge>
                         </div>
 
                         <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
@@ -225,7 +223,7 @@ export default function BookingsPage() {
                         {booking.services.length > 0 && (
                           <div>
                             <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">
-                              Services
+                              {t.provider.services}
                             </p>
                             <div className="space-y-1.5">
                               {booking.services.map((svc) => (
@@ -251,7 +249,7 @@ export default function BookingsPage() {
                         {booking.clientNotes && (
                           <div>
                             <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">
-                              Client Notes
+                              {t.booking.notes}
                             </p>
                             <p className="text-sm text-gray-600">{booking.clientNotes}</p>
                           </div>
@@ -260,7 +258,7 @@ export default function BookingsPage() {
                         {booking.providerNotes && (
                           <div>
                             <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">
-                              Provider Notes
+                              {t.booking.providerNotes}
                             </p>
                             <p className="text-sm text-gray-600">{booking.providerNotes}</p>
                           </div>

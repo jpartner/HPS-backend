@@ -17,6 +17,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import { bookingsApi, messagingApi, ApiError, type BookingDto } from '@/lib/api';
 import Badge from '@/components/ui/Badge';
 import Card from '@/components/ui/Card';
@@ -33,6 +34,7 @@ const STATUS_STYLES: Record<string, string> = {
 export default function DashboardPage() {
   const router = useRouter();
   const { user, token, isLoading: authLoading } = useAuth();
+  const { t } = useLanguage();
 
   const [bookings, setBookings] = useState<BookingDto[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -97,7 +99,7 @@ export default function DashboardPage() {
             <LayoutDashboard className="h-5 w-5 text-rose-600" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t.dashboard.title}</h1>
             <p className="text-sm text-gray-500">Welcome back, {user?.email}</p>
           </div>
         </div>
@@ -112,7 +114,7 @@ export default function DashboardPage() {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-400">
             <Loader2 className="h-8 w-8 animate-spin mb-3" />
-            <p className="text-sm">Loading dashboard...</p>
+            <p className="text-sm">{t.common.loading}</p>
           </div>
         ) : (
           <>
@@ -127,7 +129,7 @@ export default function DashboardPage() {
                     <p className="text-2xl font-bold text-gray-900">
                       {upcomingBookings.length}
                     </p>
-                    <p className="text-sm text-gray-500">Upcoming Bookings</p>
+                    <p className="text-sm text-gray-500">{t.dashboard.upcomingBookings}</p>
                   </div>
                 </div>
               </Card>
@@ -139,7 +141,7 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">{unreadCount}</p>
-                    <p className="text-sm text-gray-500">Unread Messages</p>
+                    <p className="text-sm text-gray-500">{t.dashboard.unreadMessages}</p>
                   </div>
                 </div>
               </Card>
@@ -153,7 +155,7 @@ export default function DashboardPage() {
                     <p className="text-2xl font-bold text-gray-900">
                       {bookings.filter((b) => b.status === 'COMPLETED').length}
                     </p>
-                    <p className="text-sm text-gray-500">Completed</p>
+                    <p className="text-sm text-gray-500">{t.dashboard.completedBookings}</p>
                   </div>
                 </div>
               </Card>
@@ -169,8 +171,8 @@ export default function DashboardPage() {
                   <Settings className="h-5 w-5 text-rose-500" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">Manage Services</p>
-                  <p className="text-xs text-gray-400">Edit your offerings</p>
+                  <p className="text-sm font-semibold text-gray-900">{t.dashboard.manageServices}</p>
+                  <p className="text-xs text-gray-400">{t.common.edit}</p>
                 </div>
                 <ChevronRight className="h-4 w-4 text-gray-300 group-hover:text-rose-400 transition-colors" />
               </Link>
@@ -183,8 +185,8 @@ export default function DashboardPage() {
                   <Calendar className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">All Bookings</p>
-                  <p className="text-xs text-gray-400">View & manage</p>
+                  <p className="text-sm font-semibold text-gray-900">{t.dashboard.viewBookings}</p>
+                  <p className="text-xs text-gray-400">{t.common.viewAll}</p>
                 </div>
                 <ChevronRight className="h-4 w-4 text-gray-300 group-hover:text-rose-400 transition-colors" />
               </Link>
@@ -197,9 +199,9 @@ export default function DashboardPage() {
                   <MessageSquare className="h-5 w-5 text-amber-500" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">Messages</p>
+                  <p className="text-sm font-semibold text-gray-900">{t.dashboard.viewMessages}</p>
                   <p className="text-xs text-gray-400">
-                    {unreadCount > 0 ? `${unreadCount} unread` : 'All caught up'}
+                    {unreadCount > 0 ? `${unreadCount} ${t.messaging.unread}` : t.common.noResults}
                   </p>
                 </div>
                 <ChevronRight className="h-4 w-4 text-gray-300 group-hover:text-rose-400 transition-colors" />
@@ -210,12 +212,12 @@ export default function DashboardPage() {
             <Card
               header={
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900">Recent Bookings</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{t.dashboard.recentBookings}</h3>
                   <Link
                     href="/bookings"
                     className="text-sm text-rose-500 hover:text-rose-600 font-medium flex items-center gap-1"
                   >
-                    View all <ArrowRight className="h-3.5 w-3.5" />
+                    {t.common.viewAll} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               }
@@ -223,7 +225,7 @@ export default function DashboardPage() {
               {recentBookings.length === 0 ? (
                 <div className="text-center py-8 text-gray-400">
                   <Calendar className="h-10 w-10 mx-auto mb-2" />
-                  <p className="text-sm">No bookings yet</p>
+                  <p className="text-sm">{t.dashboard.noRecentBookings}</p>
                 </div>
               ) : (
                 <div className="divide-y divide-gray-50 -mx-5 -my-4">
@@ -253,7 +255,7 @@ export default function DashboardPage() {
                         </div>
                       </div>
                       <Badge className={STATUS_STYLES[booking.status] || ''}>
-                        {booking.status}
+                        {(t.booking.status as Record<string, string>)[booking.status] || booking.status}
                       </Badge>
                     </Link>
                   ))}

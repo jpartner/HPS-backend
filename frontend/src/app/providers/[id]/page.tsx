@@ -14,6 +14,7 @@ import {
   Check,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import {
   providersApi,
   servicesApi,
@@ -28,6 +29,7 @@ export default function ProviderPage({
 }) {
   const { id: providerId } = use(params);
   const { user, token } = useAuth();
+  const { lang, t } = useLanguage();
 
   const [provider, setProvider] = useState<ProviderDetail | null>(null);
   const [services, setServices] = useState<ServiceDto[]>([]);
@@ -47,8 +49,8 @@ export default function ProviderPage({
       setError(null);
       try {
         const [providerData, serviceData] = await Promise.all([
-          providersApi.get(providerId, 'en'),
-          servicesApi.listByProvider(providerId, 'en'),
+          providersApi.get(providerId, lang),
+          servicesApi.listByProvider(providerId, lang),
         ]);
         if (!cancelled) {
           setProvider(providerData);
@@ -56,7 +58,7 @@ export default function ProviderPage({
         }
       } catch {
         if (!cancelled) {
-          setError('Failed to load provider details. Please try again.');
+          setError(t.common.error);
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -67,7 +69,7 @@ export default function ProviderPage({
     return () => {
       cancelled = true;
     };
-  }, [providerId]);
+  }, [providerId, lang]);
 
   const toggleService = (serviceId: string) => {
     setSelectedServiceIds((prev) => {
@@ -135,12 +137,12 @@ export default function ProviderPage({
   if (error || !provider) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 gap-4">
-        <p className="text-red-500">{error ?? 'Provider not found.'}</p>
+        <p className="text-red-500">{error ?? t.common.noResults}</p>
         <Link
           href="/"
           className="rounded-lg bg-rose-500 px-4 py-2 text-sm font-medium text-white hover:bg-rose-600 transition"
         >
-          Back to Home
+          {t.common.back}
         </Link>
       </div>
     );
@@ -156,7 +158,7 @@ export default function ProviderPage({
             className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-500 transition"
           >
             <ChevronLeft className="h-4 w-4" />
-            Back
+            {t.common.back}
           </Link>
 
           <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -192,7 +194,7 @@ export default function ProviderPage({
                 ))}
                 <span className="ml-1 text-sm text-gray-500">
                   {provider.avgRating.toFixed(1)} ({provider.reviewCount}{' '}
-                  reviews)
+                  {t.providers.reviews})
                 </span>
               </div>
 
@@ -214,7 +216,7 @@ export default function ProviderPage({
               <button
                 onClick={() => {
                   if (!user) {
-                    alert('Please log in to send a message.');
+                    alert(t.provider.loginToMessage);
                     return;
                   }
                   window.location.href = `/messages?providerId=${provider.id}`;
@@ -222,7 +224,7 @@ export default function ProviderPage({
                 className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-rose-300 hover:text-rose-500"
               >
                 <MessageCircle className="h-4 w-4" />
-                Send Message
+                {t.provider.sendMessage}
               </button>
             </div>
           </div>
@@ -233,7 +235,7 @@ export default function ProviderPage({
         {/* Description */}
         {provider.description && (
           <section className="rounded-xl bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-gray-900">About</h2>
+            <h2 className="text-lg font-semibold text-gray-900">{t.provider.about}</h2>
             <p className="mt-2 text-gray-600 whitespace-pre-line leading-relaxed">
               {provider.description}
             </p>
@@ -242,11 +244,11 @@ export default function ProviderPage({
 
         {/* Services */}
         <section className="mt-6">
-          <h2 className="text-lg font-semibold text-gray-900">Services</h2>
+          <h2 className="text-lg font-semibold text-gray-900">{t.provider.services}</h2>
 
           {services.length === 0 ? (
             <p className="mt-4 text-gray-400">
-              No services listed at the moment.
+              {t.common.noResults}
             </p>
           ) : (
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -322,19 +324,18 @@ export default function ProviderPage({
             <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
               <div>
                 <p className="text-sm text-gray-500">
-                  {selectedServiceIds.size} service
-                  {selectedServiceIds.size > 1 ? 's' : ''} selected
+                  {selectedServiceIds.size} {t.provider.selected}
                   <span className="mx-1.5 text-gray-300">|</span>
                   {formatDuration(totalDuration)}
                 </p>
                 <p className="text-lg font-bold text-gray-900">
-                  Total: {formatPrice(runningTotal, currency)}
+                  {t.provider.total}: {formatPrice(runningTotal, currency)}
                 </p>
               </div>
               <button
                 onClick={() => {
                   if (!user) {
-                    alert('Please log in to book an appointment.');
+                    alert(t.provider.loginToBook);
                     return;
                   }
                   const serviceIds = Array.from(selectedServiceIds).join(',');
@@ -342,7 +343,7 @@ export default function ProviderPage({
                 }}
                 className="rounded-lg bg-rose-500 px-6 py-2.5 text-sm font-semibold text-white shadow transition hover:bg-rose-600"
               >
-                Book Now
+                {t.provider.bookNow}
               </button>
             </div>
           </div>

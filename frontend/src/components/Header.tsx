@@ -2,23 +2,19 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, User, LogOut, ChevronDown } from 'lucide-react';
+import { Menu, X, User, LogOut, ChevronDown, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
+import LanguageSelector from '@/components/LanguageSelector';
 import clsx from 'clsx';
-
-const navLinks = [
-  { href: '/browse', label: 'Browse' },
-  { href: '/bookings', label: 'My Bookings' },
-  { href: '/messages', label: 'Messages' },
-];
 
 export default function Header() {
   const { user, isLoading, logout } = useAuth();
+  const { t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
-  // Close user dropdown on outside click
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
@@ -29,16 +25,21 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  const navLinks = [
+    { href: '/', label: t.nav.browse },
+    { href: '/bookings', label: t.nav.myBookings },
+    { href: '/messages', label: t.nav.messages },
+    ...(user?.role === 'PROVIDER' ? [{ href: '/dashboard', label: t.nav.dashboard }] : []),
+  ];
+
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-primary">
             HPS
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
@@ -51,8 +52,9 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop Auth */}
           <div className="hidden md:flex items-center gap-2">
+            <LanguageSelector />
+
             {isLoading ? (
               <div className="h-9 w-20 rounded-lg bg-muted animate-pulse" />
             ) : user ? (
@@ -70,23 +72,30 @@ export default function Header() {
 
                 {userMenuOpen && (
                   <div className="absolute right-0 mt-1 w-48 rounded-lg border border-border bg-card shadow-lg animate-fade-in py-1">
+                    {user.role === 'PROVIDER' && (
+                      <Link
+                        href="/dashboard"
+                        className="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        <LayoutDashboard className="h-4 w-4" />
+                        {t.nav.dashboard}
+                      </Link>
+                    )}
                     <Link
-                      href="/profile"
+                      href="/bookings"
                       className="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
                       onClick={() => setUserMenuOpen(false)}
                     >
                       <User className="h-4 w-4" />
-                      Profile
+                      {t.nav.profile}
                     </Link>
                     <button
-                      onClick={() => {
-                        logout();
-                        setUserMenuOpen(false);
-                      }}
+                      onClick={() => { logout(); setUserMenuOpen(false); }}
                       className="flex items-center gap-2 w-full px-4 py-2 text-sm text-danger hover:bg-muted transition-colors cursor-pointer"
                     >
                       <LogOut className="h-4 w-4" />
-                      Logout
+                      {t.nav.logout}
                     </button>
                   </div>
                 )}
@@ -97,30 +106,32 @@ export default function Header() {
                   href="/login"
                   className="px-4 py-2 text-sm font-medium text-foreground rounded-lg hover:bg-muted transition-colors"
                 >
-                  Login
+                  {t.nav.login}
                 </Link>
                 <Link
                   href="/register"
                   className="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary-hover transition-colors shadow-sm"
                 >
-                  Register
+                  {t.nav.register}
                 </Link>
               </>
             )}
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors cursor-pointer"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          {/* Mobile: language + hamburger */}
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSelector />
+            <button
+              className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors cursor-pointer"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-white animate-fade-in">
           <div className="px-4 py-3 space-y-1">
@@ -143,31 +154,20 @@ export default function Header() {
                     <span className="truncate">{user.email}</span>
                   </div>
                   <button
-                    onClick={() => {
-                      logout();
-                      setMobileOpen(false);
-                    }}
+                    onClick={() => { logout(); setMobileOpen(false); }}
                     className="flex items-center gap-2 w-full px-3 py-2.5 text-sm font-medium text-danger rounded-lg hover:bg-muted transition-colors cursor-pointer"
                   >
                     <LogOut className="h-4 w-4" />
-                    Logout
+                    {t.nav.logout}
                   </button>
                 </>
               ) : (
                 <>
-                  <Link
-                    href="/login"
-                    className="block px-3 py-2.5 text-sm font-medium text-foreground rounded-lg hover:bg-muted transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Login
+                  <Link href="/login" className="block px-3 py-2.5 text-sm font-medium text-foreground rounded-lg hover:bg-muted transition-colors" onClick={() => setMobileOpen(false)}>
+                    {t.nav.login}
                   </Link>
-                  <Link
-                    href="/register"
-                    className="block px-3 py-2.5 text-sm font-medium text-primary rounded-lg hover:bg-accent transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Register
+                  <Link href="/register" className="block px-3 py-2.5 text-sm font-medium text-primary rounded-lg hover:bg-accent transition-colors" onClick={() => setMobileOpen(false)}>
+                    {t.nav.register}
                   </Link>
                 </>
               )}

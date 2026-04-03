@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Sparkles,
@@ -13,9 +16,11 @@ import {
   Brush,
   Wand2,
   Search,
+  Loader2,
   type LucideIcon,
 } from 'lucide-react';
 import { categoriesApi, type Category } from '@/lib/api';
+import { useLanguage } from '@/lib/i18n';
 
 const iconMap: Record<string, LucideIcon> = {
   sparkles: Sparkles,
@@ -40,13 +45,19 @@ function getCategoryIcon(icon: string): LucideIcon {
   return Sparkles;
 }
 
-export default async function HomePage() {
-  let categories: Category[] = [];
-  try {
-    categories = await categoriesApi.list('en');
-  } catch {
-    // Fall through with empty categories
-  }
+export default function HomePage() {
+  const { lang, t } = useLanguage();
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    categoriesApi
+      .list(lang)
+      .then(setCategories)
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [lang]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -55,11 +66,10 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative mx-auto max-w-5xl px-4 py-24 sm:py-32 text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Find your perfect beauty professional
+            {t.hero.title}
           </h1>
           <p className="mt-4 text-lg text-white/90 sm:text-xl max-w-2xl mx-auto">
-            Discover top-rated beauty and wellness providers near you.
-            Book appointments with confidence.
+            {t.hero.subtitle}
           </p>
           <div className="mt-8">
             <Link
@@ -67,7 +77,7 @@ export default async function HomePage() {
               className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-rose-600 shadow-lg transition hover:bg-rose-50"
             >
               <Search className="h-5 w-5" />
-              Browse Services
+              {t.hero.cta}
             </Link>
           </div>
         </div>
@@ -76,15 +86,19 @@ export default async function HomePage() {
       {/* Categories Grid */}
       <section id="categories" className="mx-auto w-full max-w-5xl px-4 py-16">
         <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl text-center">
-          Explore Categories
+          {t.categories.title}
         </h2>
         <p className="mt-2 text-center text-gray-500">
-          Choose a category to find the right professional for you
+          {t.hero.subtitle}
         </p>
 
-        {categories.length === 0 ? (
+        {loading ? (
+          <div className="mt-12 flex justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-rose-400" />
+          </div>
+        ) : categories.length === 0 ? (
           <p className="mt-12 text-center text-gray-400">
-            No categories available at the moment.
+            {t.common.noResults}
           </p>
         ) : (
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">

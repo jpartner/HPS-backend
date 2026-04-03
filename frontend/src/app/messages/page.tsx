@@ -13,6 +13,7 @@ import {
   User,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import {
   messagingApi,
   ApiError,
@@ -24,6 +25,7 @@ import Button from '@/components/ui/Button';
 export default function MessagesPage() {
   const router = useRouter();
   const { user, token, isLoading: authLoading } = useAuth();
+  const { t } = useLanguage();
 
   const [conversations, setConversations] = useState<ConversationDto[]>([]);
   const [selectedConvId, setSelectedConvId] = useState<string | null>(null);
@@ -149,7 +151,7 @@ export default function MessagesPage() {
             <h1 className="text-lg font-bold text-gray-900">
               {selectedConv
                 ? selectedConv.otherParticipant.name
-                : 'Messages'}
+                : t.messaging.title}
             </h1>
           </div>
         </div>
@@ -163,7 +165,7 @@ export default function MessagesPage() {
               onClick={() => setError('')}
               className="ml-auto text-red-500 hover:text-red-700 cursor-pointer"
             >
-              Dismiss
+              {t.common.close}
             </button>
           </div>
         )}
@@ -182,7 +184,7 @@ export default function MessagesPage() {
             ) : conversations.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 text-gray-400">
                 <MessageSquare className="h-10 w-10 mb-2" />
-                <p className="text-sm">No conversations yet</p>
+                <p className="text-sm">{t.messaging.noConversations}</p>
               </div>
             ) : (
               conversations.map((conv) => {
@@ -238,7 +240,7 @@ export default function MessagesPage() {
                         )}
                         {conv.lastMessage && (
                           <p className="text-xs text-gray-400 truncate mt-0.5">
-                            {conv.lastMessage.senderId === user?.id ? 'You: ' : ''}
+                            {conv.lastMessage.senderId === user?.id ? `${t.messaging.you}: ` : ''}
                             {conv.lastMessage.content}
                           </p>
                         )}
@@ -260,10 +262,10 @@ export default function MessagesPage() {
               <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
                 <MessageSquare className="h-12 w-12 mb-3" />
                 <p className="text-base font-medium text-gray-500">
-                  Select a conversation
+                  {t.messaging.title}
                 </p>
                 <p className="text-sm mt-1">
-                  Choose a conversation to start messaging
+                  {t.messaging.noConversations}
                 </p>
               </div>
             ) : (
@@ -276,7 +278,7 @@ export default function MessagesPage() {
                     </div>
                   ) : messages.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-                      <p className="text-sm">No messages yet. Say hello!</p>
+                      <p className="text-sm">{t.messaging.noConversations}</p>
                     </div>
                   ) : (
                     messages.map((msg) => {
@@ -328,7 +330,7 @@ export default function MessagesPage() {
                           handleSend(e);
                         }
                       }}
-                      placeholder="Type a message..."
+                      placeholder={t.messaging.typeMessage}
                       rows={1}
                       className="flex-1 resize-none rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500"
                     />

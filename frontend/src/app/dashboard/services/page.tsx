@@ -14,6 +14,7 @@ import {
   X,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import {
   servicesApi,
   categoriesApi,
@@ -69,6 +70,7 @@ function flattenCategories(categories: Category[], depth = 0): { id: string; nam
 export default function ServicesManagementPage() {
   const router = useRouter();
   const { user, token, isLoading: authLoading } = useAuth();
+  const { lang, t } = useLanguage();
 
   const [services, setServices] = useState<ServiceDto[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -93,8 +95,8 @@ export default function ServicesManagementPage() {
 
     try {
       const [servicesData, categoriesData] = await Promise.all([
-        servicesApi.listByProvider(user.id, 'en'),
-        categoriesApi.list('en'),
+        servicesApi.listByProvider(user.id, lang),
+        categoriesApi.list(lang),
       ]);
       setServices(servicesData);
       setCategories(categoriesData);
@@ -103,7 +105,7 @@ export default function ServicesManagementPage() {
     } finally {
       setLoading(false);
     }
-  }, [token, user]);
+  }, [token, user, lang]);
 
   useEffect(() => {
     if (authLoading) return;
@@ -195,7 +197,7 @@ export default function ServicesManagementPage() {
   }
 
   async function handleDelete(serviceId: string) {
-    if (!token || !confirm('Are you sure you want to delete this service?')) return;
+    if (!token || !confirm(t.services.confirmDelete)) return;
     setDeleting(serviceId);
     try {
       await servicesApi.delete(serviceId, token);
@@ -221,14 +223,14 @@ export default function ServicesManagementPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Services</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t.services.title}</h1>
             <p className="mt-1 text-sm text-gray-500">
               {services.length} service{services.length !== 1 ? 's' : ''}
             </p>
           </div>
           <Button onClick={openAddForm} size="md">
             <Plus className="h-4 w-4" />
-            Add Service
+            {t.services.addService}
           </Button>
         </div>
 
@@ -249,16 +251,16 @@ export default function ServicesManagementPage() {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-400">
             <Loader2 className="h-8 w-8 animate-spin mb-3" />
-            <p className="text-sm">Loading services...</p>
+            <p className="text-sm">{t.common.loading}</p>
           </div>
         ) : services.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-400">
             <Package className="h-12 w-12 mb-3" />
-            <p className="text-base font-medium text-gray-500">No services yet</p>
-            <p className="text-sm mt-1 mb-4">Add your first service to get started</p>
+            <p className="text-base font-medium text-gray-500">{t.services.noServices}</p>
+            <p className="text-sm mt-1 mb-4">{t.services.addFirst}</p>
             <Button onClick={openAddForm} size="md">
               <Plus className="h-4 w-4" />
-              Add Service
+              {t.services.addService}
             </Button>
           </div>
         ) : (
@@ -278,7 +280,7 @@ export default function ServicesManagementPage() {
                   <Badge
                     variant={service.isActive ? 'success' : 'default'}
                   >
-                    {service.isActive ? 'Active' : 'Inactive'}
+                    {service.isActive ? t.services.active : t.services.inactive}
                   </Badge>
                 </div>
 
@@ -309,7 +311,7 @@ export default function ServicesManagementPage() {
                     onClick={() => openEditForm(service)}
                   >
                     <Pencil className="h-3.5 w-3.5" />
-                    Edit
+                    {t.common.edit}
                   </Button>
                   <Button
                     variant="danger"
@@ -318,7 +320,7 @@ export default function ServicesManagementPage() {
                     onClick={() => handleDelete(service.id)}
                   >
                     <Trash2 className="h-3.5 w-3.5" />
-                    Delete
+                    {t.common.delete}
                   </Button>
                 </div>
               </div>
@@ -330,7 +332,7 @@ export default function ServicesManagementPage() {
         <Modal
           open={showForm}
           onClose={closeForm}
-          title={editingId ? 'Edit Service' : 'Add Service'}
+          title={editingId ? t.services.editService : t.services.addService}
           size="lg"
         >
           <div className="space-y-5">
@@ -343,14 +345,14 @@ export default function ServicesManagementPage() {
             {/* Category */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Category
+                {t.services.category}
               </label>
               <select
                 value={form.categoryId}
                 onChange={(e) => setForm((prev) => ({ ...prev, categoryId: e.target.value }))}
                 className="w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500"
               >
-                <option value="">Select category...</option>
+                <option value="">{t.services.category}...</option>
                 {flatCategories.map((cat) => (
                   <option key={cat.id} value={cat.id}>
                     {'  '.repeat(cat.depth)}{cat.name}
@@ -362,22 +364,22 @@ export default function ServicesManagementPage() {
             {/* Title translations - tabs */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Title
+                {t.services.serviceTitle}
               </label>
               <div className="flex gap-1 mb-2">
-                {(['en', 'pl', 'uk'] as Lang[]).map((lang) => (
+                {(['en', 'pl', 'uk'] as Lang[]).map((lng) => (
                   <button
-                    key={lang}
+                    key={lng}
                     type="button"
-                    onClick={() => setActiveLang(lang)}
+                    onClick={() => setActiveLang(lng)}
                     className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
-                      activeLang === lang
+                      activeLang === lng
                         ? 'bg-rose-500 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
-                    {LANG_LABELS[lang]}
-                    {form.titles[lang] && (
+                    {LANG_LABELS[lng]}
+                    {form.titles[lng] && (
                       <span className="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-green-400" />
                     )}
                   </button>
@@ -398,7 +400,7 @@ export default function ServicesManagementPage() {
             {/* Description (same lang tabs) */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Description ({LANG_LABELS[activeLang]})
+                {t.services.serviceDescription} ({LANG_LABELS[activeLang]})
               </label>
               <textarea
                 value={form.descriptions[activeLang]}
@@ -418,7 +420,7 @@ export default function ServicesManagementPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Pricing Type
+                  {t.services.pricingType}
                 </label>
                 <select
                   value={form.pricingType}
@@ -436,7 +438,7 @@ export default function ServicesManagementPage() {
               </div>
 
               <Input
-                label="Price"
+                label={t.services.price}
                 type="number"
                 step="0.01"
                 min="0"
@@ -449,7 +451,7 @@ export default function ServicesManagementPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Currency
+                  {t.services.currency}
                 </label>
                 <select
                   value={form.priceCurrency}
@@ -468,7 +470,7 @@ export default function ServicesManagementPage() {
 
             {/* Duration */}
             <Input
-              label="Duration (minutes)"
+              label={t.services.duration}
               type="number"
               min="15"
               step="15"
@@ -482,10 +484,10 @@ export default function ServicesManagementPage() {
             {/* Actions */}
             <div className="flex items-center justify-end gap-3 pt-2">
               <Button variant="outline" onClick={closeForm}>
-                Cancel
+                {t.common.cancel}
               </Button>
               <Button onClick={handleSave} loading={saving}>
-                {editingId ? 'Save Changes' : 'Create Service'}
+                {editingId ? t.common.save : t.services.addService}
               </Button>
             </div>
           </div>

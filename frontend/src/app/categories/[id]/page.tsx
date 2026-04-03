@@ -5,6 +5,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { Star, ChevronLeft, ChevronRight, MapPin, Loader2 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import {
   categoriesApi,
   providersApi,
@@ -24,6 +25,7 @@ export default function CategoryPage({
 }) {
   const { id: categoryId } = use(params);
   const { token } = useAuth();
+  const { lang, t } = useLanguage();
 
   const [category, setCategory] = useState<Category | null>(null);
   const [providers, setProviders] = useState<ProviderSummary[]>([]);
@@ -42,8 +44,8 @@ export default function CategoryPage({
 
   // Load countries on mount
   useEffect(() => {
-    geoApi.countries('en').then(setCountries).catch(() => {});
-  }, []);
+    geoApi.countries(lang).then(setCountries).catch(() => {});
+  }, [lang]);
 
   // Load regions when country changes
   useEffect(() => {
@@ -52,29 +54,29 @@ export default function CategoryPage({
     setSelectedRegion('');
     setSelectedCity('');
     if (selectedCountry) {
-      geoApi.regions(selectedCountry, 'en').then(setRegions).catch(() => {});
+      geoApi.regions(selectedCountry, lang).then(setRegions).catch(() => {});
     }
-  }, [selectedCountry]);
+  }, [selectedCountry, lang]);
 
   // Load cities when region changes
   useEffect(() => {
     setCities([]);
     setSelectedCity('');
     if (selectedRegion) {
-      geoApi.cities(selectedRegion, 'en').then(setCities).catch(() => {});
+      geoApi.cities(selectedRegion, lang).then(setCities).catch(() => {});
     }
-  }, [selectedRegion]);
+  }, [selectedRegion, lang]);
 
   // Load category name
   useEffect(() => {
     categoriesApi
-      .list('en')
+      .list(lang)
       .then((cats) => {
         const found = cats.find((c) => c.id === categoryId);
         if (found) setCategory(found);
       })
       .catch(() => {});
-  }, [categoryId]);
+  }, [categoryId, lang]);
 
   // Load providers
   const fetchProviders = useCallback(async () => {
@@ -90,15 +92,15 @@ export default function CategoryPage({
       if (selectedRegion) queryParams.regionId = selectedRegion;
       if (selectedCity) queryParams.cityId = selectedCity;
 
-      const result = await providersApi.list(queryParams, 'en');
+      const result = await providersApi.list(queryParams, lang);
       setProviders(result.data);
       setMeta(result.meta);
     } catch {
-      setError('Failed to load providers. Please try again.');
+      setError(t.common.error);
     } finally {
       setLoading(false);
     }
-  }, [categoryId, page, selectedCountry, selectedRegion, selectedCity]);
+  }, [categoryId, page, selectedCountry, selectedRegion, selectedCity, lang]);
 
   useEffect(() => {
     fetchProviders();
@@ -121,10 +123,10 @@ export default function CategoryPage({
             className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-500 transition"
           >
             <ChevronLeft className="h-4 w-4" />
-            All Categories
+            {t.categories.title}
           </Link>
           <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
-            {category?.name ?? 'Providers'}
+            {category?.name ?? t.providers.title}
           </h1>
         </div>
       </div>
@@ -134,14 +136,14 @@ export default function CategoryPage({
         <div className="flex flex-col gap-3 rounded-xl bg-white p-4 shadow-sm sm:flex-row sm:items-end">
           <div className="flex-1">
             <label className="block text-xs font-medium text-gray-500 mb-1">
-              Country
+              {t.providers.country}
             </label>
             <select
               value={selectedCountry}
               onChange={(e) => setSelectedCountry(e.target.value)}
               className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700 focus:border-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-300"
             >
-              <option value="">All countries</option>
+              <option value="">{t.providers.allCountries}</option>
               {countries.map((c) => (
                 <option key={c.id} value={c.isoCode}>
                   {c.name}
@@ -151,7 +153,7 @@ export default function CategoryPage({
           </div>
           <div className="flex-1">
             <label className="block text-xs font-medium text-gray-500 mb-1">
-              Region
+              {t.providers.region}
             </label>
             <select
               value={selectedRegion}
@@ -162,7 +164,7 @@ export default function CategoryPage({
                 !selectedCountry && 'opacity-50 cursor-not-allowed'
               )}
             >
-              <option value="">All regions</option>
+              <option value="">{t.providers.allRegions}</option>
               {regions.map((r) => (
                 <option key={r.id} value={r.id}>
                   {r.name}
@@ -172,7 +174,7 @@ export default function CategoryPage({
           </div>
           <div className="flex-1">
             <label className="block text-xs font-medium text-gray-500 mb-1">
-              City
+              {t.providers.city}
             </label>
             <select
               value={selectedCity}
@@ -183,7 +185,7 @@ export default function CategoryPage({
                 !selectedRegion && 'opacity-50 cursor-not-allowed'
               )}
             >
-              <option value="">All cities</option>
+              <option value="">{t.providers.allCities}</option>
               {cities.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
@@ -205,12 +207,12 @@ export default function CategoryPage({
               onClick={fetchProviders}
               className="mt-4 rounded-lg bg-rose-500 px-4 py-2 text-sm font-medium text-white hover:bg-rose-600 transition"
             >
-              Retry
+              {t.common.retry}
             </button>
           </div>
         ) : providers.length === 0 ? (
           <p className="mt-12 text-center text-gray-400">
-            No providers found for this category.
+            {t.providers.noProviders}
           </p>
         ) : (
           <>
@@ -265,7 +267,7 @@ export default function CategoryPage({
                       href={`/providers/${provider.id}`}
                       className="block w-full rounded-lg bg-rose-500 py-2 text-center text-sm font-medium text-white transition hover:bg-rose-600"
                     >
-                      View
+                      {t.providers.viewProfile}
                     </Link>
                   </div>
                 </div>

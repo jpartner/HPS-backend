@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Mail, Lock, LogIn } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n';
 import { authApi, ApiError } from '@/lib/api';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
@@ -12,6 +13,7 @@ import Button from '@/components/ui/Button';
 export default function LoginPage() {
   const router = useRouter();
   const auth = useAuth();
+  const { t } = useLanguage();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +33,7 @@ export default function LoginPage() {
       if (err instanceof ApiError) {
         setError(err.message);
       } else {
-        setError('Something went wrong. Please try again.');
+        setError(t.common.error);
       }
     } finally {
       setLoading(false);
@@ -45,8 +47,8 @@ export default function LoginPage() {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-rose-100 mb-4">
             <LogIn className="h-7 w-7 text-rose-600" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
-          <p className="mt-1 text-sm text-gray-500">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-gray-900">{t.auth.loginTitle}</h1>
+          <p className="mt-1 text-sm text-gray-500">{t.auth.loginSubtitle}</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
@@ -59,7 +61,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="relative">
               <Input
-                label="Email"
+                label={t.auth.email}
                 type="email"
                 name="email"
                 placeholder="you@example.com"
@@ -73,7 +75,7 @@ export default function LoginPage() {
 
             <div className="relative">
               <Input
-                label="Password"
+                label={t.auth.password}
                 type="password"
                 name="password"
                 placeholder="Enter your password"
@@ -91,18 +93,18 @@ export default function LoginPage() {
               className="w-full"
               size="lg"
             >
-              Sign in
+              {t.nav.login}
             </Button>
           </form>
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-500">
-          Don&apos;t have an account?{' '}
+          {t.auth.noAccount}{' '}
           <Link
             href="/register"
             className="font-medium text-rose-600 hover:text-rose-500 transition-colors"
           >
-            Register
+            {t.auth.signUpLink}
           </Link>
         </p>
       </div>

@@ -268,6 +268,15 @@ export default function ProviderPage({
           const physicalAttrs = attributes.filter(a => a.definition.key !== 'offered_services' && a.value != null);
           const offeredServices = attributes.find(a => a.definition.key === 'offered_services');
           const extras = Array.isArray(offeredServices?.value) ? offeredServices.value as string[] : [];
+          const extrasLabels = offeredServices?.definition?.optionLabels || {};
+
+          // Helper to translate a SELECT/MULTI_SELECT value using optionLabels
+          const translateValue = (attr: typeof attributes[0]) => {
+            const val = attr.value;
+            const labels = attr.definition.optionLabels;
+            if (labels && typeof val === 'string' && labels[val]) return labels[val];
+            return String(val);
+          };
 
           if (physicalAttrs.length === 0 && extras.length === 0) return null;
 
@@ -282,7 +291,7 @@ export default function ProviderPage({
                       <div key={attr.definition.key} className="rounded-lg bg-gray-50 px-3 py-2">
                         <p className="text-xs text-gray-500">{attr.definition.label}</p>
                         <p className="text-sm font-medium text-gray-900 mt-0.5">
-                          {String(attr.value)}
+                          {translateValue(attr)}
                         </p>
                       </div>
                     ))}
@@ -300,7 +309,7 @@ export default function ProviderPage({
                         key={i}
                         className="inline-flex items-center rounded-full bg-rose-50 px-3 py-1 text-xs font-medium text-rose-700"
                       >
-                        {extra}
+                        {extrasLabels[extra] || extra}
                       </span>
                     ))}
                   </div>

@@ -1,20 +1,22 @@
 package com.hps.app
 
-import com.hps.domain.user.UserRole
-import com.hps.persistence.user.UserRepository
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 
+/**
+ * Multi-tenant admin E2E tests.
+ *
+ * Uses the SUPER_ADMIN seeded by SuperAdminSeeder on startup
+ * (default: admin@hps.local / changeme123).
+ * No direct DB manipulation needed — everything via API.
+ */
 class MultiTenantE2ETest : BaseE2ETest() {
-
-    @Autowired
-    lateinit var userRepository: UserRepository
 
     private lateinit var adminToken: String
 
+    // Default API key for the default tenant (seeded by V18 migration)
     private fun h() = mapOf(
         "X-Client-Id" to "11111111-1111-1111-1111-111111111111",
         "X-Client-Secret" to "hps-dev-secret-key"
@@ -22,12 +24,14 @@ class MultiTenantE2ETest : BaseE2ETest() {
 
     @BeforeEach
     fun setup() {
-        val email = "admin-${System.nanoTime()}@hps.com"
-        api.register(email, firstName = "Admin")
-        val user = userRepository.findByEmail(email)!!
-        user.role = UserRole.SUPER_ADMIN
-        userRepository.save(user)
-        adminToken = api.login(email).accessToken
+        // Login as the auto-seeded SUPER_ADMIN (no API key - super admin is global)
+        // SuperAdminSeeder creates admin@hps.local / changeme123 on first startup
+        val loginResp = api.post("/api/v1/auth/login", mapOf(
+            "email" to "admin@hps.local",
+            "password" to "changeme123"
+        ), headers = emptyMap())
+        assertEquals(HttpStatus.OK, loginResp.statusCode) { "Super admin login failed: ${loginResp.body}" }
+        adminToken = api.json(loginResp)["accessToken"].asText()
     }
 
     @Test

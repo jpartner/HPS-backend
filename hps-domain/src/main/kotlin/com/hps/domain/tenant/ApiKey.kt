@@ -26,6 +26,7 @@ class ApiKey(
     @Column(name = "is_active", nullable = false)
     var isActive: Boolean = true,
 
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
     @Column(columnDefinition = "JSONB", nullable = false)
     var permissions: String = "{}",
 

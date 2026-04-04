@@ -13,6 +13,9 @@ class Booking(
     @Id
     val id: UUID = UUID.randomUUID(),
 
+    @Column(name = "tenant_id", nullable = false)
+    val tenantId: UUID,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
     val client: User,

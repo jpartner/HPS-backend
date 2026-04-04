@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import com.hps.common.tenant.TenantContext
 import java.time.Instant
 import java.util.UUID
 
@@ -97,7 +98,8 @@ class ProviderService(
             throw BadRequestException("Provider profile already exists")
         }
 
-        val provider = ProviderProfile(user = user)
+        val tenantId = TenantContext.require()
+        val provider = ProviderProfile(user = user, tenantId = tenantId)
         provider.businessName = request.businessName
         provider.description = request.description
         provider.addressLine = request.addressLine

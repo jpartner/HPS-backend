@@ -10,6 +10,7 @@ import com.hps.persistence.service.ServiceCategoryRepository
 import com.hps.persistence.service.ServiceRepository
 import com.hps.persistence.service.ServiceTemplateRepository
 import com.hps.persistence.user.ProviderProfileRepository
+import com.hps.common.tenant.TenantContext
 import org.springframework.transaction.annotation.Transactional
 import java.time.Instant
 import java.util.UUID
@@ -45,7 +46,9 @@ class ServiceManagementService(
             templateRepository.findById(it).orElse(null)
         }
 
+        val tenantId = TenantContext.require()
         val service = Service(
+            tenantId = tenantId,
             provider = provider,
             category = category,
             template = template,

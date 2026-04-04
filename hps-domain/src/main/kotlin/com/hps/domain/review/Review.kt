@@ -15,6 +15,9 @@ class Review(
     @Id
     val id: UUID = UUID.randomUUID(),
 
+    @Column(name = "tenant_id", nullable = false)
+    val tenantId: UUID,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "booking_id", nullable = false)
     val booking: Booking,

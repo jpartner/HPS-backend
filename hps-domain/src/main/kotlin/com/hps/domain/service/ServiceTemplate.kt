@@ -10,11 +10,14 @@ class ServiceTemplate(
     @Id
     val id: UUID = UUID.randomUUID(),
 
+    @Column(name = "tenant_id", nullable = false)
+    val tenantId: UUID,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     val category: ServiceCategory,
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(nullable = false, length = 100)
     val slug: String,
 
     @Column(name = "default_duration_minutes")

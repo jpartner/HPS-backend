@@ -1,5 +1,6 @@
 package com.hps.api.messaging
 
+import com.hps.common.tenant.TenantContext
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.ForbiddenException
 import com.hps.common.exception.NotFoundException
@@ -75,8 +76,10 @@ class MessagingService(
         val conversation = if (existing.isNotEmpty() && conversationType != ConversationType.PROVIDER_ADMIN) {
             existing.first()
         } else {
+            val tenantId = TenantContext.require()
             conversationRepository.save(
                 Conversation(
+                    tenantId = tenantId,
                     participant1 = initiator,
                     participant2 = target,
                     conversationType = conversationType,
@@ -180,10 +183,10 @@ class MessagingService(
 
     private fun resolveConversationType(initiator: User, target: User, initiatorRole: UserRole): ConversationType {
         return when {
-            initiatorRole == UserRole.ADMIN -> when (target.role) {
+            initiatorRole == UserRole.ADMIN || initiatorRole == UserRole.SUPER_ADMIN -> when (target.role) {
                 UserRole.PROVIDER -> ConversationType.PROVIDER_ADMIN
                 UserRole.CLIENT -> ConversationType.ADMIN_CUSTOMER
-                UserRole.ADMIN -> ConversationType.PROVIDER_ADMIN // admin-to-admin
+                UserRole.ADMIN, UserRole.SUPER_ADMIN -> ConversationType.PROVIDER_ADMIN
             }
             initiatorRole == UserRole.PROVIDER && target.role == UserRole.ADMIN -> ConversationType.PROVIDER_ADMIN
             initiatorRole == UserRole.PROVIDER && target.role == UserRole.CLIENT -> ConversationType.CUSTOMER_PROVIDER

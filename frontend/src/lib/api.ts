@@ -7,6 +7,10 @@ function getApiBase() {
 
 const API_BASE = getApiBase();
 
+// API key for tenant identification
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '11111111-1111-1111-1111-111111111111';
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_CLIENT_SECRET || 'hps-dev-secret-key';
+
 interface RequestOptions {
   method?: string;
   body?: unknown;
@@ -20,6 +24,8 @@ export async function api<T = unknown>(path: string, options: RequestOptions = {
   const headers: Record<string, string> = {
     'Accept-Language': lang,
     'Accept': 'application/json',
+    'X-Client-Id': CLIENT_ID,
+    'X-Client-Secret': CLIENT_SECRET,
   };
 
   if (body) headers['Content-Type'] = 'application/json';

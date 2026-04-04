@@ -16,11 +16,11 @@ class JwtService(
 ) {
     private val key: SecretKey = Keys.hmacShaKeyFor(secret.toByteArray())
 
-    fun generateAccessToken(userId: String, email: String, role: String): String =
-        buildToken(userId, email, role, expirationMs)
+    fun generateAccessToken(userId: String, email: String, role: String, tenantId: String?): String =
+        buildToken(userId, email, role, tenantId, expirationMs)
 
-    fun generateRefreshToken(userId: String, email: String, role: String): String =
-        buildToken(userId, email, role, refreshExpirationMs)
+    fun generateRefreshToken(userId: String, email: String, role: String, tenantId: String?): String =
+        buildToken(userId, email, role, tenantId, refreshExpirationMs)
 
     fun getAccessExpirationMs(): Long = expirationMs
 
@@ -31,15 +31,19 @@ class JwtService(
             null
         }
 
-    private fun buildToken(userId: String, email: String, role: String, expiration: Long): String {
+    private fun buildToken(userId: String, email: String, role: String, tenantId: String?, expiration: Long): String {
         val now = Date()
-        return Jwts.builder()
+        val builder = Jwts.builder()
             .subject(userId)
             .claim("email", email)
             .claim("role", role)
             .issuedAt(now)
             .expiration(Date(now.time + expiration))
-            .signWith(key)
-            .compact()
+
+        if (tenantId != null) {
+            builder.claim("tenantId", tenantId)
+        }
+
+        return builder.signWith(key).compact()
     }
 }

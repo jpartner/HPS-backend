@@ -10,6 +10,9 @@ class ServiceCategory(
     @Id
     val id: UUID = UUID.randomUUID(),
 
+    @Column(name = "tenant_id", nullable = false)
+    val tenantId: UUID,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     val parent: ServiceCategory? = null,

@@ -37,6 +37,7 @@ class AttributeService(
     @Transactional
     fun createDefinition(request: CreateAttributeDefinitionRequest): AttributeDefinitionDto {
         val def = AttributeDefinition(
+            tenantId = com.hps.common.tenant.TenantContext.require(),
             domain = request.domain,
             key = request.key,
             dataType = AttributeDataType.valueOf(request.dataType),

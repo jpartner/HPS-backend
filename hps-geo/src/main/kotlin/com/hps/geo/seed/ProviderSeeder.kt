@@ -29,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
 import java.time.DayOfWeek
 import java.time.LocalTime
+import java.util.UUID
 
 @Component
 @Order(2)
@@ -45,6 +46,10 @@ class ProviderSeeder(
     private val log = LoggerFactory.getLogger(ProviderSeeder::class.java)
     private val mapper = jacksonObjectMapper()
     private val passwordEncoder = BCryptPasswordEncoder()
+
+    companion object {
+        val DEFAULT_TENANT_ID: UUID = UUID.fromString("00000000-0000-0000-0000-000000000001")
+    }
 
     private val timezoneByCountry = mapOf(
         "PL" to "Europe/Warsaw",
@@ -104,6 +109,7 @@ class ProviderSeeder(
             // Create User
             val user = User(
                 email = seed.email,
+                tenantId = DEFAULT_TENANT_ID,
                 passwordHash = hashedPassword,
                 role = UserRole.PROVIDER,
                 avatarUrl = seed.avatarUrl
@@ -120,6 +126,7 @@ class ProviderSeeder(
             // Create ProviderProfile
             val providerProfile = ProviderProfile(
                 user = user,
+                tenantId = DEFAULT_TENANT_ID,
                 businessName = seed.businessName,
                 description = seed.description,
                 city = city,
@@ -170,6 +177,7 @@ class ProviderSeeder(
                 }
 
                 val service = serviceRepository.save(Service(
+                    tenantId = DEFAULT_TENANT_ID,
                     provider = savedProvider,
                     category = subcategory,
                     pricingType = PricingType.valueOf(serviceSeed.pricingType),

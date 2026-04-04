@@ -10,8 +10,11 @@ class User(
     @Id
     val id: UUID = UUID.randomUUID(),
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     val email: String,
+
+    @Column(name = "tenant_id")
+    val tenantId: UUID? = null,
 
     @Column(name = "password_hash", nullable = false)
     var passwordHash: String,
@@ -46,5 +49,5 @@ class User(
 )
 
 enum class UserRole {
-    CLIENT, PROVIDER, ADMIN
+    CLIENT, PROVIDER, ADMIN, SUPER_ADMIN
 }

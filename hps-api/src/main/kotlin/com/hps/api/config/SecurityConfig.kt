@@ -1,5 +1,6 @@
 package com.hps.api.config
 
+import com.hps.api.auth.ApiKeyFilter
 import com.hps.api.auth.JwtAuthFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -15,7 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val jwtAuthFilter: JwtAuthFilter
+    private val jwtAuthFilter: JwtAuthFilter,
+    private val apiKeyFilter: ApiKeyFilter
 ) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
@@ -25,11 +27,11 @@ class SecurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
-                    // Error endpoint must be accessible
+                    // Error endpoint
                     .requestMatchers("/error").permitAll()
                     // Public: auth
                     .requestMatchers("/api/v1/auth/**").permitAll()
-                    // Public: read-only geo, categories, providers, services, availability
+                    // Public: read-only data
                     .requestMatchers(HttpMethod.GET, "/api/v1/countries/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/regions/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/cities/**").permitAll()
@@ -40,10 +42,15 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/api/v1/attributes/**").permitAll()
                     // Static files
                     .requestMatchers("/files/**").permitAll()
+                    // Admin endpoints
+                    .requestMatchers("/api/v1/admin/tenants/**").hasRole("SUPER_ADMIN")
+                    .requestMatchers("/api/v1/admin/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
                     // Everything else requires authentication
                     .anyRequest().authenticated()
             }
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)
+            // ApiKeyFilter runs first to resolve tenant, then JwtAuthFilter for user auth
+            .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterAfter(jwtAuthFilter, ApiKeyFilter::class.java)
 
         return http.build()
     }

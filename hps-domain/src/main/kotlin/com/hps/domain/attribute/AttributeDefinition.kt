@@ -15,6 +15,9 @@ class AttributeDefinition(
     @Id
     val id: UUID = UUID.randomUUID(),
 
+    @Column(name = "tenant_id", nullable = false)
+    val tenantId: UUID,
+
     @Column(nullable = false, length = 100)
     val domain: String,
 

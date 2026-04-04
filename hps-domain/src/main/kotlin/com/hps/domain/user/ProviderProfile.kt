@@ -22,6 +22,9 @@ class ProviderProfile(
     @JoinColumn(name = "user_id")
     val user: User,
 
+    @Column(name = "tenant_id", nullable = false)
+    val tenantId: UUID,
+
     @Column(name = "business_name")
     var businessName: String? = null,
 

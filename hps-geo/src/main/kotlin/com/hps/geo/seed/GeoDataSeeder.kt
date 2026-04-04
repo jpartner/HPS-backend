@@ -21,6 +21,7 @@ import org.springframework.core.annotation.Order
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
+import java.util.UUID
 
 @Component
 @Order(1)
@@ -33,6 +34,10 @@ class GeoDataSeeder(
 
     private val log = LoggerFactory.getLogger(GeoDataSeeder::class.java)
     private val mapper = jacksonObjectMapper()
+
+    companion object {
+        val DEFAULT_TENANT_ID: UUID = UUID.fromString("00000000-0000-0000-0000-000000000001")
+    }
 
     @Transactional
     override fun run(args: ApplicationArguments) {
@@ -136,6 +141,7 @@ class GeoDataSeeder(
 
     private fun createCategory(seed: CategorySeed, parent: ServiceCategory?): ServiceCategory {
         val category = ServiceCategory(
+            tenantId = DEFAULT_TENANT_ID,
             parent = parent,
             icon = seed.icon,
             slug = seed.slug,
@@ -171,6 +177,7 @@ class GeoDataSeeder(
 
         for (seed in seeds) {
             val def = AttributeDefinition(
+                tenantId = DEFAULT_TENANT_ID,
                 domain = seed.domain,
                 key = seed.key,
                 dataType = AttributeDataType.valueOf(seed.dataType),
@@ -220,6 +227,7 @@ class GeoDataSeeder(
 
             for (tmplSeed in catSeed.templates) {
                 val template = ServiceTemplate(
+                    tenantId = DEFAULT_TENANT_ID,
                     category = category,
                     slug = tmplSeed.slug,
                     defaultDurationMinutes = tmplSeed.defaultDuration,

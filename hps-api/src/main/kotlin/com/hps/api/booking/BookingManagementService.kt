@@ -10,6 +10,7 @@ import com.hps.persistence.booking.BookingRepository
 import com.hps.persistence.service.ServiceRepository
 import com.hps.persistence.user.ProviderProfileRepository
 import com.hps.persistence.user.UserRepository
+import com.hps.common.tenant.TenantContext
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
@@ -66,7 +67,9 @@ class BookingManagementService(
 
         val calculation = calculateFee(request.providerId, request.services, lang)
 
+        val tenantId = TenantContext.require()
         val booking = Booking(
+            tenantId = tenantId,
             client = client,
             provider = provider,
             bookingType = BookingType.valueOf(request.bookingType),
@@ -185,7 +188,7 @@ class BookingManagementService(
         val bookings = when (userRole) {
             UserRole.CLIENT -> bookingRepository.findByClientId(userId)
             UserRole.PROVIDER -> bookingRepository.findByProviderId(userId)
-            UserRole.ADMIN -> bookingRepository.findAll()
+            UserRole.ADMIN, UserRole.SUPER_ADMIN -> bookingRepository.findAll()
         }
         return bookings.map { it.toDto() }
     }

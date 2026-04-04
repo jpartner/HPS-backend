@@ -36,6 +36,8 @@ services:
       SPRING_DATASOURCE_USERNAME: hps
       SPRING_DATASOURCE_PASSWORD: hps_dev_password
       SPRING_FLYWAY_CLEAN_ON_VALIDATION_ERROR: "true"
+      HPS_SUPERADMIN_EMAIL: admin@hps.local
+      HPS_SUPERADMIN_PASSWORD: admin1234
     ports:
       - "8080:8080"
     depends_on:

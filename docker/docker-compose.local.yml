@@ -35,6 +35,8 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hps
       SPRING_DATASOURCE_USERNAME: hps
       SPRING_DATASOURCE_PASSWORD: hps_local_password
+      HPS_SUPERADMIN_EMAIL: admin@hps.local
+      HPS_SUPERADMIN_PASSWORD: admin1234
     ports:
       - "8081:8080"
     depends_on:

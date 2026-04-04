@@ -48,9 +48,9 @@ class SecurityConfig(
                     // Everything else requires authentication
                     .anyRequest().authenticated()
             }
-            // ApiKeyFilter runs first to resolve tenant, then JwtAuthFilter for user auth
-            .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter::class.java)
-            .addFilterAfter(jwtAuthFilter, ApiKeyFilter::class.java)
+            // JwtAuthFilter for user auth, ApiKeyFilter for tenant resolution
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterBefore(apiKeyFilter, JwtAuthFilter::class.java)
 
         return http.build()
     }

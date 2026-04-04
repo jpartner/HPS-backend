@@ -8,6 +8,8 @@ import java.util.UUID
 
 interface BookingRepository : JpaRepository<Booking, UUID> {
 
+    fun countByTenantId(tenantId: UUID): Long
+
     @Query("""
         SELECT b FROM Booking b
         WHERE b.provider.userId = :providerId

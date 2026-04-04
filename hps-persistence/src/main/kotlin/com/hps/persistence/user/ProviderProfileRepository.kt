@@ -9,6 +9,12 @@ import java.util.UUID
 
 interface ProviderProfileRepository : JpaRepository<ProviderProfile, UUID> {
 
+    fun findByTenantId(tenantId: UUID): List<ProviderProfile>
+
+    fun countByTenantId(tenantId: UUID): Long
+
+    fun countByTenantIdAndIsVerified(tenantId: UUID, isVerified: Boolean): Long
+
     @Query("""
         SELECT DISTINCT p FROM ProviderProfile p
         JOIN p.categories c

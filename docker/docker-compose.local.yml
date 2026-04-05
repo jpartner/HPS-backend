@@ -28,7 +28,7 @@ services:
       - hps-local-typesense-data:/data
 
   app:
-    image: hps-system:latest
+    image: hps-system:local
     container_name: hps-local-app
     environment:
       SPRING_PROFILES_ACTIVE: local
@@ -46,7 +46,7 @@ services:
         condition: service_started
 
   frontend:
-    image: hps-frontend:latest
+    image: hps-frontend:local
     container_name: hps-local-frontend
     environment:
       API_INTERNAL_URL: http://app:8080
@@ -56,7 +56,7 @@ services:
       - app
 
   admin:
-    image: hps-admin:latest
+    image: hps-admin:local
     container_name: hps-local-admin
     environment:
       API_INTERNAL_URL: http://app:8080

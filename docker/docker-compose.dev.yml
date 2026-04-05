@@ -28,7 +28,7 @@ services:
       - /data
 
   app:
-    image: hps-system:latest
+    image: hps-system:dev
     container_name: hps-dev-app
     environment:
       SPRING_PROFILES_ACTIVE: dev
@@ -47,7 +47,7 @@ services:
         condition: service_started
 
   frontend:
-    image: hps-frontend:latest
+    image: hps-frontend:dev
     container_name: hps-dev-frontend
     environment:
       API_INTERNAL_URL: http://app:8080
@@ -57,7 +57,7 @@ services:
       - app
 
   admin:
-    image: hps-admin:latest
+    image: hps-admin:dev
     container_name: hps-dev-admin
     environment:
       API_INTERNAL_URL: http://app:8080

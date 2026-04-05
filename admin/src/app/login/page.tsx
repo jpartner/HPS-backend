@@ -7,7 +7,7 @@ import { useAuth } from '@/lib/auth';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -27,21 +27,9 @@ export default function LoginPage() {
     try {
       const response = await authApi.login({ email, password });
 
-      localStorage.setItem('hps_admin_token', response.accessToken);
-      if (response.refreshToken) {
-        localStorage.setItem('hps_admin_refresh_token', response.refreshToken);
-      }
-
-      // Verify the token contains an admin role
-      const base64 = response.accessToken.split('.')[1];
-      const payload = JSON.parse(atob(base64.replace(/-/g, '+').replace(/_/g, '/')));
-      if (!['ADMIN', 'SUPER_ADMIN'].includes(payload.role)) {
-        localStorage.removeItem('hps_admin_token');
-        localStorage.removeItem('hps_admin_refresh_token');
-        setError('Access denied. Admin privileges required.');
-        setLoading(false);
-        return;
-      }
+      // login() stores tokens, parses JWT, and validates admin role
+      // Throws if the token doesn't have ADMIN or SUPER_ADMIN role
+      login(response.accessToken, response.refreshToken);
 
       router.push('/');
     } catch (err: unknown) {

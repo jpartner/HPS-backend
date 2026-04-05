@@ -18,7 +18,7 @@ usage() {
 
 case "$1" in
     start)
-        "$SCRIPT_DIR/build.sh"
+        "$SCRIPT_DIR/build.sh" http://localhost:8080 dev
         echo "==> Starting dev environment (ephemeral DB)..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev up -d
         echo "==> Dev running: API http://localhost:8080 | Frontend http://localhost:3000 | Admin http://localhost:3002"
@@ -29,7 +29,7 @@ case "$1" in
         ;;
     restart)
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev down
-        "$SCRIPT_DIR/build.sh"
+        "$SCRIPT_DIR/build.sh" http://localhost:8080 dev
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev up -d
         echo "==> Dev running: API http://localhost:8080 | Frontend http://localhost:3000 | Admin http://localhost:3002"
         ;;

@@ -20,7 +20,7 @@ usage() {
 
 case "$1" in
     start)
-        "$SCRIPT_DIR/build.sh"
+        "$SCRIPT_DIR/build.sh" http://localhost:8081 local
         echo "==> Starting local test environment (persistent DB)..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.local.yml" -p hps-local up -d
         echo "==> Local running: API http://localhost:8081 | Frontend http://localhost:3001 | Admin http://localhost:3003"
@@ -35,7 +35,7 @@ case "$1" in
         echo "==> Local running: API http://localhost:8081 | Frontend http://localhost:3001 | Admin http://localhost:3003"
         ;;
     update)
-        "$SCRIPT_DIR/build.sh"
+        "$SCRIPT_DIR/build.sh" http://localhost:8081 local
         echo "==> Updating app container (DB data preserved)..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.local.yml" -p hps-local up -d
         echo "==> Local running: API http://localhost:8081 | Frontend http://localhost:3001 | Admin http://localhost:3003"

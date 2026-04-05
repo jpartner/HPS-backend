@@ -54,7 +54,11 @@ class AuthService(
         val tenantId = TenantContext.get()
 
         val user = if (tenantId != null) {
+            // Try tenant-scoped lookup first, then fall back to global
+            // (super admins and cross-tenant admins have tenantId=null)
             userRepository.findByEmailAndTenantId(request.email, tenantId)
+                ?: userRepository.findByEmail(request.email)
+                    ?.takeIf { it.tenantId == null }
         } else {
             userRepository.findByEmail(request.email)
         } ?: throw UnauthorizedException("Invalid email or password")

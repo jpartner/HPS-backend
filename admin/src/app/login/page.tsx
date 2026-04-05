@@ -27,13 +27,22 @@ export default function LoginPage() {
     try {
       const response = await authApi.login({ email, password });
 
-      if (!response.user || !['ADMIN', 'SUPER_ADMIN'].includes(response.user.role)) {
+      localStorage.setItem('hps_admin_token', response.accessToken);
+      if (response.refreshToken) {
+        localStorage.setItem('hps_admin_refresh_token', response.refreshToken);
+      }
+
+      // Verify the token contains an admin role
+      const base64 = response.accessToken.split('.')[1];
+      const payload = JSON.parse(atob(base64.replace(/-/g, '+').replace(/_/g, '/')));
+      if (!['ADMIN', 'SUPER_ADMIN'].includes(payload.role)) {
+        localStorage.removeItem('hps_admin_token');
+        localStorage.removeItem('hps_admin_refresh_token');
         setError('Access denied. Admin privileges required.');
         setLoading(false);
         return;
       }
 
-      localStorage.setItem('admin_token', response.token);
       router.push('/');
     } catch (err: unknown) {
       const message =

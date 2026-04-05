@@ -165,6 +165,14 @@ async function request<T>(
     headers['Authorization'] = `Bearer ${token}`;
   }
 
+  // Send selected tenant ID for admin endpoints
+  if (typeof window !== 'undefined') {
+    const tenantId = localStorage.getItem('hps_admin_tenant');
+    if (tenantId) {
+      headers['X-Tenant-Id'] = tenantId;
+    }
+  }
+
   const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     headers,

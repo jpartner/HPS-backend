@@ -28,8 +28,10 @@ class ApiKeyFilter(
         try {
             val clientIdHeader = request.getHeader("X-Client-Id")
             val clientSecretHeader = request.getHeader("X-Client-Secret")
+            val tenantIdHeader = request.getHeader("X-Tenant-Id")
 
             if (clientIdHeader != null && clientSecretHeader != null) {
+                // API key authentication — validate credentials
                 try {
                     val clientId = UUID.fromString(clientIdHeader)
                     val apiKey = apiKeyRepository.findActiveByClientId(clientId)
@@ -44,6 +46,15 @@ class ApiKeyFilter(
                 } catch (e: IllegalArgumentException) {
                     log.warn("Malformed X-Client-Id: $clientIdHeader")
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid X-Client-Id format")
+                    return
+                }
+            } else if (tenantIdHeader != null) {
+                // Admin tenant selection — JWT auth will be validated by Spring Security
+                try {
+                    TenantContext.set(UUID.fromString(tenantIdHeader))
+                } catch (e: IllegalArgumentException) {
+                    log.warn("Malformed X-Tenant-Id: $tenantIdHeader")
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid X-Tenant-Id format")
                     return
                 }
             }

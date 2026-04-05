@@ -32,8 +32,10 @@ export default function ApiKeysPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const fetchKeys = useCallback(async () => {
+    if (!tenantId) return;
     try {
       setLoading(true);
+      setError('');
       const data = await apiKeyApi.list(tenantId);
       setKeys(data);
     } catch (err: unknown) {
@@ -42,7 +44,7 @@ export default function ApiKeysPage() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [tenantId]);
 
   useEffect(() => {
     fetchKeys();

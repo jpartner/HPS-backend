@@ -7,6 +7,8 @@ import java.util.UUID
 
 interface ConversationRepository : JpaRepository<Conversation, UUID> {
 
+    fun findByTenantId(tenantId: UUID): List<Conversation>
+
     @Query("""
         SELECT c FROM Conversation c
         WHERE c.participant1.id = :userId OR c.participant2.id = :userId

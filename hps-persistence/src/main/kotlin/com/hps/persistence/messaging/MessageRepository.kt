@@ -10,6 +10,8 @@ import java.util.UUID
 
 interface MessageRepository : JpaRepository<Message, UUID> {
 
+    fun findByConversationIdOrderByCreatedAtAsc(conversationId: UUID): List<Message>
+
     fun findByConversationIdOrderByCreatedAtDesc(conversationId: UUID, pageable: Pageable): Page<Message>
 
     @Modifying

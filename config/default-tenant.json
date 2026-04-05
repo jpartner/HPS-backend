@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "tenant": {
+    "name": "Demo Tenant",
+    "slug": "demo",
+    "defaultLang": "en",
+    "supportedLangs": "en,pl,uk",
+    "defaultCurrency": "EUR",
+    "settings": "{}"
+  },
+  "categories": [
+    {
+      "slug": "beauty",
+      "icon": "sparkles",
+      "imageUrl": null,
+      "sortOrder": 0,
+      "translations": [
+        { "lang": "en", "name": "Beauty", "description": "Beauty and cosmetic services" },
+        { "lang": "pl", "name": "Uroda", "description": "Usługi kosmetyczne" },
+        { "lang": "uk", "name": "Краса", "description": "Косметичні послуги" }
+      ],
+      "children": [
+        {
+          "slug": "hair",
+          "icon": "scissors",
+          "imageUrl": null,
+          "sortOrder": 0,
+          "translations": [
+            { "lang": "en", "name": "Hair", "description": "Hair styling and treatments" },
+            { "lang": "pl", "name": "Włosy", "description": "Stylizacja i zabiegi na włosy" },
+            { "lang": "uk", "name": "Волосся", "description": "Стилізація та догляд за волоссям" }
+          ]
+        },
+        {
+          "slug": "nails",
+          "icon": "paintbrush",
+          "imageUrl": null,
+          "sortOrder": 1,
+          "translations": [
+            { "lang": "en", "name": "Nails", "description": "Manicure and pedicure" },
+            { "lang": "pl", "name": "Paznokcie", "description": "Manicure i pedicure" },
+            { "lang": "uk", "name": "Нігті", "description": "Манікюр та педикюр" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wellness",
+      "icon": "heart",
+      "imageUrl": null,
+      "sortOrder": 1,
+      "translations": [
+        { "lang": "en", "name": "Wellness", "description": "Health and wellness services" },
+        { "lang": "pl", "name": "Wellness", "description": "Usługi zdrowotne i wellness" },
+        { "lang": "uk", "name": "Велнес", "description": "Оздоровчі послуги" }
+      ],
+      "children": [
+        {
+          "slug": "massage",
+          "icon": "hand",
+          "imageUrl": null,
+          "sortOrder": 0,
+          "translations": [
+            { "lang": "en", "name": "Massage", "description": "Massage therapy" },
+            { "lang": "pl", "name": "Masaż", "description": "Terapia masażem" },
+            { "lang": "uk", "name": "Масаж", "description": "Масажна терапія" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "home-services",
+      "icon": "home",
+      "imageUrl": null,
+      "sortOrder": 2,
+      "translations": [
+        { "lang": "en", "name": "Home Services", "description": "Home maintenance and repair" },
+        { "lang": "pl", "name": "Usługi domowe", "description": "Konserwacja i naprawa domu" },
+        { "lang": "uk", "name": "Домашні послуги", "description": "Обслуговування та ремонт" }
+      ],
+      "children": [
+        {
+          "slug": "cleaning",
+          "icon": "spray-can",
+          "imageUrl": null,
+          "sortOrder": 0,
+          "translations": [
+            { "lang": "en", "name": "Cleaning", "description": "Professional cleaning services" },
+            { "lang": "pl", "name": "Sprzątanie", "description": "Profesjonalne usługi sprzątania" },
+            { "lang": "uk", "name": "Прибирання", "description": "Професійні послуги з прибирання" }
+          ]
+        },
+        {
+          "slug": "plumbing",
+          "icon": "wrench",
+          "imageUrl": null,
+          "sortOrder": 1,
+          "translations": [
+            { "lang": "en", "name": "Plumbing", "description": "Plumbing repair and installation" },
+            { "lang": "pl", "name": "Hydraulika", "description": "Naprawa i instalacja hydrauliki" },
+            { "lang": "uk", "name": "Сантехніка", "description": "Ремонт та встановлення сантехніки" }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceTemplates": [
+    {
+      "slug": "haircut",
+      "categorySlug": "hair",
+      "defaultDurationMinutes": 45,
+      "sortOrder": 0,
+      "translations": [
+        { "lang": "en", "title": "Haircut", "description": "Standard haircut and styling" },
+        { "lang": "pl", "title": "Strzyżenie", "description": "Standardowe strzyżenie i stylizacja" },
+        { "lang": "uk", "title": "Стрижка", "description": "Стандартна стрижка та укладка" }
+      ]
+    },
+    {
+      "slug": "hair-coloring",
+      "categorySlug": "hair",
+      "defaultDurationMinutes": 120,
+      "sortOrder": 1,
+      "translations": [
+        { "lang": "en", "title": "Hair Coloring", "description": "Full hair coloring service" },
+        { "lang": "pl", "title": "Farbowanie włosów", "description": "Pełna usługa koloryzacji" },
+        { "lang": "uk", "title": "Фарбування волосся", "description": "Повне фарбування волосся" }
+      ]
+    },
+    {
+      "slug": "manicure",
+      "categorySlug": "nails",
+      "defaultDurationMinutes": 60,
+      "sortOrder": 0,
+      "translations": [
+        { "lang": "en", "title": "Manicure", "description": "Classic manicure" },
+        { "lang": "pl", "title": "Manicure", "description": "Klasyczny manicure" },
+        { "lang": "uk", "title": "Манікюр", "description": "Класичний манікюр" }
+      ]
+    },
+    {
+      "slug": "relaxation-massage",
+      "categorySlug": "massage",
+      "defaultDurationMinutes": 60,
+      "sortOrder": 0,
+      "translations": [
+        { "lang": "en", "title": "Relaxation Massage", "description": "Full body relaxation massage" },
+        { "lang": "pl", "title": "Masaż relaksacyjny", "description": "Masaż relaksacyjny całego ciała" },
+        { "lang": "uk", "title": "Релаксаційний масаж", "description": "Масаж усього тіла для розслаблення" }
+      ]
+    },
+    {
+      "slug": "home-cleaning",
+      "categorySlug": "cleaning",
+      "defaultDurationMinutes": 180,
+      "sortOrder": 0,
+      "translations": [
+        { "lang": "en", "title": "Home Cleaning", "description": "Standard home cleaning" },
+        { "lang": "pl", "title": "Sprzątanie domu", "description": "Standardowe sprzątanie domu" },
+        { "lang": "uk", "title": "Прибирання дому", "description": "Стандартне прибирання дому" }
+      ]
+    }
+  ],
+  "attributes": [
+    {
+      "domain": "PROVIDER",
+      "key": "LANGUAGES_SPOKEN",
+      "dataType": "MULTI_SELECT",
+      "isRequired": false,
+      "options": ["en", "pl", "uk", "de", "ru"],
+      "validation": null,
+      "sortOrder": 0,
+      "translations": [
+        { "lang": "en", "label": "Languages Spoken", "hint": "Select all languages you speak", "optionLabels": { "en": "English", "pl": "Polish", "uk": "Ukrainian", "de": "German", "ru": "Russian" } },
+        { "lang": "pl", "label": "Języki", "hint": "Wybierz wszystkie języki, którymi mówisz", "optionLabels": { "en": "Angielski", "pl": "Polski", "uk": "Ukraiński", "de": "Niemiecki", "ru": "Rosyjski" } }
+      ]
+    },
+    {
+      "domain": "PROVIDER",
+      "key": "EXPERIENCE_YEARS",
+      "dataType": "NUMBER",
+      "isRequired": false,
+      "options": null,
+      "validation": { "min": 0, "max": 50 },
+      "sortOrder": 1,
+      "translations": [
+        { "lang": "en", "label": "Years of Experience", "hint": "How many years of professional experience" },
+        { "lang": "pl", "label": "Lata doświadczenia", "hint": "Ile lat doświadczenia zawodowego" }
+      ]
+    }
+  ],
+  "admin": {
+    "email": "admin@demo.local",
+    "password": "admin1234",
+    "firstName": "Demo",
+    "lastName": "Admin"
+  }
+}

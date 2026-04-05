@@ -10,6 +10,8 @@ interface BookingRepository : JpaRepository<Booking, UUID> {
 
     fun countByTenantId(tenantId: UUID): Long
 
+    fun findByTenantId(tenantId: UUID): List<Booking>
+
     @Query("""
         SELECT b FROM Booking b
         WHERE b.provider.userId = :providerId

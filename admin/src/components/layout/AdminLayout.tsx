@@ -3,10 +3,11 @@
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
+import { useTenant } from '@/lib/tenant-context';
 import { Sidebar } from './Sidebar';
 
 const PAGE_TITLES: Record<string, string> = {
-  '/dashboard': 'Dashboard',
+  '/': 'Dashboard',
   '/categories': 'Categories',
   '/service-templates': 'Service Templates',
   '/attributes': 'Attributes',
@@ -28,6 +29,7 @@ function getPageTitle(pathname: string): string {
 
 export function AdminLayout({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
+  const { isLoading: tenantLoading } = useTenant();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -37,7 +39,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
     }
   }, [isLoading, user, router]);
 
-  if (isLoading) {
+  if (isLoading || tenantLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />

@@ -52,7 +52,8 @@ export function TenantProvider({ children }: { children: ReactNode }) {
         const res = await tenantApi.list({ size: 100 });
         if (cancelled) return;
 
-        let available = res.content;
+        // Backend returns a plain array for tenants
+        let available: Tenant[] = Array.isArray(res) ? res : (res as any).content ?? [];
 
         // ADMINs see only their assigned tenants
         if (user!.role === 'ADMIN' && user!.tenantIds?.length) {
@@ -61,12 +62,15 @@ export function TenantProvider({ children }: { children: ReactNode }) {
 
         setTenants(available);
 
-        // Restore previously selected tenant
+        // Restore previously selected tenant, or auto-select first
         const storedId = localStorage.getItem(STORAGE_KEY);
         const stored = available.find((t) => t.id === storedId);
-        setSelectedTenant(stored ?? available[0] ?? null);
+        const selected = stored ?? available[0] ?? null;
+        setSelectedTenant(selected);
+        if (selected) {
+          localStorage.setItem(STORAGE_KEY, selected.id);
+        }
       } catch {
-        // API not available yet - that's fine during dev
         setTenants([]);
         setSelectedTenant(null);
       } finally {

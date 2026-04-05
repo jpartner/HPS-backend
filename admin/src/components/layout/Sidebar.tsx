@@ -37,7 +37,7 @@ const NAV_SECTIONS: NavSection[] = [
   {
     title: '',
     items: [
-      { label: 'Dashboard', href: '/dashboard', icon: <LayoutDashboard size={18} /> },
+      { label: 'Dashboard', href: '/', icon: <LayoutDashboard size={18} /> },
     ],
   },
   {
@@ -101,7 +101,7 @@ export function Sidebar() {
       >
         {/* Header */}
         <div className="flex h-16 items-center justify-between px-5">
-          <Link href="/dashboard" className="text-lg font-bold text-sidebar-text-bright">
+          <Link href="/" className="text-lg font-bold text-sidebar-text-bright">
             HPS Admin
           </Link>
           <button
@@ -166,7 +166,9 @@ export function Sidebar() {
                   </p>
                 )}
                 {visibleItems.map((item) => {
-                  const active = pathname === item.href || pathname.startsWith(item.href + '/');
+                  const active = item.href === '/'
+                    ? pathname === '/'
+                    : pathname === item.href || pathname.startsWith(item.href + '/');
                   return (
                     <Link
                       key={item.href}

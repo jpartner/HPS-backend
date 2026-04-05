@@ -55,6 +55,16 @@ services:
     depends_on:
       - app
 
+  admin:
+    image: hps-admin:latest
+    container_name: hps-local-admin
+    environment:
+      API_INTERNAL_URL: http://app:8080
+    ports:
+      - "3003:3000"
+    depends_on:
+      - app
+
 volumes:
   hps-local-postgres-data:
   hps-local-typesense-data:

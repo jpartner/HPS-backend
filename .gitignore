@@ -30,4 +30,6 @@ Thumbs.db
 frontend/node_modules/
 frontend/.next/
 pages/
-admin/
+admin/node_modules/
+admin/.next/
+admin/.git/

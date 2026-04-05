@@ -23,7 +23,7 @@ case "$1" in
         "$SCRIPT_DIR/build.sh"
         echo "==> Starting local test environment (persistent DB)..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.local.yml" -p hps-local up -d
-        echo "==> Local test running at http://localhost:8081"
+        echo "==> Local running: API http://localhost:8081 | Frontend http://localhost:3001 | Admin http://localhost:3003"
         ;;
     stop)
         echo "==> Stopping local test environment (data preserved)..."
@@ -32,13 +32,13 @@ case "$1" in
     restart)
         echo "==> Restarting local test environment..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.local.yml" -p hps-local restart
-        echo "==> Local test running at http://localhost:8081"
+        echo "==> Local running: API http://localhost:8081 | Frontend http://localhost:3001 | Admin http://localhost:3003"
         ;;
     update)
         "$SCRIPT_DIR/build.sh"
         echo "==> Updating app container (DB data preserved)..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.local.yml" -p hps-local up -d
-        echo "==> Local test running at http://localhost:8081"
+        echo "==> Local running: API http://localhost:8081 | Frontend http://localhost:3001 | Admin http://localhost:3003"
         ;;
     logs)
         docker compose -f "$PROJECT_DIR/docker/docker-compose.local.yml" -p hps-local logs -f

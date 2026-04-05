@@ -21,7 +21,7 @@ case "$1" in
         "$SCRIPT_DIR/build.sh"
         echo "==> Starting dev environment (ephemeral DB)..."
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev up -d
-        echo "==> Dev running at http://localhost:8080"
+        echo "==> Dev running: API http://localhost:8080 | Frontend http://localhost:3000 | Admin http://localhost:3002"
         ;;
     stop)
         echo "==> Stopping dev environment..."
@@ -31,7 +31,7 @@ case "$1" in
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev down
         "$SCRIPT_DIR/build.sh"
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev up -d
-        echo "==> Dev running at http://localhost:8080"
+        echo "==> Dev running: API http://localhost:8080 | Frontend http://localhost:3000 | Admin http://localhost:3002"
         ;;
     logs)
         docker compose -f "$PROJECT_DIR/docker/docker-compose.dev.yml" -p hps-dev logs -f

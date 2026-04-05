@@ -16,4 +16,8 @@ echo "==> Building frontend..."
 cd "$PROJECT_DIR/frontend"
 docker build -t hps-frontend:latest .
 
-echo "==> Done. Images: hps-system:latest, hps-frontend:latest"
+echo "==> Building admin..."
+cd "$PROJECT_DIR/admin"
+docker build -t hps-admin:latest .
+
+echo "==> Done. Images: hps-system:latest, hps-frontend:latest, hps-admin:latest"

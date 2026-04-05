@@ -8,11 +8,6 @@ const API_BASE =
     : process.env.API_INTERNAL_URL || process.env.NEXT_PUBLIC_API_URL) ||
   'http://localhost:8080';
 
-const CLIENT_ID =
-  process.env.NEXT_PUBLIC_CLIENT_ID || '11111111-1111-1111-1111-111111111111';
-const CLIENT_SECRET =
-  process.env.NEXT_PUBLIC_CLIENT_SECRET || 'hps-dev-secret-key';
-
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -163,8 +158,6 @@ async function request<T>(
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    'X-Client-Id': CLIENT_ID,
-    'X-Client-Secret': CLIENT_SECRET,
     ...(options.headers as Record<string, string> | undefined),
   };
 

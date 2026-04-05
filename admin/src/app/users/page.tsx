@@ -166,7 +166,7 @@ export default function UsersPage() {
           columns={columns as any}
           data={filteredUsers}
           isLoading={loading}
-          onRowClick={(user: User) => router.push(`/users/${user.id}`)}
+          onRowClick={() => {}}
           emptyMessage="No users found"
         />
       </div>

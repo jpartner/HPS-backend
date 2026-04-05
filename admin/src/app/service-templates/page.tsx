@@ -141,7 +141,7 @@ export default function ServiceTemplatesPage() {
           columns={columns as any}
           data={templates as any}
           isLoading={loading}
-          onRowClick={(template: ServiceTemplate) => router.push(`/service-templates/${template.id}`)}
+          onRowClick={() => {}}
           emptyMessage="No service templates found"
         />
       </div>

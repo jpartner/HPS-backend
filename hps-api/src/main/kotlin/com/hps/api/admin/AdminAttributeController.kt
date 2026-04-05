@@ -8,6 +8,7 @@ import com.hps.domain.attribute.AttributeDataType
 import com.hps.domain.attribute.AttributeDefinition
 import com.hps.domain.attribute.AttributeDefinitionTranslation
 import com.hps.persistence.attribute.AttributeDefinitionRepository
+import com.hps.persistence.reference.ReferenceListRepository
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.transaction.annotation.Transactional
@@ -18,7 +19,8 @@ import java.util.UUID
 @RequestMapping("/api/v1/admin/attributes")
 @Transactional(readOnly = true)
 class AdminAttributeController(
-    private val definitionRepository: AttributeDefinitionRepository
+    private val definitionRepository: AttributeDefinitionRepository,
+    private val referenceListRepository: ReferenceListRepository
 ) {
     private val mapper = jacksonObjectMapper()
 
@@ -52,15 +54,21 @@ class AdminAttributeController(
     ): AdminAttributeDefinitionDto {
         val tenantId = TenantContext.require()
 
+        val refList = request.referenceListId?.let {
+            referenceListRepository.findById(it)
+                .orElseThrow { NotFoundException("ReferenceList", it) }
+        }
+
         val def = AttributeDefinition(
             tenantId = tenantId,
             domain = request.domain,
             key = request.key,
             dataType = AttributeDataType.valueOf(request.dataType),
             isRequired = request.isRequired,
-            options = request.options?.let { mapper.writeValueAsString(it) },
+            options = if (refList != null) null else request.options?.let { mapper.writeValueAsString(it) },
             validation = request.validation?.let { mapper.writeValueAsString(it) },
-            sortOrder = request.sortOrder
+            sortOrder = request.sortOrder,
+            referenceList = refList
         )
 
         request.translations.forEach { t ->
@@ -96,6 +104,15 @@ class AdminAttributeController(
         request.validation?.let { def.validation = mapper.writeValueAsString(it) }
         request.sortOrder?.let { def.sortOrder = it }
         request.isActive?.let { def.isActive = it }
+
+        if (request.referenceListId != null) {
+            val refList = referenceListRepository.findById(request.referenceListId)
+                .orElseThrow { NotFoundException("ReferenceList", request.referenceListId) }
+            def.referenceList = refList
+            def.options = null
+        } else if (request.clearReferenceList == true) {
+            def.referenceList = null
+        }
 
         if (request.translations != null) {
             def.translations.clear()
@@ -139,6 +156,8 @@ class AdminAttributeController(
             isRequired = isRequired,
             options = options?.let { mapper.readValue(it) },
             validation = validation?.let { mapper.readValue(it) },
+            referenceListId = referenceList?.id,
+            referenceListKey = referenceList?.key,
             sortOrder = sortOrder,
             isActive = isActive,
             translations = translations.map { t ->
@@ -163,6 +182,8 @@ data class AdminAttributeDefinitionDto(
     val isRequired: Boolean,
     val options: List<String>?,
     val validation: AdminValidationRules?,
+    val referenceListId: UUID? = null,
+    val referenceListKey: String? = null,
     val sortOrder: Int,
     val isActive: Boolean,
     val translations: List<AttributeTranslationEntry>
@@ -190,6 +211,7 @@ data class CreateAdminAttributeRequest(
     val isRequired: Boolean = false,
     val options: List<String>? = null,
     val validation: AdminValidationRules? = null,
+    val referenceListId: UUID? = null,
     val sortOrder: Int = 0,
     val translations: List<AttributeTranslationEntry> = emptyList()
 )
@@ -199,6 +221,8 @@ data class UpdateAdminAttributeRequest(
     val isRequired: Boolean? = null,
     val options: List<String>? = null,
     val validation: AdminValidationRules? = null,
+    val referenceListId: UUID? = null,
+    val clearReferenceList: Boolean? = null,
     val sortOrder: Int? = null,
     val isActive: Boolean? = null,
     val translations: List<AttributeTranslationEntry>? = null

@@ -44,6 +44,8 @@ class SecurityConfig(
                     .requestMatchers("/files/**").permitAll()
                     // Admin endpoints
                     .requestMatchers("/api/v1/admin/tenants/**").hasRole("SUPER_ADMIN")
+                    .requestMatchers(HttpMethod.GET, "/api/v1/admin/reference-lists/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
+                    .requestMatchers("/api/v1/admin/reference-lists/**").hasRole("SUPER_ADMIN")
                     .requestMatchers("/api/v1/admin/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
                     // Everything else requires authentication
                     .anyRequest().authenticated()

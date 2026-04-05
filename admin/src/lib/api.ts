@@ -301,6 +301,50 @@ export const adminTemplateApi = {
 };
 
 // ---------------------------------------------------------------------------
+// Reference List API (admin)
+// ---------------------------------------------------------------------------
+
+export interface ReferenceListItem {
+  id?: string;
+  value: string;
+  sortOrder: number;
+  isActive: boolean;
+  translations: { lang: string; label: string }[];
+}
+
+export interface ReferenceListData {
+  id: string;
+  key: string;
+  name: string;
+  isActive: boolean;
+  items: ReferenceListItem[];
+}
+
+export const adminReferenceListApi = {
+  list() {
+    return request<ReferenceListData[]>('/api/v1/admin/reference-lists');
+  },
+  get(id: string) {
+    return request<ReferenceListData>(`/api/v1/admin/reference-lists/${id}`);
+  },
+  create(data: { key: string; name: string; items?: ReferenceListItem[] }) {
+    return request<ReferenceListData>('/api/v1/admin/reference-lists', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+  update(id: string, data: { name?: string; isActive?: boolean; items?: ReferenceListItem[] }) {
+    return request<ReferenceListData>(`/api/v1/admin/reference-lists/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
+  delete(id: string) {
+    return request<void>(`/api/v1/admin/reference-lists/${id}`, { method: 'DELETE' });
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Attribute API (admin)
 // ---------------------------------------------------------------------------
 

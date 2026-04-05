@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Plus, ChevronDown, ChevronRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Plus, ChevronDown, ChevronRight, Trash2 } from 'lucide-react';
 import clsx from 'clsx';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { DataTable } from '@/components/ui/DataTable';
@@ -29,10 +30,11 @@ interface Attribute {
 
 type GroupedAttributes = Record<string, Attribute[]>;
 
-const DATA_TYPES = ['STRING', 'NUMBER', 'BOOLEAN', 'DATE', 'SELECT', 'MULTI_SELECT', 'TEXT'];
+const DATA_TYPES = ['TEXT', 'NUMBER', 'BOOLEAN', 'SELECT', 'MULTI_SELECT'];
 const DOMAINS = ['PROVIDER', 'SERVICE', 'BOOKING', 'USER'];
 
 export default function AttributesPage() {
+  const router = useRouter();
   const [attributes, setAttributes] = useState<Attribute[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -191,7 +193,11 @@ export default function AttributesPage() {
                       </thead>
                       <tbody>
                         {attrs.map((attr) => (
-                          <tr key={attr.id} className="border-b border-gray-50 hover:bg-gray-50">
+                          <tr
+                            key={attr.id}
+                            className="border-b border-gray-50 hover:bg-gray-50 cursor-pointer"
+                            onClick={() => router.push(`/attributes/${attr.id}`)}
+                          >
                             <td className="px-4 py-2 font-mono text-xs text-gray-700">{attr.key}</td>
                             <td className="px-4 py-2 text-gray-900">{attr.label}</td>
                             <td className="px-4 py-2">
@@ -208,6 +214,19 @@ export default function AttributesPage() {
                               {(attr.options || []).length > 0
                                 ? `${attr.options.length} options`
                                 : '--'}
+                            </td>
+                            <td className="px-4 py-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  if (confirm('Delete this attribute?')) {
+                                    adminAttributeApi.delete(attr.id).then(fetchAttributes);
+                                  }
+                                }}
+                                className="text-gray-400 hover:text-red-600"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </button>
                             </td>
                           </tr>
                         ))}

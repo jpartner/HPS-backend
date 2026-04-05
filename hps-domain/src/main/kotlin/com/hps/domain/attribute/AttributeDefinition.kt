@@ -1,5 +1,6 @@
 package com.hps.domain.attribute
 
+import com.hps.domain.reference.ReferenceList
 import jakarta.persistence.*
 import org.hibernate.annotations.JdbcTypeCode
 import org.hibernate.type.SqlTypes
@@ -41,6 +42,10 @@ class AttributeDefinition(
 
     @Column(name = "sort_order", nullable = false)
     var sortOrder: Int = 0,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reference_list_id")
+    var referenceList: ReferenceList? = null,
 
     @Column(name = "is_active", nullable = false)
     var isActive: Boolean = true,

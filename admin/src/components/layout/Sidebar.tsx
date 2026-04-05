@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   KeyRound,
   Building2,
+  List,
   ChevronDown,
   LogOut,
   Menu,
@@ -46,6 +47,7 @@ const NAV_SECTIONS: NavSection[] = [
       { label: 'Categories', href: '/categories', icon: <FolderTree size={18} /> },
       { label: 'Service Templates', href: '/service-templates', icon: <FileText size={18} /> },
       { label: 'Attributes', href: '/attributes', icon: <SlidersHorizontal size={18} /> },
+      { label: 'Reference Lists', href: '/reference-lists', icon: <List size={18} />, superAdminOnly: true },
     ],
   },
   {

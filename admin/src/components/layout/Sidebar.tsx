@@ -71,7 +71,7 @@ export function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [tenantDropdownOpen, setTenantDropdownOpen] = useState(false);
 
-  const showTenantSwitcher = tenants.length > 1;
+  const showTenantSwitcher = tenants.length > 0;
 
   return (
     <>

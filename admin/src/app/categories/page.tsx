@@ -2,23 +2,22 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, ChevronRight, ChevronDown, GripVertical } from 'lucide-react';
+import { Plus, ChevronRight, ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Modal } from '@/components/ui/Modal';
 import { TranslationForm } from '@/components/ui/TranslationForm';
-import { adminCategoryApi } from '@/lib/api';
+import { adminCategoryApi, type Category } from '@/lib/api';
 
-interface Category {
-  id: string;
-  icon: string;
-  name: string;
-  slug: string;
-  imageUrl?: string;
-  sortOrder: number;
-  children?: Category[];
+function getName(cat: Category): string {
+  const translations = (cat as any).translations;
+  if (Array.isArray(translations)) {
+    const en = translations.find((t: any) => t.lang === 'en');
+    return en?.name ?? translations[0]?.name ?? cat.slug ?? '(unnamed)';
+  }
+  return cat.slug || '(unnamed)';
 }
 
 export default function CategoriesPage() {
@@ -32,17 +31,15 @@ export default function CategoriesPage() {
 
   // Form state
   const [formNames, setFormNames] = useState<Record<string, string>>({});
-  const [formIcon, setFormIcon] = useState('');
   const [formSlug, setFormSlug] = useState('');
   const [formParentId, setFormParentId] = useState('');
-  const [formImageUrl, setFormImageUrl] = useState('');
   const [formSortOrder, setFormSortOrder] = useState('0');
 
   const fetchCategories = useCallback(async () => {
     try {
       setLoading(true);
       const data = await adminCategoryApi.list();
-      setCategories(data);
+      setCategories(Array.isArray(data) ? data : []);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to load categories';
       setError(message);
@@ -58,34 +55,30 @@ export default function CategoriesPage() {
   function toggleExpand(id: string) {
     setExpanded((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
+      next.has(id) ? next.delete(id) : next.add(id);
       return next;
     });
   }
 
   function resetForm() {
     setFormNames({});
-    setFormIcon('');
     setFormSlug('');
     setFormParentId('');
-    setFormImageUrl('');
     setFormSortOrder('0');
   }
 
   async function handleCreate() {
     setSubmitting(true);
     try {
+      const translations = Object.entries(formNames)
+        .filter(([, v]) => v.trim())
+        .map(([lang, name]) => ({ lang, name }));
+
       await adminCategoryApi.create({
-        name: formNames,
-        icon: formIcon,
         slug: formSlug,
-        parentId: formParentId || undefined,
-        imageUrl: formImageUrl || undefined,
         sortOrder: parseInt(formSortOrder, 10) || 0,
+        parentId: formParentId || undefined,
+        translations,
       });
       setShowModal(false);
       resetForm();
@@ -101,8 +94,8 @@ export default function CategoriesPage() {
   function flattenForSelect(cats: Category[], prefix = ''): { id: string; label: string }[] {
     const result: { id: string; label: string }[] = [];
     for (const cat of cats) {
-      result.push({ id: cat.id, label: prefix + cat.name });
-      if (cat.children) {
+      result.push({ id: cat.id, label: prefix + getName(cat) });
+      if (cat.children?.length) {
         result.push(...flattenForSelect(cat.children, prefix + '  '));
       }
     }
@@ -110,19 +103,19 @@ export default function CategoriesPage() {
   }
 
   function renderCategory(category: Category, depth = 0) {
-    const hasChildren = (category.children || []).length > 0;
+    const children = category.children || [];
+    const hasChildren = children.length > 0;
     const isExpanded = expanded.has(category.id);
 
     return (
       <div key={category.id}>
         <div
           className={clsx(
-            'flex items-center gap-3 px-4 py-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer group',
+            'flex items-center gap-3 px-4 py-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer',
           )}
           style={{ paddingLeft: `${depth * 24 + 16}px` }}
+          onClick={() => router.push(`/categories/${category.id}`)}
         >
-          <GripVertical className="h-4 w-4 text-gray-300 opacity-0 group-hover:opacity-100" />
-
           {hasChildren ? (
             <button
               onClick={(e) => {
@@ -141,27 +134,18 @@ export default function CategoriesPage() {
             <span className="w-4" />
           )}
 
-          <span className="text-lg" title="icon">
-            {category.icon || '--'}
-          </span>
-
-          <span
-            className="flex-1 text-sm font-medium text-gray-900 hover:text-indigo-600"
-            onClick={() => router.push(`/categories/${category.id}`)}
-          >
-            {category.name}
+          <span className="flex-1 text-sm font-medium text-gray-900">
+            {getName(category)}
           </span>
 
           <span className="text-xs text-gray-400 font-mono">{category.slug}</span>
 
-          <span className="text-xs text-gray-500 min-w-[80px] text-right">
-            {(category.children || []).length} subcategories
+          <span className="text-xs text-gray-500 min-w-[100px] text-right">
+            {children.length} subcategories
           </span>
         </div>
 
-        {isExpanded &&
-          hasChildren &&
-          (category.children || []).map((child) => renderCategory(child, depth + 1))}
+        {isExpanded && children.map((child) => renderCategory(child, depth + 1))}
       </div>
     );
   }
@@ -199,26 +183,10 @@ export default function CategoriesPage() {
 
       <Modal open={showModal} onClose={() => setShowModal(false)} title="Add Category">
         <div className="space-y-4">
-          <TranslationForm
-            label="Name"
-            values={formNames}
-            onChange={setFormNames}
-          />
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
-            <Input
-              value={formIcon}
-              onChange={(e) => setFormIcon(e.target.value)}
-              placeholder="e.g. emoji or icon name"
-            />
-          </div>
+          <TranslationForm label="Name" values={formNames} onChange={setFormNames} />
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Slug</label>
-            <Input
-              value={formSlug}
-              onChange={(e) => setFormSlug(e.target.value)}
-              placeholder="category-slug"
-            />
+            <Input value={formSlug} onChange={(e) => setFormSlug(e.target.value)} placeholder="category-slug" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Parent Category</label>
@@ -229,32 +197,16 @@ export default function CategoriesPage() {
             >
               <option value="">None (top-level)</option>
               {flattenForSelect(categories).map((opt) => (
-                <option key={opt.id} value={opt.id}>
-                  {opt.label}
-                </option>
+                <option key={opt.id} value={opt.id}>{opt.label}</option>
               ))}
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
-            <Input
-              value={formImageUrl}
-              onChange={(e) => setFormImageUrl(e.target.value)}
-              placeholder="https://..."
-            />
-          </div>
-          <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
-            <Input
-              type="number"
-              value={formSortOrder}
-              onChange={(e) => setFormSortOrder(e.target.value)}
-            />
+            <Input type="number" value={formSortOrder} onChange={(e) => setFormSortOrder(e.target.value)} />
           </div>
           <div className="flex justify-end gap-2 pt-2">
-            <Button variant="secondary" onClick={() => setShowModal(false)}>
-              Cancel
-            </Button>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
             <Button onClick={handleCreate} disabled={submitting}>
               {submitting ? 'Creating...' : 'Create Category'}
             </Button>

@@ -222,4 +222,42 @@ class ProviderApprovalE2ETest : BaseE2ETest() {
         val provider = api.json(resp)
         assertEquals("PENDING_APPROVAL", provider["approvalStatus"].asText())
     }
+
+    @Test
+    fun `approval history tracks all status changes`() {
+        val (providerId, providerToken) = registerProvider()
+
+        // Admin requests changes
+        api.put("/api/v1/admin/providers/$providerId/approve", mapOf(
+            "approvalStatus" to "CHANGES_REQUESTED",
+            "notes" to "Add a photo"
+        ), adminToken, headers = ah())
+
+        // Provider resubmits
+        api.put("/api/v1/providers/me", mapOf(
+            "description" to "Updated"
+        ), providerToken, headers = h())
+
+        // Admin approves
+        api.put("/api/v1/admin/providers/$providerId/approve", mapOf(
+            "approvalStatus" to "APPROVED",
+            "notes" to "Looks good now"
+        ), adminToken, headers = ah())
+
+        // Check history
+        val histResp = api.get("/api/v1/admin/providers/$providerId/history", adminToken, headers = ah())
+        assertEquals(HttpStatus.OK, histResp.statusCode)
+        val history = api.json(histResp)
+
+        // Should have 3 entries (newest first): APPROVED, PENDING_APPROVAL (resubmit), CHANGES_REQUESTED
+        assertTrue(history.size() >= 3) { "Expected at least 3 history entries, got ${history.size()}" }
+        assertEquals("APPROVED", history[0]["status"].asText())
+        assertEquals("Looks good now", history[0]["notes"].asText())
+        assertEquals("PENDING_APPROVAL", history[1]["status"].asText())
+        assertEquals("CHANGES_REQUESTED", history[2]["status"].asText())
+        assertEquals("Add a photo", history[2]["notes"].asText())
+
+        // Each entry has a changedByEmail
+        assertFalse(history[0]["changedByEmail"].isNull)
+    }
 }

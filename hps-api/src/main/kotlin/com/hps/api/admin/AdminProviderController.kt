@@ -1,11 +1,16 @@
 package com.hps.api.admin
 
+import com.hps.api.auth.userId
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.tenant.TenantContext
 import com.hps.domain.user.ApprovalStatus
+import com.hps.domain.user.ProviderApprovalHistory
 import com.hps.domain.user.ProviderProfile
+import com.hps.persistence.user.ProviderApprovalHistoryRepository
 import com.hps.persistence.user.ProviderProfileRepository
+import com.hps.persistence.user.UserRepository
+import org.springframework.security.core.Authentication
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import java.math.BigDecimal
@@ -36,12 +41,22 @@ data class UpdateProviderApprovalRequest(
     val notes: String? = null
 )
 
+data class ApprovalHistoryDto(
+    val id: UUID,
+    val status: String,
+    val notes: String?,
+    val changedByEmail: String,
+    val createdAt: Instant
+)
+
 // --- Controller ---
 
 @RestController
 @RequestMapping("/api/v1/admin/providers")
 class AdminProviderController(
-    private val providerProfileRepository: ProviderProfileRepository
+    private val providerProfileRepository: ProviderProfileRepository,
+    private val approvalHistoryRepository: ProviderApprovalHistoryRepository,
+    private val userRepository: UserRepository
 ) {
 
     @GetMapping
@@ -66,11 +81,31 @@ class AdminProviderController(
         return provider.toDto()
     }
 
+    @GetMapping("/{id}/history")
+    @Transactional(readOnly = true)
+    fun getApprovalHistory(@PathVariable id: UUID): List<ApprovalHistoryDto> {
+        val tenantId = TenantContext.require()
+        val provider = providerProfileRepository.findById(id)
+            .orElseThrow { NotFoundException("Provider", id) }
+        if (provider.tenantId != tenantId) throw NotFoundException("Provider", id)
+
+        return approvalHistoryRepository.findByProviderIdOrderByCreatedAtDesc(id).map {
+            ApprovalHistoryDto(
+                id = it.id,
+                status = it.status.name,
+                notes = it.notes,
+                changedByEmail = it.changedBy.email,
+                createdAt = it.createdAt
+            )
+        }
+    }
+
     @PutMapping("/{id}/approve")
     @Transactional
     fun updateApproval(
         @PathVariable id: UUID,
-        @RequestBody request: UpdateProviderApprovalRequest
+        @RequestBody request: UpdateProviderApprovalRequest,
+        auth: Authentication
     ): AdminProviderDto {
         val tenantId = TenantContext.require()
         val provider = providerProfileRepository.findById(id)
@@ -82,6 +117,19 @@ class AdminProviderController(
         } catch (e: IllegalArgumentException) {
             throw BadRequestException("Invalid approval status: ${request.approvalStatus}")
         }
+
+        val adminUser = userRepository.findById(auth.userId())
+            .orElseThrow { NotFoundException("User", auth.userId()) }
+
+        // Log history
+        approvalHistoryRepository.save(
+            ProviderApprovalHistory(
+                providerId = provider.userId!!,
+                status = status,
+                notes = request.notes,
+                changedBy = adminUser
+            )
+        )
 
         provider.approvalStatus = status
         provider.isVerified = status == ApprovalStatus.APPROVED

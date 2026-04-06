@@ -5,6 +5,8 @@ import com.hps.common.dto.PageResponse
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.i18n.bestTranslation
+import com.hps.domain.user.ApprovalStatus
+import com.hps.domain.user.ProviderApprovalHistory
 import com.hps.domain.user.ProviderProfile
 import com.hps.domain.user.ProviderProfileTranslation
 import com.hps.domain.user.UserRole
@@ -12,6 +14,7 @@ import com.hps.persistence.geo.AreaRepository
 import com.hps.persistence.geo.CityRepository
 import com.hps.persistence.service.ServiceCategoryRepository
 import com.hps.persistence.service.ServiceRepository
+import com.hps.persistence.user.ProviderApprovalHistoryRepository
 import com.hps.persistence.user.ProviderProfileRepository
 import com.hps.persistence.user.UserRepository
 import org.springframework.data.domain.PageRequest
@@ -30,7 +33,8 @@ class ProviderService(
     private val categoryRepository: ServiceCategoryRepository,
     private val cityRepository: CityRepository,
     private val areaRepository: AreaRepository,
-    private val serviceRepository: ServiceRepository
+    private val serviceRepository: ServiceRepository,
+    private val approvalHistoryRepository: ProviderApprovalHistoryRepository
 ) {
     fun listByCategory(
         categoryId: UUID,
@@ -178,9 +182,17 @@ class ProviderService(
         }
 
         // Auto-resubmit for approval when provider updates after changes requested or rejection
-        if (provider.approvalStatus == com.hps.domain.user.ApprovalStatus.CHANGES_REQUESTED
-            || provider.approvalStatus == com.hps.domain.user.ApprovalStatus.REJECTED) {
-            provider.approvalStatus = com.hps.domain.user.ApprovalStatus.PENDING_APPROVAL
+        if (provider.approvalStatus == ApprovalStatus.CHANGES_REQUESTED
+            || provider.approvalStatus == ApprovalStatus.REJECTED) {
+            approvalHistoryRepository.save(
+                ProviderApprovalHistory(
+                    providerId = provider.userId!!,
+                    status = ApprovalStatus.PENDING_APPROVAL,
+                    notes = "Resubmitted by provider after profile update",
+                    changedBy = provider.user
+                )
+            )
+            provider.approvalStatus = ApprovalStatus.PENDING_APPROVAL
             provider.approvalNotes = null
         }
 

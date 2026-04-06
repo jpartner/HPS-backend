@@ -10,11 +10,13 @@ data class ConversationDto(
     val conversationType: String,
     val topic: String?,
     val lastMessage: MessageSummaryDto?,
+    val isArchived: Boolean = false,
     val updatedAt: Instant
 )
 
 data class ParticipantDto(
     val id: UUID,
+    val handle: String?,
     val email: String,
     val name: String?,
     val role: String
@@ -23,6 +25,7 @@ data class ParticipantDto(
 data class MessageDto(
     val id: UUID,
     val senderId: UUID,
+    val senderHandle: String?,
     val senderName: String?,
     val content: String,
     val isRead: Boolean,
@@ -37,7 +40,8 @@ data class MessageSummaryDto(
 )
 
 data class CreateConversationRequest(
-    val participantId: UUID,
+    val participantId: UUID? = null,
+    val participantHandle: String? = null,
     val topic: String? = null,
     @field:NotBlank
     val initialMessage: String
@@ -54,7 +58,35 @@ data class BlockUserRequest(
 
 data class BlockedUserDto(
     val id: UUID,
+    val handle: String?,
     val email: String,
     val name: String?,
     val blockedAt: Instant
+)
+
+// --- Report DTOs ---
+
+data class ReportMessageRequest(
+    @field:NotBlank
+    val reason: String
+)
+
+data class MessageReportDto(
+    val id: UUID,
+    val messageId: UUID,
+    val messageContent: String,
+    val reporterHandle: String?,
+    val reporterEmail: String,
+    val reason: String,
+    val status: String,
+    val reviewedBy: String?,
+    val reviewedAt: Instant?,
+    val adminNotes: String?,
+    val createdAt: Instant
+)
+
+data class ReviewReportRequest(
+    @field:NotBlank
+    val status: String,
+    val adminNotes: String? = null
 )

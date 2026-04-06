@@ -2,6 +2,8 @@ package com.hps.api.messaging
 
 import com.hps.api.auth.role
 import com.hps.api.auth.userId
+import com.hps.common.tenant.TenantContext
+import com.hps.domain.messaging.ReportStatus
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.Authentication
@@ -14,8 +16,11 @@ class MessagingController(
     private val messagingService: MessagingService
 ) {
     @GetMapping("/conversations")
-    fun listConversations(auth: Authentication): List<ConversationDto> =
-        messagingService.listConversations(auth.userId())
+    fun listConversations(
+        @RequestParam(defaultValue = "false") archived: Boolean,
+        auth: Authentication
+    ): List<ConversationDto> =
+        messagingService.listConversations(auth.userId(), archived)
 
     @PostMapping("/conversations")
     @ResponseStatus(HttpStatus.CREATED)
@@ -53,6 +58,31 @@ class MessagingController(
     fun unreadCount(auth: Authentication): Map<String, Long> =
         mapOf("unread" to messagingService.getUnreadCount(auth.userId()))
 
+    // === Archive ===
+
+    @PostMapping("/conversations/{id}/archive")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun archiveConversation(@PathVariable id: UUID, auth: Authentication) {
+        messagingService.archiveConversation(auth.userId(), id)
+    }
+
+    @DeleteMapping("/conversations/{id}/archive")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun unarchiveConversation(@PathVariable id: UUID, auth: Authentication) {
+        messagingService.unarchiveConversation(auth.userId(), id)
+    }
+
+    // === Reporting ===
+
+    @PostMapping("/messages/{id}/report")
+    @ResponseStatus(HttpStatus.CREATED)
+    fun reportMessage(
+        @PathVariable id: UUID,
+        @Valid @RequestBody request: ReportMessageRequest,
+        auth: Authentication
+    ): MessageReportDto =
+        messagingService.reportMessage(auth.userId(), id, request.reason)
+
     // === Blocking ===
 
     @PostMapping("/users/blocks")
@@ -70,4 +100,30 @@ class MessagingController(
     @GetMapping("/users/blocks")
     fun listBlocked(auth: Authentication): List<BlockedUserDto> =
         messagingService.listBlocked(auth.userId())
+}
+
+// --- Admin report management ---
+
+@RestController
+@RequestMapping("/api/v1/admin/message-reports")
+class AdminMessageReportController(
+    private val messagingService: MessagingService
+) {
+    @GetMapping
+    fun listReports(
+        @RequestParam(required = false) status: String?
+    ): List<MessageReportDto> {
+        val tenantId = TenantContext.require()
+        val reportStatus = status?.let { ReportStatus.valueOf(it) }
+        return messagingService.listReports(tenantId, reportStatus)
+    }
+
+    @PutMapping("/{id}")
+    fun reviewReport(
+        @PathVariable id: UUID,
+        @Valid @RequestBody request: ReviewReportRequest,
+        auth: Authentication
+    ) {
+        messagingService.reviewReport(auth.userId(), id, request)
+    }
 }

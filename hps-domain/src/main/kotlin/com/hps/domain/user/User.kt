@@ -19,6 +19,9 @@ class User(
     @Column(name = "password_hash", nullable = false)
     var passwordHash: String,
 
+    @Column(length = 30)
+    var handle: String? = null,
+
     @Column(length = 20)
     var phone: String? = null,
 

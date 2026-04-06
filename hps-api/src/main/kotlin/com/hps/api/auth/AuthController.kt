@@ -1,5 +1,6 @@
 package com.hps.api.auth
 
+import com.hps.common.tenant.TenantContext
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -21,4 +22,8 @@ class AuthController(
     @PostMapping("/refresh")
     fun refresh(@Valid @RequestBody request: RefreshRequest): TokenResponse =
         authService.refresh(request)
+
+    @GetMapping("/handle-available")
+    fun checkHandle(@RequestParam handle: String): HandleAvailableResponse =
+        authService.checkHandleAvailable(handle, TenantContext.get())
 }

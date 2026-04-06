@@ -20,4 +20,8 @@ interface UserRepository : JpaRepository<User, UUID> {
     fun findByTenantIdAndRole(tenantId: UUID, role: UserRole): List<User>
 
     fun countByTenantId(tenantId: UUID): Long
+
+    fun findByHandleAndTenantId(handle: String, tenantId: UUID): User?
+
+    fun existsByHandleAndTenantId(handle: String, tenantId: UUID): Boolean
 }

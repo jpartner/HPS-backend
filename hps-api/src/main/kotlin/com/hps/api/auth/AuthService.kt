@@ -9,6 +9,9 @@ import com.hps.persistence.user.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.UUID
+
+private val HANDLE_REGEX = Regex("^[a-z][a-z0-9_]{2,29}$")
 
 @Service
 class AuthService(
@@ -30,10 +33,18 @@ class AuthService(
             }
         }
 
+        // Validate and check handle uniqueness
+        val handle = request.handle?.lowercase()
+        if (handle != null) {
+            val reason = validateHandle(handle, tenantId)
+            if (reason != null) throw BadRequestException(reason)
+        }
+
         val user = User(
             email = request.email,
             tenantId = tenantId,
             passwordHash = passwordEncoder.encode(request.password),
+            handle = handle,
             preferredLang = request.preferredLang
         )
 
@@ -54,8 +65,6 @@ class AuthService(
         val tenantId = TenantContext.get()
 
         val user = if (tenantId != null) {
-            // Try tenant-scoped lookup first, then fall back to global
-            // (super admins and cross-tenant admins have tenantId=null)
             userRepository.findByEmailAndTenantId(request.email, tenantId)
                 ?: userRepository.findByEmail(request.email)
                     ?.takeIf { it.tenantId == null }
@@ -74,6 +83,16 @@ class AuthService(
         return generateTokens(user)
     }
 
+    fun checkHandleAvailable(handle: String, tenantId: UUID?): HandleAvailableResponse {
+        val h = handle.lowercase()
+        val reason = validateHandle(h, tenantId)
+        return if (reason != null) {
+            HandleAvailableResponse(available = false, reason = reason)
+        } else {
+            HandleAvailableResponse(available = true)
+        }
+    }
+
     fun refresh(request: RefreshRequest): TokenResponse {
         val claims = jwtService.validateToken(request.refreshToken)
             ?: throw UnauthorizedException("Invalid refresh token")
@@ -86,6 +105,22 @@ class AuthService(
         }
 
         return generateTokens(user)
+    }
+
+    /**
+     * Returns null if handle is valid, or an error reason string.
+     */
+    private fun validateHandle(handle: String, tenantId: UUID?): String? {
+        if (!HANDLE_REGEX.matches(handle)) {
+            return "Handle must be 3-30 characters: lowercase letters, numbers, underscores. Must start with a letter."
+        }
+        if (handle == "admin" || handle.contains("admin")) {
+            return "Handle cannot contain 'admin'"
+        }
+        if (tenantId != null && userRepository.existsByHandleAndTenantId(handle, tenantId)) {
+            return "Handle is already taken"
+        }
+        return null
     }
 
     private fun generateTokens(user: User): TokenResponse {

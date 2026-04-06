@@ -4,16 +4,11 @@ import com.hps.common.tenant.TenantContext
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.ForbiddenException
 import com.hps.common.exception.NotFoundException
-import com.hps.domain.messaging.Conversation
-import com.hps.domain.messaging.ConversationType
-import com.hps.domain.messaging.Message
-import com.hps.domain.messaging.UserBlock
+import com.hps.domain.messaging.*
 import com.hps.domain.user.User
 import com.hps.domain.user.UserRole
 import com.hps.persistence.booking.BookingRepository
-import com.hps.persistence.messaging.ConversationRepository
-import com.hps.persistence.messaging.MessageRepository
-import com.hps.persistence.messaging.UserBlockRepository
+import com.hps.persistence.messaging.*
 import com.hps.persistence.user.UserRepository
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
@@ -27,52 +22,51 @@ class MessagingService(
     private val conversationRepository: ConversationRepository,
     private val messageRepository: MessageRepository,
     private val blockRepository: UserBlockRepository,
+    private val archiveRepository: ConversationArchiveRepository,
+    private val reportRepository: MessageReportRepository,
     private val userRepository: UserRepository,
     private val bookingRepository: BookingRepository
 ) {
-    fun listConversations(userId: UUID): List<ConversationDto> {
+    fun listConversations(userId: UUID, archived: Boolean = false): List<ConversationDto> {
         val conversations = conversationRepository.findByParticipant(userId)
-        return conversations.map { it.toDto(userId) }
+        val archivedIds = archiveRepository.findByIdUserId(userId)
+            .map { it.id.conversationId }.toSet()
+
+        return conversations
+            .filter { if (archived) archivedIds.contains(it.id) else !archivedIds.contains(it.id) }
+            .map { it.toDto(userId, archivedIds.contains(it.id)) }
     }
 
     fun getMessages(userId: UUID, conversationId: UUID, page: Int, size: Int): List<MessageDto> {
         val conversation = conversationRepository.findById(conversationId)
             .orElseThrow { NotFoundException("Conversation", conversationId) }
-
         requireParticipant(conversation, userId)
 
         return messageRepository
             .findByConversationIdOrderByCreatedAtDesc(conversationId, PageRequest.of(page, size))
-            .content
-            .map { it.toDto() }
+            .content.map { it.toDto() }
     }
 
     @Transactional
-    fun createConversation(
-        userId: UUID,
-        userRole: UserRole,
-        request: CreateConversationRequest
-    ): ConversationDto {
+    fun createConversation(userId: UUID, userRole: UserRole, request: CreateConversationRequest): ConversationDto {
         val initiator = userRepository.findById(userId)
             .orElseThrow { NotFoundException("User", userId) }
-        val target = userRepository.findById(request.participantId)
-            .orElseThrow { NotFoundException("User", request.participantId) }
 
-        if (userId == request.participantId) {
+        // Resolve target by handle or ID
+        val target = resolveTarget(request, initiator)
+
+        if (userId == target.id) {
             throw BadRequestException("Cannot create conversation with yourself")
         }
 
-        // Check blocking
-        if (blockRepository.isBlocked(userId, request.participantId)) {
+        if (blockRepository.isBlocked(userId, target.id)) {
             throw ForbiddenException("Cannot communicate with this user")
         }
 
-        // Determine conversation type and enforce rules
         val conversationType = resolveConversationType(initiator, target, userRole)
         enforceConversationRules(initiator, target, userRole, conversationType)
 
-        // Check if conversation already exists (unless it's a new topic-based admin conversation)
-        val existing = conversationRepository.findByParticipants(userId, request.participantId)
+        val existing = conversationRepository.findByParticipants(userId, target.id)
         val conversation = if (existing.isNotEmpty() && conversationType != ConversationType.PROVIDER_ADMIN) {
             existing.first()
         } else {
@@ -88,26 +82,17 @@ class MessagingService(
             )
         }
 
-        // Send initial message
-        messageRepository.save(
-            Message(
-                conversation = conversation,
-                sender = initiator,
-                content = request.initialMessage
-            )
-        )
-
+        messageRepository.save(Message(conversation = conversation, sender = initiator, content = request.initialMessage))
         conversation.updatedAt = Instant.now()
         conversationRepository.save(conversation)
 
-        return conversation.toDto(userId)
+        return conversation.toDto(userId, false)
     }
 
     @Transactional
     fun sendMessage(userId: UUID, conversationId: UUID, request: SendMessageRequest): MessageDto {
         val conversation = conversationRepository.findById(conversationId)
             .orElseThrow { NotFoundException("Conversation", conversationId) }
-
         requireParticipant(conversation, userId)
 
         val otherId = otherParticipantId(conversation, userId)
@@ -117,14 +102,7 @@ class MessagingService(
 
         val sender = userRepository.findById(userId)
             .orElseThrow { NotFoundException("User", userId) }
-
-        val message = messageRepository.save(
-            Message(
-                conversation = conversation,
-                sender = sender,
-                content = request.content
-            )
-        )
+        val message = messageRepository.save(Message(conversation = conversation, sender = sender, content = request.content))
 
         conversation.updatedAt = Instant.now()
         conversationRepository.save(conversation)
@@ -140,8 +118,72 @@ class MessagingService(
         return messageRepository.markAsRead(conversationId, userId)
     }
 
-    fun getUnreadCount(userId: UUID): Long {
-        return messageRepository.countUnread(userId)
+    fun getUnreadCount(userId: UUID): Long = messageRepository.countUnread(userId)
+
+    // === Archive ===
+
+    @Transactional
+    fun archiveConversation(userId: UUID, conversationId: UUID) {
+        if (!conversationRepository.existsById(conversationId)) {
+            throw NotFoundException("Conversation", conversationId)
+        }
+        if (archiveRepository.existsByIdUserIdAndIdConversationId(userId, conversationId)) return
+        archiveRepository.save(ConversationArchive(ConversationArchiveId(userId, conversationId)))
+    }
+
+    @Transactional
+    fun unarchiveConversation(userId: UUID, conversationId: UUID) {
+        archiveRepository.deleteByIdUserIdAndIdConversationId(userId, conversationId)
+    }
+
+    // === Reporting ===
+
+    @Transactional
+    fun reportMessage(userId: UUID, messageId: UUID, reason: String): MessageReportDto {
+        val message = messageRepository.findById(messageId)
+            .orElseThrow { NotFoundException("Message", messageId) }
+
+        val conversation = message.conversation
+        requireParticipant(conversation, userId)
+
+        if (message.sender.id == userId) {
+            throw BadRequestException("Cannot report your own message")
+        }
+        if (reportRepository.existsByMessageIdAndReporterId(messageId, userId)) {
+            throw BadRequestException("You have already reported this message")
+        }
+
+        val reporter = userRepository.findById(userId)
+            .orElseThrow { NotFoundException("User", userId) }
+        val tenantId = TenantContext.require()
+
+        val report = reportRepository.save(
+            MessageReport(message = message, reporter = reporter, reason = reason, tenantId = tenantId)
+        )
+        return report.toDto()
+    }
+
+    fun listReports(tenantId: UUID, status: ReportStatus?): List<MessageReportDto> {
+        val reports = if (status != null) {
+            reportRepository.findByTenantIdAndStatus(tenantId, status)
+        } else {
+            reportRepository.findByTenantId(tenantId)
+        }
+        return reports.map { it.toDto() }
+    }
+
+    @Transactional
+    fun reviewReport(adminId: UUID, reportId: UUID, request: ReviewReportRequest) {
+        val report = reportRepository.findById(reportId)
+            .orElseThrow { NotFoundException("MessageReport", reportId) }
+        val admin = userRepository.findById(adminId)
+            .orElseThrow { NotFoundException("User", adminId) }
+
+        report.status = ReportStatus.valueOf(request.status)
+        report.reviewedBy = admin
+        report.reviewedAt = Instant.now()
+        report.adminNotes = request.adminNotes
+        reportRepository.save(report)
     }
 
     // === Blocking ===
@@ -149,15 +191,9 @@ class MessagingService(
     @Transactional
     fun blockUser(blockerId: UUID, blockedId: UUID) {
         if (blockerId == blockedId) throw BadRequestException("Cannot block yourself")
-        val blocker = userRepository.findById(blockerId)
-            .orElseThrow { NotFoundException("User", blockerId) }
-        val blocked = userRepository.findById(blockedId)
-            .orElseThrow { NotFoundException("User", blockedId) }
-
-        if (blockRepository.findByBlockerIdAndBlockedId(blockerId, blockedId) != null) {
-            return // Already blocked
-        }
-
+        val blocker = userRepository.findById(blockerId).orElseThrow { NotFoundException("User", blockerId) }
+        val blocked = userRepository.findById(blockedId).orElseThrow { NotFoundException("User", blockedId) }
+        if (blockRepository.findByBlockerIdAndBlockedId(blockerId, blockedId) != null) return
         blockRepository.save(UserBlock(blocker = blocker, blocked = blocked))
     }
 
@@ -172,6 +208,7 @@ class MessagingService(
         return blockRepository.findByBlockerId(userId).map {
             BlockedUserDto(
                 id = it.blocked.id,
+                handle = it.blocked.handle,
                 email = it.blocked.email,
                 name = it.blocked.profile?.firstName,
                 blockedAt = it.createdAt
@@ -180,6 +217,27 @@ class MessagingService(
     }
 
     // === Private helpers ===
+
+    private fun resolveTarget(request: CreateConversationRequest, initiator: User): User {
+        if (request.participantHandle != null) {
+            val handle = request.participantHandle.lowercase().removePrefix("@")
+            if (handle == "admin") {
+                // Find first active admin for this tenant
+                val tenantId = TenantContext.require()
+                return userRepository.findByTenantIdAndRole(tenantId, UserRole.ADMIN)
+                    .firstOrNull { it.isActive }
+                    ?: throw BadRequestException("No admin available for this tenant")
+            }
+            val tenantId = TenantContext.require()
+            return userRepository.findByHandleAndTenantId(handle, tenantId)
+                ?: throw NotFoundException("User", "@$handle")
+        }
+        if (request.participantId != null) {
+            return userRepository.findById(request.participantId)
+                .orElseThrow { NotFoundException("User", request.participantId) }
+        }
+        throw BadRequestException("Either participantId or participantHandle must be provided")
+    }
 
     private fun resolveConversationType(initiator: User, target: User, initiatorRole: UserRole): ConversationType {
         return when {
@@ -195,33 +253,16 @@ class MessagingService(
         }
     }
 
-    private fun enforceConversationRules(
-        initiator: User, target: User, initiatorRole: UserRole, type: ConversationType
-    ) {
+    private fun enforceConversationRules(initiator: User, target: User, initiatorRole: UserRole, type: ConversationType) {
         when {
-            // Admins can talk to anyone
-            initiatorRole == UserRole.ADMIN -> return
-
-            // Customers can create conversations with providers
+            initiatorRole == UserRole.ADMIN || initiatorRole == UserRole.SUPER_ADMIN -> return
             initiatorRole == UserRole.CLIENT && target.role == UserRole.PROVIDER -> return
-
-            // Providers can create conversations with admins (with topic)
             initiatorRole == UserRole.PROVIDER && target.role == UserRole.ADMIN -> return
-
-            // Providers can message customers only if previous contact exists
             initiatorRole == UserRole.PROVIDER && target.role == UserRole.CLIENT -> {
-                val hasBookingHistory = bookingRepository
-                    .findByProviderId(initiator.id)
-                    .any { it.client.id == target.id }
-                val hasConversationHistory = conversationRepository
-                    .findByParticipants(initiator.id, target.id)
-                    .isNotEmpty()
-
-                if (!hasBookingHistory && !hasConversationHistory) {
-                    throw ForbiddenException("Providers can only message customers they have had previous contact with")
-                }
+                val hasHistory = bookingRepository.findByProviderId(initiator.id).any { it.client.id == target.id }
+                    || conversationRepository.findByParticipants(initiator.id, target.id).isNotEmpty()
+                if (!hasHistory) throw ForbiddenException("Providers can only message customers they have had previous contact with")
             }
-
             else -> throw ForbiddenException("Not allowed to create this conversation")
         }
     }
@@ -232,12 +273,10 @@ class MessagingService(
         }
     }
 
-    private fun otherParticipantId(conversation: Conversation, userId: UUID): UUID {
-        return if (conversation.participant1.id == userId) conversation.participant2.id
-        else conversation.participant1.id
-    }
+    private fun otherParticipantId(conversation: Conversation, userId: UUID): UUID =
+        if (conversation.participant1.id == userId) conversation.participant2.id else conversation.participant1.id
 
-    private fun Conversation.toDto(currentUserId: UUID): ConversationDto {
+    private fun Conversation.toDto(currentUserId: UUID, isArchived: Boolean): ConversationDto {
         val other = if (participant1.id == currentUserId) participant2 else participant1
         val lastMsg = messageRepository
             .findByConversationIdOrderByCreatedAtDesc(id, PageRequest.of(0, 1))
@@ -246,26 +285,28 @@ class MessagingService(
         return ConversationDto(
             id = id,
             otherParticipant = ParticipantDto(
-                id = other.id,
-                email = other.email,
-                name = other.profile?.firstName,
-                role = other.role.name
+                id = other.id, handle = other.handle, email = other.email,
+                name = other.profile?.firstName, role = other.role.name
             ),
             conversationType = conversationType.name,
             topic = topic,
-            lastMessage = lastMsg?.let {
-                MessageSummaryDto(it.content, it.sender.id, it.createdAt, it.isRead)
-            },
+            lastMessage = lastMsg?.let { MessageSummaryDto(it.content, it.sender.id, it.createdAt, it.isRead) },
+            isArchived = isArchived,
             updatedAt = updatedAt
         )
     }
 
     private fun Message.toDto() = MessageDto(
-        id = id,
-        senderId = sender.id,
-        senderName = sender.profile?.firstName,
-        content = content,
-        isRead = isRead,
-        createdAt = createdAt
+        id = id, senderId = sender.id, senderHandle = sender.handle,
+        senderName = sender.profile?.firstName, content = content,
+        isRead = isRead, createdAt = createdAt
+    )
+
+    private fun MessageReport.toDto() = MessageReportDto(
+        id = id, messageId = message.id, messageContent = message.content,
+        reporterHandle = reporter.handle, reporterEmail = reporter.email,
+        reason = reason, status = status.name,
+        reviewedBy = reviewedBy?.email, reviewedAt = reviewedAt,
+        adminNotes = adminNotes, createdAt = createdAt
     )
 }

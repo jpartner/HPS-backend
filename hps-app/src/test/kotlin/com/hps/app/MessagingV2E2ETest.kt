@@ -181,27 +181,35 @@ class MessagingV2E2ETest : BaseE2ETest() {
     }
 
     @Test
-    fun `starting another conversation with same user reuses existing thread`() {
-        // Customer starts conversation
+    fun `starting another conversation with same user creates a new thread`() {
+        // Customer starts first conversation
         val resp1 = api.post("/api/v1/conversations", mapOf(
             "participantId" to providerId,
             "initialMessage" to "First conversation"
         ), customerToken)
         val convId1 = api.json(resp1)["id"].asText()
 
-        // Customer starts another conversation with same provider
+        // Customer starts second conversation with same provider
         val resp2 = api.post("/api/v1/conversations", mapOf(
             "participantId" to providerId,
-            "initialMessage" to "Second message"
+            "initialMessage" to "Second conversation"
         ), customerToken)
         val convId2 = api.json(resp2)["id"].asText()
 
-        // Should be the same conversation
-        assertEquals(convId1, convId2)
+        // Should be different threads
+        assertNotEquals(convId1, convId2)
 
-        // Should have 2 messages in the thread
-        val messages = api.json(api.get("/api/v1/conversations/$convId1/messages", customerToken))
-        assertEquals(2, messages.size())
+        // Each thread has 1 message
+        val msgs1 = api.json(api.get("/api/v1/conversations/$convId1/messages", customerToken))
+        assertEquals(1, msgs1.size())
+        val msgs2 = api.json(api.get("/api/v1/conversations/$convId2/messages", customerToken))
+        assertEquals(1, msgs2.size())
+
+        // User should see both in their conversation list
+        val convs = api.json(api.get("/api/v1/conversations", customerToken))
+        val ids = (0 until convs.size()).map { convs[it]["id"].asText() }
+        assertTrue(ids.contains(convId1))
+        assertTrue(ids.contains(convId2))
     }
 
     @Test

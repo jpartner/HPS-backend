@@ -66,21 +66,18 @@ class MessagingService(
         val conversationType = resolveConversationType(initiator, target, userRole)
         enforceConversationRules(initiator, target, userRole, conversationType)
 
-        val existing = conversationRepository.findByParticipants(userId, target.id)
-        val conversation = if (existing.isNotEmpty() && conversationType != ConversationType.PROVIDER_ADMIN) {
-            existing.first()
-        } else {
-            val tenantId = TenantContext.require()
-            conversationRepository.save(
-                Conversation(
-                    tenantId = tenantId,
-                    participant1 = initiator,
-                    participant2 = target,
-                    conversationType = conversationType,
-                    topic = request.topic
-                )
+        // Always create a new conversation thread.
+        // Replies to existing threads go via POST /conversations/{id}/messages.
+        val tenantId = TenantContext.require()
+        val conversation = conversationRepository.save(
+            Conversation(
+                tenantId = tenantId,
+                participant1 = initiator,
+                participant2 = target,
+                conversationType = conversationType,
+                topic = request.topic
             )
-        }
+        )
 
         messageRepository.save(Message(conversation = conversation, sender = initiator, content = request.initialMessage))
         conversation.updatedAt = Instant.now()

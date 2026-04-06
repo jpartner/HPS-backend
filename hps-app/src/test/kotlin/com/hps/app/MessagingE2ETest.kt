@@ -110,12 +110,11 @@ class MessagingE2ETest : BaseE2ETest() {
             "initialMessage" to "First contact"
         ), customerToken)
 
-        // Now provider can initiate (already has contact)
+        // Now provider can initiate a new thread (already has contact)
         val resp = api.post("/api/v1/conversations", mapOf(
             "participantId" to customerId,
             "initialMessage" to "Following up!"
         ), providerToken)
-        // Should reuse existing conversation
         assertEquals(HttpStatus.CREATED, resp.statusCode)
     }
 

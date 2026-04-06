@@ -56,7 +56,7 @@ export class ApiError extends Error {
 
 // Auth
 export const authApi = {
-  register: (data: { email: string; password: string; firstName?: string; lastName?: string; preferredLang?: string }) =>
+  register: (data: { email: string; password: string; handle?: string; firstName?: string; lastName?: string; preferredLang?: string }) =>
     api<{ accessToken: string; refreshToken: string; expiresIn: number }>('/api/v1/auth/register', { method: 'POST', body: data }),
 
   login: (data: { email: string; password: string }) =>
@@ -131,15 +131,26 @@ export const scheduleApi = {
 
 // Messaging
 export const messagingApi = {
-  conversations: (token: string) => api<ConversationDto[]>('/api/v1/conversations', { token }),
-  messages: (convId: string, token: string) => api<MessageDto[]>(`/api/v1/conversations/${convId}/messages`, { token }),
+  conversations: (token: string, archived = false) =>
+    api<ConversationDto[]>(`/api/v1/conversations${archived ? '?archived=true' : ''}`, { token }),
+  messages: (convId: string, token: string) =>
+    api<MessageDto[]>(`/api/v1/conversations/${convId}/messages`, { token }),
   send: (convId: string, content: string, token: string) =>
     api<MessageDto>(`/api/v1/conversations/${convId}/messages`, { method: 'POST', body: { content }, token }),
-  create: (participantId: string, initialMessage: string, token: string, topic?: string) =>
-    api<ConversationDto>('/api/v1/conversations', { method: 'POST', body: { participantId, initialMessage, topic }, token }),
+  create: (opts: { participantId?: string; participantHandle?: string; initialMessage: string; topic?: string }, token: string) =>
+    api<ConversationDto>('/api/v1/conversations', { method: 'POST', body: opts, token }),
   markRead: (convId: string, token: string) =>
     api(`/api/v1/conversations/${convId}/read`, { method: 'POST', token }),
-  unreadCount: (token: string) => api<{ unread: number }>('/api/v1/messages/unread-count', { token }),
+  unreadCount: (token: string) =>
+    api<{ unread: number }>('/api/v1/messages/unread-count', { token }),
+  archive: (convId: string, token: string) =>
+    api(`/api/v1/conversations/${convId}/archive`, { method: 'POST', token }),
+  unarchive: (convId: string, token: string) =>
+    api(`/api/v1/conversations/${convId}/archive`, { method: 'DELETE', token }),
+  report: (messageId: string, reason: string, token: string) =>
+    api(`/api/v1/messages/${messageId}/report`, { method: 'POST', body: { reason }, token }),
+  handleAvailable: (handle: string) =>
+    api<{ available: boolean; reason?: string }>(`/api/v1/auth/handle-available?handle=${encodeURIComponent(handle)}`),
 };
 
 // Types
@@ -191,10 +202,14 @@ export interface WeeklySchedule {
   slots: { dayOfWeek: number; startTime: string; endTime: string }[];
 }
 export interface ConversationDto {
-  id: string; otherParticipant: { id: string; email: string; name: string; role: string };
-  conversationType: string; topic: string; lastMessage: { content: string; senderId: string; createdAt: string; isRead: boolean };
+  id: string;
+  otherParticipant: { id: string; handle?: string; email: string; name: string; role: string };
+  conversationType: string; topic: string;
+  lastMessage: { content: string; senderId: string; createdAt: string; isRead: boolean } | null;
+  isArchived: boolean;
   updatedAt: string;
 }
 export interface MessageDto {
-  id: string; senderId: string; senderName: string; content: string; isRead: boolean; createdAt: string;
+  id: string; senderId: string; senderHandle?: string; senderName: string;
+  content: string; isRead: boolean; createdAt: string;
 }

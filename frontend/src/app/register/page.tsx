@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState, useRef, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { UserPlus, Info } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
-import { authApi, ApiError } from '@/lib/api';
+import { authApi, messagingApi, ApiError } from '@/lib/api';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 
@@ -23,14 +23,39 @@ export default function RegisterPage() {
     lastName: '',
     email: '',
     password: '',
+    handle: '',
   });
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
+  const [handleStatus, setHandleStatus] = useState<'idle' | 'checking' | 'available' | 'taken'>('idle');
+  const handleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function updateField(field: string, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
     setFieldErrors((prev) => ({ ...prev, [field]: '' }));
+
+    if (field === 'handle') {
+      const h = value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+      setForm((prev) => ({ ...prev, handle: h }));
+      if (handleTimerRef.current) clearTimeout(handleTimerRef.current);
+      if (h.length < 3) {
+        setHandleStatus('idle');
+        return;
+      }
+      setHandleStatus('checking');
+      handleTimerRef.current = setTimeout(async () => {
+        try {
+          const res = await messagingApi.handleAvailable(h);
+          setHandleStatus(res.available ? 'available' : 'taken');
+          if (!res.available && res.reason) {
+            setFieldErrors((prev) => ({ ...prev, handle: res.reason! }));
+          }
+        } catch {
+          setHandleStatus('idle');
+        }
+      }, 400);
+    }
   }
 
   function validate(): boolean {
@@ -39,6 +64,8 @@ export default function RegisterPage() {
     if (!form.lastName.trim()) errors.lastName = 'Last name is required';
     if (!form.email.trim()) errors.email = 'Email is required';
     if (form.password.length < 8) errors.password = 'Password must be at least 8 characters';
+    if (form.handle && form.handle.length < 3) errors.handle = 'Handle must be at least 3 characters';
+    if (handleStatus === 'taken') errors.handle = 'Handle is not available';
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   }
@@ -56,6 +83,7 @@ export default function RegisterPage() {
         password: form.password,
         firstName: form.firstName,
         lastName: form.lastName,
+        ...(form.handle ? { handle: form.handle } : {}),
       });
       auth.login(res.accessToken, res.refreshToken);
       if (selectedRole === 'PROVIDER') {
@@ -172,6 +200,29 @@ export default function RegisterPage() {
               required
               autoComplete="new-password"
             />
+
+            <div>
+              <Input
+                label="Handle"
+                name="handle"
+                placeholder="e.g. bobby123"
+                value={form.handle}
+                onChange={(e) => updateField('handle', e.target.value)}
+                error={fieldErrors.handle}
+                autoComplete="username"
+              />
+              <div className="mt-1 h-4 text-xs">
+                {form.handle.length >= 3 && handleStatus === 'checking' && (
+                  <span className="text-gray-400">Checking...</span>
+                )}
+                {form.handle.length >= 3 && handleStatus === 'available' && (
+                  <span className="text-green-600">@{form.handle} is available</span>
+                )}
+                {form.handle.length >= 3 && handleStatus === 'taken' && !fieldErrors.handle && (
+                  <span className="text-red-600">@{form.handle} is not available</span>
+                )}
+              </div>
+            </div>
 
             <Button
               type="submit"

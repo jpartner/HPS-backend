@@ -10,8 +10,11 @@ import com.hps.domain.user.ProviderApprovalHistory
 import com.hps.domain.user.ProviderProfile
 import com.hps.domain.user.ProviderProfileTranslation
 import com.hps.domain.user.UserRole
+import com.hps.domain.service.RateType
 import com.hps.persistence.geo.AreaRepository
 import com.hps.persistence.geo.CityRepository
+import com.hps.persistence.geo.CountryCurrencyRepository
+import com.hps.persistence.service.ProviderRateRepository
 import com.hps.persistence.service.ServiceCategoryRepository
 import com.hps.persistence.service.ServiceRepository
 import com.hps.persistence.user.ProviderApprovalHistoryRepository
@@ -34,7 +37,9 @@ class ProviderService(
     private val cityRepository: CityRepository,
     private val areaRepository: AreaRepository,
     private val serviceRepository: ServiceRepository,
-    private val approvalHistoryRepository: ProviderApprovalHistoryRepository
+    private val approvalHistoryRepository: ProviderApprovalHistoryRepository,
+    private val providerRateRepository: ProviderRateRepository,
+    private val countryCurrencyRepository: CountryCurrencyRepository
 ) {
     fun listByCategory(
         categoryId: UUID,
@@ -69,6 +74,7 @@ class ProviderService(
         }
 
         val services = serviceRepository.findByProviderWithTranslations(providerId, lang)
+        val rateCard = buildRateCard(provider)
 
         return ProviderDetailDto(
             id = provider.userId!!,
@@ -93,7 +99,8 @@ class ProviderService(
             avatarUrl = provider.user.avatarUrl,
             galleryImages = provider.publicGallery.map {
                 GalleryImageDto(it.id, it.publicUrl, it.publicThumbnailUrl, it.caption, it.sortOrder)
-            }
+            },
+            rateCard = rateCard
         )
     }
 
@@ -202,6 +209,41 @@ class ProviderService(
         return getDetail(userId, "en", requireApproved = false)
     }
 
+    private fun buildRateCard(provider: ProviderProfile): ProviderRateCardDto? {
+        val rates = providerRateRepository.findByProviderIdAndIsActiveTrue(provider.userId!!)
+        if (rates.isEmpty()) return null
+
+        val country = provider.city?.region?.country ?: return null
+        val cc = countryCurrencyRepository.findByCountryId(country.id)
+        val primaryCurrency = cc?.primaryCurrency ?: "EUR"
+        val secondaryCurrency = cc?.secondaryCurrency
+
+        val byType = rates.groupBy { it.rateType }
+
+        fun List<com.hps.domain.service.ProviderRate>.toEntryDtos() = sortedBy { it.sortOrder }.map {
+            RateEntryDto(
+                durationMinutes = it.durationMinutes,
+                primaryAmount = it.primaryAmount,
+                secondaryAmount = it.secondaryAmount,
+                isCustomDuration = it.isCustomDuration,
+                sortOrder = it.sortOrder
+            )
+        }
+
+        return ProviderRateCardDto(
+            primaryCurrency = primaryCurrency,
+            secondaryCurrency = secondaryCurrency,
+            incallRates = (byType[RateType.INCALL] ?: emptyList()).toEntryDtos(),
+            outcallRates = (byType[RateType.OUTCALL] ?: emptyList()).toEntryDtos(),
+            nightRate = byType[RateType.NIGHT]?.firstOrNull()?.let {
+                RateEntryDto(null, it.primaryAmount, it.secondaryAmount)
+            },
+            weekendRate = byType[RateType.WEEKEND]?.firstOrNull()?.let {
+                RateEntryDto(null, it.primaryAmount, it.secondaryAmount)
+            }
+        )
+    }
+
     private fun ProviderProfile.translatedBusinessName(lang: String): String? {
         val t = translations.firstOrNull { it.lang == lang }
         return t?.businessName ?: translations.firstOrNull { it.lang == "en" }?.businessName ?: businessName
@@ -251,7 +293,10 @@ class ProviderService(
             pricingType = pricingType.name,
             priceAmount = priceAmount,
             priceCurrency = priceCurrency,
-            durationMinutes = durationMinutes
+            durationMinutes = durationMinutes,
+            isIncluded = isIncluded,
+            primaryAmount = primaryAmount,
+            secondaryAmount = secondaryAmount
         )
     }
 }

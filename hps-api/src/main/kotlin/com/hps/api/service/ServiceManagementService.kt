@@ -55,7 +55,10 @@ class ServiceManagementService(
             pricingType = PricingType.valueOf(request.pricingType),
             priceAmount = request.priceAmount,
             priceCurrency = request.priceCurrency,
-            durationMinutes = request.durationMinutes ?: template?.defaultDurationMinutes
+            durationMinutes = request.durationMinutes ?: template?.defaultDurationMinutes,
+            isIncluded = request.isIncluded,
+            primaryAmount = request.primaryAmount ?: request.priceAmount,
+            secondaryAmount = request.secondaryAmount
         )
 
         request.translations.forEach { t ->
@@ -85,6 +88,9 @@ class ServiceManagementService(
         request.priceAmount?.let { service.priceAmount = it }
         request.priceCurrency?.let { service.priceCurrency = it }
         request.durationMinutes?.let { service.durationMinutes = it }
+        request.isIncluded?.let { service.isIncluded = it }
+        request.primaryAmount?.let { service.primaryAmount = it }
+        request.secondaryAmount?.let { service.secondaryAmount = it }
         request.isActive?.let { service.isActive = it }
 
         if (request.translations != null) {
@@ -125,6 +131,9 @@ class ServiceManagementService(
         priceAmount = priceAmount,
         priceCurrency = priceCurrency,
         durationMinutes = durationMinutes,
+        isIncluded = isIncluded,
+        primaryAmount = primaryAmount,
+        secondaryAmount = secondaryAmount,
         isActive = isActive,
         providerId = provider.userId!!,
         providerName = provider.businessName

@@ -27,4 +27,14 @@ interface ServiceRepository : JpaRepository<Service, UUID> {
         AND (t.lang = :lang OR t.lang = 'en')
     """)
     fun findByIdWithTranslations(id: UUID, lang: String): Service?
+
+    @Query("""
+        SELECT s FROM Service s
+        JOIN FETCH s.translations t
+        JOIN FETCH s.category c
+        WHERE s.id IN :ids
+        AND s.isActive = true
+        AND (t.lang = :lang OR t.lang = 'en')
+    """)
+    fun findActiveByIdsWithTranslations(ids: List<UUID>, lang: String): List<Service>
 }

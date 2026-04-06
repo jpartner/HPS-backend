@@ -40,6 +40,15 @@ class Service(
     @JoinColumn(name = "template_id")
     var template: ServiceTemplate? = null,
 
+    @Column(name = "is_included", nullable = false)
+    var isIncluded: Boolean = false,
+
+    @Column(name = "primary_amount", nullable = false, precision = 10, scale = 2)
+    var primaryAmount: BigDecimal,
+
+    @Column(name = "secondary_amount", precision = 10, scale = 2)
+    var secondaryAmount: BigDecimal? = null,
+
     @Column(name = "is_active", nullable = false)
     var isActive: Boolean = true,
 

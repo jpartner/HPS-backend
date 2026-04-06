@@ -15,6 +15,9 @@ data class ServiceDto(
     val priceAmount: BigDecimal,
     val priceCurrency: String,
     val durationMinutes: Int?,
+    val isIncluded: Boolean,
+    val primaryAmount: BigDecimal,
+    val secondaryAmount: BigDecimal?,
     val isActive: Boolean,
     val providerId: UUID,
     val providerName: String?
@@ -36,6 +39,12 @@ data class CreateServiceRequest(
 
     val durationMinutes: Int? = null,
 
+    val isIncluded: Boolean = false,
+
+    val primaryAmount: BigDecimal? = null,
+
+    val secondaryAmount: BigDecimal? = null,
+
     val translations: List<ServiceTranslationRequest> = emptyList()
 )
 
@@ -45,6 +54,9 @@ data class UpdateServiceRequest(
     val priceAmount: BigDecimal? = null,
     val priceCurrency: String? = null,
     val durationMinutes: Int? = null,
+    val isIncluded: Boolean? = null,
+    val primaryAmount: BigDecimal? = null,
+    val secondaryAmount: BigDecimal? = null,
     val isActive: Boolean? = null,
     val translations: List<ServiceTranslationRequest>? = null
 )

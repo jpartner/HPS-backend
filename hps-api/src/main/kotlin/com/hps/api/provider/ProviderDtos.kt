@@ -44,7 +44,8 @@ data class ProviderDetailDto(
     val categories: List<ProviderCategoryDto>,
     val services: List<ProviderServiceDto>,
     val avatarUrl: String? = null,
-    val galleryImages: List<GalleryImageDto> = emptyList()
+    val galleryImages: List<GalleryImageDto> = emptyList(),
+    val rateCard: ProviderRateCardDto? = null
 )
 
 data class ProviderServiceDto(
@@ -56,7 +57,10 @@ data class ProviderServiceDto(
     val pricingType: String,
     val priceAmount: BigDecimal,
     val priceCurrency: String,
-    val durationMinutes: Int?
+    val durationMinutes: Int?,
+    val isIncluded: Boolean,
+    val primaryAmount: BigDecimal,
+    val secondaryAmount: BigDecimal?
 )
 
 data class ProviderTranslationDto(

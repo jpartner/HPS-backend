@@ -183,7 +183,8 @@ class ProviderSeeder(
                     pricingType = PricingType.valueOf(serviceSeed.pricingType),
                     priceAmount = BigDecimal.valueOf(serviceSeed.priceAmount),
                     priceCurrency = serviceSeed.priceCurrency,
-                    durationMinutes = serviceSeed.durationMinutes
+                    durationMinutes = serviceSeed.durationMinutes,
+                    primaryAmount = BigDecimal.valueOf(serviceSeed.priceAmount)
                 ))
 
                 for ((lang, translationSeed) in serviceSeed.translations) {

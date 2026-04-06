@@ -40,6 +40,7 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/api/v1/services/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/service-templates/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/attributes/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/pricing/**").permitAll()
                     // Static files
                     .requestMatchers("/files/**").permitAll()
                     // Admin endpoints

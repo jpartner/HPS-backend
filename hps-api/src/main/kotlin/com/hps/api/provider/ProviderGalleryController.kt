@@ -4,6 +4,7 @@ import com.hps.api.auth.userId
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.ForbiddenException
 import com.hps.common.exception.NotFoundException
+import com.hps.api.storage.ImageConversionService
 import com.hps.common.storage.FileStorageService
 import com.hps.domain.user.MediaApprovalStatus
 import com.hps.domain.user.MediaType
@@ -22,7 +23,8 @@ import java.util.UUID
 class ProviderMediaController(
     private val mediaRepository: ProviderMediaRepository,
     private val providerRepository: ProviderProfileRepository,
-    private val storageService: FileStorageService
+    private val storageService: FileStorageService,
+    private val imageConversion: ImageConversionService
 ) {
     companion object {
         private const val MAX_GALLERY = 20
@@ -89,12 +91,19 @@ class ProviderMediaController(
         enforceLimit(providerId, type)
 
         val folder = "provider-media/$providerId/${type.name.lowercase()}"
-        val key = storageService.store(
-            folder,
-            file.originalFilename ?: "upload",
-            file.contentType ?: "application/octet-stream",
-            file.inputStream
-        )
+        val originalType = file.contentType ?: "application/octet-stream"
+
+        // Convert images to WebP for smaller file sizes and universal browser support
+        val (storeStream, storedContentType, storeExt) = if (imageConversion.isImage(originalType)) {
+            imageConversion.convertToWebp(file.inputStream, originalType)
+        } else {
+            ImageConversionService.ConversionResult(
+                file.inputStream, originalType,
+                file.originalFilename?.substringAfterLast('.', "bin") ?: "bin"
+            )
+        }
+
+        val key = storageService.store(folder, "upload.$storeExt", storedContentType, storeStream)
 
         val count = mediaRepository.countByProviderUserIdAndMediaType(providerId, type)
         val media = ProviderMedia(
@@ -104,7 +113,7 @@ class ProviderMediaController(
             caption = caption,
             sortOrder = count,
             mediaType = type,
-            contentType = file.contentType,
+            contentType = storedContentType,
             approvalStatus = MediaApprovalStatus.PENDING,
             isPrivate = if (type == MediaType.VERIFICATION) true else isPrivate,
             blurRequested = blurRequested

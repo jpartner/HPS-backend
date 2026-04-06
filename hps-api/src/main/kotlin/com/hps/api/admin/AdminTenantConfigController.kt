@@ -371,7 +371,7 @@ class AdminTenantConfigController(
                             createdAt = s.createdAt
                         )
                     },
-                    galleryImages = p.galleryImages.map { img ->
+                    galleryImages = p.media.map { img ->
                         GalleryImageExportData(
                             url = img.url,
                             caption = img.caption,

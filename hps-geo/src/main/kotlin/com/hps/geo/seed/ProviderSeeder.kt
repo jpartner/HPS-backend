@@ -212,14 +212,15 @@ class ProviderSeeder(
                 serviceCount++
             }
 
-            // Create gallery images
+            // Create gallery images (seeded as APPROVED)
             seed.galleryImages.forEachIndexed { index, imageSeed ->
-                savedProvider.galleryImages.add(
-                    com.hps.domain.user.ProviderGalleryImage(
+                savedProvider.media.add(
+                    com.hps.domain.user.ProviderMedia(
                         provider = savedProvider,
                         url = imageSeed.url,
                         caption = imageSeed.caption,
-                        sortOrder = index
+                        sortOrder = index,
+                        approvalStatus = com.hps.domain.user.MediaApprovalStatus.APPROVED
                     )
                 )
             }

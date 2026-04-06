@@ -5,11 +5,12 @@ import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.ForbiddenException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.storage.FileStorageService
-import com.hps.domain.user.ProviderGalleryImage
-import com.hps.persistence.user.ProviderGalleryImageRepository
+import com.hps.domain.user.MediaApprovalStatus
+import com.hps.domain.user.MediaType
+import com.hps.domain.user.ProviderMedia
+import com.hps.persistence.user.ProviderMediaRepository
 import com.hps.persistence.user.ProviderProfileRepository
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.security.core.Authentication
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
@@ -18,144 +19,218 @@ import java.util.UUID
 
 @RestController
 @RequestMapping("/api/v1")
-class ProviderGalleryController(
-    private val galleryRepository: ProviderGalleryImageRepository,
+class ProviderMediaController(
+    private val mediaRepository: ProviderMediaRepository,
     private val providerRepository: ProviderProfileRepository,
     private val storageService: FileStorageService
 ) {
     companion object {
-        private const val MAX_GALLERY_SIZE = 20
-        private val ALLOWED_TYPES = setOf("image/jpeg", "image/png", "image/webp", "image/gif")
+        private const val MAX_GALLERY = 20
+        private const val MAX_VERIFICATION = 10
+        private const val MAX_AVATAR = 1
+        private val ALLOWED_IMAGE_TYPES = setOf("image/jpeg", "image/png", "image/webp", "image/gif")
+        private val ALLOWED_VIDEO_TYPES = setOf("video/mp4", "video/quicktime", "video/webm")
+        private val ALLOWED_TYPES = ALLOWED_IMAGE_TYPES + ALLOWED_VIDEO_TYPES
     }
 
+    // === Public endpoints ===
+
+    /** Public gallery: only APPROVED, GALLERY, not private */
     @GetMapping("/providers/{providerId}/gallery")
-    fun getGallery(@PathVariable providerId: UUID): List<GalleryImageDto> {
-        return galleryRepository.findByProviderUserIdOrderBySortOrder(providerId)
-            .map { it.toDto() }
+    fun getPublicGallery(@PathVariable providerId: UUID): List<GalleryImageDto> {
+        return mediaRepository.findByProviderUserIdAndMediaTypeAndApprovalStatusAndIsPrivateOrderBySortOrder(
+            providerId, MediaType.GALLERY, MediaApprovalStatus.APPROVED, false
+        ).map { it.toGalleryDto() }
     }
 
-    @PostMapping("/providers/me/gallery", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
+    /** Public media endpoint (same as gallery for now) */
+    @GetMapping("/providers/{providerId}/media")
+    fun getPublicMedia(@PathVariable providerId: UUID): List<GalleryImageDto> = getPublicGallery(providerId)
+
+    // === Provider's own media management ===
+
+    /** List all own media (all statuses, all types) */
+    @GetMapping("/providers/me/media")
+    fun getOwnMedia(
+        @RequestParam(required = false) mediaType: String?,
+        auth: Authentication
+    ): List<MediaDto> {
+        val providerId = auth.userId()
+        val items = if (mediaType != null) {
+            val type = parseMediaType(mediaType)
+            mediaRepository.findByProviderUserIdAndMediaTypeOrderBySortOrder(providerId, type)
+        } else {
+            mediaRepository.findByProviderUserIdOrderBySortOrder(providerId)
+        }
+        return items.map { it.toMediaDto() }
+    }
+
+    /** Upload media file */
+    @PostMapping("/providers/me/media", consumes = [org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE])
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    fun uploadImage(
+    fun uploadMedia(
         @RequestParam("file") file: MultipartFile,
         @RequestParam(required = false) caption: String?,
+        @RequestParam(required = false, defaultValue = "GALLERY") mediaType: String,
+        @RequestParam(required = false, defaultValue = "false") isPrivate: Boolean,
+        @RequestParam(required = false, defaultValue = "false") blurRequested: Boolean,
         auth: Authentication
-    ): GalleryImageDto {
+    ): MediaDto {
         val providerId = auth.userId()
         val provider = providerRepository.findById(providerId)
             .orElseThrow { NotFoundException("Provider", providerId) }
 
         if (!ALLOWED_TYPES.contains(file.contentType)) {
-            throw BadRequestException("File type not allowed. Use JPEG, PNG, WebP, or GIF")
+            throw BadRequestException("File type not allowed. Use JPEG, PNG, WebP, GIF, MP4, MOV, or WebM")
         }
 
-        val count = galleryRepository.countByProviderUserId(providerId)
-        if (count >= MAX_GALLERY_SIZE) {
-            throw BadRequestException("Gallery is full (max $MAX_GALLERY_SIZE images)")
-        }
+        val type = parseMediaType(mediaType)
+        enforceLimit(providerId, type)
 
+        val folder = "provider-media/$providerId/${type.name.lowercase()}"
         val key = storageService.store(
-            "provider-gallery/$providerId",
-            file.originalFilename ?: "image.jpg",
-            file.contentType ?: "image/jpeg",
+            folder,
+            file.originalFilename ?: "upload",
+            file.contentType ?: "application/octet-stream",
             file.inputStream
         )
 
-        val image = ProviderGalleryImage(
+        val count = mediaRepository.countByProviderUserIdAndMediaType(providerId, type)
+        val media = ProviderMedia(
             provider = provider,
             url = storageService.resolveUrl(key),
             storageKey = key,
             caption = caption,
-            sortOrder = count
+            sortOrder = count,
+            mediaType = type,
+            contentType = file.contentType,
+            approvalStatus = MediaApprovalStatus.PENDING,
+            isPrivate = if (type == MediaType.VERIFICATION) true else isPrivate,
+            blurRequested = blurRequested
         )
 
-        galleryRepository.save(image)
-        return image.toDto()
+        mediaRepository.save(media)
+        return media.toMediaDto()
     }
 
-    @PostMapping("/providers/me/gallery/url")
+    /** Add media by URL */
+    @PostMapping("/providers/me/media/url")
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    fun addImageByUrl(
+    fun addMediaByUrl(
         @RequestBody request: GalleryAddUrlRequest,
         auth: Authentication
-    ): GalleryImageDto {
+    ): MediaDto {
         val providerId = auth.userId()
         val provider = providerRepository.findById(providerId)
             .orElseThrow { NotFoundException("Provider", providerId) }
 
-        val count = galleryRepository.countByProviderUserId(providerId)
-        if (count >= MAX_GALLERY_SIZE) {
-            throw BadRequestException("Gallery is full (max $MAX_GALLERY_SIZE images)")
-        }
+        val type = parseMediaType(request.mediaType)
+        enforceLimit(providerId, type)
 
-        val image = ProviderGalleryImage(
+        val count = mediaRepository.countByProviderUserIdAndMediaType(providerId, type)
+        val media = ProviderMedia(
             provider = provider,
             url = request.url,
             storageKey = null,
             caption = request.caption,
-            sortOrder = count
+            sortOrder = count,
+            mediaType = type,
+            approvalStatus = MediaApprovalStatus.PENDING,
+            isPrivate = if (type == MediaType.VERIFICATION) true else request.isPrivate,
+            blurRequested = request.blurRequested
         )
 
-        galleryRepository.save(image)
-        return image.toDto()
+        mediaRepository.save(media)
+        return media.toMediaDto()
     }
 
-    @PutMapping("/providers/me/gallery/{imageId}")
+    /** Update media metadata */
+    @PutMapping("/providers/me/media/{id}")
     @Transactional
-    fun updateImage(
-        @PathVariable imageId: UUID,
-        @RequestBody request: GalleryUpdateRequest,
+    fun updateMedia(
+        @PathVariable id: UUID,
+        @RequestBody request: MediaUpdateRequest,
         auth: Authentication
-    ): GalleryImageDto {
-        val image = getOwnImage(auth.userId(), imageId)
-        image.caption = request.caption
-        galleryRepository.save(image)
-        return image.toDto()
+    ): MediaDto {
+        val media = getOwnMedia(auth.userId(), id)
+        request.caption?.let { media.caption = it }
+        request.blurRequested?.let { media.blurRequested = it }
+        request.isPrivate?.let {
+            // Verification media must stay private
+            if (media.mediaType != MediaType.VERIFICATION) media.isPrivate = it
+        }
+        mediaRepository.save(media)
+        return media.toMediaDto()
     }
 
-    @PutMapping("/providers/me/gallery/order")
+    /** Reorder media within a type */
+    @PutMapping("/providers/me/media/order")
     @Transactional
-    fun reorderImages(
+    fun reorderMedia(
         @RequestBody request: GalleryReorderRequest,
         auth: Authentication
-    ): List<GalleryImageDto> {
+    ): List<MediaDto> {
         val providerId = auth.userId()
-        val images = galleryRepository.findByProviderUserIdOrderBySortOrder(providerId)
-        val imageMap = images.associateBy { it.id }
+        val all = mediaRepository.findByProviderUserIdOrderBySortOrder(providerId)
+        val map = all.associateBy { it.id }
 
         request.imageIds.forEachIndexed { index, id ->
-            val image = imageMap[id] ?: throw NotFoundException("Image", id)
-            image.sortOrder = index
+            val item = map[id] ?: throw NotFoundException("Media", id)
+            item.sortOrder = index
         }
 
-        galleryRepository.saveAll(images)
-        return images.sortedBy { it.sortOrder }.map { it.toDto() }
+        mediaRepository.saveAll(all)
+        return all.sortedBy { it.sortOrder }.map { it.toMediaDto() }
     }
 
-    @DeleteMapping("/providers/me/gallery/{imageId}")
+    /** Delete media */
+    @DeleteMapping("/providers/me/media/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Transactional
-    fun deleteImage(@PathVariable imageId: UUID, auth: Authentication) {
-        val image = getOwnImage(auth.userId(), imageId)
-        image.storageKey?.let { storageService.delete(it) }
-        galleryRepository.delete(image)
+    fun deleteMedia(@PathVariable id: UUID, auth: Authentication) {
+        val media = getOwnMedia(auth.userId(), id)
+        media.storageKey?.let { storageService.delete(it) }
+        mediaRepository.delete(media)
     }
 
-    private fun getOwnImage(providerId: UUID, imageId: UUID): ProviderGalleryImage {
-        val image = galleryRepository.findById(imageId)
-            .orElseThrow { NotFoundException("Image", imageId) }
-        if (image.provider.userId != providerId) {
-            throw ForbiddenException("Not your image")
+    // === Private helpers ===
+
+    private fun getOwnMedia(providerId: UUID, mediaId: UUID): ProviderMedia {
+        val media = mediaRepository.findById(mediaId)
+            .orElseThrow { NotFoundException("Media", mediaId) }
+        if (media.provider.userId != providerId) throw ForbiddenException("Not your media")
+        return media
+    }
+
+    private fun parseMediaType(value: String): MediaType = try {
+        MediaType.valueOf(value.uppercase())
+    } catch (e: IllegalArgumentException) {
+        throw BadRequestException("Invalid media type: $value")
+    }
+
+    private fun enforceLimit(providerId: UUID, type: MediaType) {
+        val count = mediaRepository.countByProviderUserIdAndMediaType(providerId, type)
+        val max = when (type) {
+            MediaType.GALLERY -> MAX_GALLERY
+            MediaType.VERIFICATION -> MAX_VERIFICATION
+            MediaType.AVATAR -> MAX_AVATAR
         }
-        return image
+        if (count >= max) {
+            throw BadRequestException("${type.name} limit reached (max $max)")
+        }
     }
 
-    private fun ProviderGalleryImage.toDto() = GalleryImageDto(
-        id = id,
-        url = url,
-        caption = caption,
-        sortOrder = sortOrder
+    private fun ProviderMedia.toGalleryDto() = GalleryImageDto(
+        id = id, url = url, caption = caption, sortOrder = sortOrder
+    )
+
+    private fun ProviderMedia.toMediaDto() = MediaDto(
+        id = id, url = url, caption = caption, sortOrder = sortOrder,
+        mediaType = mediaType.name, contentType = contentType,
+        isVideo = isVideo, approvalStatus = approvalStatus.name,
+        reviewNote = reviewNote, isPrivate = isPrivate,
+        blurRequested = blurRequested, createdAt = createdAt
     )
 }

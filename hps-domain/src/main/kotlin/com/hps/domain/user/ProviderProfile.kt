@@ -96,8 +96,16 @@ class ProviderProfile(
 
     @OneToMany(mappedBy = "provider", cascade = [CascadeType.ALL], orphanRemoval = true)
     @OrderBy("sortOrder ASC")
-    val galleryImages: MutableList<ProviderGalleryImage> = mutableListOf()
-)
+    val media: MutableList<ProviderMedia> = mutableListOf()
+) {
+    /** Public gallery images only (approved, not private) */
+    val publicGallery: List<ProviderMedia>
+        get() = media.filter {
+            it.mediaType == MediaType.GALLERY
+                && it.approvalStatus == MediaApprovalStatus.APPROVED
+                && !it.isPrivate
+        }
+}
 
 @Entity
 @Table(

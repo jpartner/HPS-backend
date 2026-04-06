@@ -91,7 +91,7 @@ class ProviderService(
             },
             services = services.map { it.toServiceDto(lang) },
             avatarUrl = provider.user.avatarUrl,
-            galleryImages = provider.galleryImages.map {
+            galleryImages = provider.publicGallery.map {
                 GalleryImageDto(it.id, it.url, it.caption, it.sortOrder)
             }
         )

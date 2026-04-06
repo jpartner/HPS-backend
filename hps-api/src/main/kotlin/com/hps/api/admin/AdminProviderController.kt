@@ -1,7 +1,10 @@
 package com.hps.api.admin
 
+import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.tenant.TenantContext
+import com.hps.domain.user.ApprovalStatus
+import com.hps.domain.user.ProviderProfile
 import com.hps.persistence.user.ProviderProfileRepository
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
@@ -15,9 +18,11 @@ data class AdminProviderDto(
     val id: UUID,
     val businessName: String?,
     val email: String,
+    val handle: String?,
     val cityName: String?,
     val categories: List<String>,
     val isVerified: Boolean,
+    val approvalStatus: String,
     val isMobile: Boolean,
     val avgRating: BigDecimal,
     val reviewCount: Int,
@@ -25,8 +30,8 @@ data class AdminProviderDto(
     val createdAt: Instant
 )
 
-data class UpdateProviderVerificationRequest(
-    val isVerified: Boolean
+data class UpdateProviderApprovalRequest(
+    val approvalStatus: String
 )
 
 // --- Controller ---
@@ -39,24 +44,14 @@ class AdminProviderController(
 
     @GetMapping
     @Transactional(readOnly = true)
-    fun listProviders(): List<AdminProviderDto> {
+    fun listProviders(
+        @RequestParam(required = false) approvalStatus: String?
+    ): List<AdminProviderDto> {
         val tenantId = TenantContext.require()
         val providers = providerProfileRepository.findByTenantId(tenantId)
-        return providers.map { provider ->
-            AdminProviderDto(
-                id = provider.userId!!,
-                businessName = provider.businessName,
-                email = provider.user.email,
-                cityName = provider.city?.translations?.firstOrNull()?.name,
-                categories = provider.categories.mapNotNull { it.slug },
-                isVerified = provider.isVerified,
-                isMobile = provider.isMobile,
-                avgRating = provider.avgRating,
-                reviewCount = provider.reviewCount,
-                servicesCount = provider.services.size,
-                createdAt = provider.createdAt
-            )
-        }
+        return providers
+            .filter { p -> approvalStatus == null || p.approvalStatus.name == approvalStatus }
+            .map { it.toDto() }
     }
 
     @GetMapping("/{id}")
@@ -65,51 +60,60 @@ class AdminProviderController(
         val tenantId = TenantContext.require()
         val provider = providerProfileRepository.findById(id)
             .orElseThrow { NotFoundException("Provider", id) }
-        if (provider.tenantId != tenantId) {
-            throw NotFoundException("Provider", id)
-        }
-        return AdminProviderDto(
-            id = provider.userId!!,
-            businessName = provider.businessName,
-            email = provider.user.email,
-            cityName = provider.city?.translations?.firstOrNull()?.name,
-            categories = provider.categories.mapNotNull { it.slug },
-            isVerified = provider.isVerified,
-            isMobile = provider.isMobile,
-            avgRating = provider.avgRating,
-            reviewCount = provider.reviewCount,
-            servicesCount = provider.services.size,
-            createdAt = provider.createdAt
-        )
+        if (provider.tenantId != tenantId) throw NotFoundException("Provider", id)
+        return provider.toDto()
     }
 
-    @PutMapping("/{id}/verify")
+    @PutMapping("/{id}/approve")
     @Transactional
-    fun updateProviderVerification(
+    fun updateApproval(
         @PathVariable id: UUID,
-        @RequestBody request: UpdateProviderVerificationRequest
+        @RequestBody request: UpdateProviderApprovalRequest
     ): AdminProviderDto {
         val tenantId = TenantContext.require()
         val provider = providerProfileRepository.findById(id)
             .orElseThrow { NotFoundException("Provider", id) }
-        if (provider.tenantId != tenantId) {
-            throw NotFoundException("Provider", id)
+        if (provider.tenantId != tenantId) throw NotFoundException("Provider", id)
+
+        val status = try {
+            ApprovalStatus.valueOf(request.approvalStatus)
+        } catch (e: IllegalArgumentException) {
+            throw BadRequestException("Invalid approval status: ${request.approvalStatus}")
         }
-        provider.isVerified = request.isVerified
+
+        provider.approvalStatus = status
+        provider.isVerified = status == ApprovalStatus.APPROVED
         provider.updatedAt = Instant.now()
-        val saved = providerProfileRepository.save(provider)
-        return AdminProviderDto(
-            id = saved.userId!!,
-            businessName = saved.businessName,
-            email = saved.user.email,
-            cityName = saved.city?.translations?.firstOrNull()?.name,
-            categories = saved.categories.mapNotNull { it.slug },
-            isVerified = saved.isVerified,
-            isMobile = saved.isMobile,
-            avgRating = saved.avgRating,
-            reviewCount = saved.reviewCount,
-            servicesCount = saved.services.size,
-            createdAt = saved.createdAt
-        )
+        providerProfileRepository.save(provider)
+        return provider.toDto()
     }
+
+    // Keep old endpoint for backward compat
+    @PutMapping("/{id}/verify")
+    @Transactional
+    fun updateVerification(
+        @PathVariable id: UUID,
+        @RequestBody body: Map<String, Any>
+    ): AdminProviderDto {
+        val isVerified = body["isVerified"] as? Boolean ?: false
+        return updateApproval(id, UpdateProviderApprovalRequest(
+            if (isVerified) "APPROVED" else "REJECTED"
+        ))
+    }
+
+    private fun ProviderProfile.toDto() = AdminProviderDto(
+        id = userId!!,
+        businessName = businessName,
+        email = user.email,
+        handle = user.handle,
+        cityName = city?.translations?.firstOrNull()?.name,
+        categories = categories.mapNotNull { it.slug },
+        isVerified = isVerified,
+        approvalStatus = approvalStatus.name,
+        isMobile = isMobile,
+        avgRating = avgRating,
+        reviewCount = reviewCount,
+        servicesCount = services.size,
+        createdAt = createdAt
+    )
 }

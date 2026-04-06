@@ -12,9 +12,15 @@ class ProviderAndServicesE2ETest : BaseE2ETest() {
     private lateinit var massageCategoryId: String
     private lateinit var relaxCategoryId: String
     private lateinit var warsawId: String
+    private lateinit var adminToken: String
 
     @BeforeEach
     fun setup() {
+        // Login as admin for approval
+        val adminResp = api.post("/api/v1/auth/login", mapOf(
+            "email" to "admin@hps.local", "password" to "changeme123"
+        ), headers = emptyMap())
+        adminToken = api.json(adminResp)["accessToken"].asText()
         val email = "provider-${System.nanoTime()}@test.com"
         api.register(email, firstName = "Provider")
 
@@ -52,6 +58,11 @@ class ProviderAndServicesE2ETest : BaseE2ETest() {
 
         // Extract provider ID from token
         providerId = api.extractUserId(providerToken)
+
+        // Approve the provider so it's visible in public listings
+        api.put("/api/v1/admin/providers/$providerId/approve", mapOf(
+            "approvalStatus" to "APPROVED"
+        ), adminToken, headers = mapOf("X-Tenant-Id" to "00000000-0000-0000-0000-000000000001"))
     }
 
     @Test

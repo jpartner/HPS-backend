@@ -56,9 +56,13 @@ class ProviderService(
         )
     }
 
-    fun getDetail(providerId: UUID, lang: String): ProviderDetailDto {
+    fun getDetail(providerId: UUID, lang: String, requireApproved: Boolean = true): ProviderDetailDto {
         val provider = providerRepository.findById(providerId)
             .orElseThrow { NotFoundException("Provider", providerId) }
+
+        if (requireApproved && provider.approvalStatus != com.hps.domain.user.ApprovalStatus.APPROVED) {
+            throw NotFoundException("Provider", providerId)
+        }
 
         val services = serviceRepository.findByProviderWithTranslations(providerId, lang)
 
@@ -133,7 +137,7 @@ class ProviderService(
         user.providerProfile = provider
         userRepository.save(user)
 
-        return getDetail(userId, "en")
+        return getDetail(userId, "en", requireApproved = false)
     }
 
     @Transactional
@@ -176,7 +180,7 @@ class ProviderService(
         provider.updatedAt = Instant.now()
         providerRepository.save(provider)
 
-        return getDetail(userId, "en")
+        return getDetail(userId, "en", requireApproved = false)
     }
 
     private fun ProviderProfile.translatedBusinessName(lang: String): String? {

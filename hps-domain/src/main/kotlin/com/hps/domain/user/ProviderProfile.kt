@@ -57,6 +57,10 @@ class ProviderProfile(
     @Column(name = "is_verified", nullable = false)
     var isVerified: Boolean = false,
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "approval_status", nullable = false, length = 20)
+    var approvalStatus: ApprovalStatus = ApprovalStatus.PENDING_APPROVAL,
+
     @Column(name = "avg_rating", precision = 3, scale = 2)
     var avgRating: BigDecimal = BigDecimal.ZERO,
 
@@ -114,3 +118,7 @@ class ProviderProfileTranslation(
     @Column(columnDefinition = "TEXT")
     val description: String? = null
 )
+
+enum class ApprovalStatus {
+    PENDING_APPROVAL, APPROVED, REJECTED
+}

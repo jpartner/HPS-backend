@@ -53,10 +53,28 @@ class ProviderMedia(
     @Column(name = "blur_requested", nullable = false)
     var blurRequested: Boolean = false,
 
+    @Column(name = "thumbnail_url", length = 500)
+    var thumbnailUrl: String? = null,
+
+    @Column(name = "thumbnail_storage_key", length = 500)
+    var thumbnailStorageKey: String? = null,
+
+    @Column(name = "cdn_url", length = 500)
+    var cdnUrl: String? = null,
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "cdn_status", nullable = false, length = 20)
+    var cdnStatus: CdnStatus = CdnStatus.LOCAL,
+
+    @Column(name = "file_size_bytes")
+    var fileSizeBytes: Long? = null,
+
     @Column(name = "created_at", nullable = false, updatable = false)
     val createdAt: Instant = Instant.now()
 ) {
     val isVideo: Boolean get() = contentType?.startsWith("video/") == true
+    val publicUrl: String get() = cdnUrl ?: url
+    val publicThumbnailUrl: String? get() = thumbnailUrl
 }
 
 enum class MediaType {
@@ -65,6 +83,10 @@ enum class MediaType {
 
 enum class MediaApprovalStatus {
     PENDING, APPROVED, REJECTED
+}
+
+enum class CdnStatus {
+    LOCAL, PENDING_UPLOAD, PUBLISHED, FAILED
 }
 
 // Keep type alias for backward compatibility in code that references the old name

@@ -93,17 +93,32 @@ class ProviderMediaController(
         val folder = "provider-media/$providerId/${type.name.lowercase()}"
         val originalType = file.contentType ?: "application/octet-stream"
 
-        // Convert images to WebP for smaller file sizes and universal browser support
-        val (storeStream, storedContentType, storeExt) = if (imageConversion.isImage(originalType)) {
-            imageConversion.convertToWebp(file.inputStream, originalType)
-        } else {
-            ImageConversionService.ConversionResult(
-                file.inputStream, originalType,
-                file.originalFilename?.substringAfterLast('.', "bin") ?: "bin"
-            )
-        }
+        var storedContentType: String
+        var key: String
+        var thumbnailUrl: String? = null
+        var thumbnailKey: String? = null
+        var fileSizeBytes: Long? = null
 
-        val key = storageService.store(folder, "upload.$storeExt", storedContentType, storeStream)
+        if (imageConversion.isImage(originalType)) {
+            val processed = imageConversion.processImage(file.inputStream, originalType)
+
+            // Store full image
+            key = storageService.store(folder, "upload.${processed.full.extension}", processed.full.contentType, processed.full.inputStream)
+            storedContentType = processed.full.contentType
+            fileSizeBytes = processed.full.sizeBytes
+
+            // Store thumbnail
+            if (processed.thumbnail != null) {
+                val thumbKey = storageService.store("$folder/thumb", "thumb.${processed.thumbnail.extension}", processed.thumbnail.contentType, processed.thumbnail.inputStream)
+                thumbnailUrl = storageService.resolveUrl(thumbKey)
+                thumbnailKey = thumbKey
+            }
+        } else {
+            // Video — store as-is, no thumbnail
+            key = storageService.store(folder, file.originalFilename ?: "upload.bin", originalType, file.inputStream)
+            storedContentType = originalType
+            fileSizeBytes = file.size
+        }
 
         val count = mediaRepository.countByProviderUserIdAndMediaType(providerId, type)
         val media = ProviderMedia(
@@ -116,7 +131,10 @@ class ProviderMediaController(
             contentType = storedContentType,
             approvalStatus = MediaApprovalStatus.PENDING,
             isPrivate = if (type == MediaType.VERIFICATION) true else isPrivate,
-            blurRequested = blurRequested
+            blurRequested = blurRequested,
+            thumbnailUrl = thumbnailUrl,
+            thumbnailStorageKey = thumbnailKey,
+            fileSizeBytes = fileSizeBytes
         )
 
         mediaRepository.save(media)
@@ -201,6 +219,7 @@ class ProviderMediaController(
     fun deleteMedia(@PathVariable id: UUID, auth: Authentication) {
         val media = getOwnMedia(auth.userId(), id)
         media.storageKey?.let { storageService.delete(it) }
+        media.thumbnailStorageKey?.let { storageService.delete(it) }
         mediaRepository.delete(media)
     }
 
@@ -232,14 +251,17 @@ class ProviderMediaController(
     }
 
     private fun ProviderMedia.toGalleryDto() = GalleryImageDto(
-        id = id, url = url, caption = caption, sortOrder = sortOrder
+        id = id, url = publicUrl, thumbnailUrl = publicThumbnailUrl,
+        caption = caption, sortOrder = sortOrder
     )
 
     private fun ProviderMedia.toMediaDto() = MediaDto(
-        id = id, url = url, caption = caption, sortOrder = sortOrder,
+        id = id, url = publicUrl, thumbnailUrl = publicThumbnailUrl,
+        caption = caption, sortOrder = sortOrder,
         mediaType = mediaType.name, contentType = contentType,
         isVideo = isVideo, approvalStatus = approvalStatus.name,
         reviewNote = reviewNote, isPrivate = isPrivate,
-        blurRequested = blurRequested, createdAt = createdAt
+        blurRequested = blurRequested, cdnStatus = cdnStatus.name,
+        fileSizeBytes = fileSizeBytes, createdAt = createdAt
     )
 }

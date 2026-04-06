@@ -3,10 +3,11 @@ package com.hps.api.provider
 import java.time.Instant
 import java.util.UUID
 
-// Public view (for profile pages)
+// Public view (for profile pages — uses CDN URL when available)
 data class GalleryImageDto(
     val id: UUID,
     val url: String,
+    val thumbnailUrl: String?,
     val caption: String?,
     val sortOrder: Int
 )
@@ -15,6 +16,7 @@ data class GalleryImageDto(
 data class MediaDto(
     val id: UUID,
     val url: String,
+    val thumbnailUrl: String?,
     val caption: String?,
     val sortOrder: Int,
     val mediaType: String,
@@ -24,6 +26,8 @@ data class MediaDto(
     val reviewNote: String?,
     val isPrivate: Boolean,
     val blurRequested: Boolean,
+    val cdnStatus: String,
+    val fileSizeBytes: Long?,
     val createdAt: Instant
 )
 

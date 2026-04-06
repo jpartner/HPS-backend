@@ -21,6 +21,7 @@ data class AdminMediaDto(
     val providerHandle: String?,
     val providerEmail: String,
     val url: String,
+    val thumbnailUrl: String?,
     val caption: String?,
     val mediaType: String,
     val contentType: String?,
@@ -29,6 +30,8 @@ data class AdminMediaDto(
     val reviewNote: String?,
     val isPrivate: Boolean,
     val blurRequested: Boolean,
+    val cdnStatus: String,
+    val fileSizeBytes: Long?,
     val createdAt: Instant
 )
 
@@ -105,6 +108,7 @@ class AdminMediaController(
         providerHandle = provider.user.handle,
         providerEmail = provider.user.email,
         url = url,
+        thumbnailUrl = publicThumbnailUrl,
         caption = caption,
         mediaType = mediaType.name,
         contentType = contentType,
@@ -113,6 +117,8 @@ class AdminMediaController(
         reviewNote = reviewNote,
         isPrivate = isPrivate,
         blurRequested = blurRequested,
+        cdnStatus = cdnStatus.name,
+        fileSizeBytes = fileSizeBytes,
         createdAt = createdAt
     )
 }

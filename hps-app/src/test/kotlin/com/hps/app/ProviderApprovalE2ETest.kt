@@ -162,4 +162,64 @@ class ProviderApprovalE2ETest : BaseE2ETest() {
         assertNotNull(provider["handle"])
         assertFalse(provider["handle"].isNull)
     }
+
+    @Test
+    fun `admin can request changes with notes`() {
+        val (providerId, _) = registerProvider()
+
+        val resp = api.put("/api/v1/admin/providers/$providerId/approve", mapOf(
+            "approvalStatus" to "CHANGES_REQUESTED",
+            "notes" to "Please add a profile photo and more detailed description"
+        ), adminToken, headers = ah())
+        assertEquals(HttpStatus.OK, resp.statusCode)
+
+        val provider = api.json(resp)
+        assertEquals("CHANGES_REQUESTED", provider["approvalStatus"].asText())
+        assertEquals("Please add a profile photo and more detailed description", provider["approvalNotes"].asText())
+        assertFalse(provider["isVerified"].asBoolean())
+    }
+
+    @Test
+    fun `provider update after changes requested resets to pending`() {
+        val (providerId, providerToken) = registerProvider()
+
+        // Admin requests changes
+        api.put("/api/v1/admin/providers/$providerId/approve", mapOf(
+            "approvalStatus" to "CHANGES_REQUESTED",
+            "notes" to "Need more info"
+        ), adminToken, headers = ah())
+
+        // Provider updates their profile
+        api.put("/api/v1/providers/me", mapOf(
+            "description" to "Updated description with more details"
+        ), providerToken, headers = h())
+
+        // Should be back to PENDING_APPROVAL
+        val resp = api.get("/api/v1/admin/providers/$providerId", adminToken, headers = ah())
+        assertEquals(HttpStatus.OK, resp.statusCode)
+        val provider = api.json(resp)
+        assertEquals("PENDING_APPROVAL", provider["approvalStatus"].asText())
+        assertTrue(provider["approvalNotes"].isNull)
+    }
+
+    @Test
+    fun `provider update after rejection resets to pending`() {
+        val (providerId, providerToken) = registerProvider()
+
+        // Admin rejects
+        api.put("/api/v1/admin/providers/$providerId/approve", mapOf(
+            "approvalStatus" to "REJECTED",
+            "notes" to "Inappropriate content"
+        ), adminToken, headers = ah())
+
+        // Provider updates profile
+        api.put("/api/v1/providers/me", mapOf(
+            "businessName" to "Cleaned Up Business Name"
+        ), providerToken, headers = h())
+
+        // Should be back to PENDING_APPROVAL
+        val resp = api.get("/api/v1/admin/providers/$providerId", adminToken, headers = ah())
+        val provider = api.json(resp)
+        assertEquals("PENDING_APPROVAL", provider["approvalStatus"].asText())
+    }
 }

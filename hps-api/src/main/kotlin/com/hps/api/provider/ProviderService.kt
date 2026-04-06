@@ -177,6 +177,13 @@ class ProviderService(
             }
         }
 
+        // Auto-resubmit for approval when provider updates after changes requested or rejection
+        if (provider.approvalStatus == com.hps.domain.user.ApprovalStatus.CHANGES_REQUESTED
+            || provider.approvalStatus == com.hps.domain.user.ApprovalStatus.REJECTED) {
+            provider.approvalStatus = com.hps.domain.user.ApprovalStatus.PENDING_APPROVAL
+            provider.approvalNotes = null
+        }
+
         provider.updatedAt = Instant.now()
         providerRepository.save(provider)
 

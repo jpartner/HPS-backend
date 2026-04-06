@@ -61,6 +61,9 @@ class ProviderProfile(
     @Column(name = "approval_status", nullable = false, length = 20)
     var approvalStatus: ApprovalStatus = ApprovalStatus.PENDING_APPROVAL,
 
+    @Column(name = "approval_notes", columnDefinition = "TEXT")
+    var approvalNotes: String? = null,
+
     @Column(name = "avg_rating", precision = 3, scale = 2)
     var avgRating: BigDecimal = BigDecimal.ZERO,
 
@@ -120,5 +123,5 @@ class ProviderProfileTranslation(
 )
 
 enum class ApprovalStatus {
-    PENDING_APPROVAL, APPROVED, REJECTED
+    PENDING_APPROVAL, APPROVED, CHANGES_REQUESTED, REJECTED
 }

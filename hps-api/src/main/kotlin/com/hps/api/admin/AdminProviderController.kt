@@ -23,6 +23,7 @@ data class AdminProviderDto(
     val categories: List<String>,
     val isVerified: Boolean,
     val approvalStatus: String,
+    val approvalNotes: String?,
     val isMobile: Boolean,
     val avgRating: BigDecimal,
     val reviewCount: Int,
@@ -31,7 +32,8 @@ data class AdminProviderDto(
 )
 
 data class UpdateProviderApprovalRequest(
-    val approvalStatus: String
+    val approvalStatus: String,
+    val notes: String? = null
 )
 
 // --- Controller ---
@@ -83,22 +85,10 @@ class AdminProviderController(
 
         provider.approvalStatus = status
         provider.isVerified = status == ApprovalStatus.APPROVED
+        provider.approvalNotes = request.notes
         provider.updatedAt = Instant.now()
         providerProfileRepository.save(provider)
         return provider.toDto()
-    }
-
-    // Keep old endpoint for backward compat
-    @PutMapping("/{id}/verify")
-    @Transactional
-    fun updateVerification(
-        @PathVariable id: UUID,
-        @RequestBody body: Map<String, Any>
-    ): AdminProviderDto {
-        val isVerified = body["isVerified"] as? Boolean ?: false
-        return updateApproval(id, UpdateProviderApprovalRequest(
-            if (isVerified) "APPROVED" else "REJECTED"
-        ))
     }
 
     private fun ProviderProfile.toDto() = AdminProviderDto(
@@ -110,6 +100,7 @@ class AdminProviderController(
         categories = categories.mapNotNull { it.slug },
         isVerified = isVerified,
         approvalStatus = approvalStatus.name,
+        approvalNotes = approvalNotes,
         isMobile = isMobile,
         avgRating = avgRating,
         reviewCount = reviewCount,

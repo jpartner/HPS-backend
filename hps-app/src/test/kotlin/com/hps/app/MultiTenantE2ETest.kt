@@ -127,10 +127,10 @@ class MultiTenantE2ETest : BaseE2ETest() {
         val provList = api.json(api.get("/api/v1/admin/providers", adminToken, headers = h()))
         assertTrue(provList.any { it["id"]?.asText() == providerId })
 
-        val verifyResp = api.put("/api/v1/admin/providers/$providerId/verify",
-            mapOf("isVerified" to true), adminToken, headers = h())
-        assertEquals(HttpStatus.OK, verifyResp.statusCode)
-        assertTrue(api.json(verifyResp)["isVerified"].asBoolean())
+        val approveResp = api.put("/api/v1/admin/providers/$providerId/approve",
+            mapOf("approvalStatus" to "APPROVED"), adminToken, headers = h())
+        assertEquals(HttpStatus.OK, approveResp.statusCode)
+        assertTrue(api.json(approveResp)["isVerified"].asBoolean())
 
         val users = api.json(api.get("/api/v1/admin/users", adminToken, headers = h()))
         val userId = users.first { it["email"]?.asText() == provEmail }["id"].asText()

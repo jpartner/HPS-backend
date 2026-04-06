@@ -28,7 +28,7 @@ class ProviderMediaController(
         private const val MAX_GALLERY = 20
         private const val MAX_VERIFICATION = 10
         private const val MAX_AVATAR = 1
-        private val ALLOWED_IMAGE_TYPES = setOf("image/jpeg", "image/png", "image/webp", "image/gif")
+        private val ALLOWED_IMAGE_TYPES = setOf("image/jpeg", "image/png", "image/webp", "image/gif", "image/heic", "image/heif")
         private val ALLOWED_VIDEO_TYPES = setOf("video/mp4", "video/quicktime", "video/webm")
         private val ALLOWED_TYPES = ALLOWED_IMAGE_TYPES + ALLOWED_VIDEO_TYPES
     }
@@ -82,7 +82,7 @@ class ProviderMediaController(
             .orElseThrow { NotFoundException("Provider", providerId) }
 
         if (!ALLOWED_TYPES.contains(file.contentType)) {
-            throw BadRequestException("File type not allowed. Use JPEG, PNG, WebP, GIF, MP4, MOV, or WebM")
+            throw BadRequestException("File type not allowed. Use JPEG, PNG, WebP, GIF, HEIC, MP4, MOV, or WebM")
         }
 
         val type = parseMediaType(mediaType)

@@ -6,15 +6,11 @@ import { Save, Trash2, ArrowLeft } from 'lucide-react';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { TranslationForm } from '@/components/ui/TranslationForm';
-import { adminTemplateApi, adminCategoryApi } from '@/lib/api';
+import { TranslationForm, type TranslationData } from '@/components/ui/TranslationForm';
+import { adminTemplateApi, adminCategoryApi, type AdminCategoryDto } from '@/lib/api';
 
-function arrToRecord(translations: any[], field: string): Record<string, string> {
-  const result: Record<string, string> = {};
-  if (Array.isArray(translations)) {
-    for (const t of translations) result[t.lang] = t[field] ?? '';
-  }
-  return result;
+function translationName(translations: { lang: string; name: string }[]): string {
+  return translations.find((t) => t.lang === 'en')?.name ?? translations[0]?.name ?? '';
 }
 
 export default function ServiceTemplateDetailPage() {
@@ -26,11 +22,11 @@ export default function ServiceTemplateDetailPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const [titles, setTitles] = useState<Record<string, string>>({});
-  const [descriptions, setDescriptions] = useState<Record<string, string>>({});
+  const [translations, setTranslations] = useState<TranslationData>({});
   const [slug, setSlug] = useState('');
   const [categoryId, setCategoryId] = useState('');
-  const [duration, setDuration] = useState('60');
+  const [durationH, setDurationH] = useState('1');
+  const [durationM, setDurationM] = useState('0');
   const [sortOrder, setSortOrder] = useState('0');
   const [isActive, setIsActive] = useState(true);
   const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
@@ -42,21 +38,24 @@ export default function ServiceTemplateDetailPage() {
         adminTemplateApi.get(params.id),
         adminCategoryApi.list(),
       ]);
-      const raw = tmpl as any;
-      setTitles(arrToRecord(raw.translations, 'title'));
-      setDescriptions(arrToRecord(raw.translations, 'description'));
-      setSlug(raw.slug || '');
-      setCategoryId(raw.categoryId || '');
-      setDuration(String(raw.defaultDurationMinutes ?? 60));
-      setSortOrder(String(raw.sortOrder ?? 0));
-      setIsActive(raw.isActive !== false);
+      // Convert array translations to TranslationData record
+      const tData: TranslationData = {};
+      for (const t of tmpl.translations) {
+        tData[t.lang] = { title: t.title || '', description: t.description || '' };
+      }
+      setTranslations(tData);
+      setSlug(tmpl.slug || '');
+      setCategoryId(tmpl.categoryId || '');
+      const mins = tmpl.defaultDurationMinutes ?? 60;
+      setDurationH(String(Math.floor(mins / 60)));
+      setDurationM(String(mins % 60));
+      setSortOrder(String(tmpl.sortOrder ?? 0));
+      setIsActive(tmpl.isActive !== false);
 
       const flatCats: { id: string; name: string }[] = [];
-      function flatten(list: any[], prefix = '') {
+      function flatten(list: AdminCategoryDto[], prefix = '') {
         for (const c of list) {
-          const name = Array.isArray(c.translations)
-            ? (c.translations.find((t: any) => t.lang === 'en')?.name ?? c.slug)
-            : c.slug;
+          const name = translationName(c.translations);
           flatCats.push({ id: c.id, name: prefix + name });
           if (c.children?.length) flatten(c.children, prefix + '  ');
         }
@@ -77,17 +76,21 @@ export default function ServiceTemplateDetailPage() {
     setError('');
     setSuccess('');
     try {
-      const translations = Object.keys({ ...titles, ...descriptions }).reduce<any[]>((acc, lang) => {
-        if (titles[lang] || descriptions[lang]) {
-          acc.push({ lang, title: titles[lang] || '', description: descriptions[lang] || '' });
-        }
-        return acc;
-      }, []);
+      const translationsList = Object.entries(translations)
+        .filter(([, fields]) => fields.title || fields.description)
+        .map(([lang, fields]) => ({
+          lang,
+          title: fields.title || '',
+          description: fields.description || undefined,
+        }));
+
+      const totalMinutes = (parseInt(durationH, 10) || 0) * 60 + (parseInt(durationM, 10) || 0);
+
       await adminTemplateApi.update(params.id, {
-        defaultDurationMinutes: parseInt(duration, 10) || null,
+        defaultDurationMinutes: totalMinutes || null,
         sortOrder: parseInt(sortOrder, 10) || 0,
         isActive,
-        translations,
+        translations: translationsList,
       });
       setSuccess('Template updated.');
     } catch (err: unknown) {
@@ -133,8 +136,14 @@ export default function ServiceTemplateDetailPage() {
         {success && <div className="p-3 rounded bg-green-50 border border-green-200 text-green-700 text-sm">{success}</div>}
 
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <TranslationForm label="Title" values={titles} onChange={setTitles} />
-          <TranslationForm label="Description" values={descriptions} onChange={setDescriptions} multiline />
+          <TranslationForm
+            fields={[
+              { key: 'title', label: 'Title', required: true },
+              { key: 'description', label: 'Description', type: 'textarea' },
+            ]}
+            value={translations}
+            onChange={setTranslations}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -152,8 +161,13 @@ export default function ServiceTemplateDetailPage() {
               <Input value={slug} disabled />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Default Duration (min)</label>
-              <Input type="number" value={duration} onChange={(e) => setDuration(e.target.value)} />
+              <label className="block text-sm font-medium text-gray-700 mb-1">Default Duration</label>
+              <div className="flex items-center gap-2">
+                <Input type="number" value={durationH} onChange={(e) => setDurationH(e.target.value)} className="w-20" min="0" />
+                <span className="text-sm text-gray-500">h</span>
+                <Input type="number" value={durationM} onChange={(e) => setDurationM(e.target.value)} className="w-20" min="0" max="59" />
+                <span className="text-sm text-gray-500">min</span>
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>

@@ -248,21 +248,45 @@ export const tenantApi = {
 // Category API (admin)
 // ---------------------------------------------------------------------------
 
+export interface AdminCategoryDto {
+  id: string;
+  slug: string | null;
+  icon: string | null;
+  imageUrl: string | null;
+  sortOrder: number;
+  parentId: string | null;
+  translations: { lang: string; name: string; description?: string }[];
+  children: AdminCategoryDto[];
+}
+
 export const adminCategoryApi = {
-  list(params?: { page?: number; size?: number; search?: string; tenantId?: string }) {
-    return request<PaginatedResponse<Category>>(`/api/v1/admin/categories${qs(params)}`);
+  list() {
+    return request<AdminCategoryDto[]>('/api/v1/admin/categories');
   },
   get(id: string) {
-    return request<Category>(`/api/v1/admin/categories/${id}`);
+    return request<AdminCategoryDto>(`/api/v1/admin/categories/${id}`);
   },
-  create(data: Partial<Category>) {
-    return request<Category>('/api/v1/admin/categories', {
+  create(data: {
+    slug?: string;
+    icon?: string;
+    imageUrl?: string;
+    sortOrder?: number;
+    parentId?: string;
+    translations: { lang: string; name: string; description?: string }[];
+  }) {
+    return request<AdminCategoryDto>('/api/v1/admin/categories', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   },
-  update(id: string, data: Partial<Category>) {
-    return request<Category>(`/api/v1/admin/categories/${id}`, {
+  update(id: string, data: {
+    slug?: string;
+    icon?: string;
+    imageUrl?: string;
+    sortOrder?: number;
+    translations?: { lang: string; name: string; description?: string }[];
+  }) {
+    return request<AdminCategoryDto>(`/api/v1/admin/categories/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
@@ -276,21 +300,42 @@ export const adminCategoryApi = {
 // Service Template API (admin)
 // ---------------------------------------------------------------------------
 
+export interface AdminTemplateDto {
+  id: string;
+  slug: string;
+  categoryId: string;
+  defaultDurationMinutes: number | null;
+  sortOrder: number;
+  isActive: boolean;
+  translations: { lang: string; title: string; description?: string }[];
+}
+
 export const adminTemplateApi = {
-  list(params?: { page?: number; size?: number; search?: string; tenantId?: string; categoryId?: string }) {
-    return request<PaginatedResponse<ServiceTemplate>>(`/api/v1/admin/service-templates${qs(params)}`);
+  list() {
+    return request<AdminTemplateDto[]>('/api/v1/admin/service-templates');
   },
   get(id: string) {
-    return request<ServiceTemplate>(`/api/v1/admin/service-templates/${id}`);
+    return request<AdminTemplateDto>(`/api/v1/admin/service-templates/${id}`);
   },
-  create(data: Partial<ServiceTemplate>) {
-    return request<ServiceTemplate>('/api/v1/admin/service-templates', {
+  create(data: {
+    slug: string;
+    categoryId: string;
+    defaultDurationMinutes?: number | null;
+    sortOrder?: number;
+    translations: { lang: string; title: string; description?: string }[];
+  }) {
+    return request<AdminTemplateDto>('/api/v1/admin/service-templates', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   },
-  update(id: string, data: Partial<ServiceTemplate>) {
-    return request<ServiceTemplate>(`/api/v1/admin/service-templates/${id}`, {
+  update(id: string, data: {
+    defaultDurationMinutes?: number | null;
+    sortOrder?: number;
+    isActive?: boolean;
+    translations?: { lang: string; title: string; description?: string }[];
+  }) {
+    return request<AdminTemplateDto>(`/api/v1/admin/service-templates/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
@@ -405,6 +450,89 @@ export const adminProviderApi = {
   verify(id: string, data: { verificationStatus: 'APPROVED' | 'REJECTED'; reason?: string }) {
     return request<ProviderProfile>(`/api/v1/admin/providers/${id}/verify`, {
       method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Country Currency API (admin)
+// ---------------------------------------------------------------------------
+
+export interface CountryCurrency {
+  countryId: string;
+  isoCode: string;
+  countryName: string;
+  primaryCurrency: string;
+  secondaryCurrency?: string | null;
+}
+
+export const adminCountryCurrencyApi = {
+  list() {
+    return request<CountryCurrency[]>('/api/v1/admin/country-currencies');
+  },
+  upsert(countryId: string, data: { primaryCurrency: string; secondaryCurrency?: string | null }) {
+    return request<CountryCurrency>(`/api/v1/admin/country-currencies/${countryId}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Rate Duration Preset API (admin)
+// ---------------------------------------------------------------------------
+
+export interface RateDurationPreset {
+  id: string;
+  durationMinutes: number;
+  label: string | null;
+  sortOrder: number;
+  isActive: boolean;
+}
+
+export const adminRateDurationPresetApi = {
+  list() {
+    return request<RateDurationPreset[]>('/api/v1/admin/rate-duration-presets');
+  },
+  create(data: { durationMinutes: number; label?: string; sortOrder?: number }) {
+    return request<RateDurationPreset>('/api/v1/admin/rate-duration-presets', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+  update(id: string, data: { sortOrder?: number; label?: string; isActive?: boolean }) {
+    return request<RateDurationPreset>(`/api/v1/admin/rate-duration-presets/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
+  delete(id: string) {
+    return request<void>(`/api/v1/admin/rate-duration-presets/${id}`, { method: 'DELETE' });
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Language API (admin)
+// ---------------------------------------------------------------------------
+
+export interface LanguageDto {
+  code: string;
+  name: string;
+}
+
+export interface LanguageConfigDto {
+  defaultLang: string;
+  supportedLangs: LanguageDto[];
+}
+
+export const adminLanguageApi = {
+  get() {
+    return request<LanguageConfigDto>('/api/v1/admin/languages');
+  },
+  update(data: { defaultLang?: string; supportedLangs: string[] }) {
+    return request<LanguageConfigDto>('/api/v1/admin/languages', {
+      method: 'PUT',
       body: JSON.stringify(data),
     });
   },

@@ -1,0 +1,785 @@
+[
+  {
+    "key": "eye_colors",
+    "name": "Eye Colors",
+    "items": [
+      {
+        "value": "Brown",
+        "translations": {
+          "en": "Brown",
+          "pl": "Brązowe",
+          "uk": "Карі",
+          "de": "Braun"
+        }
+      },
+      {
+        "value": "Blue",
+        "translations": {
+          "en": "Blue",
+          "pl": "Niebieskie",
+          "uk": "Блакитні",
+          "de": "Blau"
+        }
+      },
+      {
+        "value": "Green",
+        "translations": {
+          "en": "Green",
+          "pl": "Zielone",
+          "uk": "Зелені",
+          "de": "Grün"
+        }
+      },
+      {
+        "value": "Hazel",
+        "translations": {
+          "en": "Hazel",
+          "pl": "Piwne",
+          "uk": "Горіхові",
+          "de": "Haselnuss"
+        }
+      },
+      {
+        "value": "Grey",
+        "translations": {
+          "en": "Grey",
+          "pl": "Szare",
+          "uk": "Сірі",
+          "de": "Grau"
+        }
+      },
+      {
+        "value": "Black",
+        "translations": {
+          "en": "Black",
+          "pl": "Czarne",
+          "uk": "Чорні",
+          "de": "Schwarz"
+        }
+      }
+    ]
+  },
+  {
+    "key": "hair_colors",
+    "name": "Hair Colors",
+    "items": [
+      {
+        "value": "Black",
+        "translations": {
+          "en": "Black",
+          "pl": "Czarne",
+          "uk": "Чорне",
+          "de": "Schwarz"
+        }
+      },
+      {
+        "value": "Brown",
+        "translations": {
+          "en": "Brown",
+          "pl": "Brązowe",
+          "uk": "Каштанове",
+          "de": "Braun"
+        }
+      },
+      {
+        "value": "Blonde",
+        "translations": {
+          "en": "Blonde",
+          "pl": "Blond",
+          "uk": "Блонд",
+          "de": "Blond"
+        }
+      },
+      {
+        "value": "Red",
+        "translations": {
+          "en": "Red",
+          "pl": "Rude",
+          "uk": "Руде",
+          "de": "Rot"
+        }
+      },
+      {
+        "value": "Auburn",
+        "translations": {
+          "en": "Auburn",
+          "pl": "Kasztanowe",
+          "uk": "Каштанове",
+          "de": "Kastanienbraun"
+        }
+      },
+      {
+        "value": "Grey",
+        "translations": {
+          "en": "Grey",
+          "pl": "Siwe",
+          "uk": "Сиве",
+          "de": "Grau"
+        }
+      }
+    ]
+  },
+  {
+    "key": "orientations",
+    "name": "Sexual Orientations",
+    "items": [
+      {
+        "value": "Hetero",
+        "translations": {
+          "en": "Heterosexual",
+          "pl": "Heteroseksualny",
+          "uk": "Гетеросексуал",
+          "de": "Heterosexuell"
+        }
+      },
+      {
+        "value": "Bi",
+        "translations": {
+          "en": "Bisexual",
+          "pl": "Biseksualny",
+          "uk": "Бісексуал",
+          "de": "Bisexuell"
+        }
+      },
+      {
+        "value": "Homo",
+        "translations": {
+          "en": "Homosexual",
+          "pl": "Homoseksualny",
+          "uk": "Гомосексуал",
+          "de": "Homosexuell"
+        }
+      }
+    ]
+  },
+  {
+    "key": "offered_services",
+    "name": "Offered Services",
+    "items": [
+      {
+        "value": "Classic",
+        "translations": {
+          "en": "Classic",
+          "pl": "Klasyczny",
+          "uk": "Класичний",
+          "de": "Klassisch"
+        }
+      },
+      {
+        "value": "Oral",
+        "translations": {
+          "en": "Oral",
+          "pl": "Oralny",
+          "uk": "Оральний",
+          "de": "Oral"
+        }
+      },
+      {
+        "value": "GFE",
+        "translations": {
+          "en": "GFE",
+          "pl": "GFE",
+          "uk": "GFE",
+          "de": "GFE"
+        }
+      },
+      {
+        "value": "Kissing",
+        "translations": {
+          "en": "Kissing",
+          "pl": "Całowanie",
+          "uk": "Поцілунки",
+          "de": "Küssen"
+        }
+      },
+      {
+        "value": "Massage",
+        "translations": {
+          "en": "Massage",
+          "pl": "Masaż",
+          "uk": "Масаж",
+          "de": "Massage"
+        }
+      },
+      {
+        "value": "Body Massage",
+        "translations": {
+          "en": "Body Massage",
+          "pl": "Masaż ciała",
+          "uk": "Масаж тіла",
+          "de": "Körpermassage"
+        }
+      },
+      {
+        "value": "Couples Massage",
+        "translations": {
+          "en": "Couples Massage",
+          "pl": "Masaż par",
+          "uk": "Масаж для пар",
+          "de": "Paarmassage"
+        }
+      },
+      {
+        "value": "Domination",
+        "translations": {
+          "en": "Domination",
+          "pl": "Dominacja",
+          "uk": "Домінування",
+          "de": "Domination"
+        }
+      },
+      {
+        "value": "Femdom",
+        "translations": {
+          "en": "Femdom",
+          "pl": "Femdom",
+          "uk": "Фемдом",
+          "de": "Femdom"
+        }
+      },
+      {
+        "value": "Duo",
+        "translations": {
+          "en": "Duo",
+          "pl": "Duo",
+          "uk": "Дуо",
+          "de": "Duo"
+        }
+      },
+      {
+        "value": "Overnight",
+        "translations": {
+          "en": "Overnight",
+          "pl": "Na noc",
+          "uk": "На ніч",
+          "de": "Übernachtung"
+        }
+      },
+      {
+        "value": "Outcall",
+        "translations": {
+          "en": "Outcall",
+          "pl": "Outcall",
+          "uk": "Виїзд",
+          "de": "Outcall"
+        }
+      },
+      {
+        "value": "69",
+        "translations": {
+          "en": "69",
+          "pl": "69",
+          "uk": "69",
+          "de": "69"
+        }
+      },
+      {
+        "value": "Striptease",
+        "translations": {
+          "en": "Striptease",
+          "pl": "Striptiz",
+          "uk": "Стриптиз",
+          "de": "Striptease"
+        }
+      },
+      {
+        "value": "Foot Fetish",
+        "translations": {
+          "en": "Foot Fetish",
+          "pl": "Fetysz stóp",
+          "uk": "Фетиш ніг",
+          "de": "Fußfetisch"
+        }
+      },
+      {
+        "value": "Shoe Fetish",
+        "translations": {
+          "en": "Shoe Fetish",
+          "pl": "Fetysz butów",
+          "uk": "Фетиш взуття",
+          "de": "Schuhfetisch"
+        }
+      }
+    ]
+  },
+  {
+    "key": "lash_types",
+    "name": "Lash Types",
+    "items": [
+      {
+        "value": "Classic",
+        "translations": {
+          "en": "Classic",
+          "pl": "Klasyczne",
+          "uk": "Класичні",
+          "de": "Klassisch"
+        }
+      },
+      {
+        "value": "Volume",
+        "translations": {
+          "en": "Volume",
+          "pl": "Objętościowe",
+          "uk": "Об'ємні",
+          "de": "Volumen"
+        }
+      },
+      {
+        "value": "Mega Volume",
+        "translations": {
+          "en": "Mega Volume",
+          "pl": "Mega objętość",
+          "uk": "Мега об'єм",
+          "de": "Mega Volumen"
+        }
+      },
+      {
+        "value": "Hybrid",
+        "translations": {
+          "en": "Hybrid",
+          "pl": "Hybrydowe",
+          "uk": "Гібридні",
+          "de": "Hybrid"
+        }
+      },
+      {
+        "value": "Wispy",
+        "translations": {
+          "en": "Wispy",
+          "pl": "Wispy",
+          "uk": "Wispy",
+          "de": "Wispy"
+        }
+      }
+    ]
+  },
+  {
+    "key": "skin_concerns",
+    "name": "Skin Concerns",
+    "items": [
+      {
+        "value": "Acne",
+        "translations": {
+          "en": "Acne",
+          "pl": "Trądzik",
+          "uk": "Акне",
+          "de": "Akne"
+        }
+      },
+      {
+        "value": "Aging",
+        "translations": {
+          "en": "Aging",
+          "pl": "Starzenie",
+          "uk": "Старіння",
+          "de": "Hautalterung"
+        }
+      },
+      {
+        "value": "Hyperpigmentation",
+        "translations": {
+          "en": "Hyperpigmentation",
+          "pl": "Hiperpigmentacja",
+          "uk": "Гіперпігментація",
+          "de": "Hyperpigmentierung"
+        }
+      },
+      {
+        "value": "Rosacea",
+        "translations": {
+          "en": "Rosacea",
+          "pl": "Trądzik różowaty",
+          "uk": "Розацеа",
+          "de": "Rosazea"
+        }
+      },
+      {
+        "value": "Sensitive Skin",
+        "translations": {
+          "en": "Sensitive Skin",
+          "pl": "Skóra wrażliwa",
+          "uk": "Чутлива шкіра",
+          "de": "Empfindliche Haut"
+        }
+      },
+      {
+        "value": "Dry Skin",
+        "translations": {
+          "en": "Dry Skin",
+          "pl": "Skóra sucha",
+          "uk": "Суха шкіра",
+          "de": "Trockene Haut"
+        }
+      },
+      {
+        "value": "Oily Skin",
+        "translations": {
+          "en": "Oily Skin",
+          "pl": "Skóra tłusta",
+          "uk": "Жирна шкіра",
+          "de": "Fettige Haut"
+        }
+      }
+    ]
+  },
+  {
+    "key": "hair_specialties",
+    "name": "Hair Specialties",
+    "items": [
+      {
+        "value": "Balayage",
+        "translations": {
+          "en": "Balayage",
+          "pl": "Balayage",
+          "uk": "Балаяж",
+          "de": "Balayage"
+        }
+      },
+      {
+        "value": "Ombre",
+        "translations": {
+          "en": "Ombre",
+          "pl": "Ombre",
+          "uk": "Омбре",
+          "de": "Ombre"
+        }
+      },
+      {
+        "value": "Keratin Treatment",
+        "translations": {
+          "en": "Keratin Treatment",
+          "pl": "Keratynowe prostowanie",
+          "uk": "Кератинове випрямлення",
+          "de": "Keratinbehandlung"
+        }
+      },
+      {
+        "value": "Extensions",
+        "translations": {
+          "en": "Extensions",
+          "pl": "Przedłużanie",
+          "uk": "Нарощування",
+          "de": "Extensions"
+        }
+      },
+      {
+        "value": "Curly Hair",
+        "translations": {
+          "en": "Curly Hair",
+          "pl": "Kręcone włosy",
+          "uk": "Кучеряве волосся",
+          "de": "Lockiges Haar"
+        }
+      },
+      {
+        "value": "Color Correction",
+        "translations": {
+          "en": "Color Correction",
+          "pl": "Korekta koloru",
+          "uk": "Корекція кольору",
+          "de": "Farbkorrektur"
+        }
+      },
+      {
+        "value": "Bridal",
+        "translations": {
+          "en": "Bridal",
+          "pl": "Ślubne",
+          "uk": "Весільне",
+          "de": "Braut"
+        }
+      }
+    ]
+  },
+  {
+    "key": "hair_product_brands",
+    "name": "Hair Product Brands",
+    "items": [
+      {
+        "value": "L'Oréal",
+        "translations": {
+          "en": "L'Oréal",
+          "pl": "L'Oréal",
+          "uk": "L'Oréal",
+          "de": "L'Oréal"
+        }
+      },
+      {
+        "value": "Schwarzkopf",
+        "translations": {
+          "en": "Schwarzkopf",
+          "pl": "Schwarzkopf",
+          "uk": "Schwarzkopf",
+          "de": "Schwarzkopf"
+        }
+      },
+      {
+        "value": "Wella",
+        "translations": {
+          "en": "Wella",
+          "pl": "Wella",
+          "uk": "Wella",
+          "de": "Wella"
+        }
+      },
+      {
+        "value": "Davines",
+        "translations": {
+          "en": "Davines",
+          "pl": "Davines",
+          "uk": "Davines",
+          "de": "Davines"
+        }
+      },
+      {
+        "value": "Olaplex",
+        "translations": {
+          "en": "Olaplex",
+          "pl": "Olaplex",
+          "uk": "Olaplex",
+          "de": "Olaplex"
+        }
+      },
+      {
+        "value": "Kerastase",
+        "translations": {
+          "en": "Kérastase",
+          "pl": "Kérastase",
+          "uk": "Kérastase",
+          "de": "Kérastase"
+        }
+      },
+      {
+        "value": "Redken",
+        "translations": {
+          "en": "Redken",
+          "pl": "Redken",
+          "uk": "Redken",
+          "de": "Redken"
+        }
+      }
+    ]
+  },
+  {
+    "key": "laser_types",
+    "name": "Laser Types",
+    "items": [
+      {
+        "value": "Diode",
+        "translations": {
+          "en": "Diode",
+          "pl": "Diodowy",
+          "uk": "Діодний",
+          "de": "Diode"
+        }
+      },
+      {
+        "value": "Alexandrite",
+        "translations": {
+          "en": "Alexandrite",
+          "pl": "Aleksandrytowy",
+          "uk": "Олександритовий",
+          "de": "Alexandrit"
+        }
+      },
+      {
+        "value": "Nd:YAG",
+        "translations": {
+          "en": "Nd:YAG",
+          "pl": "Nd:YAG",
+          "uk": "Nd:YAG",
+          "de": "Nd:YAG"
+        }
+      },
+      {
+        "value": "IPL",
+        "translations": {
+          "en": "IPL",
+          "pl": "IPL",
+          "uk": "IPL",
+          "de": "IPL"
+        }
+      },
+      {
+        "value": "N/A",
+        "translations": {
+          "en": "Not Applicable",
+          "pl": "Nie dotyczy",
+          "uk": "Не застосовується",
+          "de": "Nicht zutreffend"
+        }
+      }
+    ]
+  },
+  {
+    "key": "massage_certifications",
+    "name": "Massage Certifications",
+    "items": [
+      {
+        "value": "Swedish",
+        "translations": {
+          "en": "Swedish",
+          "pl": "Szwedzki",
+          "uk": "Шведський",
+          "de": "Schwedisch"
+        }
+      },
+      {
+        "value": "Thai",
+        "translations": {
+          "en": "Thai",
+          "pl": "Tajski",
+          "uk": "Тайський",
+          "de": "Thailändisch"
+        }
+      },
+      {
+        "value": "Deep Tissue",
+        "translations": {
+          "en": "Deep Tissue",
+          "pl": "Głęboki tkankowy",
+          "uk": "Глибокотканинний",
+          "de": "Tiefengewebe"
+        }
+      },
+      {
+        "value": "Sports",
+        "translations": {
+          "en": "Sports",
+          "pl": "Sportowy",
+          "uk": "Спортивний",
+          "de": "Sport"
+        }
+      },
+      {
+        "value": "Shiatsu",
+        "translations": {
+          "en": "Shiatsu",
+          "pl": "Shiatsu",
+          "uk": "Шіацу",
+          "de": "Shiatsu"
+        }
+      },
+      {
+        "value": "Reflexology",
+        "translations": {
+          "en": "Reflexology",
+          "pl": "Refleksologia",
+          "uk": "Рефлексологія",
+          "de": "Reflexologie"
+        }
+      },
+      {
+        "value": "Lymphatic",
+        "translations": {
+          "en": "Lymphatic",
+          "pl": "Limfatyczny",
+          "uk": "Лімфатичний",
+          "de": "Lymphatisch"
+        }
+      }
+    ]
+  },
+  {
+    "key": "nail_gel_brands",
+    "name": "Nail Gel Brands",
+    "items": [
+      {
+        "value": "OPI",
+        "translations": {
+          "en": "OPI",
+          "pl": "OPI",
+          "uk": "OPI",
+          "de": "OPI"
+        }
+      },
+      {
+        "value": "CND Shellac",
+        "translations": {
+          "en": "CND Shellac",
+          "pl": "CND Shellac",
+          "uk": "CND Shellac",
+          "de": "CND Shellac"
+        }
+      },
+      {
+        "value": "Gelish",
+        "translations": {
+          "en": "Gelish",
+          "pl": "Gelish",
+          "uk": "Gelish",
+          "de": "Gelish"
+        }
+      },
+      {
+        "value": "Semilac",
+        "translations": {
+          "en": "Semilac",
+          "pl": "Semilac",
+          "uk": "Semilac",
+          "de": "Semilac"
+        }
+      },
+      {
+        "value": "Indigo",
+        "translations": {
+          "en": "Indigo",
+          "pl": "Indigo",
+          "uk": "Indigo",
+          "de": "Indigo"
+        }
+      },
+      {
+        "value": "NeoNail",
+        "translations": {
+          "en": "NeoNail",
+          "pl": "NeoNail",
+          "uk": "NeoNail",
+          "de": "NeoNail"
+        }
+      },
+      {
+        "value": "Luxio",
+        "translations": {
+          "en": "Luxio",
+          "pl": "Luxio",
+          "uk": "Luxio",
+          "de": "Luxio"
+        }
+      }
+    ]
+  },
+  {
+    "key": "hygiene_standards",
+    "name": "Hygiene Standards",
+    "items": [
+      {
+        "value": "Disposable",
+        "translations": {
+          "en": "Disposable Tools",
+          "pl": "Narzędzia jednorazowe",
+          "uk": "Одноразові інструменти",
+          "de": "Einweginstrumente"
+        }
+      },
+      {
+        "value": "Autoclave",
+        "translations": {
+          "en": "Autoclave",
+          "pl": "Autoklaw",
+          "uk": "Автоклав",
+          "de": "Autoklav"
+        }
+      },
+      {
+        "value": "UV Sterilizer",
+        "translations": {
+          "en": "UV Sterilizer",
+          "pl": "Sterylizator UV",
+          "uk": "УФ стерилізатор",
+          "de": "UV-Sterilisator"
+        }
+      }
+    ]
+  }
+]

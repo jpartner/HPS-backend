@@ -9,3 +9,5 @@ class BadRequestException(message: String) : HpsException(message)
 class UnauthorizedException(message: String = "Unauthorized") : HpsException(message)
 
 class ForbiddenException(message: String = "Forbidden") : HpsException(message)
+
+class InsufficientBalanceException(message: String = "Insufficient token balance") : HpsException(message)

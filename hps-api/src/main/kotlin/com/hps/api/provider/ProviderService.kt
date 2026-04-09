@@ -10,7 +10,6 @@ import com.hps.domain.user.ProviderApprovalHistory
 import com.hps.domain.user.ProviderProfile
 import com.hps.domain.user.ProviderProfileTranslation
 import com.hps.domain.user.UserRole
-import com.hps.domain.service.RateType
 import com.hps.persistence.geo.AreaRepository
 import com.hps.persistence.geo.CityRepository
 import com.hps.persistence.geo.CountryCurrencyRepository
@@ -74,7 +73,7 @@ class ProviderService(
         }
 
         val services = serviceRepository.findByProviderWithTranslations(providerId, lang)
-        val rateCard = buildRateCard(provider)
+        val rateCard = buildRateCard(provider, lang)
 
         return ProviderDetailDto(
             id = provider.userId!!,
@@ -209,7 +208,7 @@ class ProviderService(
         return getDetail(userId, "en", requireApproved = false)
     }
 
-    private fun buildRateCard(provider: ProviderProfile): ProviderRateCardDto? {
+    private fun buildRateCard(provider: ProviderProfile, lang: String = "en"): ProviderRateCardDto? {
         val rates = providerRateRepository.findByProviderIdAndIsActiveTrue(provider.userId!!)
         if (rates.isEmpty()) return null
 
@@ -218,29 +217,31 @@ class ProviderService(
         val primaryCurrency = cc?.primaryCurrency ?: "EUR"
         val secondaryCurrency = cc?.secondaryCurrency
 
-        val byType = rates.groupBy { it.rateType }
+        val byMeetingType = rates.groupBy { it.meetingType?.id }
 
-        fun List<com.hps.domain.service.ProviderRate>.toEntryDtos() = sortedBy { it.sortOrder }.map {
-            RateEntryDto(
-                durationMinutes = it.durationMinutes,
-                primaryAmount = it.primaryAmount,
-                secondaryAmount = it.secondaryAmount,
-                isCustomDuration = it.isCustomDuration,
-                sortOrder = it.sortOrder
+        val meetingTypes = byMeetingType.map { (mtId, mtRates) ->
+            val mt = mtRates.first().meetingType
+            MeetingTypeRatesDto(
+                meetingTypeId = mtId ?: return@map null,
+                meetingTypeName = mt?.translations?.bestTranslation(lang, { it.lang }, { it.name }) ?: "Unknown",
+                rates = mtRates.sortedBy { it.sortOrder }.map {
+                    RateRowDto(
+                        durationMinutes = it.durationMinutes,
+                        label = it.label,
+                        incallAmount = it.incallAmount,
+                        outcallAmount = it.outcallAmount,
+                        secondaryIncallAmount = it.secondaryIncallAmount,
+                        secondaryOutcallAmount = it.secondaryOutcallAmount,
+                        sortOrder = it.sortOrder
+                    )
+                }
             )
-        }
+        }.filterNotNull()
 
         return ProviderRateCardDto(
             primaryCurrency = primaryCurrency,
             secondaryCurrency = secondaryCurrency,
-            incallRates = (byType[RateType.INCALL] ?: emptyList()).toEntryDtos(),
-            outcallRates = (byType[RateType.OUTCALL] ?: emptyList()).toEntryDtos(),
-            nightRate = byType[RateType.NIGHT]?.firstOrNull()?.let {
-                RateEntryDto(null, it.primaryAmount, it.secondaryAmount)
-            },
-            weekendRate = byType[RateType.WEEKEND]?.firstOrNull()?.let {
-                RateEntryDto(null, it.primaryAmount, it.secondaryAmount)
-            }
+            meetingTypes = meetingTypes
         )
     }
 
@@ -296,7 +297,8 @@ class ProviderService(
             durationMinutes = durationMinutes,
             isIncluded = isIncluded,
             primaryAmount = primaryAmount,
-            secondaryAmount = secondaryAmount
+            secondaryAmount = secondaryAmount,
+            minDurationMinutes = minDurationMinutes
         )
     }
 }

@@ -3,15 +3,7 @@
 import { useState, useCallback, type ChangeEvent } from 'react';
 import { clsx } from 'clsx';
 import { Input } from './Input';
-
-const LANGUAGES = [
-  { code: 'en', label: 'EN' },
-  { code: 'pl', label: 'PL' },
-  { code: 'uk', label: 'UK' },
-  { code: 'de', label: 'DE' },
-] as const;
-
-type LangCode = (typeof LANGUAGES)[number]['code'];
+import { useLanguages } from '@/lib/use-languages';
 
 // Complex multi-field mode
 export interface FieldConfig {
@@ -49,23 +41,27 @@ interface SingleFieldProps {
 type TranslationFormProps = MultiFieldProps | SingleFieldProps;
 
 export function TranslationForm(props: TranslationFormProps) {
-  const [activeLang, setActiveLang] = useState<LangCode>('en');
+  const { languages, defaultLang } = useLanguages();
+  const [activeLang, setActiveLang] = useState(defaultLang);
+
+  // Ensure activeLang is valid when languages change
+  const currentLang = languages.some((l) => l.code === activeLang) ? activeLang : languages[0]?.code ?? 'en';
 
   const langTabs = (
     <div className="mb-3 flex gap-1 rounded-lg bg-slate-100 p-1">
-      {LANGUAGES.map((lang) => (
+      {languages.map((lang) => (
         <button
           key={lang.code}
           type="button"
           onClick={() => setActiveLang(lang.code)}
           className={clsx(
             'flex-1 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-            activeLang === lang.code
+            currentLang === lang.code
               ? 'bg-white text-slate-900 shadow-sm'
               : 'text-slate-500 hover:text-slate-700',
           )}
         >
-          {lang.label}
+          {lang.code.toUpperCase()}
         </button>
       ))}
     </div>
@@ -74,7 +70,7 @@ export function TranslationForm(props: TranslationFormProps) {
   // Simple single-field mode
   if ('label' in props && props.label !== undefined) {
     const { label, values, onChange, multiline } = props;
-    const fieldValue = values[activeLang] ?? '';
+    const fieldValue = values[currentLang] ?? '';
 
     return (
       <div>
@@ -84,7 +80,7 @@ export function TranslationForm(props: TranslationFormProps) {
           <textarea
             value={fieldValue}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-              onChange({ ...values, [activeLang]: e.target.value })
+              onChange({ ...values, [currentLang]: e.target.value })
             }
             rows={3}
             className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:border-primary focus:ring-primary transition-colors"
@@ -92,7 +88,7 @@ export function TranslationForm(props: TranslationFormProps) {
         ) : (
           <Input
             value={fieldValue}
-            onChange={(e) => onChange({ ...values, [activeLang]: e.target.value })}
+            onChange={(e) => onChange({ ...values, [currentLang]: e.target.value })}
           />
         )}
       </div>
@@ -107,15 +103,15 @@ export function TranslationForm(props: TranslationFormProps) {
       {langTabs}
       <div className="space-y-4">
         {fields.map((field) => {
-          const fieldValue = value[activeLang]?.[field.key] ?? '';
-          const fieldError = errors?.[activeLang]?.[field.key];
+          const fieldValue = value[currentLang]?.[field.key] ?? '';
+          const fieldError = errors?.[currentLang]?.[field.key];
 
           if (field.type === 'textarea') {
             return (
               <div key={field.key}>
                 <label className="mb-1.5 block text-sm font-medium text-slate-700">
                   {field.label}
-                  {field.required && activeLang === 'en' && (
+                  {field.required && currentLang === defaultLang && (
                     <span className="ml-1 text-red-500">*</span>
                   )}
                 </label>
@@ -123,7 +119,7 @@ export function TranslationForm(props: TranslationFormProps) {
                   value={fieldValue}
                   onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                     const updated = { ...value };
-                    updated[activeLang] = { ...(updated[activeLang] || {}), [field.key]: e.target.value };
+                    updated[currentLang] = { ...(updated[currentLang] || {}), [field.key]: e.target.value };
                     onChange(updated);
                   }}
                   rows={4}
@@ -142,11 +138,11 @@ export function TranslationForm(props: TranslationFormProps) {
           return (
             <Input
               key={field.key}
-              label={`${field.label}${field.required && activeLang === 'en' ? ' *' : ''}`}
+              label={`${field.label}${field.required && currentLang === defaultLang ? ' *' : ''}`}
               value={fieldValue}
               onChange={(e) => {
                 const updated = { ...value };
-                updated[activeLang] = { ...(updated[activeLang] || {}), [field.key]: e.target.value };
+                updated[currentLang] = { ...(updated[currentLang] || {}), [field.key]: e.target.value };
                 onChange(updated);
               }}
               error={fieldError}

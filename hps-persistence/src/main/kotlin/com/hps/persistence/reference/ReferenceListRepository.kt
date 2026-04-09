@@ -19,7 +19,7 @@ interface ReferenceListRepository : JpaRepository<ReferenceList, UUID> {
     fun findAllActiveWithItems(): List<ReferenceList>
 
     @Query("""
-        SELECT rl FROM ReferenceList rl
+        SELECT DISTINCT rl FROM ReferenceList rl
         LEFT JOIN FETCH rl.items i
         LEFT JOIN FETCH i.translations
         WHERE rl.id = :id

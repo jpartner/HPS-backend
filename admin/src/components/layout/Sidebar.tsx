@@ -18,6 +18,9 @@ import {
   LogOut,
   Menu,
   X,
+  Globe,
+  Clock,
+  Languages,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 import { useTenant } from '@/lib/tenant-context';
@@ -58,8 +61,16 @@ const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
+    title: 'Pricing',
+    items: [
+      { label: 'Country Currencies', href: '/country-currencies', icon: <Globe size={18} /> },
+      { label: 'Rate Presets', href: '/rate-presets', icon: <Clock size={18} /> },
+    ],
+  },
+  {
     title: 'Settings',
     items: [
+      { label: 'Languages', href: '/languages', icon: <Languages size={18} /> },
       { label: 'API Keys', href: '/api-keys', icon: <KeyRound size={18} /> },
       { label: 'Tenants', href: '/tenants', icon: <Building2 size={18} />, superAdminOnly: true },
     ],

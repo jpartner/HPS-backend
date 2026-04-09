@@ -75,6 +75,17 @@ data class ServiceTranslationSeed(
     val description: String?
 )
 
+data class ReferenceListSeed(
+    val key: String,
+    val name: String,
+    val items: List<ReferenceListItemSeed> = emptyList()
+)
+
+data class ReferenceListItemSeed(
+    val value: String,
+    val translations: Map<String, String> = emptyMap()
+)
+
 data class AttributeDefinitionSeed(
     val domain: String,
     val key: String,
@@ -82,6 +93,7 @@ data class AttributeDefinitionSeed(
     val isRequired: Boolean = false,
     val options: List<String>? = null,
     val validation: Map<String, Any>? = null,
+    val referenceListKey: String? = null,
     val sortOrder: Int = 0,
     val translations: Map<String, AttributeTranslationSeed>
 )

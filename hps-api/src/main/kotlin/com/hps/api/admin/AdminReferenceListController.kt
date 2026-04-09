@@ -146,7 +146,7 @@ class AdminReferenceListController(
         key = key,
         name = name,
         isActive = isActive,
-        items = items.map { item ->
+        items = items.sortedBy { it.sortOrder }.map { item ->
             ReferenceListItemDto(
                 id = item.id,
                 value = item.value,

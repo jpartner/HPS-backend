@@ -2,6 +2,7 @@ package com.hps.api.exception
 
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.ForbiddenException
+import com.hps.common.exception.InsufficientBalanceException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.exception.UnauthorizedException
 import org.springframework.http.HttpStatus
@@ -27,4 +28,8 @@ class GlobalExceptionHandler {
     @ExceptionHandler(ForbiddenException::class)
     fun handleForbidden(ex: ForbiddenException): ProblemDetail =
         ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.message ?: "Forbidden")
+
+    @ExceptionHandler(InsufficientBalanceException::class)
+    fun handleInsufficientBalance(ex: InsufficientBalanceException): ProblemDetail =
+        ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.message ?: "Insufficient balance")
 }

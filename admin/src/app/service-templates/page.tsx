@@ -10,37 +10,47 @@ import { Input } from '@/components/ui/Input';
 import { Badge } from '@/components/ui/Badge';
 import { Modal } from '@/components/ui/Modal';
 import { TranslationForm } from '@/components/ui/TranslationForm';
-import { adminTemplateApi, adminCategoryApi } from '@/lib/api';
-
-interface ServiceTemplate {
-  id: string;
-  title: string;
-  category: string;
-  slug: string;
-  defaultDuration: number;
-  status: string;
-}
+import { TranslationData } from '@/components/ui/TranslationForm';
+import { adminTemplateApi, adminCategoryApi, type AdminTemplateDto, type AdminCategoryDto } from '@/lib/api';
 
 interface CategoryOption {
   id: string;
   name: string;
 }
 
+function translationName(translations: { lang: string; name: string }[]): string {
+  return translations.find((t) => t.lang === 'en')?.name ?? translations[0]?.name ?? '';
+}
+
+function translationTitle(translations: { lang: string; title: string }[]): string {
+  return translations.find((t) => t.lang === 'en')?.title ?? translations[0]?.title ?? '';
+}
+
+function formatDuration(minutes: number | null): string {
+  if (minutes == null) return '--';
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h === 0) return `${m}min`;
+  if (m === 0) return `${h}h`;
+  return `${h}h ${m}min`;
+}
+
 export default function ServiceTemplatesPage() {
   const router = useRouter();
-  const [templates, setTemplates] = useState<ServiceTemplate[]>([]);
+  const [templates, setTemplates] = useState<AdminTemplateDto[]>([]);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
+  const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   // Form state
-  const [formTitles, setFormTitles] = useState<Record<string, string>>({});
-  const [formDescriptions, setFormDescriptions] = useState<Record<string, string>>({});
+  const [formTranslations, setFormTranslations] = useState<TranslationData>({});
   const [formCategoryId, setFormCategoryId] = useState('');
   const [formSlug, setFormSlug] = useState('');
-  const [formDuration, setFormDuration] = useState('60');
+  const [formDurationH, setFormDurationH] = useState('1');
+  const [formDurationM, setFormDurationM] = useState('0');
 
   const fetchData = useCallback(async () => {
     try {
@@ -50,16 +60,21 @@ export default function ServiceTemplatesPage() {
         adminCategoryApi.list(),
       ]);
       setTemplates(templatesData);
-      // Flatten categories for the select
+
+      // Flatten categories for the select and build a lookup map
       const flatCats: CategoryOption[] = [];
-      function flatten(cats: { id: string; name: string; children?: { id: string; name: string; children?: unknown[] }[] }[], prefix = '') {
+      const catMap: Record<string, string> = {};
+      function flatten(cats: AdminCategoryDto[], prefix = '') {
         for (const cat of cats) {
-          flatCats.push({ id: cat.id, name: prefix + cat.name });
-          if (cat.children) flatten(cat.children as { id: string; name: string; children?: { id: string; name: string; children?: unknown[] }[] }[], prefix + '  ');
+          const name = translationName(cat.translations);
+          flatCats.push({ id: cat.id, name: prefix + name });
+          catMap[cat.id] = name;
+          if (cat.children?.length) flatten(cat.children, prefix + '  ');
         }
       }
       flatten(categoriesData);
       setCategories(flatCats);
+      setCategoryMap(catMap);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to load data';
       setError(message);
@@ -73,22 +88,33 @@ export default function ServiceTemplatesPage() {
   }, [fetchData]);
 
   function resetForm() {
-    setFormTitles({});
-    setFormDescriptions({});
+    setFormTranslations({});
     setFormCategoryId('');
     setFormSlug('');
-    setFormDuration('60');
+    setFormDurationH('1');
+    setFormDurationM('0');
   }
 
   async function handleCreate() {
     setSubmitting(true);
+    setError('');
     try {
+      // Build translations array from the multi-field data
+      const translations = Object.entries(formTranslations)
+        .filter(([, fields]) => fields.title || fields.description)
+        .map(([lang, fields]) => ({
+          lang,
+          title: fields.title || '',
+          description: fields.description || undefined,
+        }));
+
+      const totalMinutes = (parseInt(formDurationH, 10) || 0) * 60 + (parseInt(formDurationM, 10) || 0);
+
       await adminTemplateApi.create({
-        title: formTitles,
-        description: formDescriptions,
-        categoryId: formCategoryId,
         slug: formSlug,
-        defaultDuration: parseInt(formDuration, 10) || 60,
+        categoryId: formCategoryId,
+        defaultDurationMinutes: totalMinutes || null,
+        translations,
       });
       setShowModal(false);
       resetForm();
@@ -102,19 +128,31 @@ export default function ServiceTemplatesPage() {
   }
 
   const columns = [
-    { key: 'title', label: 'Title' },
-    { key: 'category', label: 'Category' },
-    { key: 'slug', label: 'Slug', render: (t: ServiceTemplate) => <span className="font-mono text-xs text-gray-500">{t.slug}</span> },
     {
-      key: 'defaultDuration',
-      label: 'Duration',
-      render: (t: ServiceTemplate) => <span>{t.defaultDuration} min</span>,
+      key: 'title',
+      label: 'Title',
+      render: (t: AdminTemplateDto) => translationTitle(t.translations) || <span className="text-gray-400 italic">No title</span>,
     },
     {
-      key: 'status',
+      key: 'category',
+      label: 'Category',
+      render: (t: AdminTemplateDto) => categoryMap[t.categoryId] || <span className="text-gray-400">--</span>,
+    },
+    {
+      key: 'slug',
+      label: 'Slug',
+      render: (t: AdminTemplateDto) => <span className="font-mono text-xs text-gray-500">{t.slug}</span>,
+    },
+    {
+      key: 'defaultDurationMinutes',
+      label: 'Duration',
+      render: (t: AdminTemplateDto) => <span>{formatDuration(t.defaultDurationMinutes)}</span>,
+    },
+    {
+      key: 'isActive',
       label: 'Status',
-      render: (t: ServiceTemplate) => (
-        <Badge variant={t.status === 'active' ? 'success' : 'secondary'}>{t.status}</Badge>
+      render: (t: AdminTemplateDto) => (
+        <Badge variant={t.isActive ? 'success' : 'secondary'}>{t.isActive ? 'Active' : 'Inactive'}</Badge>
       ),
     },
   ];
@@ -141,15 +179,21 @@ export default function ServiceTemplatesPage() {
           columns={columns as any}
           data={templates as any}
           isLoading={loading}
-          onRowClick={(template: ServiceTemplate) => router.push(`/service-templates/${template.id}`)}
+          onRowClick={(template: AdminTemplateDto) => router.push(`/service-templates/${template.id}`)}
           emptyMessage="No service templates found"
         />
       </div>
 
       <Modal open={showModal} onClose={() => setShowModal(false)} title="Add Service Template">
         <div className="space-y-4">
-          <TranslationForm label="Title" values={formTitles} onChange={setFormTitles} />
-          <TranslationForm label="Description" values={formDescriptions} onChange={setFormDescriptions} multiline />
+          <TranslationForm
+            fields={[
+              { key: 'title', label: 'Title', required: true },
+              { key: 'description', label: 'Description', type: 'textarea' },
+            ]}
+            value={formTranslations}
+            onChange={setFormTranslations}
+          />
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
@@ -171,13 +215,31 @@ export default function ServiceTemplatesPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Default Duration (minutes)</label>
-            <Input type="number" value={formDuration} onChange={(e) => setFormDuration(e.target.value)} />
+            <label className="block text-sm font-medium text-gray-700 mb-1">Default Duration</label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                value={formDurationH}
+                onChange={(e) => setFormDurationH(e.target.value)}
+                className="w-20"
+                min="0"
+              />
+              <span className="text-sm text-gray-500">hours</span>
+              <Input
+                type="number"
+                value={formDurationM}
+                onChange={(e) => setFormDurationM(e.target.value)}
+                className="w-20"
+                min="0"
+                max="59"
+              />
+              <span className="text-sm text-gray-500">minutes</span>
+            </div>
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
             <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
-            <Button onClick={handleCreate} disabled={submitting}>
+            <Button onClick={handleCreate} disabled={submitting || !formCategoryId || !formSlug}>
               {submitting ? 'Creating...' : 'Create Template'}
             </Button>
           </div>

@@ -60,7 +60,8 @@ data class ProviderServiceDto(
     val durationMinutes: Int?,
     val isIncluded: Boolean,
     val primaryAmount: BigDecimal,
-    val secondaryAmount: BigDecimal?
+    val secondaryAmount: BigDecimal?,
+    val minDurationMinutes: Int?
 )
 
 data class ProviderTranslationDto(

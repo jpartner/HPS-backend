@@ -15,6 +15,8 @@ const PAGE_TITLES: Record<string, string> = {
   '/providers': 'Providers',
   '/api-keys': 'API Keys',
   '/reference-lists': 'Reference Lists',
+  '/country-currencies': 'Country Currencies',
+  '/rate-presets': 'Rate Duration Presets',
   '/tenants': 'Tenants',
 };
 

@@ -7,12 +7,13 @@ import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { adminReferenceListApi, type ReferenceListItem } from '@/lib/api';
-
-const LANGS = ['en', 'pl', 'uk', 'de'];
+import { useLanguages } from '@/lib/use-languages';
 
 export default function ReferenceListDetailPage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
+  const { languages } = useLanguages();
+  const langCodes = languages.map((l) => l.code);
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -44,7 +45,7 @@ export default function ReferenceListDetailPage() {
       value: '',
       sortOrder: items.length,
       isActive: true,
-      translations: LANGS.map(lang => ({ lang, label: '' })),
+      translations: langCodes.map(lang => ({ lang, label: '' })),
     }]);
   }
 
@@ -136,14 +137,14 @@ export default function ReferenceListDetailPage() {
           </div>
 
           {items.length === 0 ? (
-            <p className="text-sm text-gray-500 text-center py-8">No items yet. Click "Add Item" to start.</p>
+            <p className="text-sm text-gray-500 text-center py-8">No items yet. Click &quot;Add Item&quot; to start.</p>
           ) : (
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
+            <div className="border border-gray-200 rounded-lg overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200">
                     <th className="text-left px-3 py-2 font-medium text-gray-500 w-32">Value</th>
-                    {LANGS.map(lang => (
+                    {langCodes.map(lang => (
                       <th key={lang} className="text-left px-3 py-2 font-medium text-gray-500">{lang.toUpperCase()}</th>
                     ))}
                     <th className="w-10"></th>
@@ -159,7 +160,7 @@ export default function ReferenceListDetailPage() {
                           placeholder="value"
                         />
                       </td>
-                      {LANGS.map(lang => (
+                      {langCodes.map(lang => (
                         <td key={lang} className="px-3 py-2">
                           <Input
                             value={getLabel(item, lang)}

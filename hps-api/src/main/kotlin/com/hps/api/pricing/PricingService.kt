@@ -3,7 +3,6 @@ package com.hps.api.pricing
 import com.hps.common.exception.BadRequestException
 import com.hps.common.exception.NotFoundException
 import com.hps.common.i18n.bestTranslation
-import com.hps.domain.service.RateType
 import com.hps.persistence.geo.CountryCurrencyRepository
 import com.hps.persistence.service.ProviderRateRepository
 import com.hps.persistence.service.ServiceRepository
@@ -25,7 +24,7 @@ class PricingService(
         val provider = providerProfileRepository.findById(request.providerId)
             .orElseThrow { NotFoundException("Provider", request.providerId) }
 
-        // Resolve currencies: provider → city → region → country → countryCurrency
+        // Resolve currencies
         val country = provider.city?.region?.country
             ?: throw BadRequestException("Provider has no location set; cannot resolve currency")
 
@@ -33,19 +32,24 @@ class PricingService(
         val primaryCurrency = cc?.primaryCurrency ?: "EUR"
         val secondaryCurrency = cc?.secondaryCurrency
 
-        // Find matching rate
-        val rateType = RateType.valueOf(request.rateType)
+        // Find matching rate by meeting type + duration
         val rates = providerRateRepository.findByProviderIdAndIsActiveTrue(request.providerId)
         val matchedRate = rates.find { rate ->
-            rate.rateType == rateType && rate.durationMinutes == request.durationMinutes
+            rate.meetingType?.id == request.meetingTypeId && rate.durationMinutes == request.durationMinutes
         }
 
+        // Resolve the correct amount column based on incall/outcall
         val baseRate = matchedRate?.let {
+            val primaryAmount = if (request.isOutcall) it.outcallAmount else it.incallAmount
+            val secondaryAmount = if (request.isOutcall) it.secondaryOutcallAmount else it.secondaryIncallAmount
+            if (primaryAmount == null) {
+                throw BadRequestException("This ${if (request.isOutcall) "outcall" else "incall"} option is not available")
+            }
             PricingLineDto(
-                rateType = it.rateType.name,
+                meetingTypeId = request.meetingTypeId,
                 durationMinutes = it.durationMinutes,
-                primaryAmount = it.primaryAmount,
-                secondaryAmount = it.secondaryAmount
+                primaryAmount = primaryAmount,
+                secondaryAmount = secondaryAmount
             )
         }
 
@@ -53,20 +57,22 @@ class PricingService(
         val extras = if (request.extraIds.isNotEmpty()) {
             val services = serviceRepository.findActiveByIdsWithTranslations(request.extraIds, lang)
 
-            // Validate all belong to provider
             val invalidIds = services.filter { it.provider.userId != request.providerId }.map { it.id }
             if (invalidIds.isNotEmpty()) {
                 throw BadRequestException("Extras do not belong to this provider: $invalidIds")
             }
 
-            // Check requested IDs were all found
             val foundIds = services.map { it.id }.toSet()
             val missingIds = request.extraIds.filter { it !in foundIds }
             if (missingIds.isNotEmpty()) {
                 throw BadRequestException("Extras not found: $missingIds")
             }
 
-            services.map { svc ->
+            // Filter out extras that require a longer meeting duration
+            services.filter { svc ->
+                val minDur = svc.minDurationMinutes
+                minDur == null || (request.durationMinutes != null && request.durationMinutes >= minDur)
+            }.map { svc ->
                 PricingExtraLineDto(
                     extraId = svc.id,
                     name = svc.translations.bestTranslation(lang, { it.lang }, { it.title }),

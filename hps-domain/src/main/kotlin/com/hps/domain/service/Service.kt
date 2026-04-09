@@ -49,6 +49,9 @@ class Service(
     @Column(name = "secondary_amount", precision = 10, scale = 2)
     var secondaryAmount: BigDecimal? = null,
 
+    @Column(name = "min_duration_minutes")
+    var minDurationMinutes: Int? = null,
+
     @Column(name = "is_active", nullable = false)
     var isActive: Boolean = true,
 

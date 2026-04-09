@@ -23,7 +23,10 @@ class Country(
     val translations: MutableSet<CountryTranslation> = mutableSetOf(),
 
     @OneToMany(mappedBy = "country", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val regions: MutableList<Region> = mutableListOf()
+    val regions: MutableList<Region> = mutableListOf(),
+
+    @OneToOne(mappedBy = "country", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var currency: CountryCurrency? = null
 )
 
 @Entity

@@ -33,6 +33,7 @@ data class TenantConfigExport(
     val tenant: TenantConfigData,
     val categories: List<CategoryConfigData> = emptyList(),
     val serviceTemplates: List<ServiceTemplateConfigData> = emptyList(),
+    val referenceLists: List<ReferenceListConfigData> = emptyList(),
     val attributes: List<AttributeConfigData> = emptyList(),
     val admin: AdminCredentials? = null,
     val data: TenantRuntimeData? = null
@@ -70,10 +71,22 @@ data class AttributeConfigData(
     val key: String,
     val dataType: String,
     val isRequired: Boolean,
-    val options: List<String>?,
-    val validation: AdminValidationRules?,
+    val options: List<String>? = null,
+    val validation: AdminValidationRules? = null,
+    val referenceListKey: String? = null,
     val sortOrder: Int,
     val translations: List<AttributeTranslationEntry>
+)
+
+data class ReferenceListConfigData(
+    val key: String,
+    val name: String,
+    val items: List<ReferenceListItemConfigData> = emptyList()
+)
+
+data class ReferenceListItemConfigData(
+    val value: String,
+    val translations: Map<String, String> = emptyMap()
 )
 
 data class AdminCredentials(

@@ -24,7 +24,7 @@ class ReferenceList(
 
     @OneToMany(mappedBy = "referenceList", cascade = [CascadeType.ALL], orphanRemoval = true)
     @OrderBy("sortOrder ASC")
-    val items: MutableList<ReferenceListItem> = mutableListOf()
+    val items: MutableSet<ReferenceListItem> = mutableSetOf()
 )
 
 @Entity

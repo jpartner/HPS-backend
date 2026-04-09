@@ -58,7 +58,8 @@ class ServiceManagementService(
             durationMinutes = request.durationMinutes ?: template?.defaultDurationMinutes,
             isIncluded = request.isIncluded,
             primaryAmount = request.primaryAmount ?: request.priceAmount,
-            secondaryAmount = request.secondaryAmount
+            secondaryAmount = request.secondaryAmount,
+            minDurationMinutes = request.minDurationMinutes
         )
 
         request.translations.forEach { t ->
@@ -91,6 +92,7 @@ class ServiceManagementService(
         request.isIncluded?.let { service.isIncluded = it }
         request.primaryAmount?.let { service.primaryAmount = it }
         request.secondaryAmount?.let { service.secondaryAmount = it }
+        request.minDurationMinutes?.let { service.minDurationMinutes = it }
         request.isActive?.let { service.isActive = it }
 
         if (request.translations != null) {
@@ -134,6 +136,7 @@ class ServiceManagementService(
         isIncluded = isIncluded,
         primaryAmount = primaryAmount,
         secondaryAmount = secondaryAmount,
+        minDurationMinutes = minDurationMinutes,
         isActive = isActive,
         providerId = provider.userId!!,
         providerName = provider.businessName

@@ -5,8 +5,9 @@ import java.util.UUID
 
 data class PricingCalculateRequest(
     val providerId: UUID,
-    val rateType: String,
+    val meetingTypeId: UUID,
     val durationMinutes: Int?,
+    val isOutcall: Boolean = false,
     val extraIds: List<UUID> = emptyList()
 )
 
@@ -20,7 +21,7 @@ data class PricingBreakdownDto(
 )
 
 data class PricingLineDto(
-    val rateType: String,
+    val meetingTypeId: UUID,
     val durationMinutes: Int?,
     val primaryAmount: BigDecimal,
     val secondaryAmount: BigDecimal?

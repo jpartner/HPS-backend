@@ -5,6 +5,9 @@ import com.hps.common.exception.BadRequestException
 import com.hps.domain.attribute.AttributeDataType
 import com.hps.domain.attribute.AttributeDefinition
 import com.hps.domain.attribute.AttributeDefinitionTranslation
+import com.hps.domain.reference.ReferenceList
+import com.hps.domain.reference.ReferenceListItem
+import com.hps.domain.reference.ReferenceListItemTranslation
 import com.hps.domain.service.ServiceCategory
 import com.hps.domain.service.ServiceCategoryTranslation
 import com.hps.domain.service.ServiceTemplate
@@ -15,6 +18,7 @@ import com.hps.domain.user.User
 import com.hps.domain.user.UserProfile
 import com.hps.domain.user.UserRole
 import com.hps.persistence.attribute.AttributeDefinitionRepository
+import com.hps.persistence.reference.ReferenceListRepository
 import com.hps.persistence.service.ServiceCategoryRepository
 import com.hps.persistence.service.ServiceTemplateRepository
 import com.hps.persistence.tenant.TenantAdminRepository
@@ -31,6 +35,7 @@ class TenantConfigService(
     private val categoryRepository: ServiceCategoryRepository,
     private val templateRepository: ServiceTemplateRepository,
     private val definitionRepository: AttributeDefinitionRepository,
+    private val referenceListRepository: ReferenceListRepository,
     private val userRepository: UserRepository,
     private val tenantAdminRepository: TenantAdminRepository,
     private val passwordEncoder: PasswordEncoder
@@ -93,25 +98,60 @@ class TenantConfigService(
         }
         log.info("Created {} service templates", templatesCreated)
 
-        // 4. Create attribute definitions
+        // 4. Create reference lists
+        val refListByKey = mutableMapOf<String, ReferenceList>()
+        var refListsCreated = 0
+        for (rlData in config.referenceLists) {
+            if (referenceListRepository.findByKey(rlData.key) != null) {
+                log.info("Reference list '{}' already exists, skipping", rlData.key)
+                refListByKey[rlData.key] = referenceListRepository.findByKey(rlData.key)!!
+                continue
+            }
+            val rl = ReferenceList(key = rlData.key, name = rlData.name)
+            rlData.items.forEachIndexed { idx, itemData ->
+                val item = ReferenceListItem(
+                    referenceList = rl,
+                    value = itemData.value,
+                    sortOrder = idx
+                )
+                itemData.translations.forEach { (lang, label) ->
+                    item.translations.add(
+                        ReferenceListItemTranslation(item = item, lang = lang, label = label)
+                    )
+                }
+                rl.items.add(item)
+            }
+            referenceListRepository.save(rl)
+            refListByKey[rlData.key] = rl
+            refListsCreated++
+        }
+        log.info("Created {} reference lists", refListsCreated)
+
+        // 5. Create attribute definitions
         var attributesCreated = 0
         for (attr in config.attributes) {
+            val refList = attr.referenceListKey?.let { key ->
+                refListByKey[key] ?: throw BadRequestException(
+                    "Attribute '${attr.key}' references unknown reference list key '$key'"
+                )
+            }
             val def = AttributeDefinition(
                 tenantId = tenant.id,
                 domain = attr.domain,
                 key = attr.key,
                 dataType = AttributeDataType.valueOf(attr.dataType),
                 isRequired = attr.isRequired,
-                options = attr.options?.let { mapper.writeValueAsString(it) },
+                options = if (refList != null) null else attr.options?.let { mapper.writeValueAsString(it) },
                 validation = attr.validation?.let { mapper.writeValueAsString(it) },
-                sortOrder = attr.sortOrder
+                sortOrder = attr.sortOrder,
+                referenceList = refList
             )
             attr.translations.forEach { t ->
                 def.translations.add(
                     AttributeDefinitionTranslation(
                         attribute = def, lang = t.lang, label = t.label,
                         hint = t.hint,
-                        optionLabels = t.optionLabels?.let { mapper.writeValueAsString(it) }
+                        optionLabels = if (refList != null) null else t.optionLabels?.let { mapper.writeValueAsString(it) }
                     )
                 )
             }
@@ -120,7 +160,7 @@ class TenantConfigService(
         }
         log.info("Created {} attribute definitions", attributesCreated)
 
-        // 5. Create admin user if credentials provided
+        // 6. Create admin user if credentials provided
         var adminCreated = false
         val creds = config.admin
         if (creds != null) {
